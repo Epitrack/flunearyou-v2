@@ -1,0 +1,119 @@
+{
+  "watch": {
+    "options": {
+      "livereload": true
+    },
+
+    "css": {
+      "files": "src/sass/{,*/}*.{scss,sass}",
+      "tasks": ["sass:dist"]
+    },
+
+    "js": {
+      "files": "src/js/**/*",
+      "tasks": ["uglify"]
+    },
+
+    "html": {
+      "files": ["*.{html,htm,shtml,shtm,xhtml,php,jsp,asp,aspx,erb,ctp}"]
+    }
+  },
+
+  "sass": {
+    "dist": {
+      "options": {
+        "sourcemap": "none",
+        "lineNumbers": true,
+        "style": "expanded"
+      },
+
+      "files": {
+        "dist/css/style.min.css": "src/sass/main.scss"
+      }
+    }
+  },
+
+  "browserSync": {
+    "bsFiles": {
+      "src": ["src/css/*.css", "*.{html,htm,shtml,shtm,xhtml,php,jsp,asp,aspx,erb,ctp}"]
+    },
+
+    "options": {
+      "watchTask": true
+    }
+  },
+
+  "uglify": {
+    "options": {
+      "mangle": false
+    },
+
+    "dist": {
+      "files": {
+        "dist/js/scripts.min.js": [
+          "src/js/APP.js"
+          ,"src/js/APP.Status.js"
+          ,"src/js/APP.Cache.js"
+          ,"src/js/APP.Language.js"
+          ,"src/js/APP.Tracking.js"
+          ,"src/js/APP.Scroll.js"
+          ,"src/js/APP.Request.js"
+          ,"src/js/APP.Storage.js"
+          ,"src/js/APP.Contact.js"
+          ,"src/js/APP.Modal.js"
+          ,"src/js/APP.EasterEggs.js"
+          ,"src/js/APP.Transitions.js"
+        ],
+
+        "dist/js/fny.min.js": [
+          "src/js/fny/APP.Calendar.js"
+          ,"src/js/fny/APP.Help.js"
+          ,"src/js/fny/APP.i18n.js"
+          ,"src/js/fny/APP.Login.js"
+          ,"src/js/fny/APP.Main.js"
+          ,"src/js/fny/APP.Map.js"
+          ,"src/js/fny/APP.Mobile.js"
+          ,"src/js/fny/APP.Press.js"
+          ,"src/js/fny/APP.Settings.js"
+          ,"src/js/fny/APP.Signup.js"
+          ,"src/js/fny/APP.Signup_facebook.js"
+          ,"src/js/fny/APP.Signup_google_plus.js"
+          ,"src/js/fny/APP.Summary.js"
+          ,"src/js/fny/APP.Survey.js"
+          ,"src/js/fny/APP.Tracking.js"
+          ,"src/js/fny/APP.Unsub.js"
+          ,"src/js/fny/APP.Vaccine_finder.js"
+          ,"src/js/fny/APP.Validation.js"
+        ],
+
+        "dist/js/libs.min.js": [
+          "bower_components/jquery/dist/jquery.js"
+          ,"bower_components/moment/moment.js"
+          ,"bower_components/sticky/jquery.sticky.js"
+          ,"bower_components/toastr/toastr.js"
+          ,"bower_components/jquery-ui/jquery-ui.js"
+          ,"bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js"
+          ,"bower_components/jquery-ajax-retry/dist/jquery.ajax-retry.min.js"
+          ,"bower_components/jquery.validation/dist/jquery.validate.js"
+          ,"bower_components/bootstrap/dist/js/bootstrap.js"
+          ,"bower_components/jquery-serialize-object/jquery.serialize-object.js"
+          ,"bower_components/blockui/jquery.blockUI.js"
+          ,"bower_components/pickadate/lib/picker.js"
+          ,"bower_components/pickadate/lib/picker.date.js"
+          ,"bower_components/bootstrap-select/dist/js/bootstrap-select.js"
+        ]
+      }
+    }
+  },
+
+  "imagemin": {
+    "dynamic": {
+      "files": [{
+        "expand": true,
+        "cwd": "src/images",
+        "src": ["**/*.{png,jpg,gif}"],
+        "dest": "dist/images"
+      }]
+    }
+  }
+}
