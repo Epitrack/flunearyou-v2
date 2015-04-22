@@ -1,0 +1,45 @@
+###########################################################
+#                    Awesome Team
+############################################################
+
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Designer: Renato Araújo
+  Contact: http://fb.com/renato.araujo.1481
+  Twitter: @exclama
+  From: Brazil, Pernambuco, Olinda
+
+  UX-Designer: Edson Luiz
+  Contact: http://fb.com/edson.mobile
+  From: Brazil, Pernambuco, Recife
+
+  Front-End Engineer: Dennis Calazans
+  Contact: http://denniscalazans.com
+  Twitter: @dannnish
+  From: Brazil, Pernambuco, Recife
+
+  Front-End Engineer: Thulio Philipe
+  Contact: http://thulioph.com
+  Twitter: @thulioph_
+  From: Brazil, Pernambuco, Recife
+
+  Back-End Engineer: João Guilherme
+  Contact: http://fb.com/guinetik
+  Twitter: @guinetik
+  From: Brazil, Pernambuco, Recife
+
+  Back-End Engineer: Victor Luna
+  Contact: http://fb.com/victorpluna
+  From: Brazil, Pernambuco, Recife
+
+
+# PROJECT
+
+  Last update: 04/22/2015
+  Doctype: HTML5
+  IDE: Sublime Text, Chrome Developer Tools
+  Standards: HTML5, CSS3, APP.js
+  Components: jQuery, Bootstrap
