@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.initConfig(gruntConfig);
 
   // Register tasks
-  grunt.registerTask('default', ['browserSync', 'watch']);
+  grunt.registerTask('default', ['watch']);
+  //grunt.registerTask('default', ['browserSync', 'watch']);
   grunt.registerTask('img', ['imagemin']);
 }

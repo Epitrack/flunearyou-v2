@@ -22,12 +22,9 @@
     "grunt-contrib-sass": "~0.8.1",
     "load-grunt-tasks": "~1.0.0"
   },
-  "dependencies": {
-    "http-server": "^0.8.0"
-  },
   "scripts": {
     "postinstall": "bower install",
-    "prestart": "npm install",
-    "start": "http-server -a localhost -p 8080 -c-1"
+    "prestart": "npm cache clean && npm install",
+    "start": "grunt"
   }
 }
