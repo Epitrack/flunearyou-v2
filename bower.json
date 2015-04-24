@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "APP.js": "https://github.com/denniscalazans/APP.js.git",
     "jquery": "~2.1.0",
     "bootbox": "~4.4.0",
     "bootstrap-select": "~1.6.5",
@@ -16,7 +17,7 @@
     "blockui": "*",
     "sticky": "~1.0.1",
     "jquery-serialize-object": "~2.4.5",
-    "jqueryui-touch-punch": "git@github.com:furf/jquery-ui-touch-punch.git",
+    "jqueryui-touch-punch": "https://github.com/furf/jquery-ui-touch-punch.git",
     "jquery.validation": "~1.13.1",
     "moment": "~2.10.2",
     "pickadate": "~3.5.6",
