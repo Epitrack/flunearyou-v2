@@ -63,10 +63,8 @@
           ,"src/js/APP.Modal.js"
           ,"src/js/APP.EasterEggs.js"
           ,"src/js/APP.Transitions.js"
-        ],
 
-        "dist/js/fny.min.js": [
-          "src/js/fny/APP.Calendar.js"
+          ,"src/js/fny/APP.Calendar.js"
           ,"src/js/fny/APP.Help.js"
           ,"src/js/fny/APP.i18n.js"
           ,"src/js/fny/APP.Login.js"
@@ -89,6 +87,7 @@
         "dist/js/libs.min.js": [
           "bower_components/jquery/dist/jquery.js"
           ,"bower_components/moment/moment.js"
+          ,"bower_components/APP.js/APP.js"
           ,"bower_components/sticky/jquery.sticky.js"
           ,"bower_components/toastr/toastr.js"
           ,"bower_components/jquery-ui/jquery-ui.js"
@@ -101,6 +100,7 @@
           ,"bower_components/pickadate/lib/picker.js"
           ,"bower_components/pickadate/lib/picker.date.js"
           ,"bower_components/bootstrap-select/dist/js/bootstrap-select.js"
+          ,"bower_components/i18next/i18next.min.js"
         ]
       }
     }
