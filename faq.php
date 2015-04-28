@@ -23,10 +23,7 @@
     </ul>
   </section>
 
-  <aside class="join-us">
-    <h3>Help fight disease now!</h3>
-    <button class="btn-secondary medium">Join Us</button>
-  </aside>
+  <?php include 'php/includes/joinUs.inc.php'; ?>
 </section>
 
 <?php include 'php/includes/footer.inc.php'; ?>

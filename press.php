@@ -21,6 +21,8 @@
       </li>
     <?php } ?>
   </ul>
+
+  <?php include 'php/includes/joinUs.inc.php'; ?>
 </section>
 
 <?php include 'php/includes/footer.inc.php'; ?>
