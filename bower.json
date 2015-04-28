@@ -22,7 +22,8 @@
     "moment": "~2.10.2",
     "pickadate": "~3.5.6",
     "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git",
-    "toastr": "~2.1.1"
+    "toastr": "~2.1.1",
+    "bootstrap-sass": "~3.3.4"
   },
   "devDependencies": {
     "i18next": "~1.7.3",
