@@ -5,8 +5,8 @@
 var APP = APP || {};
 APP.Modal = {
   setUp: function() {
-    this.modal();
-    this.lightbox();
+    // this.modal();
+    // this.lightbox();
   },
 
   modal: function() {
