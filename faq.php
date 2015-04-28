@@ -1,5 +1,5 @@
-<?php include 'php/includes/_head.php'; ?>
-<?php include 'php/includes/_navbar.php' ?>
+<?php include 'php/includes/head.inc.php'; ?>
+<?php include 'php/includes/navbar.inc.php' ?>
 
 <section class="wrapper-section">
   <h2 class="title-section">Frequently Asked Questions about Flu Near You</h2>
@@ -29,4 +29,4 @@
   </aside>
 </section>
 
-<?php include 'php/includes/_footer.php'; ?>
+<?php include 'php/includes/footer.inc.php'; ?>

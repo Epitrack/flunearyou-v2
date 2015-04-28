@@ -74,23 +74,6 @@ table {
   src: url("../../fonts/OpenSansLight.eot");
   src: url("../../fonts/OpenSansLight.eot") format("embedded-opentype"), url("../../fonts/OpenSansLight.woff2") format("woff2"), url("../../fonts/OpenSansLight.woff") format("woff"), url("../../fonts/OpenSansLight.ttf") format("truetype"), url("../../fonts/OpenSansLight.svg#OpenSansLight") format("svg");
 }
-@font-face {
-  font-family: 'OpenSansRegular';
-  src: url("../../fonts/OpenSansRegular.eot");
-  src: url("../../fonts/OpenSansRegular.eot") format("embedded-opentype"), url("../../fonts/OpenSansRegular.woff2") format("woff2"), url("../../fonts/OpenSansRegular.woff") format("woff"), url("../../fonts/OpenSansRegular.ttf") format("truetype"), url("../../fonts/OpenSansRegular.svg#OpenSansRegular") format("svg");
-}
-@font-face {
-  font-family: 'OpenSansBold';
-  src: url("../../fonts/OpenSansBold.eot");
-  src: url("../../fonts/OpenSansBold.eot") format("embedded-opentype"), url("../../fonts/OpenSansBold.woff2") format("woff2"), url("../../fonts/OpenSansBold.woff") format("woff"), url("../../fonts/OpenSansBold.ttf") format("truetype"), url("../../fonts/OpenSansBold.svg#OpenSansBold") format("svg");
-}
-@font-face {
-  font-family: 'sverige_script_decorated_deRg';
-  src: url("../../fonts/sverigescriptdecorated_demo-webfont.eot");
-  src: url("../../fonts/sverigescriptdecorated_demo-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/sverigescriptdecorated_demo-webfont.woff2") format("woff2"), url("../../fonts/sverigescriptdecorated_demo-webfont.woff") format("woff"), url("../../fonts/sverigescriptdecorated_demo-webfont.ttf") format("truetype"), url("../../fonts/sverigescriptdecorated_demo-webfont.svg#sverige_script_decorated_deRg") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
 /* line 5, ../../src/sass/_form.scss */
 ::-webkit-input-placeholder {
   color: #5f6a7d;
@@ -128,7 +111,7 @@ textarea {
 /* line 23, ../../src/sass/_form.scss */
 input,
 textarea {
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   -webkit-transition: border 0.2s 0s linear;
   -moz-transition: border 0.2s 0s linear;
   -ms-transition: border 0.2s 0s linear;
@@ -146,7 +129,7 @@ textarea {
   color: #FFFFFF;
   background-color: #2586b7;
   font-size: 1rem;
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   display: block;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -209,7 +192,7 @@ body.js-offline::after {
   color: #FAFAFA;
   font-size: 1.4rem;
   line-height: 1.4rem;
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   overflow: hidden;
@@ -298,7 +281,7 @@ progress::-moz-progress-bar {
 
 /* line 80, ../../src/sass/_general.scss */
 .logo {
-  font-family: "sverige_script_decorated_deRg";
+  font-family: "Open Sans", sans-serif;
   font-size: 7rem;
   color: #FAFAFA;
   text-align: center;
@@ -318,7 +301,7 @@ progress::-moz-progress-bar {
 .footer-primary p {
   color: #FAFAFA;
   font-size: 1rem;
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   display: inline-block;
   top: 90px;
   position: relative;
@@ -345,7 +328,7 @@ progress::-moz-progress-bar {
   text-decoration: none;
   text-transform: uppercase;
   color: #E0E0E0;
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   -webkit-transition: all 0.2s 0s ease-out;
   -moz-transition: all 0.2s 0s ease-out;
@@ -437,7 +420,7 @@ progress::-moz-progress-bar {
   text-transform: uppercase;
   line-height: 60px;
   margin: 0 20px;
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   color: #6C7980;
   font-size: 1rem;
   -webkit-transition: color 0.2s 0s linear;
@@ -474,7 +457,7 @@ progress::-moz-progress-bar {
 
 /* line 226, ../../src/sass/_general.scss */
 .section-title {
-  font-family: "OpenSansBold";
+  font-family: "Open Sans", sans-serif;
   font-size: 1.4rem;
   color: #2E3B4E;
   text-transform: none;
@@ -485,7 +468,7 @@ progress::-moz-progress-bar {
   line-height: 1.4rem;
   font-size: 1rem;
   color: #5f6a7d;
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
   width: 50%;
   margin: 20px auto;
 }
@@ -496,7 +479,7 @@ progress::-moz-progress-bar {
   display: block;
   font-size: 1rem;
   color: #2586b7;
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
 }
 /* line 249, ../../src/sass/_general.scss */
 .link.external {
@@ -532,14 +515,14 @@ progress::-moz-progress-bar {
 }
 /* line 273, ../../src/sass/_general.scss */
 .post-content h3 {
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   font-size: 1.2rem;
   color: #5f6a7d;
 }
 /* line 280, ../../src/sass/_general.scss */
 .post-content p {
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   margin: 10px 0;
   line-height: 1.4rem;
@@ -571,7 +554,7 @@ progress::-moz-progress-bar {
   color: #1B2126;
   background-color: #FAFAFA;
   text-align: center;
-  font-family: "OpenSansLight";
+  font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   -webkit-transition: bottom 0.2s 0s ease-out;
   -moz-transition: bottom 0.2s 0s ease-out;
@@ -674,7 +657,7 @@ progress::-moz-progress-bar {
   height: 0%;
   line-height: 40px;
   color: #1B2126;
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
   font-size: 1.4rem;
   background-color: rgba(255, 255, 255, 0.7);
   -webkit-transition: height 0.2s 0s linear;
@@ -777,7 +760,7 @@ progress::-moz-progress-bar {
 /* line 472, ../../src/sass/_general.scss */
 .feeds-twitter-item .user span[data-scribe="element:screen_name"] {
   font-size: 0.8rem;
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
   vertical-align: top;
   line-height: 50px;
   margin-left: 10px;
@@ -787,7 +770,7 @@ progress::-moz-progress-bar {
 .feeds-twitter-item p {
   font-size: 0.8rem;
   line-height: 1.4rem;
-  font-family: "OpenSansRegular";
+  font-family: "Open Sans", sans-serif;
   color: #1B2126;
   white-space: pre-line;
   overflow: hidden;
