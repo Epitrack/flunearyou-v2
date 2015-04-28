@@ -12,10 +12,10 @@ $fs-small:          1.4rem;
 $fs-extra-small:    1.2rem;
 
 // Family
-$ff-general:        'OpenSansRegular';
-$ff-primary:        'OpenSansLight';
-$ff-title:          'OpenSansBold';
-$ff-project:        'sverige_script_decorated_deRg';
+$ff-general:        'Open Sans', sans-serif;
+$ff-primary:        'Open Sans', sans-serif;
+$ff-title:          'Open Sans', sans-serif;
+$ff-project:        'Open Sans', sans-serif;
 
 
 // Style
@@ -24,7 +24,10 @@ $f-normal:          normal;
 
 // Weight
 $fw-light:          300;
+$fw-normal:         400;
 $fw-semi-bold:      600;
+$fw-bold:           700;
+$fw-extra-bold:     800;
 
 // Custom Font Face
 @font-face {
@@ -35,36 +38,4 @@ $fw-semi-bold:      600;
   url('../../fonts/OpenSansLight.woff') format('woff'),
   url('../../fonts/OpenSansLight.ttf') format('truetype'),
   url('../../fonts/OpenSansLight.svg#OpenSansLight') format('svg');
-}
-
-@font-face {
-  font-family: 'OpenSansRegular';
-  src: url('../../fonts/OpenSansRegular.eot');
-  src: url('../../fonts/OpenSansRegular.eot') format('embedded-opentype'),
-  url('../../fonts/OpenSansRegular.woff2') format('woff2'),
-  url('../../fonts/OpenSansRegular.woff') format('woff'),
-  url('../../fonts/OpenSansRegular.ttf') format('truetype'),
-  url('../../fonts/OpenSansRegular.svg#OpenSansRegular') format('svg');
-}
-
-@font-face {
-  font-family: 'OpenSansBold';
-  src: url('../../fonts/OpenSansBold.eot');
-  src: url('../../fonts/OpenSansBold.eot') format('embedded-opentype'),
-  url('../../fonts/OpenSansBold.woff2') format('woff2'),
-  url('../../fonts/OpenSansBold.woff') format('woff'),
-  url('../../fonts/OpenSansBold.ttf') format('truetype'),
-  url('../../fonts/OpenSansBold.svg#OpenSansBold') format('svg');
-}
-
-@font-face {
-    font-family: 'sverige_script_decorated_deRg';
-    src: url('../../fonts/sverigescriptdecorated_demo-webfont.eot');
-    src: url('../../fonts/sverigescriptdecorated_demo-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/sverigescriptdecorated_demo-webfont.woff2') format('woff2'),
-         url('../../fonts/sverigescriptdecorated_demo-webfont.woff') format('woff'),
-         url('../../fonts/sverigescriptdecorated_demo-webfont.ttf') format('truetype'),
-         url('../../fonts/sverigescriptdecorated_demo-webfont.svg#sverige_script_decorated_deRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
 }
