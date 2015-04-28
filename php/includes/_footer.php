@@ -1,3 +1,20 @@
+  <footer class="footer-primary">
+    <nav class="nav-secondary">
+      <ul>
+        <li>Flu Near You 2015</li>
+        <li><a href="terms" title="Terms & Conditions">Terms & Conditions</a></li>
+        <li><a href="privacy" title="Privacy Policy">Privacy Policy</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="mailto:flunearyou@healthmap.org?subject=contact" title="Send a email">flunearyou@healthmap.org</a></li>
+        <li><a href="https://www.facebook.com/flunearyou.org" target="_blank" title="Facebook">Facebook</a></li>
+        <li><a href="https://twitter.com/FluNearYou" target="_blank" title="Twitter">Twitter</a></li>
+        <li><a href="https://plus.google.com/107384974541354678805/" target="_blank" title="Google Plus">Google Plus</a></li>
+      </ul>
+    </nav>
+  </footer>
+
   <!-- SCRIPTS -->
   <?php $Catrina->writeScripts(); ?>
   <script>APP.init()</script>
