@@ -1,4 +1,4 @@
-var app = angular.module('FnyApp', ['ngRoute', 'pressController', 'fluNewsController']);
+var app = angular.module('FnyApp', ['ngRoute', 'pressController', 'fluNewsController', 'faqController']);
 
 app.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
@@ -9,6 +9,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
     .when('/flu-news', {
       templateUrl: 'templates/flu-news.html',
       controller: 'FluNewsCtrl'
+    }).when('/faq', {
+      templateUrl: 'templates/faq.html',
+      controller: 'FaqCtrl'
     })
     .otherwise({
       redirectTo: '/'

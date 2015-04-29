@@ -1,0 +1,96 @@
+[
+  {
+    "title": "What is Flu Near You?"
+    ,"description": "Flu Near You is a website and mobile application that allows the public to report their health information using a quick weekly survey. Using participant-reported symptoms, Flu Near You graphs and maps this information to provide local and national views of influenza-like illness."
+  },
+
+  {
+    "title": "Who can participate in Flu Near You?"
+    ,"description": "Any resident of the US or Canada over the age of 13 can participate in Flu Near You."
+  },
+
+  {
+    "title": "Who can see the information I submit?"
+    ,"description": "Anyone who visits the site will see the number of reports of no illness, some symptoms, or influenza-like illness within a certain zip code. Your personal information including your email address will be kept completely confidential. You can view the privacy policy here: https://flunearyou.org/privacy."
+  },
+
+  {
+    "title": "Should I still report my symptoms even if I did not go to the doctor?"
+    ,"description": "Yes! At Flu Near You, we track influenza-like illness (ILI) using reported symptoms. This allows us to count everyone who felt sick, regardless of whether or not they went to see their doctor."
+  },
+
+  {
+    "title": "I got a flu shot but then got the flu. Why is that?"
+    ,"description": "Influenza shares symptoms with other illnesses and it is not possible to say for certain whether or not it was the flu that made you sick without laboratory confirmation. These diagnostic tests are usually performed at your doctor’s office. But it is possible to get the flu even after having a flu shot. National Public Radio has a good explanation on their Shots Health News from their NPR health blog. For more information about vaccine effectiveness and how influenza viruses are selected to be included in the yearly flu vaccine visit Flu Vaccine a Global Public Health Triumph Despite Only 59% Effectiveness on The Disease Daily."
+  },
+
+  {
+    "title": "I know I don’t have the flu, but I do have some symptoms. Should I still report them?"
+    ,"description": "Yes! First, the flu can only be confirmed with a laboratory test from your doctor. This is why we are looking for symptoms of influenza-like illness, rather than a definitive flu diagnosis. Second, even though the focus of Flu Near You is the flu, it is important to know when people are getting sick with other illnesses, too. We do not limit reporting only to people whose symptoms are related to flu."
+  },
+
+  {
+    "title": "The map does not show satellite or terrain data. All I see is flat coloring. Why is that?"
+    ,"description": "The coloring is intentional – if you look below the map there is a legend that explains what each color represents. It is meant to give you a picture of the level of flu activity in each state. There are now two options that allow you to toggle either the “user contributed data” (removing the pins from the map) or the “additional flu data” (removing the flat coloring and enabling you to see the map administrative labels)."
+  },
+
+  {
+    "title": "How can I add a family member to my weekly report?"
+    ,"description": "Access the 'Settings' link by clicking on the arrow next to your email address in the top navigation.  Scroll down to the 'Household Members' section and click on the 'Add' button.  Add the member's information and click 'Save'.  You can also change the status of the household members you are reporting for by clicking on the active/inactive button next to each household member."
+  },
+
+  {
+    "title": "How do I unsubscribe from Flu Near You?"
+    ,"description": "Follow the link in your weekly email to unsubscribe from Flu Near You."
+  },
+
+  {
+    "title": "Do I have to answer a health survey when it's not flu season?"
+    ,"description": "We conduct the survey year-round instead of only during the flu season for a couple reasons. First, it is possible for an influenza outbreak to occur outside of the traditional flu season. For instance, the first wave of pandemic H1N1 hit in the spring of 2009. We want to capture any emerging outbreak, should something similar occur again. Second, our symptoms based health forms allow us to monitor other diseases which may have different seasons than influenza. We already have a longer symptom list targeted to users in Puerto Rico which also monitors Dengue."
+  },
+
+  {
+    "title": "I just joined Flu Near You and would like to report symptoms I had 2 months ag"
+    ,"description": "The goal of Flu Near You is to provide a real-time view of influenza in your area. To do this, we need to collect symptom information as it happens. Therefore, we ask each week that you report on your health status from the previous week only."
+  },
+
+  {
+    "title": "Why are there so few pins on the map on Monday morning?"
+    ,"description": "User-submitted reports of symptoms experienced in the last week start arriving on Monday morning. The pins will increase in number as people continue to submit symptom data throughout the day and week."
+  },
+
+  {
+    "title": "I had the flu confirmed by my doctor. Why doesn’t Flu Near You give me the option to report this information?"
+    ,"description": "At Flu Near You, we track influenza using symptoms, instead of confirmed cases. This way, we can also count people who may not have visited their doctor or had their flu confirmed by a laboratory test. As long as you reported any symptoms you were experiencing, you provided the information necessary to help understand how influenza is behaving in your community."
+  },
+
+  {
+    "title": "I'm a health care provider and have seen at least 20 people with flu-like symp"
+    ,"description": "Flu Near You is a system in which participants report symptom information only about themselves and their household members. Our partner site, HealthMap, allows users to report on known outbreaks such as the one you describe. Please visit healthmap.org and click on the box in the lower left side of the map that says 'Outbreak Missing' to report an outbreak, or use the HealthMap 'Outbreaks Near Me' mobile app (available in the iTunes store and the Google Play store). Please feel free to refer your patients to Flu Near You so they can report their symptoms directly to us."
+  },
+
+  {
+    "title": "How do I change the location (zip code) with which I originally registered for"
+    ,"description": "Click the arrow beside your email address in the nav bar. Click on the link for 'Settings'.  Click the edit link next to User Information and enter your new zip code. When finished remember to click on 'Save'. If you are traveling, we ask you NOT to change your postal code location. Eventually the weekly survey will offer the ability for you to report on any travel you have done during the week for which you are reporting. Please stay tuned!"
+  },
+
+  {
+    "title": "I didn’t have any symptoms last week. Should I still report this?"
+    ,"description": "Yes, you should still report this information. We want to hear from you when you’re healthy, too! This helps better understand how disease is moving in the community. If you've had no symptoms all week, you simply report “no symptoms.”"
+  },
+
+  {
+    "title": "What is ILI?"
+    ,"description": "ILI stands for influenza-like illness. The symptoms that make up the ILI definition are fever and cough or sore throat. ILI is used by Flu Near You as a substitute measurement of the flu because influenza can only be diagnosed with a laboratory confirmation of the virus."
+  },
+
+  {
+    "title": "Who created Flu Near You?"
+    ,"description": "Flu Near You was created through a partnership between HealthMap (healthmap.org) at Boston Children’s Hospital, the American Public Health Association (APHA, apha.org) and the Skoll Global Threats Fund (skollglobalthreats.org)."
+  },
+
+  {
+    "title": "How can I participate in Flu Near You?"
+    ,"description": "To participate in Flu Near You all you have to do is register. On your first visit to https://flunearyou.org, you will be asked to enter your gender, month and year of birth, zip code and email address. Once you confirm your registration, by clicking on a link in an email that will be sent to you, you can complete your first health survey. Every Monday after, you will receive an email with a link to your health survey where you report any symptoms you had in the past week. It is really fast and easy!"
+  }
+]

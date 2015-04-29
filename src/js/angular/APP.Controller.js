@@ -17,3 +17,13 @@ fluNewsController.controller('FluNewsCtrl', ['$scope', '$http',
       $scope.newsFeeds = data;
   });
 }]);
+
+// FAQ
+var faqController = angular.module('faqController', []);
+
+faqController.controller('FaqCtrl', ['$scope', '$http',
+  function ($scope, $http) {
+    $http.get('assets/faq.json').success(function(data) {
+      $scope.faqFeeds = data;
+  });
+}]);
