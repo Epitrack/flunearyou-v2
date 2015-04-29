@@ -1,7 +1,7 @@
 <h3 class="press-year">2015</h3>
 
 <ul class="press-list">
-  <li class="press-item" ng-repeat="press in pressFeeds | orderBy: 'time' ">
+  <li class="press-item" ng-repeat="press in pressFeeds">
     <a href="{{press.link}}" title="{{ press.titulo }}" target="_blank">
       <time datetime="{{ press.time }}">{{ press.date }}</time>
       <h4 class="press-title">{{ press.titulo }}</h4>
