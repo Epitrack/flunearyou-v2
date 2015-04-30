@@ -12,6 +12,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
     }).when('/faq', {
       templateUrl: 'templates/faq.html',
       controller: 'FaqCtrl'
+    }).when('/', {
+      templateUrl: 'templates/flu-news.html',
+      controller: 'FluNewsCtrl'
     })
     .otherwise({
       redirectTo: '/'
