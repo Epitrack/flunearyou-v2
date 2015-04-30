@@ -1,4 +1,4 @@
-<nav id="nav-primary" class="nav-primary">
+<nav class="nav-primary">
   <h1 class="logo-primary">Flu Near You</h1>
 
   <ul>
