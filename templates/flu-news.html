@@ -1,19 +1,17 @@
-<ul class="news-list">
-  <li class="news-item" ng-repeat="news in newsFeeds">
-    <a href="{{ news.link }}" title="{{ news.title }}" target="_blank">
-      <figure class="news-image">
-        <img src="{{ news.image }}" alt="{{ news.title }}">
-      </figure>
-    </a>
+<article class="news-item" ng-repeat="news in newsFeeds">
+  <a href="{{ news.link }}" title="{{ news.title }}" target="_blank">
+    <figure class="news-image">
+      <img src="{{ news.image }}" alt="{{ news.title }}">
+    </figure>
+  </a>
 
-    <time datetime="{{ news.time }}">{{ news.date }}</time>
-    <h3 class="news-title">
-      <a href="{{ news.link }}" title="{{ news.title }}">{{ news.title }}</a>
-    </h3>
-    <p class="news-description">
-      {{ news.description }}
-    </p>
+  <time datetime="{{ news.time }}">{{ news.date }}</time>
+  <h3 class="news-title">
+    <a href="{{ news.link }}" title="{{ news.title }}">{{ news.title }}</a>
+  </h3>
+  <p class="news-description">
+    {{ news.description }}
+  </p>
 
-    <a href="{{ news.link }}" title="Read More" target="_blank" class="read-more">Read More</a>
-  </li>
-</ul>
+  <a href="{{ news.link }}" title="Read More" target="_blank" class="read-more">Read More</a>
+</article>
