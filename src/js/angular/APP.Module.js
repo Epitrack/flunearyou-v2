@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  var app = angular.module('FnyApp', ['ngRoute', 'pressController', 'fluNewsController', 'faqController']);
-
-  app.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
-    $routeProvider
+  angular
+    .module('FnyApp', ['ngRoute', 'pressController', 'fluNewsController', 'faqController'])
+    .config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
+     $routeProvider
       .when('/press', {
         templateUrl: 'templates/press.html',
         controller: 'PressCtrl'
