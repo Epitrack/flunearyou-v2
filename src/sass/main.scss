@@ -7,7 +7,9 @@
 @import '_form';
 
 // General styles
+@import '_flip';
 @import '_general';
+
 
 // Libs
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
@@ -26,7 +28,4 @@
 @import 'libs/_toastr.min';
 
 // Fny
-@import 'fny/_font-awesome.min';
-@import 'fny/_font-awesome';
-@import 'fny/_flip';
 @import 'fny/_main';
