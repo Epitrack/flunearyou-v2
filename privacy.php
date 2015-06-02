@@ -1,97 +1,51 @@
-<!doctype html>
-<!-- <html xmlns:og="http://ogp.me/ns" lang="en" manifest="cache.manifest"> -->
-<html xmlns:og="http://ogp.me/ns" lang="en">
-<head>
-  <meta charset="utf-8" />
+<?php include 'php/includes/head.inc.php'; ?>
+<?php include 'php/includes/navbar.inc.php' ?>
 
-	<title> Privacy | Flu Near You </title>
+<section class="wrapper-section">
+  <h2 class="title-section">Privacy Policy</h2>
 
-  <!-- META TAGS -->
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-touch-fullscreen" content="yes" />
-  <meta name="HandheldFriendly" content="true" />
-  <meta name="format-detection" content="telephone=yes">
-  <meta name="keywords" content="flu, fny, flunearyou, reports, health, activity">
-  <meta name="DC.title" content="Flu Near You">
-  <meta name="DC.publisher" content="Epitrack">
-  <meta name="DC.creator.address" content="contact@epitrack.com.br">
-  <meta name="robots" content="all">
-  <meta name="author" content="Epitrack">
-  <meta name="rating" content="general">
-  <meta name="distribution" content="global">
-  <meta name="copyright" content="Flu Near You - All rights reserved">
-  <meta name="description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+  <div class="content">
+    <p class="description">
+      We recognize the sensitive nature of Flu Near You questions, and take the
+      security and confidentiality of your information seriously. As we describe
+       below, your participation in this project will remain confidential.
+       Submissions will be anonymized and posted in aggregate with other
+       submissions. IP addresses are routinely recorded but will also remain
+       confidential.
 
-  <!-- Google -->
-  <meta name="google-signin-clientid" content="770859028405-l4lorinouhnhab97b84ippk2d31nsjh6.apps.googleusercontent.com"/>
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login"/>
-  <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction"/>
-  <meta name="google-signin-cookiepolicy" content="single_host_origin"/>
+       <br><br>
 
-  <!-- FACEBOOK  -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.flunearyou.org"/>
-  <meta property="og:title" content="Flu Near You"/>
-  <meta property="og:image" content="https://flunearyou.org/img/flunearyoufb.png"/>
-  <meta property="og:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+       Your contact information will not be shared with any third party except
+       as required by law.
 
-  <!-- TWITTER -->
-  <meta name="twitter:card" value="summary_large_image">
-  <meta name="twitter:card" value="summary">
-  <meta name="twitter:creator" value="@FluNearYou">
-  <meta name="twitter:site" value="@FluNearYou">
-  <meta name="twitter:title" content="Flu Near You">
-  <meta name="twitter:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund.">
-  <meta name="twitter:image:src" content="https://flunearyou.org/img/flunearyoufb.png">
+       <br><br>
 
-  <!-- APPLE TOUCH ICON -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="apple-touch-icon" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad@2x.png">
+       We collect personal information such as, but not limited to, your email
+       address, age, gender and Internet Protocol address. We reserve the right
+       to use this information internally, including but not limited to
 
-  <!-- HUMANS -->
-  <link type="text/plain" rel="author" href="https://flunearyou.org/humans.txt" />
+       <br><br>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="dist/css/style.min.css">
+       research purposes, quality assurance purposes, and correspondence with
+       you, but we will not sell, share, rent, or otherwise reveal this
+       information to any third party except as required by law, or to address
+       issues of noncompliance. We may share aggregate data with third parties
+       in a manner that will not identify you.
 
-  <!-- Scripts -->
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
-  </script>
-</head>
+       <br><br>
 
-<body>
+       All data exchanged with this site is protected by SSL encryption, the
+       same standard used to protect the transmission of credit card
+       information and other sensitive data over the internet.
 
-	<!-- SCRIPTS -->
-  <script src="dist/js/libs.min.js"></script>
-  <script src="dist/js/scripts.min.js"></script>
-  <script>APP.init()</script>
+       <br><br>
 
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    // Tracking events
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+       Flu Near You uses cookies to improve the quality of our service,
+       including (if you choose) remembering your login information so that it
+       does not need to be re-entered.
+    </p>
+  </div>
+</section>
 
 
-    // Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-  </script>
-</body>
-</html>
+<?php include 'php/includes/footer.inc.php'; ?>

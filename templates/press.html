@@ -1,0 +1,16 @@
+<h3 class="press-year">2015</h3>
+
+<ul class="press-list">
+  <li class="press-item" ng-repeat="press in pressFeeds">
+    <a href="{{press.link}}" title="{{ press.titulo }}" target="_blank">
+      <time datetime="{{ press.time }}">{{ press.date }}</time>
+      <h4 class="press-title">{{ press.titulo }}</h4>
+      <p class="press-forward">{{ press.site }}</p>
+    </a>
+
+    <aside class="press-share">
+      <a href="{{press.link}}" title="Share with Facebook" class="facebook">Facebook</a>
+      <a href="{{press.link}}" title="Share with Twitter" class="twitter">Twitter</a>
+    </aside>
+  </li>
+</ul>

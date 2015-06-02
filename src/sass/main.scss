@@ -7,14 +7,15 @@
 @import '_form';
 
 // General styles
+@import '_flip';
 @import '_general';
+@import '_fny';
+
 
 // Libs
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-// @import 'libs/_bootstrap-theme.min';
-// @import 'libs/_bootstrap-theme';
 
-@import 'libs/_bootstrap-select.min';
+@import '../../bower_components/bootstrap-select/dist/css/bootstrap-select.min.css';
 
 @import 'libs/_datepicker';
 @import 'libs/_default.date';
@@ -23,10 +24,4 @@
 @import 'libs/_jquery-ui.min';
 @import 'libs/_theme-jquery-ui';
 
-@import 'libs/_toastr.min';
-
-// Fny
-@import 'fny/_font-awesome.min';
-@import 'fny/_font-awesome';
-@import 'fny/_flip';
-@import 'fny/_main';
+@import '../../bower_components/toastr/toastr.scss';

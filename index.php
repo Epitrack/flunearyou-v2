@@ -1,102 +1,116 @@
-<?php
-  include("php/class/Catrina.class.php");
+<?php include 'php/includes/head.inc.php'; ?>
+<?php include 'php/includes/navbar.inc.php' ?>
 
-  $Catrina = new Catrina();
-  $Catrina->dev = TRUE;
-?>
-<!doctype html>
-<!-- <html xmlns:og="http://ogp.me/ns" lang="en" manifest="cache.manifest"> -->
-<html xmlns:og="http://ogp.me/ns" lang="en">
-<head>
-  <meta charset="utf-8" />
+<main class="wrapper-section">
+  <section class="primary">
+    <!-- Databox -->
+    <aside id="databox" class="databox">
+      <h4>Flu Activity in:</h4>
 
-	<title> Flu Near You </title>
+      <select name="" id="databox-country" class="databox-country">
+        <option value="Brazil">Brazil</option>
+        <option value="Italy">Italy</option>
+        <option value="United States">United States</option>
+      </select>
 
-  <!-- META TAGS -->
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-touch-fullscreen" content="yes" />
-  <meta name="HandheldFriendly" content="true" />
-  <meta name="format-detection" content="telephone=yes">
-  <meta name="keywords" content="flu, fny, flunearyou, reports, health, activity">
-  <meta name="DC.title" content="Flu Near You">
-  <meta name="DC.publisher" content="Epitrack">
-  <meta name="DC.creator.address" content="contact@epitrack.com.br">
-  <meta name="robots" content="all">
-  <meta name="author" content="Epitrack">
-  <meta name="rating" content="general">
-  <meta name="distribution" content="global">
-  <meta name="copyright" content="Flu Near You - All rights reserved">
-  <meta name="description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+      <figure id="databox-image" class="databox-image">
+        <img src="http://dummyimage.com/293x150/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+      </figure>
 
-  <!-- Google -->
-  <meta name="google-signin-clientid" content="770859028405-l4lorinouhnhab97b84ippk2d31nsjh6.apps.googleusercontent.com"/>
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login"/>
-  <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction"/>
-  <meta name="google-signin-cookiepolicy" content="single_host_origin"/>
+      <h3 id="reports-of-week" class="reports-of-week">8583 reports this week</h3>
 
-  <!-- FACEBOOK  -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.flunearyou.org"/>
-  <meta property="og:title" content="Flu Near You"/>
-  <meta property="og:image" content="https://flunearyou.org/img/flunearyoufb.png"/>
-  <meta property="og:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+      <ul class="legend-list">
+        <li class="legend-item">
+          <span class="legend-value">156</span>
+          <span class="legend-description">Flu-like Symptoms 2%</span>
+          <span class="more-info">Fewer participants are reporting flu-like symptoms this week than last</span>
+        </li>
 
-  <!-- TWITTER -->
-  <meta name="twitter:card" value="summary_large_image">
-  <meta name="twitter:card" value="summary">
-  <meta name="twitter:creator" value="@FluNearYou">
-  <meta name="twitter:site" value="@FluNearYou">
-  <meta name="twitter:title" content="Flu Near You">
-  <meta name="twitter:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund.">
-  <meta name="twitter:image:src" content="https://flunearyou.org/img/flunearyoufb.png">
+        <li class="legend-item">
+          <span class="legend-value">958</span>
+          <span class="legend-description">Any Symptoms 11%</span>
+        </li>
 
-  <!-- APPLE TOUCH ICON -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="apple-touch-icon" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad@2x.png">
+        <li class="legend-item">
+          <span class="legend-value">7625</span>
+          <span class="legend-description">No Symptoms 89%</span>
+        </li>
+      </ul>
+    </aside>
 
-  <!-- HUMANS -->
-  <link type="text/plain" rel="author" href="https://flunearyou.org/humans.txt" />
+    <!-- Form -->
+    <aside class="other-databox">
+      <h2 class="title-primary"> Spread the word. <span>Not the flu.</span> </h2>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="dist/css/style.min.css">
+      <form action="#" id="form-primary" class="form-primary">
+        <input type="number" class="input-primary small" placeholder="Enter your City or Zipcode">
+        <input type="submit" class="btn btn-submit" value="check for flu">
+      </form>
 
-  <!-- Scripts -->
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
-  </script>
-</head>
+      <ul>
+        <li>Join thousands who are helping report flu.</li>
+        <li>Protect yourself, your family & your community.</li>
+        <li>Ready to report? Let's hear from you.</li>
+      </ul>
+    </aside>
 
-<body>
+    <!-- Map area -->
+    <div id="map-area">
+      <div class="databox-plus">
+        <fieldset>
+         <input type="radio" name="state_viewtype" value="user" checked="checked" id="state_viewtype_user">
+         <label for="state_viewtype_user">User Contributed Flu Activity</label><br>
+       </fieldset>
 
-	<!-- SCRIPTS -->
-  <?php $Catrina->writeScripts(); ?>
-  <script>APP.init()</script>
+       <fieldset>
+         <input type="radio" name="state_viewtype" value="flu" id="state_viewtype_flu">
+         <label for="state_viewtype_flu"> CDC Flu Activity</label>
+       </fieldset>
+      </div>
 
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    // Tracking events
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+      <!-- Map -->
+      <div id="map-primary"></div>
+    </div>
 
+    <!-- Learn more -->
+    <div class="learn-more">
+      <h3><span>Flu Near You</span> is a community health project for North America.</h3>
+      <a href="#">Learn more about how it works</a>
+    </div>
+  </section>
 
-    // Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <section class="news">
+    <h2 class="title-section">Keep up-to-date with our news</h2>
 
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-  </script>
-</body>
-</html>
+    <ng-view></ng-view>
+
+    <a href="/flu-news" class="btn btn-secondary medium" title="Read More">Read More News</a>
+  </section>
+
+  <?php include 'php/includes/aboutTabs.inc.php'; ?>
+  <?php include 'php/includes/joinUs.inc.php'; ?>
+
+  <section class="complementary-info">
+    <div>
+      <h3 class="title-primary medium">Get a flu shot</h3>
+      <p class="description">Enter your postal code to locate a vaccination center:</p>
+
+      <form action="#" class="vaccination-form">
+        <input type="number" class="input-primary medium" placeholder="Enter your postal code">
+        <input type="submit" class="btn-primary btn submit" value="search">
+      </form>
+    </div>
+
+    <div>
+      <h3 class="title-primary medium">Public Health near you</h3>
+
+      <ul class="some-news">
+        <li><a href="#" title="" target="_blank">United States Agency for Toxic Substances and Disease Registry</a></li>
+        <li><a href="#" title="" target="_blank">United States CDC_Travellers' Health</a></li>
+        <li><a href="#" title="" target="_blank">United States Centres for Disease Control and Prevention</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<?php include 'php/includes/footer.inc.php'; ?>

@@ -80,10 +80,15 @@
           ,"src/js/fny/APP.Unsub.js"
           ,"src/js/fny/APP.Vaccine_finder.js"
           ,"src/js/fny/APP.Validation.js"
+
+          ,"src/js/angular/APP.Module.js"
+          ,"src/js/angular/APP.Controller.js"
         ],
 
         "dist/js/libs.min.js": [
           "bower_components/jquery/dist/jquery.js"
+          ,"bower_components/angular/angular.min.js"
+          ,"bower_components/angular-route/angular-route.min.js"
           ,"bower_components/moment/moment.js"
           ,"bower_components/APP.js/APP.js"
           ,"bower_components/sticky/jquery.sticky.js"

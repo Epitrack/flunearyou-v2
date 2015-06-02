@@ -1,97 +1,134 @@
-<!doctype html>
-<!-- <html xmlns:og="http://ogp.me/ns" lang="en" manifest="cache.manifest"> -->
-<html xmlns:og="http://ogp.me/ns" lang="en">
-<head>
-  <meta charset="utf-8" />
+<?php include 'php/includes/head.inc.php'; ?>
+<?php include 'php/includes/navbar.inc.php' ?>
 
-	<title> Settings | Flu Near You </title>
+<section class="wrapper-section">
+  <aside id="manage-account" class="manage-account">
+    <h3 class="title-primary">Manage Your Account</h3>
+    <button>Edit</button>
 
-  <!-- META TAGS -->
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-touch-fullscreen" content="yes" />
-  <meta name="HandheldFriendly" content="true" />
-  <meta name="format-detection" content="telephone=yes">
-  <meta name="keywords" content="flu, fny, flunearyou, reports, health, activity">
-  <meta name="DC.title" content="Flu Near You">
-  <meta name="DC.publisher" content="Epitrack">
-  <meta name="DC.creator.address" content="contact@epitrack.com.br">
-  <meta name="robots" content="all">
-  <meta name="author" content="Epitrack">
-  <meta name="rating" content="general">
-  <meta name="distribution" content="global">
-  <meta name="copyright" content="Flu Near You - All rights reserved">
-  <meta name="description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+    <form action="" name="update-user-form" id="update-user-form" novalidate="novalidate">
+      <div class="alert" role="alert" id="update-error">
+        <span id="update-error-message" class="update-error-message"></span>
+      </div>
 
-  <!-- Google -->
-  <meta name="google-signin-clientid" content="770859028405-l4lorinouhnhab97b84ippk2d31nsjh6.apps.googleusercontent.com"/>
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login"/>
-  <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction"/>
-  <meta name="google-signin-cookiepolicy" content="single_host_origin"/>
+      <table>
+        <tbody>
+          <tr>
+            <td>Email address</td>
+            <td>email@guinetik.com</td>
 
-  <!-- FACEBOOK  -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.flunearyou.org"/>
-  <meta property="og:title" content="Flu Near You"/>
-  <meta property="og:image" content="https://flunearyou.org/img/flunearyoufb.png"/>
-  <meta property="og:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+            <!-- show when click edit -->
+            <td>
+              <input class="input-primary large" type="email" value="email@guinetik.com" name="email">
+            </td>
+          </tr>
 
-  <!-- TWITTER -->
-  <meta name="twitter:card" value="summary_large_image">
-  <meta name="twitter:card" value="summary">
-  <meta name="twitter:creator" value="@FluNearYou">
-  <meta name="twitter:site" value="@FluNearYou">
-  <meta name="twitter:title" content="Flu Near You">
-  <meta name="twitter:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund.">
-  <meta name="twitter:image:src" content="https://flunearyou.org/img/flunearyoufb.png">
+          <tr>
+            <td>Nickname</td>
+            <td>guinetik</td>
 
-  <!-- APPLE TOUCH ICON -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="apple-touch-icon" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad@2x.png">
+            <!-- show when click edit -->
+            <td>
+              <input type="text" class="input-primary large" value="guinetik" name="nickname">
+            </td>
+          </tr>
 
-  <!-- HUMANS -->
-  <link type="text/plain" rel="author" href="https://flunearyou.org/humans.txt" />
+          <tr>
+            <td>Birthdate</td>
+            <td>9/1988</td>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="dist/css/style.min.css">
+            <!-- show when click edit -->
+            <td>
+              <div>
+                <div>
+                  <select name="birthmonth" id="month" class="select-primary" aria-required="true" required>
+                    <option value="0" disabled>month</option>
+                    <option value="1">Jan</option>
+                    <option value="2">Feb</option>
+                    <option value="3">Mar</option>
+                    <option value="4">Apr</option>
+                    <option value="5">May</option>
+                    <option value="6">Jun</option>
+                    <option value="7">Jul</option>
+                    <option value="8">Aug</option>
+                    <option value="9">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
+                  </select>
+                </div>
 
-  <!-- Scripts -->
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
-  </script>
-</head>
+                <div>
+                  <input type="tel" class="input-primary large" name="birthyear" id="birthyear" value="1988" aria-required="true" required>
+                </div>
+              </div>
+            </td>
+          </tr>
 
-<body>
+          <tr>
+            <td>Gender</td>
+            <td>Male</td>
 
-	<!-- SCRIPTS -->
-  <script src="dist/js/libs.min.js"></script>
-  <script src="dist/js/scripts.min.js"></script>
-  <script>APP.init()</script>
+            <!-- show when click edit -->
+            <td>
+              <div>
+                <div>
+                  <input type="radio" id="check-genre-m" value="M" name="gender">
+                  <label for="check-genre-m" aria-required="true">Male</label>
+                </div>
 
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    // Tracking events
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+                <div>
+                  <input type="radio" id="check-genre-f" value="F" name="gender">
+                  <label for="check-genre-f" aria-required="true">Female</label>
+                </div>
+              </div>
+            </td>
+          </tr>
 
+          <tr>
+            <td>Zip code</td>
+            <td>27892</td>
 
-    // Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            <!-- show when click edit -->
+            <td>
+              <input type="tel" class="input-primary large" name="zip" value="27892">
+            </td>
+          </tr>
 
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-  </script>
-</body>
-</html>
+          <a href="#change-password" title="Change Password" class="btn-primary large">Change Password</a>
+        </tbody>
+      </table>
+
+      <input type="submit" id="update-submit" class="input-primary large submit" value="Save">
+    </form>
+  </aside>
+
+  <aside id="manage-subscribe" class="manage-subscribe">
+    <h3 class="title-primary">Manage Subscribe</h3>
+
+    <form action="" class="update-user-form" name="update-user-form" id="update-user-form">
+      <table>
+        <tbody>
+          <tr>
+            <td>E-mail receive</td>
+            <td><a href="#" class="unsubscribe" title="unsubscribe">unsubscribe</a></td>
+
+            <!-- show when click edit -->
+            <td>
+              <input type="email" class="input-primary large" value="email@guinetik.com" name="email">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input type="submit" id="update-submit" class="input-primary large submit" value="Save">
+    </form>
+  </aside>
+
+  <aside id="household-members" class="household-members">
+    <h3 class="title-primary">Household Members</h3>
+  </aside>
+
+</section>
+
+<?php include 'php/includes/footer.inc.php'; ?>

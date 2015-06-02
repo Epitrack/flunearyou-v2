@@ -1,97 +1,86 @@
-<!doctype html>
-<!-- <html xmlns:og="http://ogp.me/ns" lang="en" manifest="cache.manifest"> -->
-<html xmlns:og="http://ogp.me/ns" lang="en">
-<head>
-  <meta charset="utf-8" />
+<?php include 'php/includes/head.inc.php'; ?>
+<?php include 'php/includes/navbar.inc.php' ?>
 
-	<title> Reports | Flu Near You </title>
+<section class="wrapper-section">
+  <aside class="report-card">
+    <h3 class="title-primary">Report Card</h3>
 
-  <!-- META TAGS -->
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-touch-fullscreen" content="yes" />
-  <meta name="HandheldFriendly" content="true" />
-  <meta name="format-detection" content="telephone=yes">
-  <meta name="keywords" content="flu, fny, flunearyou, reports, health, activity">
-  <meta name="DC.title" content="Flu Near You">
-  <meta name="DC.publisher" content="Epitrack">
-  <meta name="DC.creator.address" content="contact@epitrack.com.br">
-  <meta name="robots" content="all">
-  <meta name="author" content="Epitrack">
-  <meta name="rating" content="general">
-  <meta name="distribution" content="global">
-  <meta name="copyright" content="Flu Near You - All rights reserved">
-  <meta name="description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+    <ul>
+      <li>
+        <p>Weeks eligible to report</p>
+        <p>20</p>
+      </li>
 
-  <!-- Google -->
-  <meta name="google-signin-clientid" content="770859028405-l4lorinouhnhab97b84ippk2d31nsjh6.apps.googleusercontent.com"/>
-  <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login"/>
-  <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction"/>
-  <meta name="google-signin-cookiepolicy" content="single_host_origin"/>
+      <li>
+        <p>Weeks reported</p>
+        <p>10</p>
+      </li>
 
-  <!-- FACEBOOK  -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.flunearyou.org"/>
-  <meta property="og:title" content="Flu Near You"/>
-  <meta property="og:image" content="https://flunearyou.org/img/flunearyoufb.png"/>
-  <meta property="og:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund."/>
+      <li>
+        <p>Weeks since last report</p>
+        <p>2</p>
+      </li>
 
-  <!-- TWITTER -->
-  <meta name="twitter:card" value="summary_large_image">
-  <meta name="twitter:card" value="summary">
-  <meta name="twitter:creator" value="@FluNearYou">
-  <meta name="twitter:site" value="@FluNearYou">
-  <meta name="twitter:title" content="Flu Near You">
-  <meta name="twitter:description" content="User contributed flu tracking system brought to you by HealthMap and Skoll Global Threats Fund.">
-  <meta name="twitter:image:src" content="https://flunearyou.org/img/flunearyoufb.png">
+      <li>
+        <p>Participation rate</p>
+        <p>50%</p>
+      </li>
+    </ul>
+  </aside>
 
-  <!-- APPLE TOUCH ICON -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="apple-touch-icon" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="touch-icon@2x.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad@2x.png">
+  <aside class="health-reports">
+    <h3 class="title-primary">Health Reports</h3>
 
-  <!-- HUMANS -->
-  <link type="text/plain" rel="author" href="https://flunearyou.org/humans.txt" />
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+            </a>
+          </h4>
+        </div>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="dist/css/style.min.css">
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
 
-  <!-- Scripts -->
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-XXXXX-X']);
-    _gaq.push(['_trackPageview']);
-  </script>
-</head>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Collapsible Group Item #2
+            </a>
+          </h4>
+        </div>
 
-<body>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
 
-	<!-- SCRIPTS -->
-  <script src="dist/js/libs.min.js"></script>
-  <script src="dist/js/scripts.min.js"></script>
-  <script>APP.init()</script>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Collapsible Group Item #3
+            </a>
+          </h4>
+        </div>
 
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-    // Tracking events
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
 
-
-    // Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-  </script>
-</body>
-</html>
+<?php include 'php/includes/footer.inc.php'; ?>

@@ -213,8 +213,17 @@ AddDefaultCharset utf-8
 
 # URL'S AMIGÁVEIS
 
-    RewriteRule ^home/?$ index.html [NC,L]
-    RewriteRule ^author/?$ author.html [NC,L]
+    RewriteRule ^home/?$ index.php [NC,L]
+    RewriteRule ^about/?$ about.php [NC,L]
+    RewriteRule ^flu-news/?$ flu-news.php [NC,L]
+    RewriteRule ^press/?$ press.php [NC,L]
+    RewriteRule ^faq/?$ faq.php [NC,L]
+    RewriteRule ^terms/?$ terms.php [NC,L]
+
+    RewriteRule ^survey/?$ survey.php [NC,L]
+    RewriteRule ^settings/?$ settings.php [NC,L]
+    RewriteRule ^reports/?$ reports.php [NC,L]
+    RewriteRule ^privacy/?$ privacy.php [NC,L]
 
 </IfModule>
 
