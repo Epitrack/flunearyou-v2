@@ -2,7 +2,7 @@
   include("php/class/Catrina.class.php");
 
   $Catrina = new Catrina();
-  $Catrina->dev = TRUE;
+  $Catrina->dev = FALSE;
 ?>
 <!doctype html>
 <!-- <html xmlns:og="http://ogp.me/ns" lang="en" manifest="cache.manifest"> -->
