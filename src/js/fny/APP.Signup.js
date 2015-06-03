@@ -1,4 +1,12 @@
-$(function () {
+// ==========================================
+// Signup
+// ==========================================
+
+var APP = APP || {};
+APP.Signup = {
+  setUp: function() {},
+
+  fny: function() {
     $("#registration-form").validate({
         ignore: '',
         rules: {
@@ -80,4 +88,5 @@ $(function () {
             });
         }
     });
-});
+  }
+}

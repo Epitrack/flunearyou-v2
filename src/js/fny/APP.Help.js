@@ -1,16 +1,28 @@
-$('#input-search').on('keyup', function() {
-    var search = $(this).val(),
-                count = 0;
+// ==========================================
+// FAQ page
+// ==========================================
 
-    $('.ac-container div').each(function() {
+var APP = APP || {};
+APP.Help = {
+  setUp: function() {
+  },
+
+  fny: function() {
+    $('#input-search').on('keyup', function() {
+      var search = $(this).val(),
+      count = 0;
+
+      $('.ac-container div').each(function() {
         if ( $(this).text().search(new RegExp(search, 'i')) < 0 ) {
-            $(this).fadeOut();
+          $(this).fadeOut();
         } else {
-            $(this).show();
-            count++;
+          $(this).show();
+          count++;
         }
-    });
+      });
 
-    var resultsItem = count;
-    $('#count-results').text(i18nJS_search + resultsItem);
-});
+      var resultsItem = count;
+      $('#count-results').text(i18nJS_search + resultsItem);
+    });
+  }
+}

@@ -1,4 +1,13 @@
-$(function() {
+// ==========================================
+// Survey/Calendar
+// ==========================================
+
+var APP = APP || {};
+APP.Calendar = {
+  setUp: function() {
+  },
+
+  fny: function() {
     function c() {
         p();
         var e = h();
@@ -117,4 +126,5 @@ $(function() {
             r("next")
         }
     })
-});
+  }
+}

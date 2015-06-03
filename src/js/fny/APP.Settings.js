@@ -1,4 +1,12 @@
-$(function () {
+// ==========================================
+// Settings page
+// ==========================================
+
+var APP = APP || {};
+APP.Settings = {
+  setUp: function() {},
+
+  fny: function() {
     $("#bt-edit").click(function (e) {
         $("#bt-edit").addClass("hidden");
         $("#update-user-form .user_form_field").removeClass("hidden");
@@ -416,4 +424,5 @@ $(function () {
         e.preventDefault();
         $('#change-password').slideDown();
     });
-});
+  }
+}
