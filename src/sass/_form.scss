@@ -37,7 +37,6 @@ textarea {
   margin: 0 auto;
   color: $bg-clean;
   background-color: $link-primary;
-  font-size: ($fs-extra-small)-.2;
   font-family: $ff-primary;
   display: block;
   @include bdr(4px);
@@ -53,7 +52,6 @@ textarea {
   margin-bottom: 10px;
   outline: none;
   border: 1px solid $border-primary;
-  font-size: ($fs-extra-small)-.2;
   @include bdr(5px);
 
   &.small { width: 30%; }
