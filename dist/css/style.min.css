@@ -14402,105 +14402,6 @@ a .icon-flip-vertical:before {
   content: "\f18b";
 }
 
-/* line 5, ../../src/sass/_form.scss */
-::-webkit-input-placeholder {
-  color: #5f6a7d;
-}
-
-/* line 7, ../../src/sass/_form.scss */
-:-moz-placeholder {
-  color: #5f6a7d;
-}
-
-/* line 9, ../../src/sass/_form.scss */
-::-moz-placeholder {
-  color: #5f6a7d;
-}
-
-/* line 11, ../../src/sass/_form.scss */
-:-ms-input-placeholder {
-  color: #5f6a7d;
-}
-
-/* line 13, ../../src/sass/_form.scss */
-input:active,
-textarea:active, input:focus,
-textarea:focus {
-  outline: none;
-  border: 1px solid #2586b7;
-}
-
-/* line 18, ../../src/sass/_form.scss */
-textarea {
-  resize: vertical;
-  min-height: 65px;
-}
-
-/* line 23, ../../src/sass/_form.scss */
-input,
-textarea {
-  font-family: "OpenSansRegular";
-  -webkit-transition: border 0.2s 0s linear;
-  -moz-transition: border 0.2s 0s linear;
-  -ms-transition: border 0.2s 0s linear;
-  -o-transition: border 0.2s 0s linear;
-  transition: border 0.2s 0s linear;
-}
-
-/* line 32, ../../src/sass/_form.scss */
-.btn-primary {
-  text-transform: uppercase;
-  padding: 5px 20px;
-  text-align: center;
-  border: none;
-  margin: 0 auto;
-  color: #FFFFFF;
-  background-color: #2586b7;
-  font-family: "OpenSansRegular";
-  display: block;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  cursor: pointer;
-  -webkit-transition: background 0.2s 0s ease;
-  -moz-transition: background 0.2s 0s ease;
-  -ms-transition: background 0.2s 0s ease;
-  -o-transition: background 0.2s 0s ease;
-  transition: background 0.2s 0s ease;
-}
-/* line 46, ../../src/sass/_form.scss */
-.btn-primary:hover {
-  background-color: #2E3B4E;
-}
-
-/* line 49, ../../src/sass/_form.scss */
-.input-primary {
-  height: 40px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  outline: none;
-  border: 1px solid #E0E0E0;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-/* line 57, ../../src/sass/_form.scss */
-.input-primary.small {
-  width: 30%;
-}
-/* line 58, ../../src/sass/_form.scss */
-.input-primary.medium {
-  width: 50%;
-}
-/* line 59, ../../src/sass/_form.scss */
-.input-primary.big {
-  width: 100%;
-}
-
 /**
  * Flip styles
  */
@@ -14599,35 +14500,13 @@ body {
   font-size: 62.5%;
   background-color: transparent;
 }
-/* line 11, ../../src/sass/_general.scss */
-body.js-offline::after {
-  content: attr(data-status);
-  width: 100%;
-  height: 100%;
-  padding-top: 10%;
-  top: 0;
-  left: 0;
-  text-align: center;
-  color: #FAFAFA;
-  font-size: 1.4rem;
-  line-height: 1.4rem;
-  font-family: "OpenSansRegular";
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  overflow: hidden;
-  z-index: 99;
-}
 
-/* line 31, ../../src/sass/_general.scss */
+/* line 10, ../../src/sass/_general.scss */
 ::-moz-selection {
-  background: #FAFAFA;
-  color: #2586b7;
   text-shadow: none;
 }
 
-/* line 37, ../../src/sass/_general.scss */
+/* line 16, ../../src/sass/_general.scss */
 ::selection {
-  background: #FAFAFA;
-  color: #2586b7;
   text-shadow: none;
 }

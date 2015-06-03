@@ -7,61 +7,49 @@
 // ——————————————
 
 // Hexadecimals
-$dark:                       #1B2126;
-$dark-primary:               #6C7980;
-$dark-secondary:             #2E3B4E;
-$white:                      #FFFFFF;
-$white-primary:              #FAFAFA;
-$gray:                       #E0E0E0;
-$gray-primary:               #5F6A7D;
-$blue-primary:               #2586B7;
+$blue-primary:                  #3F6F92; // bg links
+$blue-lighten:                  #D6E0EF; // bg
+$blue-secondary:                #428BCA; // some links
+$red-primary:                   #D33041; // some buttons and links
+$red-secondary:                 #A94442; // error
+$dark-primary:                  #4C4C4C; // title
+$dark-secondary:                #757575; // text
+$gray-primary:                  #ECECEC; // border
+$white-primary:                 #FFFFFF; // bg
+
+// $dark:                       #1B2126;
+// $dark-primary:               #6C7980;
+// $dark-secondary:             #2E3B4E;
+// $white:                      #FFFFFF;
+// $white-primary:              #FAFAFA;
+// $gray:                       #E0E0E0;
+// $gray-primary:               #5F6A7D;
+// $blue-primary:               #2586B7;
 
 // RGB
-$dark-rgb:                   rgb(27, 33, 38);
-$dark-primary-rgb:           rgb(108, 121, 128);
-$dark-secondary-rgb:         rgb(46, 59, 78);
-$white-rgb:                  rgb(255, 255, 255);
-$white-primary-rgb:          rgb(250, 250, 250);
-$gray-rgb:                   rgb(224, 224, 224);
-$gray-primary:               rgb(95, 106, 125);
-$blue-primary:               rgb(37, 134, 183);
+// $dark-rgb:                   rgb(27, 33, 38);
+// $dark-primary-rgb:           rgb(108, 121, 128);
+// $dark-secondary-rgb:         rgb(46, 59, 78);
+// $white-rgb:                  rgb(255, 255, 255);
+// $white-primary-rgb:          rgb(250, 250, 250);
+// $gray-rgb:                   rgb(224, 224, 224);
+// $gray-primary:               rgb(95, 106, 125);
+// $blue-primary:               rgb(37, 134, 183);
 
 // Names
-$bg-primary:                 $dark;
-$link-secondary:             $dark-primary;
-$title-primary:              $dark-secondary;
-$bg-clean:                   $white;
-$bg-featured:                $white-primary;
-$border-primary:             $gray;
-$text-primary:               $gray-primary;
-$link-primary:               $blue-primary;
+// $bg-primary:                 $dark;
+// $link-secondary:             $dark-primary;
+// $title-primary:              $dark-secondary;
+// $bg-clean:                   $white;
+// $bg-featured:                $white-primary;
+// $border-primary:             $gray;
+// $text-primary:               $gray-primary;
+// $link-primary:               $blue-primary;
 
 
 // ——————————————————————
 //     Mixins
 // ——————————————————————
-
-
-//
-// Gradient
-//
-
-// Progress Bar
-@mixin progressBar($background) {
-  &::-webkit-progress-bar  {
-    background-color: transparent;
-  }
-
-  &::-webkit-progress-value {
-    background-color: $background;
-    @include transition(all, .2s, 0s, linear);
-  }
-
-  &::-moz-progress-bar {
-    background-color: $background;
-    @include transition(all, .2s, 0s, linear);
-  }
-}
 
 // Background Images
 @mixin path ($rulers...) {
@@ -246,7 +234,7 @@ $link-primary:               $blue-primary;
   @else if $type == 'twitter' {
     @include path('icon-twitter.svg');
   }
-  @else if $type == 'github' {
-    @include path('icon-github.svg');
+  @else if $type == 'gplus' {
+    @include path('icon-gplus.svg');
   }
 }
