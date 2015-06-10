@@ -5,8 +5,8 @@
 var APP = APP || {};
 APP.Scroll = {
   setUp: function(){
-    this.getClick();
-    this.getPosition();
+    // this.getClick();
+    // this.getPosition();
   },
 
   getClick: function() {
