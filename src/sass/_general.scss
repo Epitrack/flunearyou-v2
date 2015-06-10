@@ -4,18 +4,17 @@
 
 body {
   font-size: $fs-root;
-  background-color: transparent;
 }
 
 ::-moz-selection {
-  // background: $bg-featured;
-  // color: $link-primary;
+  background: $survey-text;
+  color: $border-color;
   text-shadow: none;
 }
 
 ::selection {
-  // background: $bg-featured;
-  // color: $link-primary;
+  background: $survey-text;
+  color: $border-color;
   text-shadow: none;
 }
 

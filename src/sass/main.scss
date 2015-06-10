@@ -1,8 +1,12 @@
 // Reset
 @import '_reset';
 
+// Grid
+@import '_grid';
+
 // Libs
-@import '../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables';
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_mixins';
 
 @import '../../bower_components/bootstrap-select/dist/css/bootstrap-select.css';
 
@@ -13,7 +17,7 @@
 @import 'libs/_jquery-ui.min';
 @import 'libs/_theme-jquery-ui';
 
-@import '../../bower_components/toastr/toastr.scss';
+@import '../../bower_components/toastr/toastr';
 
 // Custom
 @import '_typography';
@@ -23,4 +27,3 @@
 // General styles
 @import '_flip';
 @import '_general';
-// @import '_fny';
