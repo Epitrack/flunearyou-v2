@@ -1,29 +1,26 @@
 // Reset
 @import '_reset';
 
-// Grid
-@import '_grid';
-
 // Libs
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables';
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_mixins';
-
 @import '../../bower_components/bootstrap-select/dist/css/bootstrap-select.css';
-
 @import 'libs/_datepicker';
 @import 'libs/_default.date';
 @import 'libs/_default';
-
 @import 'libs/_jquery-ui.min';
 @import 'libs/_theme-jquery-ui';
-
 @import '../../bower_components/toastr/toastr';
 
 // Custom
 @import '_typography';
 @import '_base';
-@import '_form';
+@import '_components';
+
+// Grid
+@import '_grid';
 
 // General styles
-@import '_flip';
+// @import '_flip';
+@import '_form';
 @import '_general';
