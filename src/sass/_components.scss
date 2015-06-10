@@ -1,0 +1,107 @@
+// —————————————————————————
+//     Components
+// —————————————————————————
+
+
+//
+// Scoopit cards
+//
+
+.news-item {
+  border: 1px solid $border-color-secondary;
+  height: auto;
+  min-height: 450px;
+  position: relative;
+  margin-bottom: ($fs-fine)*2;
+
+  a {
+    display: block;
+    outline: none;
+    border: none;
+    text-decoration: none;
+  }
+}
+
+.news-link-image {
+  position: relative;
+}
+
+.news-image {
+  overflow: hidden;
+  height: 180px;
+
+  img { min-width: 100%; }
+}
+
+.news-date {
+  border: 1px solid $bg-secondary;
+  background-color: rgba(0, 0, 0, .4);
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: $fs-fine;
+  color: $bg-secondary;
+  font-family: $ff-primary;
+  font-size: $fs-extra-large;
+  text-align: center;
+
+  span {
+    font-size: $fs-medium;
+    font-family: $ff-light;
+    display: block;
+    margin-top: ($fs-fine)/2;
+  }
+}
+
+.news-text {
+  padding: 0 ($fs-fine)*2;
+  position: relative;
+}
+
+.news-title {
+  font-size: $fs-medium;
+  margin: $fs-fine 0;
+  line-height: $fs-extra-medium;
+
+  a {
+    text-decoration: none;
+    display: block;
+    color: $bg-links;
+  }
+}
+
+.news-description {
+  color: $text-primary;
+  font-size: $fs-small;
+  line-height: $fs-medium;
+}
+
+.read-more {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: $bg-links;
+  font-size: $fs-extra-small;
+  color: $bg-secondary;
+  font-family: $ff-bold;
+  padding: $fs-extra-small 0;
+  @include transition(all, .2s, linear, 0s);
+
+  &:hover {
+    color: $bg-links;
+    background: $border-color;
+  }
+}
+
+
+// iPads
+@media (min-width: 768px) {
+  .news-item { min-height: 510px; }
+}
+
+// Desktops
+@media (min-width: 992px) {}
+
+// Large Desktops
+@media (min-width: 1200px) {}

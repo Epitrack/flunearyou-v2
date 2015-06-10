@@ -7,65 +7,52 @@
 // ——————————————
 
 // Hexadecimals
-$dark:                       #1B2126;
-$dark-primary:               #6C7980;
-$dark-secondary:             #2E3B4E;
-$white:                      #FFFFFF;
-$white-primary:              #FAFAFA;
-$gray:                       #E0E0E0;
-$gray-primary:               #5F6A7D;
-$blue-primary:               #2586B7;
+$blue-primary:                  #3F6F92;
+$blue-lighten:                  #D6E0EF;
+$blue-dark:                     #005272;
+$blue-secondary:                #428BCA;
+$red-primary:                   #D33041;
+$red-secondary:                 #A94442;
+$dark-primary:                  #4C4C4C;
+$dark-secondary:                #757575;
+$gray-primary:                  #ECECEC;
+$gray-secondary:                #C6C6C6;
+$white-primary:                 #FFFFFF;
 
 // RGB
-$dark-rgb:                   rgb(27, 33, 38);
-$dark-primary-rgb:           rgb(108, 121, 128);
-$dark-secondary-rgb:         rgb(46, 59, 78);
-$white-rgb:                  rgb(255, 255, 255);
-$white-primary-rgb:          rgb(250, 250, 250);
-$gray-rgb:                   rgb(224, 224, 224);
-$gray-primary:               rgb(95, 106, 125);
-$blue-primary:               rgb(37, 134, 183);
+$blue-primary-rgb:              rgb(63, 111, 146);
+$blue-lighten-rgb:              rgb(214, 224, 239);
+$blue-dark-rgb:                 rgb(0, 82, 114);
+$blue-secondary-rgb:            rgb(66, 139, 202);
+$red-primary-rgb:               rgb(211, 48, 65);
+$red-secondary-rgb:             rgb(169, 68, 66);
+$dark-primary-rgb:              rgb(76, 76, 76);
+$dark-secondary-rgb:            rgb(117, 117, 117);
+$gray-primary-rgb:              rgb(236, 236, 236);
+$gray-secondary-rgb:            rgb(198, 198, 198);
+$white-primary-rgb:             rgb(255, 255, 255);
 
 // Names
-$bg-primary:                 $dark;
-$link-secondary:             $dark-primary;
-$title-primary:              $dark-secondary;
-$bg-clean:                   $white;
-$bg-featured:                $white-primary;
-$border-primary:             $gray;
-$text-primary:               $gray-primary;
-$link-primary:               $blue-primary;
+$bg-links:                      $blue-primary;
+$bg-primary:                    $blue-lighten;
+$survey-text:                   $blue-dark;
+$some-links:                    $blue-secondary;
+$btn-links:                     $red-primary;
+$form-error:                    $red-secondary;
+$title-primary:                 $dark-primary;
+$text-primary:                  $dark-secondary;
+$border-color:                  $gray-primary;
+$border-color-secondary:        $gray-secondary;
+$bg-secondary:                  $white-primary;
 
 
 // ——————————————————————
 //     Mixins
 // ——————————————————————
 
-
-//
-// Gradient
-//
-
-// Progress Bar
-@mixin progressBar($background) {
-  &::-webkit-progress-bar  {
-    background-color: transparent;
-  }
-
-  &::-webkit-progress-value {
-    background-color: $background;
-    @include transition(all, .2s, 0s, linear);
-  }
-
-  &::-moz-progress-bar {
-    background-color: $background;
-    @include transition(all, .2s, 0s, linear);
-  }
-}
-
 // Background Images
 @mixin path ($rulers...) {
-  background-image: url("../../src/images/"+$rulers);
+  background-image: url("../../src/img/"+$rulers);
 }
 
 @mixin linear-gradient ($angle, $startColor, $endColor) {
@@ -246,7 +233,7 @@ $link-primary:               $blue-primary;
   @else if $type == 'twitter' {
     @include path('icon-twitter.svg');
   }
-  @else if $type == 'github' {
-    @include path('icon-github.svg');
+  @else if $type == 'gplus' {
+    @include path('icon-gplus.svg');
   }
 }

@@ -1,14 +1,14 @@
 <nav class="nav-primary">
-  <h1 class="logo-primary">Flu Near You</h1>
+  <h1 class="logo-primary">
+    <a href="/" title="Flu Near You">Flu Near You</a>
+  </h1>
 
-  <ul>
-    <li class="nav-item">
-      <a href="#" title="Flu Map" class="nav-link">Flu Map</a>
-      <a href="about" title="About" class="nav-link">About</a>
-      <a href="flu-news" title="News" class="nav-link">News</a>
-      <a href="press" title="Press" class="nav-link">Press</a>
-      <a href="faq" title="FAQ" class="nav-link">FAQ</a>
-    </li>
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#" title="Flu Map" class="nav-link">Flu Map</a></li>
+    <li class="nav-item"><a href="about" title="About" class="nav-link">About</a></a></li>
+    <li class="nav-item"><a href="flu-news" title="News" class="nav-link">News</a></li>
+    <li class="nav-item"><a href="press" title="Press" class="nav-link">Press</a></a></li>
+    <li class="nav-item"><a href="faq" title="FAQ" class="nav-link">FAQ</a></li>
   </ul>
 
   <div class="dropdown">
