@@ -19,10 +19,6 @@ html {
   text-shadow: none;
 }
 
-//
-// Components
-//
-
 .title-section {
   color: $bg-links;
   font-family: $ff-light;
@@ -31,8 +27,23 @@ html {
 }
 
 //
-// Structure
+// Navbar
 //
+
+.nav-item {
+  display: block;
+}
+
+.nav-link {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  padding: $fs-fine 0;
+  font-size: $fs-small;
+  font-family: $ff-bold;
+  color: $bg-links;
+}
 
 
 //
@@ -41,7 +52,14 @@ html {
 
 // iPads
 @media (min-width: 768px) {
-  .title-section { font-size: $fs-extra-large; }
+  .title-section {
+    font-size: $fs-extra-large;
+  }
+
+  // navbar
+  .nav-item {
+    display: inline-block;
+  }
 }
 
 // Desktops

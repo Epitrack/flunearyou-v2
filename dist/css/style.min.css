@@ -5961,7 +5961,7 @@ html {
   text-shadow: none;
 }
 
-/* line 26, ../../src/sass/_general.scss */
+/* line 22, ../../src/sass/_general.scss */
 .title-section {
   color: #3F6F92;
   font-family: "OpenSansLight";
@@ -5969,9 +5969,31 @@ html {
   text-align: center;
 }
 
+/* line 33, ../../src/sass/_general.scss */
+.nav-item {
+  display: block;
+}
+
+/* line 37, ../../src/sass/_general.scss */
+.nav-link {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  font-family: "OpenSansBold";
+  color: #3F6F92;
+}
+
 @media (min-width: 768px) {
-  /* line 44, ../../src/sass/_general.scss */
+  /* line 55, ../../src/sass/_general.scss */
   .title-section {
     font-size: 5rem;
+  }
+
+  /* line 60, ../../src/sass/_general.scss */
+  .nav-item {
+    display: inline-block;
   }
 }
