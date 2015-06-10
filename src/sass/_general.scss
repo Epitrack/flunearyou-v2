@@ -2,8 +2,9 @@
 //     General
 // —————————————————————————
 
-body {
+html {
   font-size: $fs-root;
+  font-family: $ff-primary;
 }
 
 ::-moz-selection {
@@ -22,6 +23,12 @@ body {
 // Components
 //
 
+.title-section {
+  color: $bg-links;
+  font-family: $ff-light;
+  font-size: $fs-extra-medium;
+  text-align: center;
+}
 
 //
 // Structure
@@ -33,7 +40,9 @@ body {
 //
 
 // iPads
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .title-section { font-size: $fs-extra-large; }
+}
 
 // Desktops
 @media (min-width: 992px) {}

@@ -3587,7 +3587,7 @@ button.toast-close-button {
   font-weight: normal;
   font-style: normal;
 }
-/* line 80, ../../src/sass/_typography.scss */
+/* line 81, ../../src/sass/_typography.scss */
 [class^="icon-"],
 [class*=" icon-"] {
   font-family: FontAwesome;
@@ -3598,7 +3598,7 @@ button.toast-close-button {
   *margin-right: .3em;
 }
 
-/* line 90, ../../src/sass/_typography.scss */
+/* line 91, ../../src/sass/_typography.scss */
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
   text-decoration: inherit;
@@ -3606,19 +3606,19 @@ button.toast-close-button {
   speak: none;
 }
 
-/* line 98, ../../src/sass/_typography.scss */
+/* line 99, ../../src/sass/_typography.scss */
 .icon-large:before {
   vertical-align: -10%;
   font-size: 1.3333333333333333em;
 }
 
-/* line 104, ../../src/sass/_typography.scss */
+/* line 105, ../../src/sass/_typography.scss */
 a [class^="icon-"],
 a [class*=" icon-"] {
   display: inline;
 }
 
-/* line 110, ../../src/sass/_typography.scss */
+/* line 111, ../../src/sass/_typography.scss */
 [class^="icon-"].icon-fixed-width,
 [class*=" icon-"].icon-fixed-width {
   display: inline-block;
@@ -3627,24 +3627,24 @@ a [class*=" icon-"] {
   padding-right: 0.2857142857142857em;
 }
 
-/* line 118, ../../src/sass/_typography.scss */
+/* line 119, ../../src/sass/_typography.scss */
 [class^="icon-"].icon-fixed-width.icon-large,
 [class*=" icon-"].icon-fixed-width.icon-large {
   width: 1.4285714285714286em;
 }
 
-/* line 123, ../../src/sass/_typography.scss */
+/* line 124, ../../src/sass/_typography.scss */
 .icons-ul {
   margin-left: 2.142857142857143em;
   list-style-type: none;
 }
 
-/* line 128, ../../src/sass/_typography.scss */
+/* line 129, ../../src/sass/_typography.scss */
 .icons-ul > li {
   position: relative;
 }
 
-/* line 132, ../../src/sass/_typography.scss */
+/* line 133, ../../src/sass/_typography.scss */
 .icons-ul .icon-li {
   position: absolute;
   left: -2.142857142857143em;
@@ -3653,28 +3653,28 @@ a [class*=" icon-"] {
   line-height: inherit;
 }
 
-/* line 140, ../../src/sass/_typography.scss */
+/* line 141, ../../src/sass/_typography.scss */
 [class^="icon-"].hide,
 [class*=" icon-"].hide {
   display: none;
 }
 
-/* line 145, ../../src/sass/_typography.scss */
+/* line 146, ../../src/sass/_typography.scss */
 .icon-muted {
   color: #eeeeee;
 }
 
-/* line 149, ../../src/sass/_typography.scss */
+/* line 150, ../../src/sass/_typography.scss */
 .icon-light {
   color: #ffffff;
 }
 
-/* line 153, ../../src/sass/_typography.scss */
+/* line 154, ../../src/sass/_typography.scss */
 .icon-dark {
   color: #333333;
 }
 
-/* line 157, ../../src/sass/_typography.scss */
+/* line 158, ../../src/sass/_typography.scss */
 .icon-border {
   border: solid 1px #eeeeee;
   padding: .2em .25em .15em;
@@ -3683,12 +3683,12 @@ a [class*=" icon-"] {
   border-radius: 3px;
 }
 
-/* line 165, ../../src/sass/_typography.scss */
+/* line 166, ../../src/sass/_typography.scss */
 .icon-2x {
   font-size: 2em;
 }
 
-/* line 169, ../../src/sass/_typography.scss */
+/* line 170, ../../src/sass/_typography.scss */
 .icon-2x.icon-border {
   border-width: 2px;
   -webkit-border-radius: 4px;
@@ -3696,12 +3696,12 @@ a [class*=" icon-"] {
   border-radius: 4px;
 }
 
-/* line 176, ../../src/sass/_typography.scss */
+/* line 177, ../../src/sass/_typography.scss */
 .icon-3x {
   font-size: 3em;
 }
 
-/* line 180, ../../src/sass/_typography.scss */
+/* line 181, ../../src/sass/_typography.scss */
 .icon-3x.icon-border {
   border-width: 3px;
   -webkit-border-radius: 5px;
@@ -3709,12 +3709,12 @@ a [class*=" icon-"] {
   border-radius: 5px;
 }
 
-/* line 187, ../../src/sass/_typography.scss */
+/* line 188, ../../src/sass/_typography.scss */
 .icon-4x {
   font-size: 4em;
 }
 
-/* line 191, ../../src/sass/_typography.scss */
+/* line 192, ../../src/sass/_typography.scss */
 .icon-4x.icon-border {
   border-width: 4px;
   -webkit-border-radius: 6px;
@@ -3722,12 +3722,12 @@ a [class*=" icon-"] {
   border-radius: 6px;
 }
 
-/* line 198, ../../src/sass/_typography.scss */
+/* line 199, ../../src/sass/_typography.scss */
 .icon-5x {
   font-size: 5em;
 }
 
-/* line 202, ../../src/sass/_typography.scss */
+/* line 203, ../../src/sass/_typography.scss */
 .icon-5x.icon-border {
   border-width: 5px;
   -webkit-border-radius: 7px;
@@ -3735,29 +3735,29 @@ a [class*=" icon-"] {
   border-radius: 7px;
 }
 
-/* line 209, ../../src/sass/_typography.scss */
+/* line 210, ../../src/sass/_typography.scss */
 .pull-right {
   float: right;
 }
 
-/* line 213, ../../src/sass/_typography.scss */
+/* line 214, ../../src/sass/_typography.scss */
 .pull-left {
   float: left;
 }
 
-/* line 217, ../../src/sass/_typography.scss */
+/* line 218, ../../src/sass/_typography.scss */
 [class^="icon-"].pull-left,
 [class*=" icon-"].pull-left {
   margin-right: .3em;
 }
 
-/* line 222, ../../src/sass/_typography.scss */
+/* line 223, ../../src/sass/_typography.scss */
 [class^="icon-"].pull-right,
 [class*=" icon-"].pull-right {
   margin-left: .3em;
 }
 
-/* line 232, ../../src/sass/_typography.scss */
+/* line 233, ../../src/sass/_typography.scss */
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline;
@@ -3771,7 +3771,7 @@ a [class*=" icon-"] {
   margin-top: 0;
 }
 
-/* line 246, ../../src/sass/_typography.scss */
+/* line 247, ../../src/sass/_typography.scss */
 .icon-white,
 .nav-pills > .active > a > [class^="icon-"],
 .nav-pills > .active > a > [class*=" icon-"],
@@ -3788,7 +3788,7 @@ a [class*=" icon-"] {
   background-image: none;
 }
 
-/* line 263, ../../src/sass/_typography.scss */
+/* line 264, ../../src/sass/_typography.scss */
 .btn [class^="icon-"].icon-large,
 .nav [class^="icon-"].icon-large,
 .btn [class*=" icon-"].icon-large,
@@ -3796,7 +3796,7 @@ a [class*=" icon-"] {
   line-height: .9em;
 }
 
-/* line 270, ../../src/sass/_typography.scss */
+/* line 271, ../../src/sass/_typography.scss */
 .btn [class^="icon-"].icon-spin,
 .nav [class^="icon-"].icon-spin,
 .btn [class*=" icon-"].icon-spin,
@@ -3804,7 +3804,7 @@ a [class*=" icon-"] {
   display: inline-block;
 }
 
-/* line 277, ../../src/sass/_typography.scss */
+/* line 278, ../../src/sass/_typography.scss */
 .nav-tabs [class^="icon-"],
 .nav-pills [class^="icon-"],
 .nav-tabs [class*=" icon-"],
@@ -3816,7 +3816,7 @@ a [class*=" icon-"] {
   line-height: .9em;
 }
 
-/* line 288, ../../src/sass/_typography.scss */
+/* line 289, ../../src/sass/_typography.scss */
 .btn [class^="icon-"].pull-left.icon-2x,
 .btn [class*=" icon-"].pull-left.icon-2x,
 .btn [class^="icon-"].pull-right.icon-2x,
@@ -3824,13 +3824,13 @@ a [class*=" icon-"] {
   margin-top: .18em;
 }
 
-/* line 295, ../../src/sass/_typography.scss */
+/* line 296, ../../src/sass/_typography.scss */
 .btn [class^="icon-"].icon-spin.icon-large,
 .btn [class*=" icon-"].icon-spin.icon-large {
   line-height: .8em;
 }
 
-/* line 300, ../../src/sass/_typography.scss */
+/* line 301, ../../src/sass/_typography.scss */
 .btn.btn-small [class^="icon-"].pull-left.icon-2x,
 .btn.btn-small [class*=" icon-"].pull-left.icon-2x,
 .btn.btn-small [class^="icon-"].pull-right.icon-2x,
@@ -3838,13 +3838,13 @@ a [class*=" icon-"] {
   margin-top: .25em;
 }
 
-/* line 307, ../../src/sass/_typography.scss */
+/* line 308, ../../src/sass/_typography.scss */
 .btn.btn-large [class^="icon-"],
 .btn.btn-large [class*=" icon-"] {
   margin-top: 0;
 }
 
-/* line 312, ../../src/sass/_typography.scss */
+/* line 313, ../../src/sass/_typography.scss */
 .btn.btn-large [class^="icon-"].pull-left.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-left.icon-2x,
 .btn.btn-large [class^="icon-"].pull-right.icon-2x,
@@ -3852,25 +3852,25 @@ a [class*=" icon-"] {
   margin-top: .05em;
 }
 
-/* line 319, ../../src/sass/_typography.scss */
+/* line 320, ../../src/sass/_typography.scss */
 .btn.btn-large [class^="icon-"].pull-left.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-left.icon-2x {
   margin-right: .2em;
 }
 
-/* line 324, ../../src/sass/_typography.scss */
+/* line 325, ../../src/sass/_typography.scss */
 .btn.btn-large [class^="icon-"].pull-right.icon-2x,
 .btn.btn-large [class*=" icon-"].pull-right.icon-2x {
   margin-left: .2em;
 }
 
-/* line 330, ../../src/sass/_typography.scss */
+/* line 331, ../../src/sass/_typography.scss */
 .nav-list [class^="icon-"],
 .nav-list [class*=" icon-"] {
   line-height: inherit;
 }
 
-/* line 340, ../../src/sass/_typography.scss */
+/* line 341, ../../src/sass/_typography.scss */
 .icon-stack {
   position: relative;
   display: inline-block;
@@ -3880,7 +3880,7 @@ a [class*=" icon-"] {
   vertical-align: -35%;
 }
 
-/* line 349, ../../src/sass/_typography.scss */
+/* line 350, ../../src/sass/_typography.scss */
 .icon-stack [class^="icon-"],
 .icon-stack [class*=" icon-"] {
   display: block;
@@ -3893,13 +3893,13 @@ a [class*=" icon-"] {
   *line-height: 2em;
 }
 
-/* line 361, ../../src/sass/_typography.scss */
+/* line 362, ../../src/sass/_typography.scss */
 .icon-stack .icon-stack-base {
   font-size: 2em;
   *line-height: 1em;
 }
 
-/* line 367, ../../src/sass/_typography.scss */
+/* line 368, ../../src/sass/_typography.scss */
 .icon-spin {
   display: inline-block;
   -moz-animation: spin 2s infinite linear;
@@ -3908,7 +3908,7 @@ a [class*=" icon-"] {
   animation: spin 2s infinite linear;
 }
 
-/* line 376, ../../src/sass/_typography.scss */
+/* line 377, ../../src/sass/_typography.scss */
 a .icon-stack,
 a .icon-spin {
   display: inline-block;
@@ -3955,7 +3955,7 @@ a .icon-spin {
     transform: rotate(359deg);
   }
 }
-/* line 428, ../../src/sass/_typography.scss */
+/* line 429, ../../src/sass/_typography.scss */
 .icon-rotate-90:before {
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -3965,7 +3965,7 @@ a .icon-spin {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
 }
 
-/* line 437, ../../src/sass/_typography.scss */
+/* line 438, ../../src/sass/_typography.scss */
 .icon-rotate-180:before {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -3975,7 +3975,7 @@ a .icon-spin {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
-/* line 446, ../../src/sass/_typography.scss */
+/* line 447, ../../src/sass/_typography.scss */
 .icon-rotate-270:before {
   -webkit-transform: rotate(270deg);
   -moz-transform: rotate(270deg);
@@ -3985,7 +3985,7 @@ a .icon-spin {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
-/* line 455, ../../src/sass/_typography.scss */
+/* line 456, ../../src/sass/_typography.scss */
 .icon-flip-horizontal:before {
   -webkit-transform: scale(-1, 1);
   -moz-transform: scale(-1, 1);
@@ -3994,7 +3994,7 @@ a .icon-spin {
   transform: scale(-1, 1);
 }
 
-/* line 463, ../../src/sass/_typography.scss */
+/* line 464, ../../src/sass/_typography.scss */
 .icon-flip-vertical:before {
   -webkit-transform: scale(1, -1);
   -moz-transform: scale(1, -1);
@@ -4003,7 +4003,7 @@ a .icon-spin {
   transform: scale(1, -1);
 }
 
-/* line 472, ../../src/sass/_typography.scss */
+/* line 473, ../../src/sass/_typography.scss */
 a .icon-rotate-90:before,
 a .icon-rotate-180:before,
 a .icon-rotate-270:before,
@@ -4012,1936 +4012,1966 @@ a .icon-flip-vertical:before {
   display: inline-block;
 }
 
-/* line 482, ../../src/sass/_typography.scss */
+/* line 483, ../../src/sass/_typography.scss */
 .icon-glass:before {
   content: "\f000";
 }
 
-/* line 485, ../../src/sass/_typography.scss */
+/* line 486, ../../src/sass/_typography.scss */
 .icon-music:before {
   content: "\f001";
 }
 
-/* line 488, ../../src/sass/_typography.scss */
+/* line 489, ../../src/sass/_typography.scss */
 .icon-search:before {
   content: "\f002";
 }
 
-/* line 491, ../../src/sass/_typography.scss */
+/* line 492, ../../src/sass/_typography.scss */
 .icon-envelope-alt:before {
   content: "\f003";
 }
 
-/* line 494, ../../src/sass/_typography.scss */
+/* line 495, ../../src/sass/_typography.scss */
 .icon-heart:before {
   content: "\f004";
 }
 
-/* line 497, ../../src/sass/_typography.scss */
+/* line 498, ../../src/sass/_typography.scss */
 .icon-star:before {
   content: "\f005";
 }
 
-/* line 500, ../../src/sass/_typography.scss */
+/* line 501, ../../src/sass/_typography.scss */
 .icon-star-empty:before {
   content: "\f006";
 }
 
-/* line 503, ../../src/sass/_typography.scss */
+/* line 504, ../../src/sass/_typography.scss */
 .icon-user:before {
   content: "\f007";
 }
 
-/* line 506, ../../src/sass/_typography.scss */
+/* line 507, ../../src/sass/_typography.scss */
 .icon-film:before {
   content: "\f008";
 }
 
-/* line 509, ../../src/sass/_typography.scss */
+/* line 510, ../../src/sass/_typography.scss */
 .icon-th-large:before {
   content: "\f009";
 }
 
-/* line 512, ../../src/sass/_typography.scss */
+/* line 513, ../../src/sass/_typography.scss */
 .icon-th:before {
   content: "\f00a";
 }
 
-/* line 515, ../../src/sass/_typography.scss */
+/* line 516, ../../src/sass/_typography.scss */
 .icon-th-list:before {
   content: "\f00b";
 }
 
-/* line 518, ../../src/sass/_typography.scss */
+/* line 519, ../../src/sass/_typography.scss */
 .icon-ok:before {
   content: "\f00c";
 }
 
-/* line 521, ../../src/sass/_typography.scss */
+/* line 522, ../../src/sass/_typography.scss */
 .icon-remove:before {
   content: "\f00d";
 }
 
-/* line 524, ../../src/sass/_typography.scss */
+/* line 525, ../../src/sass/_typography.scss */
 .icon-zoom-in:before {
   content: "\f00e";
 }
 
-/* line 527, ../../src/sass/_typography.scss */
+/* line 528, ../../src/sass/_typography.scss */
 .icon-zoom-out:before {
   content: "\f010";
 }
 
-/* line 530, ../../src/sass/_typography.scss */
+/* line 531, ../../src/sass/_typography.scss */
 .icon-power-off:before,
 .icon-off:before {
   content: "\f011";
 }
 
-/* line 534, ../../src/sass/_typography.scss */
+/* line 535, ../../src/sass/_typography.scss */
 .icon-signal:before {
   content: "\f012";
 }
 
-/* line 537, ../../src/sass/_typography.scss */
+/* line 538, ../../src/sass/_typography.scss */
 .icon-gear:before,
 .icon-cog:before {
   content: "\f013";
 }
 
-/* line 541, ../../src/sass/_typography.scss */
+/* line 542, ../../src/sass/_typography.scss */
 .icon-trash:before {
   content: "\f014";
 }
 
-/* line 544, ../../src/sass/_typography.scss */
+/* line 545, ../../src/sass/_typography.scss */
 .icon-home:before {
   content: "\f015";
 }
 
-/* line 547, ../../src/sass/_typography.scss */
+/* line 548, ../../src/sass/_typography.scss */
 .icon-file-alt:before {
   content: "\f016";
 }
 
-/* line 550, ../../src/sass/_typography.scss */
+/* line 551, ../../src/sass/_typography.scss */
 .icon-time:before {
   content: "\f017";
 }
 
-/* line 553, ../../src/sass/_typography.scss */
+/* line 554, ../../src/sass/_typography.scss */
 .icon-road:before {
   content: "\f018";
 }
 
-/* line 556, ../../src/sass/_typography.scss */
+/* line 557, ../../src/sass/_typography.scss */
 .icon-download-alt:before {
   content: "\f019";
 }
 
-/* line 559, ../../src/sass/_typography.scss */
+/* line 560, ../../src/sass/_typography.scss */
 .icon-download:before {
   content: "\f01a";
 }
 
-/* line 562, ../../src/sass/_typography.scss */
+/* line 563, ../../src/sass/_typography.scss */
 .icon-upload:before {
   content: "\f01b";
 }
 
-/* line 565, ../../src/sass/_typography.scss */
+/* line 566, ../../src/sass/_typography.scss */
 .icon-inbox:before {
   content: "\f01c";
 }
 
-/* line 568, ../../src/sass/_typography.scss */
+/* line 569, ../../src/sass/_typography.scss */
 .icon-play-circle:before {
   content: "\f01d";
 }
 
-/* line 571, ../../src/sass/_typography.scss */
+/* line 572, ../../src/sass/_typography.scss */
 .icon-rotate-right:before,
 .icon-repeat:before {
   content: "\f01e";
 }
 
-/* line 575, ../../src/sass/_typography.scss */
+/* line 576, ../../src/sass/_typography.scss */
 .icon-refresh:before {
   content: "\f021";
 }
 
-/* line 578, ../../src/sass/_typography.scss */
+/* line 579, ../../src/sass/_typography.scss */
 .icon-list-alt:before {
   content: "\f022";
 }
 
-/* line 581, ../../src/sass/_typography.scss */
+/* line 582, ../../src/sass/_typography.scss */
 .icon-lock:before {
   content: "\f023";
 }
 
-/* line 584, ../../src/sass/_typography.scss */
+/* line 585, ../../src/sass/_typography.scss */
 .icon-flag:before {
   content: "\f024";
 }
 
-/* line 587, ../../src/sass/_typography.scss */
+/* line 588, ../../src/sass/_typography.scss */
 .icon-headphones:before {
   content: "\f025";
 }
 
-/* line 590, ../../src/sass/_typography.scss */
+/* line 591, ../../src/sass/_typography.scss */
 .icon-volume-off:before {
   content: "\f026";
 }
 
-/* line 593, ../../src/sass/_typography.scss */
+/* line 594, ../../src/sass/_typography.scss */
 .icon-volume-down:before {
   content: "\f027";
 }
 
-/* line 596, ../../src/sass/_typography.scss */
+/* line 597, ../../src/sass/_typography.scss */
 .icon-volume-up:before {
   content: "\f028";
 }
 
-/* line 599, ../../src/sass/_typography.scss */
+/* line 600, ../../src/sass/_typography.scss */
 .icon-qrcode:before {
   content: "\f029";
 }
 
-/* line 602, ../../src/sass/_typography.scss */
+/* line 603, ../../src/sass/_typography.scss */
 .icon-barcode:before {
   content: "\f02a";
 }
 
-/* line 605, ../../src/sass/_typography.scss */
+/* line 606, ../../src/sass/_typography.scss */
 .icon-tag:before {
   content: "\f02b";
 }
 
-/* line 608, ../../src/sass/_typography.scss */
+/* line 609, ../../src/sass/_typography.scss */
 .icon-tags:before {
   content: "\f02c";
 }
 
-/* line 611, ../../src/sass/_typography.scss */
+/* line 612, ../../src/sass/_typography.scss */
 .icon-book:before {
   content: "\f02d";
 }
 
-/* line 614, ../../src/sass/_typography.scss */
+/* line 615, ../../src/sass/_typography.scss */
 .icon-bookmark:before {
   content: "\f02e";
 }
 
-/* line 617, ../../src/sass/_typography.scss */
+/* line 618, ../../src/sass/_typography.scss */
 .icon-print:before {
   content: "\f02f";
 }
 
-/* line 620, ../../src/sass/_typography.scss */
+/* line 621, ../../src/sass/_typography.scss */
 .icon-camera:before {
   content: "\f030";
 }
 
-/* line 623, ../../src/sass/_typography.scss */
+/* line 624, ../../src/sass/_typography.scss */
 .icon-font:before {
   content: "\f031";
 }
 
-/* line 626, ../../src/sass/_typography.scss */
+/* line 627, ../../src/sass/_typography.scss */
 .icon-bold:before {
   content: "\f032";
 }
 
-/* line 629, ../../src/sass/_typography.scss */
+/* line 630, ../../src/sass/_typography.scss */
 .icon-italic:before {
   content: "\f033";
 }
 
-/* line 632, ../../src/sass/_typography.scss */
+/* line 633, ../../src/sass/_typography.scss */
 .icon-text-height:before {
   content: "\f034";
 }
 
-/* line 635, ../../src/sass/_typography.scss */
+/* line 636, ../../src/sass/_typography.scss */
 .icon-text-width:before {
   content: "\f035";
 }
 
-/* line 638, ../../src/sass/_typography.scss */
+/* line 639, ../../src/sass/_typography.scss */
 .icon-align-left:before {
   content: "\f036";
 }
 
-/* line 641, ../../src/sass/_typography.scss */
+/* line 642, ../../src/sass/_typography.scss */
 .icon-align-center:before {
   content: "\f037";
 }
 
-/* line 644, ../../src/sass/_typography.scss */
+/* line 645, ../../src/sass/_typography.scss */
 .icon-align-right:before {
   content: "\f038";
 }
 
-/* line 647, ../../src/sass/_typography.scss */
+/* line 648, ../../src/sass/_typography.scss */
 .icon-align-justify:before {
   content: "\f039";
 }
 
-/* line 650, ../../src/sass/_typography.scss */
+/* line 651, ../../src/sass/_typography.scss */
 .icon-list:before {
   content: "\f03a";
 }
 
-/* line 653, ../../src/sass/_typography.scss */
+/* line 654, ../../src/sass/_typography.scss */
 .icon-indent-left:before {
   content: "\f03b";
 }
 
-/* line 656, ../../src/sass/_typography.scss */
+/* line 657, ../../src/sass/_typography.scss */
 .icon-indent-right:before {
   content: "\f03c";
 }
 
-/* line 659, ../../src/sass/_typography.scss */
+/* line 660, ../../src/sass/_typography.scss */
 .icon-facetime-video:before {
   content: "\f03d";
 }
 
-/* line 662, ../../src/sass/_typography.scss */
+/* line 663, ../../src/sass/_typography.scss */
 .icon-picture:before {
   content: "\f03e";
 }
 
-/* line 665, ../../src/sass/_typography.scss */
+/* line 666, ../../src/sass/_typography.scss */
 .icon-pencil:before {
   content: "\f040";
 }
 
-/* line 668, ../../src/sass/_typography.scss */
+/* line 669, ../../src/sass/_typography.scss */
 .icon-map-marker:before {
   content: "\f041";
 }
 
-/* line 671, ../../src/sass/_typography.scss */
+/* line 672, ../../src/sass/_typography.scss */
 .icon-adjust:before {
   content: "\f042";
 }
 
-/* line 674, ../../src/sass/_typography.scss */
+/* line 675, ../../src/sass/_typography.scss */
 .icon-tint:before {
   content: "\f043";
 }
 
-/* line 677, ../../src/sass/_typography.scss */
+/* line 678, ../../src/sass/_typography.scss */
 .icon-edit:before {
   content: "\f044";
 }
 
-/* line 680, ../../src/sass/_typography.scss */
+/* line 681, ../../src/sass/_typography.scss */
 .icon-share:before {
   content: "\f045";
 }
 
-/* line 683, ../../src/sass/_typography.scss */
+/* line 684, ../../src/sass/_typography.scss */
 .icon-check:before {
   content: "\f046";
 }
 
-/* line 686, ../../src/sass/_typography.scss */
+/* line 687, ../../src/sass/_typography.scss */
 .icon-move:before {
   content: "\f047";
 }
 
-/* line 689, ../../src/sass/_typography.scss */
+/* line 690, ../../src/sass/_typography.scss */
 .icon-step-backward:before {
   content: "\f048";
 }
 
-/* line 692, ../../src/sass/_typography.scss */
+/* line 693, ../../src/sass/_typography.scss */
 .icon-fast-backward:before {
   content: "\f049";
 }
 
-/* line 695, ../../src/sass/_typography.scss */
+/* line 696, ../../src/sass/_typography.scss */
 .icon-backward:before {
   content: "\f04a";
 }
 
-/* line 698, ../../src/sass/_typography.scss */
+/* line 699, ../../src/sass/_typography.scss */
 .icon-play:before {
   content: "\f04b";
 }
 
-/* line 701, ../../src/sass/_typography.scss */
+/* line 702, ../../src/sass/_typography.scss */
 .icon-pause:before {
   content: "\f04c";
 }
 
-/* line 704, ../../src/sass/_typography.scss */
+/* line 705, ../../src/sass/_typography.scss */
 .icon-stop:before {
   content: "\f04d";
 }
 
-/* line 707, ../../src/sass/_typography.scss */
+/* line 708, ../../src/sass/_typography.scss */
 .icon-forward:before {
   content: "\f04e";
 }
 
-/* line 710, ../../src/sass/_typography.scss */
+/* line 711, ../../src/sass/_typography.scss */
 .icon-fast-forward:before {
   content: "\f050";
 }
 
-/* line 713, ../../src/sass/_typography.scss */
+/* line 714, ../../src/sass/_typography.scss */
 .icon-step-forward:before {
   content: "\f051";
 }
 
-/* line 716, ../../src/sass/_typography.scss */
+/* line 717, ../../src/sass/_typography.scss */
 .icon-eject:before {
   content: "\f052";
 }
 
-/* line 719, ../../src/sass/_typography.scss */
+/* line 720, ../../src/sass/_typography.scss */
 .icon-chevron-left:before {
   content: "\f053";
 }
 
-/* line 722, ../../src/sass/_typography.scss */
+/* line 723, ../../src/sass/_typography.scss */
 .icon-chevron-right:before {
   content: "\f054";
 }
 
-/* line 725, ../../src/sass/_typography.scss */
+/* line 726, ../../src/sass/_typography.scss */
 .icon-plus-sign:before {
   content: "\f055";
 }
 
-/* line 728, ../../src/sass/_typography.scss */
+/* line 729, ../../src/sass/_typography.scss */
 .icon-minus-sign:before {
   content: "\f056";
 }
 
-/* line 731, ../../src/sass/_typography.scss */
+/* line 732, ../../src/sass/_typography.scss */
 .icon-remove-sign:before {
   content: "\f057";
 }
 
-/* line 734, ../../src/sass/_typography.scss */
+/* line 735, ../../src/sass/_typography.scss */
 .icon-ok-sign:before {
   content: "\f058";
 }
 
-/* line 737, ../../src/sass/_typography.scss */
+/* line 738, ../../src/sass/_typography.scss */
 .icon-question-sign:before {
   content: "\f059";
 }
 
-/* line 740, ../../src/sass/_typography.scss */
+/* line 741, ../../src/sass/_typography.scss */
 .icon-info-sign:before {
   content: "\f05a";
 }
 
-/* line 743, ../../src/sass/_typography.scss */
+/* line 744, ../../src/sass/_typography.scss */
 .icon-screenshot:before {
   content: "\f05b";
 }
 
-/* line 746, ../../src/sass/_typography.scss */
+/* line 747, ../../src/sass/_typography.scss */
 .icon-remove-circle:before {
   content: "\f05c";
 }
 
-/* line 749, ../../src/sass/_typography.scss */
+/* line 750, ../../src/sass/_typography.scss */
 .icon-ok-circle:before {
   content: "\f05d";
 }
 
-/* line 752, ../../src/sass/_typography.scss */
+/* line 753, ../../src/sass/_typography.scss */
 .icon-ban-circle:before {
   content: "\f05e";
 }
 
-/* line 755, ../../src/sass/_typography.scss */
+/* line 756, ../../src/sass/_typography.scss */
 .icon-arrow-left:before {
   content: "\f060";
 }
 
-/* line 758, ../../src/sass/_typography.scss */
+/* line 759, ../../src/sass/_typography.scss */
 .icon-arrow-right:before {
   content: "\f061";
 }
 
-/* line 761, ../../src/sass/_typography.scss */
+/* line 762, ../../src/sass/_typography.scss */
 .icon-arrow-up:before {
   content: "\f062";
 }
 
-/* line 764, ../../src/sass/_typography.scss */
+/* line 765, ../../src/sass/_typography.scss */
 .icon-arrow-down:before {
   content: "\f063";
 }
 
-/* line 767, ../../src/sass/_typography.scss */
+/* line 768, ../../src/sass/_typography.scss */
 .icon-mail-forward:before,
 .icon-share-alt:before {
   content: "\f064";
 }
 
-/* line 771, ../../src/sass/_typography.scss */
+/* line 772, ../../src/sass/_typography.scss */
 .icon-resize-full:before {
   content: "\f065";
 }
 
-/* line 774, ../../src/sass/_typography.scss */
+/* line 775, ../../src/sass/_typography.scss */
 .icon-resize-small:before {
   content: "\f066";
 }
 
-/* line 777, ../../src/sass/_typography.scss */
+/* line 778, ../../src/sass/_typography.scss */
 .icon-plus:before {
   content: "\f067";
 }
 
-/* line 780, ../../src/sass/_typography.scss */
+/* line 781, ../../src/sass/_typography.scss */
 .icon-minus:before {
   content: "\f068";
 }
 
-/* line 783, ../../src/sass/_typography.scss */
+/* line 784, ../../src/sass/_typography.scss */
 .icon-asterisk:before {
   content: "\f069";
 }
 
-/* line 786, ../../src/sass/_typography.scss */
+/* line 787, ../../src/sass/_typography.scss */
 .icon-exclamation-sign:before {
   content: "\f06a";
 }
 
-/* line 789, ../../src/sass/_typography.scss */
+/* line 790, ../../src/sass/_typography.scss */
 .icon-gift:before {
   content: "\f06b";
 }
 
-/* line 792, ../../src/sass/_typography.scss */
+/* line 793, ../../src/sass/_typography.scss */
 .icon-leaf:before {
   content: "\f06c";
 }
 
-/* line 795, ../../src/sass/_typography.scss */
+/* line 796, ../../src/sass/_typography.scss */
 .icon-fire:before {
   content: "\f06d";
 }
 
-/* line 798, ../../src/sass/_typography.scss */
+/* line 799, ../../src/sass/_typography.scss */
 .icon-eye-open:before {
   content: "\f06e";
 }
 
-/* line 801, ../../src/sass/_typography.scss */
+/* line 802, ../../src/sass/_typography.scss */
 .icon-eye-close:before {
   content: "\f070";
 }
 
-/* line 804, ../../src/sass/_typography.scss */
+/* line 805, ../../src/sass/_typography.scss */
 .icon-warning-sign:before {
   content: "\f071";
 }
 
-/* line 807, ../../src/sass/_typography.scss */
+/* line 808, ../../src/sass/_typography.scss */
 .icon-plane:before {
   content: "\f072";
 }
 
-/* line 810, ../../src/sass/_typography.scss */
+/* line 811, ../../src/sass/_typography.scss */
 .icon-calendar:before {
   content: "\f073";
 }
 
-/* line 813, ../../src/sass/_typography.scss */
+/* line 814, ../../src/sass/_typography.scss */
 .icon-random:before {
   content: "\f074";
 }
 
-/* line 816, ../../src/sass/_typography.scss */
+/* line 817, ../../src/sass/_typography.scss */
 .icon-comment:before {
   content: "\f075";
 }
 
-/* line 819, ../../src/sass/_typography.scss */
+/* line 820, ../../src/sass/_typography.scss */
 .icon-magnet:before {
   content: "\f076";
 }
 
-/* line 822, ../../src/sass/_typography.scss */
+/* line 823, ../../src/sass/_typography.scss */
 .icon-chevron-up:before {
   content: "\f077";
 }
 
-/* line 825, ../../src/sass/_typography.scss */
+/* line 826, ../../src/sass/_typography.scss */
 .icon-chevron-down:before {
   content: "\f078";
 }
 
-/* line 828, ../../src/sass/_typography.scss */
+/* line 829, ../../src/sass/_typography.scss */
 .icon-retweet:before {
   content: "\f079";
 }
 
-/* line 831, ../../src/sass/_typography.scss */
+/* line 832, ../../src/sass/_typography.scss */
 .icon-shopping-cart:before {
   content: "\f07a";
 }
 
-/* line 834, ../../src/sass/_typography.scss */
+/* line 835, ../../src/sass/_typography.scss */
 .icon-folder-close:before {
   content: "\f07b";
 }
 
-/* line 837, ../../src/sass/_typography.scss */
+/* line 838, ../../src/sass/_typography.scss */
 .icon-folder-open:before {
   content: "\f07c";
 }
 
-/* line 840, ../../src/sass/_typography.scss */
+/* line 841, ../../src/sass/_typography.scss */
 .icon-resize-vertical:before {
   content: "\f07d";
 }
 
-/* line 843, ../../src/sass/_typography.scss */
+/* line 844, ../../src/sass/_typography.scss */
 .icon-resize-horizontal:before {
   content: "\f07e";
 }
 
-/* line 846, ../../src/sass/_typography.scss */
+/* line 847, ../../src/sass/_typography.scss */
 .icon-bar-chart:before {
   content: "\f080";
 }
 
-/* line 849, ../../src/sass/_typography.scss */
+/* line 850, ../../src/sass/_typography.scss */
 .icon-twitter-sign:before {
   content: "\f081";
 }
 
-/* line 852, ../../src/sass/_typography.scss */
+/* line 853, ../../src/sass/_typography.scss */
 .icon-facebook-sign:before {
   content: "\f082";
 }
 
-/* line 855, ../../src/sass/_typography.scss */
+/* line 856, ../../src/sass/_typography.scss */
 .icon-camera-retro:before {
   content: "\f083";
 }
 
-/* line 858, ../../src/sass/_typography.scss */
+/* line 859, ../../src/sass/_typography.scss */
 .icon-key:before {
   content: "\f084";
 }
 
-/* line 861, ../../src/sass/_typography.scss */
+/* line 862, ../../src/sass/_typography.scss */
 .icon-gears:before,
 .icon-cogs:before {
   content: "\f085";
 }
 
-/* line 865, ../../src/sass/_typography.scss */
+/* line 866, ../../src/sass/_typography.scss */
 .icon-comments:before {
   content: "\f086";
 }
 
-/* line 868, ../../src/sass/_typography.scss */
+/* line 869, ../../src/sass/_typography.scss */
 .icon-thumbs-up-alt:before {
   content: "\f087";
 }
 
-/* line 871, ../../src/sass/_typography.scss */
+/* line 872, ../../src/sass/_typography.scss */
 .icon-thumbs-down-alt:before {
   content: "\f088";
 }
 
-/* line 874, ../../src/sass/_typography.scss */
+/* line 875, ../../src/sass/_typography.scss */
 .icon-star-half:before {
   content: "\f089";
 }
 
-/* line 877, ../../src/sass/_typography.scss */
+/* line 878, ../../src/sass/_typography.scss */
 .icon-heart-empty:before {
   content: "\f08a";
 }
 
-/* line 880, ../../src/sass/_typography.scss */
+/* line 881, ../../src/sass/_typography.scss */
 .icon-signout:before {
   content: "\f08b";
 }
 
-/* line 883, ../../src/sass/_typography.scss */
+/* line 884, ../../src/sass/_typography.scss */
 .icon-linkedin-sign:before {
   content: "\f08c";
 }
 
-/* line 886, ../../src/sass/_typography.scss */
+/* line 887, ../../src/sass/_typography.scss */
 .icon-pushpin:before {
   content: "\f08d";
 }
 
-/* line 889, ../../src/sass/_typography.scss */
+/* line 890, ../../src/sass/_typography.scss */
 .icon-external-link:before {
   content: "\f08e";
 }
 
-/* line 892, ../../src/sass/_typography.scss */
+/* line 893, ../../src/sass/_typography.scss */
 .icon-signin:before {
   content: "\f090";
 }
 
-/* line 895, ../../src/sass/_typography.scss */
+/* line 896, ../../src/sass/_typography.scss */
 .icon-trophy:before {
   content: "\f091";
 }
 
-/* line 898, ../../src/sass/_typography.scss */
+/* line 899, ../../src/sass/_typography.scss */
 .icon-github-sign:before {
   content: "\f092";
 }
 
-/* line 901, ../../src/sass/_typography.scss */
+/* line 902, ../../src/sass/_typography.scss */
 .icon-upload-alt:before {
   content: "\f093";
 }
 
-/* line 904, ../../src/sass/_typography.scss */
+/* line 905, ../../src/sass/_typography.scss */
 .icon-lemon:before {
   content: "\f094";
 }
 
-/* line 907, ../../src/sass/_typography.scss */
+/* line 908, ../../src/sass/_typography.scss */
 .icon-phone:before {
   content: "\f095";
 }
 
-/* line 910, ../../src/sass/_typography.scss */
+/* line 911, ../../src/sass/_typography.scss */
 .icon-unchecked:before,
 .icon-check-empty:before {
   content: "\f096";
 }
 
-/* line 914, ../../src/sass/_typography.scss */
+/* line 915, ../../src/sass/_typography.scss */
 .icon-bookmark-empty:before {
   content: "\f097";
 }
 
-/* line 917, ../../src/sass/_typography.scss */
+/* line 918, ../../src/sass/_typography.scss */
 .icon-phone-sign:before {
   content: "\f098";
 }
 
-/* line 920, ../../src/sass/_typography.scss */
+/* line 921, ../../src/sass/_typography.scss */
 .icon-twitter:before {
   content: "\f099";
 }
 
-/* line 923, ../../src/sass/_typography.scss */
+/* line 924, ../../src/sass/_typography.scss */
 .icon-facebook:before {
   content: "\f09a";
 }
 
-/* line 926, ../../src/sass/_typography.scss */
+/* line 927, ../../src/sass/_typography.scss */
 .icon-github:before {
   content: "\f09b";
 }
 
-/* line 929, ../../src/sass/_typography.scss */
+/* line 930, ../../src/sass/_typography.scss */
 .icon-unlock:before {
   content: "\f09c";
 }
 
-/* line 932, ../../src/sass/_typography.scss */
+/* line 933, ../../src/sass/_typography.scss */
 .icon-credit-card:before {
   content: "\f09d";
 }
 
-/* line 935, ../../src/sass/_typography.scss */
+/* line 936, ../../src/sass/_typography.scss */
 .icon-rss:before {
   content: "\f09e";
 }
 
-/* line 938, ../../src/sass/_typography.scss */
+/* line 939, ../../src/sass/_typography.scss */
 .icon-hdd:before {
   content: "\f0a0";
 }
 
-/* line 941, ../../src/sass/_typography.scss */
+/* line 942, ../../src/sass/_typography.scss */
 .icon-bullhorn:before {
   content: "\f0a1";
 }
 
-/* line 944, ../../src/sass/_typography.scss */
+/* line 945, ../../src/sass/_typography.scss */
 .icon-bell:before {
   content: "\f0a2";
 }
 
-/* line 947, ../../src/sass/_typography.scss */
+/* line 948, ../../src/sass/_typography.scss */
 .icon-certificate:before {
   content: "\f0a3";
 }
 
-/* line 950, ../../src/sass/_typography.scss */
+/* line 951, ../../src/sass/_typography.scss */
 .icon-hand-right:before {
   content: "\f0a4";
 }
 
-/* line 953, ../../src/sass/_typography.scss */
+/* line 954, ../../src/sass/_typography.scss */
 .icon-hand-left:before {
   content: "\f0a5";
 }
 
-/* line 956, ../../src/sass/_typography.scss */
+/* line 957, ../../src/sass/_typography.scss */
 .icon-hand-up:before {
   content: "\f0a6";
 }
 
-/* line 959, ../../src/sass/_typography.scss */
+/* line 960, ../../src/sass/_typography.scss */
 .icon-hand-down:before {
   content: "\f0a7";
 }
 
-/* line 962, ../../src/sass/_typography.scss */
+/* line 963, ../../src/sass/_typography.scss */
 .icon-circle-arrow-left:before {
   content: "\f0a8";
 }
 
-/* line 965, ../../src/sass/_typography.scss */
+/* line 966, ../../src/sass/_typography.scss */
 .icon-circle-arrow-right:before {
   content: "\f0a9";
 }
 
-/* line 968, ../../src/sass/_typography.scss */
+/* line 969, ../../src/sass/_typography.scss */
 .icon-circle-arrow-up:before {
   content: "\f0aa";
 }
 
-/* line 971, ../../src/sass/_typography.scss */
+/* line 972, ../../src/sass/_typography.scss */
 .icon-circle-arrow-down:before {
   content: "\f0ab";
 }
 
-/* line 974, ../../src/sass/_typography.scss */
+/* line 975, ../../src/sass/_typography.scss */
 .icon-globe:before {
   content: "\f0ac";
 }
 
-/* line 977, ../../src/sass/_typography.scss */
+/* line 978, ../../src/sass/_typography.scss */
 .icon-wrench:before {
   content: "\f0ad";
 }
 
-/* line 980, ../../src/sass/_typography.scss */
+/* line 981, ../../src/sass/_typography.scss */
 .icon-tasks:before {
   content: "\f0ae";
 }
 
-/* line 983, ../../src/sass/_typography.scss */
+/* line 984, ../../src/sass/_typography.scss */
 .icon-filter:before {
   content: "\f0b0";
 }
 
-/* line 986, ../../src/sass/_typography.scss */
+/* line 987, ../../src/sass/_typography.scss */
 .icon-briefcase:before {
   content: "\f0b1";
 }
 
-/* line 989, ../../src/sass/_typography.scss */
+/* line 990, ../../src/sass/_typography.scss */
 .icon-fullscreen:before {
   content: "\f0b2";
 }
 
-/* line 992, ../../src/sass/_typography.scss */
+/* line 993, ../../src/sass/_typography.scss */
 .icon-group:before {
   content: "\f0c0";
 }
 
-/* line 995, ../../src/sass/_typography.scss */
+/* line 996, ../../src/sass/_typography.scss */
 .icon-link:before {
   content: "\f0c1";
 }
 
-/* line 998, ../../src/sass/_typography.scss */
+/* line 999, ../../src/sass/_typography.scss */
 .icon-cloud:before {
   content: "\f0c2";
 }
 
-/* line 1001, ../../src/sass/_typography.scss */
+/* line 1002, ../../src/sass/_typography.scss */
 .icon-beaker:before {
   content: "\f0c3";
 }
 
-/* line 1004, ../../src/sass/_typography.scss */
+/* line 1005, ../../src/sass/_typography.scss */
 .icon-cut:before {
   content: "\f0c4";
 }
 
-/* line 1007, ../../src/sass/_typography.scss */
+/* line 1008, ../../src/sass/_typography.scss */
 .icon-copy:before {
   content: "\f0c5";
 }
 
-/* line 1010, ../../src/sass/_typography.scss */
+/* line 1011, ../../src/sass/_typography.scss */
 .icon-paperclip:before,
 .icon-paper-clip:before {
   content: "\f0c6";
 }
 
-/* line 1014, ../../src/sass/_typography.scss */
+/* line 1015, ../../src/sass/_typography.scss */
 .icon-save:before {
   content: "\f0c7";
 }
 
-/* line 1017, ../../src/sass/_typography.scss */
+/* line 1018, ../../src/sass/_typography.scss */
 .icon-sign-blank:before {
   content: "\f0c8";
 }
 
-/* line 1020, ../../src/sass/_typography.scss */
+/* line 1021, ../../src/sass/_typography.scss */
 .icon-reorder:before {
   content: "\f0c9";
 }
 
-/* line 1023, ../../src/sass/_typography.scss */
+/* line 1024, ../../src/sass/_typography.scss */
 .icon-list-ul:before {
   content: "\f0ca";
 }
 
-/* line 1026, ../../src/sass/_typography.scss */
+/* line 1027, ../../src/sass/_typography.scss */
 .icon-list-ol:before {
   content: "\f0cb";
 }
 
-/* line 1029, ../../src/sass/_typography.scss */
+/* line 1030, ../../src/sass/_typography.scss */
 .icon-strikethrough:before {
   content: "\f0cc";
 }
 
-/* line 1032, ../../src/sass/_typography.scss */
+/* line 1033, ../../src/sass/_typography.scss */
 .icon-underline:before {
   content: "\f0cd";
 }
 
-/* line 1035, ../../src/sass/_typography.scss */
+/* line 1036, ../../src/sass/_typography.scss */
 .icon-table:before {
   content: "\f0ce";
 }
 
-/* line 1038, ../../src/sass/_typography.scss */
+/* line 1039, ../../src/sass/_typography.scss */
 .icon-magic:before {
   content: "\f0d0";
 }
 
-/* line 1041, ../../src/sass/_typography.scss */
+/* line 1042, ../../src/sass/_typography.scss */
 .icon-truck:before {
   content: "\f0d1";
 }
 
-/* line 1044, ../../src/sass/_typography.scss */
+/* line 1045, ../../src/sass/_typography.scss */
 .icon-pinterest:before {
   content: "\f0d2";
 }
 
-/* line 1047, ../../src/sass/_typography.scss */
+/* line 1048, ../../src/sass/_typography.scss */
 .icon-pinterest-sign:before {
   content: "\f0d3";
 }
 
-/* line 1050, ../../src/sass/_typography.scss */
+/* line 1051, ../../src/sass/_typography.scss */
 .icon-google-plus-sign:before {
   content: "\f0d4";
 }
 
-/* line 1053, ../../src/sass/_typography.scss */
+/* line 1054, ../../src/sass/_typography.scss */
 .icon-google-plus:before {
   content: "\f0d5";
 }
 
-/* line 1056, ../../src/sass/_typography.scss */
+/* line 1057, ../../src/sass/_typography.scss */
 .icon-money:before {
   content: "\f0d6";
 }
 
-/* line 1059, ../../src/sass/_typography.scss */
+/* line 1060, ../../src/sass/_typography.scss */
 .icon-caret-down:before {
   content: "\f0d7";
 }
 
-/* line 1062, ../../src/sass/_typography.scss */
+/* line 1063, ../../src/sass/_typography.scss */
 .icon-caret-up:before {
   content: "\f0d8";
 }
 
-/* line 1065, ../../src/sass/_typography.scss */
+/* line 1066, ../../src/sass/_typography.scss */
 .icon-caret-left:before {
   content: "\f0d9";
 }
 
-/* line 1068, ../../src/sass/_typography.scss */
+/* line 1069, ../../src/sass/_typography.scss */
 .icon-caret-right:before {
   content: "\f0da";
 }
 
-/* line 1071, ../../src/sass/_typography.scss */
+/* line 1072, ../../src/sass/_typography.scss */
 .icon-columns:before {
   content: "\f0db";
 }
 
-/* line 1074, ../../src/sass/_typography.scss */
+/* line 1075, ../../src/sass/_typography.scss */
 .icon-sort:before {
   content: "\f0dc";
 }
 
-/* line 1077, ../../src/sass/_typography.scss */
+/* line 1078, ../../src/sass/_typography.scss */
 .icon-sort-down:before {
   content: "\f0dd";
 }
 
-/* line 1080, ../../src/sass/_typography.scss */
+/* line 1081, ../../src/sass/_typography.scss */
 .icon-sort-up:before {
   content: "\f0de";
 }
 
-/* line 1083, ../../src/sass/_typography.scss */
+/* line 1084, ../../src/sass/_typography.scss */
 .icon-envelope:before {
   content: "\f0e0";
 }
 
-/* line 1086, ../../src/sass/_typography.scss */
+/* line 1087, ../../src/sass/_typography.scss */
 .icon-linkedin:before {
   content: "\f0e1";
 }
 
-/* line 1089, ../../src/sass/_typography.scss */
+/* line 1090, ../../src/sass/_typography.scss */
 .icon-rotate-left:before,
 .icon-undo:before {
   content: "\f0e2";
 }
 
-/* line 1093, ../../src/sass/_typography.scss */
+/* line 1094, ../../src/sass/_typography.scss */
 .icon-legal:before {
   content: "\f0e3";
 }
 
-/* line 1096, ../../src/sass/_typography.scss */
+/* line 1097, ../../src/sass/_typography.scss */
 .icon-dashboard:before {
   content: "\f0e4";
 }
 
-/* line 1099, ../../src/sass/_typography.scss */
+/* line 1100, ../../src/sass/_typography.scss */
 .icon-comment-alt:before {
   content: "\f0e5";
 }
 
-/* line 1102, ../../src/sass/_typography.scss */
+/* line 1103, ../../src/sass/_typography.scss */
 .icon-comments-alt:before {
   content: "\f0e6";
 }
 
-/* line 1105, ../../src/sass/_typography.scss */
+/* line 1106, ../../src/sass/_typography.scss */
 .icon-bolt:before {
   content: "\f0e7";
 }
 
-/* line 1108, ../../src/sass/_typography.scss */
+/* line 1109, ../../src/sass/_typography.scss */
 .icon-sitemap:before {
   content: "\f0e8";
 }
 
-/* line 1111, ../../src/sass/_typography.scss */
+/* line 1112, ../../src/sass/_typography.scss */
 .icon-umbrella:before {
   content: "\f0e9";
 }
 
-/* line 1114, ../../src/sass/_typography.scss */
+/* line 1115, ../../src/sass/_typography.scss */
 .icon-paste:before {
   content: "\f0ea";
 }
 
-/* line 1117, ../../src/sass/_typography.scss */
+/* line 1118, ../../src/sass/_typography.scss */
 .icon-lightbulb:before {
   content: "\f0eb";
 }
 
-/* line 1120, ../../src/sass/_typography.scss */
+/* line 1121, ../../src/sass/_typography.scss */
 .icon-exchange:before {
   content: "\f0ec";
 }
 
-/* line 1123, ../../src/sass/_typography.scss */
+/* line 1124, ../../src/sass/_typography.scss */
 .icon-cloud-download:before {
   content: "\f0ed";
 }
 
-/* line 1126, ../../src/sass/_typography.scss */
+/* line 1127, ../../src/sass/_typography.scss */
 .icon-cloud-upload:before {
   content: "\f0ee";
 }
 
-/* line 1129, ../../src/sass/_typography.scss */
+/* line 1130, ../../src/sass/_typography.scss */
 .icon-user-md:before {
   content: "\f0f0";
 }
 
-/* line 1132, ../../src/sass/_typography.scss */
+/* line 1133, ../../src/sass/_typography.scss */
 .icon-stethoscope:before {
   content: "\f0f1";
 }
 
-/* line 1135, ../../src/sass/_typography.scss */
+/* line 1136, ../../src/sass/_typography.scss */
 .icon-suitcase:before {
   content: "\f0f2";
 }
 
-/* line 1138, ../../src/sass/_typography.scss */
+/* line 1139, ../../src/sass/_typography.scss */
 .icon-bell-alt:before {
   content: "\f0f3";
 }
 
-/* line 1141, ../../src/sass/_typography.scss */
+/* line 1142, ../../src/sass/_typography.scss */
 .icon-coffee:before {
   content: "\f0f4";
 }
 
-/* line 1144, ../../src/sass/_typography.scss */
+/* line 1145, ../../src/sass/_typography.scss */
 .icon-food:before {
   content: "\f0f5";
 }
 
-/* line 1147, ../../src/sass/_typography.scss */
+/* line 1148, ../../src/sass/_typography.scss */
 .icon-file-text-alt:before {
   content: "\f0f6";
 }
 
-/* line 1150, ../../src/sass/_typography.scss */
+/* line 1151, ../../src/sass/_typography.scss */
 .icon-building:before {
   content: "\f0f7";
 }
 
-/* line 1153, ../../src/sass/_typography.scss */
+/* line 1154, ../../src/sass/_typography.scss */
 .icon-hospital:before {
   content: "\f0f8";
 }
 
-/* line 1156, ../../src/sass/_typography.scss */
+/* line 1157, ../../src/sass/_typography.scss */
 .icon-ambulance:before {
   content: "\f0f9";
 }
 
-/* line 1159, ../../src/sass/_typography.scss */
+/* line 1160, ../../src/sass/_typography.scss */
 .icon-medkit:before {
   content: "\f0fa";
 }
 
-/* line 1162, ../../src/sass/_typography.scss */
+/* line 1163, ../../src/sass/_typography.scss */
 .icon-fighter-jet:before {
   content: "\f0fb";
 }
 
-/* line 1165, ../../src/sass/_typography.scss */
+/* line 1166, ../../src/sass/_typography.scss */
 .icon-beer:before {
   content: "\f0fc";
 }
 
-/* line 1168, ../../src/sass/_typography.scss */
+/* line 1169, ../../src/sass/_typography.scss */
 .icon-h-sign:before {
   content: "\f0fd";
 }
 
-/* line 1171, ../../src/sass/_typography.scss */
+/* line 1172, ../../src/sass/_typography.scss */
 .icon-plus-sign-alt:before {
   content: "\f0fe";
 }
 
-/* line 1174, ../../src/sass/_typography.scss */
+/* line 1175, ../../src/sass/_typography.scss */
 .icon-double-angle-left:before {
   content: "\f100";
 }
 
-/* line 1177, ../../src/sass/_typography.scss */
+/* line 1178, ../../src/sass/_typography.scss */
 .icon-double-angle-right:before {
   content: "\f101";
 }
 
-/* line 1180, ../../src/sass/_typography.scss */
+/* line 1181, ../../src/sass/_typography.scss */
 .icon-double-angle-up:before {
   content: "\f102";
 }
 
-/* line 1183, ../../src/sass/_typography.scss */
+/* line 1184, ../../src/sass/_typography.scss */
 .icon-double-angle-down:before {
   content: "\f103";
 }
 
-/* line 1186, ../../src/sass/_typography.scss */
+/* line 1187, ../../src/sass/_typography.scss */
 .icon-angle-left:before {
   content: "\f104";
 }
 
-/* line 1189, ../../src/sass/_typography.scss */
+/* line 1190, ../../src/sass/_typography.scss */
 .icon-angle-right:before {
   content: "\f105";
 }
 
-/* line 1192, ../../src/sass/_typography.scss */
+/* line 1193, ../../src/sass/_typography.scss */
 .icon-angle-up:before {
   content: "\f106";
 }
 
-/* line 1195, ../../src/sass/_typography.scss */
+/* line 1196, ../../src/sass/_typography.scss */
 .icon-angle-down:before {
   content: "\f107";
 }
 
-/* line 1198, ../../src/sass/_typography.scss */
+/* line 1199, ../../src/sass/_typography.scss */
 .icon-desktop:before {
   content: "\f108";
 }
 
-/* line 1201, ../../src/sass/_typography.scss */
+/* line 1202, ../../src/sass/_typography.scss */
 .icon-laptop:before {
   content: "\f109";
 }
 
-/* line 1204, ../../src/sass/_typography.scss */
+/* line 1205, ../../src/sass/_typography.scss */
 .icon-tablet:before {
   content: "\f10a";
 }
 
-/* line 1207, ../../src/sass/_typography.scss */
+/* line 1208, ../../src/sass/_typography.scss */
 .icon-mobile-phone:before {
   content: "\f10b";
 }
 
-/* line 1210, ../../src/sass/_typography.scss */
+/* line 1211, ../../src/sass/_typography.scss */
 .icon-circle-blank:before {
   content: "\f10c";
 }
 
-/* line 1213, ../../src/sass/_typography.scss */
+/* line 1214, ../../src/sass/_typography.scss */
 .icon-quote-left:before {
   content: "\f10d";
 }
 
-/* line 1216, ../../src/sass/_typography.scss */
+/* line 1217, ../../src/sass/_typography.scss */
 .icon-quote-right:before {
   content: "\f10e";
 }
 
-/* line 1219, ../../src/sass/_typography.scss */
+/* line 1220, ../../src/sass/_typography.scss */
 .icon-spinner:before {
   content: "\f110";
 }
 
-/* line 1222, ../../src/sass/_typography.scss */
+/* line 1223, ../../src/sass/_typography.scss */
 .icon-circle:before {
   content: "\f111";
 }
 
-/* line 1225, ../../src/sass/_typography.scss */
+/* line 1226, ../../src/sass/_typography.scss */
 .icon-mail-reply:before,
 .icon-reply:before {
   content: "\f112";
 }
 
-/* line 1229, ../../src/sass/_typography.scss */
+/* line 1230, ../../src/sass/_typography.scss */
 .icon-github-alt:before {
   content: "\f113";
 }
 
-/* line 1232, ../../src/sass/_typography.scss */
+/* line 1233, ../../src/sass/_typography.scss */
 .icon-folder-close-alt:before {
   content: "\f114";
 }
 
-/* line 1235, ../../src/sass/_typography.scss */
+/* line 1236, ../../src/sass/_typography.scss */
 .icon-folder-open-alt:before {
   content: "\f115";
 }
 
-/* line 1238, ../../src/sass/_typography.scss */
+/* line 1239, ../../src/sass/_typography.scss */
 .icon-expand-alt:before {
   content: "\f116";
 }
 
-/* line 1241, ../../src/sass/_typography.scss */
+/* line 1242, ../../src/sass/_typography.scss */
 .icon-collapse-alt:before {
   content: "\f117";
 }
 
-/* line 1244, ../../src/sass/_typography.scss */
+/* line 1245, ../../src/sass/_typography.scss */
 .icon-smile:before {
   content: "\f118";
 }
 
-/* line 1247, ../../src/sass/_typography.scss */
+/* line 1248, ../../src/sass/_typography.scss */
 .icon-frown:before {
   content: "\f119";
 }
 
-/* line 1250, ../../src/sass/_typography.scss */
+/* line 1251, ../../src/sass/_typography.scss */
 .icon-meh:before {
   content: "\f11a";
 }
 
-/* line 1253, ../../src/sass/_typography.scss */
+/* line 1254, ../../src/sass/_typography.scss */
 .icon-gamepad:before {
   content: "\f11b";
 }
 
-/* line 1256, ../../src/sass/_typography.scss */
+/* line 1257, ../../src/sass/_typography.scss */
 .icon-keyboard:before {
   content: "\f11c";
 }
 
-/* line 1259, ../../src/sass/_typography.scss */
+/* line 1260, ../../src/sass/_typography.scss */
 .icon-flag-alt:before {
   content: "\f11d";
 }
 
-/* line 1262, ../../src/sass/_typography.scss */
+/* line 1263, ../../src/sass/_typography.scss */
 .icon-flag-checkered:before {
   content: "\f11e";
 }
 
-/* line 1265, ../../src/sass/_typography.scss */
+/* line 1266, ../../src/sass/_typography.scss */
 .icon-terminal:before {
   content: "\f120";
 }
 
-/* line 1268, ../../src/sass/_typography.scss */
+/* line 1269, ../../src/sass/_typography.scss */
 .icon-code:before {
   content: "\f121";
 }
 
-/* line 1271, ../../src/sass/_typography.scss */
+/* line 1272, ../../src/sass/_typography.scss */
 .icon-reply-all:before {
   content: "\f122";
 }
 
-/* line 1274, ../../src/sass/_typography.scss */
+/* line 1275, ../../src/sass/_typography.scss */
 .icon-mail-reply-all:before {
   content: "\f122";
 }
 
-/* line 1277, ../../src/sass/_typography.scss */
+/* line 1278, ../../src/sass/_typography.scss */
 .icon-star-half-full:before,
 .icon-star-half-empty:before {
   content: "\f123";
 }
 
-/* line 1281, ../../src/sass/_typography.scss */
+/* line 1282, ../../src/sass/_typography.scss */
 .icon-location-arrow:before {
   content: "\f124";
 }
 
-/* line 1284, ../../src/sass/_typography.scss */
+/* line 1285, ../../src/sass/_typography.scss */
 .icon-crop:before {
   content: "\f125";
 }
 
-/* line 1287, ../../src/sass/_typography.scss */
+/* line 1288, ../../src/sass/_typography.scss */
 .icon-code-fork:before {
   content: "\f126";
 }
 
-/* line 1290, ../../src/sass/_typography.scss */
+/* line 1291, ../../src/sass/_typography.scss */
 .icon-unlink:before {
   content: "\f127";
 }
 
-/* line 1293, ../../src/sass/_typography.scss */
+/* line 1294, ../../src/sass/_typography.scss */
 .icon-question:before {
   content: "\f128";
 }
 
-/* line 1296, ../../src/sass/_typography.scss */
+/* line 1297, ../../src/sass/_typography.scss */
 .icon-info:before {
   content: "\f129";
 }
 
-/* line 1299, ../../src/sass/_typography.scss */
+/* line 1300, ../../src/sass/_typography.scss */
 .icon-exclamation:before {
   content: "\f12a";
 }
 
-/* line 1302, ../../src/sass/_typography.scss */
+/* line 1303, ../../src/sass/_typography.scss */
 .icon-superscript:before {
   content: "\f12b";
 }
 
-/* line 1305, ../../src/sass/_typography.scss */
+/* line 1306, ../../src/sass/_typography.scss */
 .icon-subscript:before {
   content: "\f12c";
 }
 
-/* line 1308, ../../src/sass/_typography.scss */
+/* line 1309, ../../src/sass/_typography.scss */
 .icon-eraser:before {
   content: "\f12d";
 }
 
-/* line 1311, ../../src/sass/_typography.scss */
+/* line 1312, ../../src/sass/_typography.scss */
 .icon-puzzle-piece:before {
   content: "\f12e";
 }
 
-/* line 1314, ../../src/sass/_typography.scss */
+/* line 1315, ../../src/sass/_typography.scss */
 .icon-microphone:before {
   content: "\f130";
 }
 
-/* line 1317, ../../src/sass/_typography.scss */
+/* line 1318, ../../src/sass/_typography.scss */
 .icon-microphone-off:before {
   content: "\f131";
 }
 
-/* line 1320, ../../src/sass/_typography.scss */
+/* line 1321, ../../src/sass/_typography.scss */
 .icon-shield:before {
   content: "\f132";
 }
 
-/* line 1323, ../../src/sass/_typography.scss */
+/* line 1324, ../../src/sass/_typography.scss */
 .icon-calendar-empty:before {
   content: "\f133";
 }
 
-/* line 1326, ../../src/sass/_typography.scss */
+/* line 1327, ../../src/sass/_typography.scss */
 .icon-fire-extinguisher:before {
   content: "\f134";
 }
 
-/* line 1329, ../../src/sass/_typography.scss */
+/* line 1330, ../../src/sass/_typography.scss */
 .icon-rocket:before {
   content: "\f135";
 }
 
-/* line 1332, ../../src/sass/_typography.scss */
+/* line 1333, ../../src/sass/_typography.scss */
 .icon-maxcdn:before {
   content: "\f136";
 }
 
-/* line 1335, ../../src/sass/_typography.scss */
+/* line 1336, ../../src/sass/_typography.scss */
 .icon-chevron-sign-left:before {
   content: "\f137";
 }
 
-/* line 1338, ../../src/sass/_typography.scss */
+/* line 1339, ../../src/sass/_typography.scss */
 .icon-chevron-sign-right:before {
   content: "\f138";
 }
 
-/* line 1341, ../../src/sass/_typography.scss */
+/* line 1342, ../../src/sass/_typography.scss */
 .icon-chevron-sign-up:before {
   content: "\f139";
 }
 
-/* line 1344, ../../src/sass/_typography.scss */
+/* line 1345, ../../src/sass/_typography.scss */
 .icon-chevron-sign-down:before {
   content: "\f13a";
 }
 
-/* line 1347, ../../src/sass/_typography.scss */
+/* line 1348, ../../src/sass/_typography.scss */
 .icon-html5:before {
   content: "\f13b";
 }
 
-/* line 1350, ../../src/sass/_typography.scss */
+/* line 1351, ../../src/sass/_typography.scss */
 .icon-css3:before {
   content: "\f13c";
 }
 
-/* line 1353, ../../src/sass/_typography.scss */
+/* line 1354, ../../src/sass/_typography.scss */
 .icon-anchor:before {
   content: "\f13d";
 }
 
-/* line 1356, ../../src/sass/_typography.scss */
+/* line 1357, ../../src/sass/_typography.scss */
 .icon-unlock-alt:before {
   content: "\f13e";
 }
 
-/* line 1359, ../../src/sass/_typography.scss */
+/* line 1360, ../../src/sass/_typography.scss */
 .icon-bullseye:before {
   content: "\f140";
 }
 
-/* line 1362, ../../src/sass/_typography.scss */
+/* line 1363, ../../src/sass/_typography.scss */
 .icon-ellipsis-horizontal:before {
   content: "\f141";
 }
 
-/* line 1365, ../../src/sass/_typography.scss */
+/* line 1366, ../../src/sass/_typography.scss */
 .icon-ellipsis-vertical:before {
   content: "\f142";
 }
 
-/* line 1368, ../../src/sass/_typography.scss */
+/* line 1369, ../../src/sass/_typography.scss */
 .icon-rss-sign:before {
   content: "\f143";
 }
 
-/* line 1371, ../../src/sass/_typography.scss */
+/* line 1372, ../../src/sass/_typography.scss */
 .icon-play-sign:before {
   content: "\f144";
 }
 
-/* line 1374, ../../src/sass/_typography.scss */
+/* line 1375, ../../src/sass/_typography.scss */
 .icon-ticket:before {
   content: "\f145";
 }
 
-/* line 1377, ../../src/sass/_typography.scss */
+/* line 1378, ../../src/sass/_typography.scss */
 .icon-minus-sign-alt:before {
   content: "\f146";
 }
 
-/* line 1380, ../../src/sass/_typography.scss */
+/* line 1381, ../../src/sass/_typography.scss */
 .icon-check-minus:before {
   content: "\f147";
 }
 
-/* line 1383, ../../src/sass/_typography.scss */
+/* line 1384, ../../src/sass/_typography.scss */
 .icon-level-up:before {
   content: "\f148";
 }
 
-/* line 1386, ../../src/sass/_typography.scss */
+/* line 1387, ../../src/sass/_typography.scss */
 .icon-level-down:before {
   content: "\f149";
 }
 
-/* line 1389, ../../src/sass/_typography.scss */
+/* line 1390, ../../src/sass/_typography.scss */
 .icon-check-sign:before {
   content: "\f14a";
 }
 
-/* line 1392, ../../src/sass/_typography.scss */
+/* line 1393, ../../src/sass/_typography.scss */
 .icon-edit-sign:before {
   content: "\f14b";
 }
 
-/* line 1395, ../../src/sass/_typography.scss */
+/* line 1396, ../../src/sass/_typography.scss */
 .icon-external-link-sign:before {
   content: "\f14c";
 }
 
-/* line 1398, ../../src/sass/_typography.scss */
+/* line 1399, ../../src/sass/_typography.scss */
 .icon-share-sign:before {
   content: "\f14d";
 }
 
-/* line 1401, ../../src/sass/_typography.scss */
+/* line 1402, ../../src/sass/_typography.scss */
 .icon-compass:before {
   content: "\f14e";
 }
 
-/* line 1404, ../../src/sass/_typography.scss */
+/* line 1405, ../../src/sass/_typography.scss */
 .icon-collapse:before {
   content: "\f150";
 }
 
-/* line 1407, ../../src/sass/_typography.scss */
+/* line 1408, ../../src/sass/_typography.scss */
 .icon-collapse-top:before {
   content: "\f151";
 }
 
-/* line 1410, ../../src/sass/_typography.scss */
+/* line 1411, ../../src/sass/_typography.scss */
 .icon-expand:before {
   content: "\f152";
 }
 
-/* line 1413, ../../src/sass/_typography.scss */
+/* line 1414, ../../src/sass/_typography.scss */
 .icon-euro:before,
 .icon-eur:before {
   content: "\f153";
 }
 
-/* line 1417, ../../src/sass/_typography.scss */
+/* line 1418, ../../src/sass/_typography.scss */
 .icon-gbp:before {
   content: "\f154";
 }
 
-/* line 1420, ../../src/sass/_typography.scss */
+/* line 1421, ../../src/sass/_typography.scss */
 .icon-dollar:before,
 .icon-usd:before {
   content: "\f155";
 }
 
-/* line 1424, ../../src/sass/_typography.scss */
+/* line 1425, ../../src/sass/_typography.scss */
 .icon-rupee:before,
 .icon-inr:before {
   content: "\f156";
 }
 
-/* line 1428, ../../src/sass/_typography.scss */
+/* line 1429, ../../src/sass/_typography.scss */
 .icon-yen:before,
 .icon-jpy:before {
   content: "\f157";
 }
 
-/* line 1432, ../../src/sass/_typography.scss */
+/* line 1433, ../../src/sass/_typography.scss */
 .icon-renminbi:before,
 .icon-cny:before {
   content: "\f158";
 }
 
-/* line 1436, ../../src/sass/_typography.scss */
+/* line 1437, ../../src/sass/_typography.scss */
 .icon-won:before,
 .icon-krw:before {
   content: "\f159";
 }
 
-/* line 1440, ../../src/sass/_typography.scss */
+/* line 1441, ../../src/sass/_typography.scss */
 .icon-bitcoin:before,
 .icon-btc:before {
   content: "\f15a";
 }
 
-/* line 1444, ../../src/sass/_typography.scss */
+/* line 1445, ../../src/sass/_typography.scss */
 .icon-file:before {
   content: "\f15b";
 }
 
-/* line 1447, ../../src/sass/_typography.scss */
+/* line 1448, ../../src/sass/_typography.scss */
 .icon-file-text:before {
   content: "\f15c";
 }
 
-/* line 1450, ../../src/sass/_typography.scss */
+/* line 1451, ../../src/sass/_typography.scss */
 .icon-sort-by-alphabet:before {
   content: "\f15d";
 }
 
-/* line 1453, ../../src/sass/_typography.scss */
+/* line 1454, ../../src/sass/_typography.scss */
 .icon-sort-by-alphabet-alt:before {
   content: "\f15e";
 }
 
-/* line 1456, ../../src/sass/_typography.scss */
+/* line 1457, ../../src/sass/_typography.scss */
 .icon-sort-by-attributes:before {
   content: "\f160";
 }
 
-/* line 1459, ../../src/sass/_typography.scss */
+/* line 1460, ../../src/sass/_typography.scss */
 .icon-sort-by-attributes-alt:before {
   content: "\f161";
 }
 
-/* line 1462, ../../src/sass/_typography.scss */
+/* line 1463, ../../src/sass/_typography.scss */
 .icon-sort-by-order:before {
   content: "\f162";
 }
 
-/* line 1465, ../../src/sass/_typography.scss */
+/* line 1466, ../../src/sass/_typography.scss */
 .icon-sort-by-order-alt:before {
   content: "\f163";
 }
 
-/* line 1468, ../../src/sass/_typography.scss */
+/* line 1469, ../../src/sass/_typography.scss */
 .icon-thumbs-up:before {
   content: "\f164";
 }
 
-/* line 1471, ../../src/sass/_typography.scss */
+/* line 1472, ../../src/sass/_typography.scss */
 .icon-thumbs-down:before {
   content: "\f165";
 }
 
-/* line 1474, ../../src/sass/_typography.scss */
+/* line 1475, ../../src/sass/_typography.scss */
 .icon-youtube-sign:before {
   content: "\f166";
 }
 
-/* line 1477, ../../src/sass/_typography.scss */
+/* line 1478, ../../src/sass/_typography.scss */
 .icon-youtube:before {
   content: "\f167";
 }
 
-/* line 1480, ../../src/sass/_typography.scss */
+/* line 1481, ../../src/sass/_typography.scss */
 .icon-xing:before {
   content: "\f168";
 }
 
-/* line 1483, ../../src/sass/_typography.scss */
+/* line 1484, ../../src/sass/_typography.scss */
 .icon-xing-sign:before {
   content: "\f169";
 }
 
-/* line 1486, ../../src/sass/_typography.scss */
+/* line 1487, ../../src/sass/_typography.scss */
 .icon-youtube-play:before {
   content: "\f16a";
 }
 
-/* line 1489, ../../src/sass/_typography.scss */
+/* line 1490, ../../src/sass/_typography.scss */
 .icon-dropbox:before {
   content: "\f16b";
 }
 
-/* line 1492, ../../src/sass/_typography.scss */
+/* line 1493, ../../src/sass/_typography.scss */
 .icon-stackexchange:before {
   content: "\f16c";
 }
 
-/* line 1495, ../../src/sass/_typography.scss */
+/* line 1496, ../../src/sass/_typography.scss */
 .icon-instagram:before {
   content: "\f16d";
 }
 
-/* line 1498, ../../src/sass/_typography.scss */
+/* line 1499, ../../src/sass/_typography.scss */
 .icon-flickr:before {
   content: "\f16e";
 }
 
-/* line 1501, ../../src/sass/_typography.scss */
+/* line 1502, ../../src/sass/_typography.scss */
 .icon-adn:before {
   content: "\f170";
 }
 
-/* line 1504, ../../src/sass/_typography.scss */
+/* line 1505, ../../src/sass/_typography.scss */
 .icon-bitbucket:before {
   content: "\f171";
 }
 
-/* line 1507, ../../src/sass/_typography.scss */
+/* line 1508, ../../src/sass/_typography.scss */
 .icon-bitbucket-sign:before {
   content: "\f172";
 }
 
-/* line 1510, ../../src/sass/_typography.scss */
+/* line 1511, ../../src/sass/_typography.scss */
 .icon-tumblr:before {
   content: "\f173";
 }
 
-/* line 1513, ../../src/sass/_typography.scss */
+/* line 1514, ../../src/sass/_typography.scss */
 .icon-tumblr-sign:before {
   content: "\f174";
 }
 
-/* line 1516, ../../src/sass/_typography.scss */
+/* line 1517, ../../src/sass/_typography.scss */
 .icon-long-arrow-down:before {
   content: "\f175";
 }
 
-/* line 1519, ../../src/sass/_typography.scss */
+/* line 1520, ../../src/sass/_typography.scss */
 .icon-long-arrow-up:before {
   content: "\f176";
 }
 
-/* line 1522, ../../src/sass/_typography.scss */
+/* line 1523, ../../src/sass/_typography.scss */
 .icon-long-arrow-left:before {
   content: "\f177";
 }
 
-/* line 1525, ../../src/sass/_typography.scss */
+/* line 1526, ../../src/sass/_typography.scss */
 .icon-long-arrow-right:before {
   content: "\f178";
 }
 
-/* line 1528, ../../src/sass/_typography.scss */
+/* line 1529, ../../src/sass/_typography.scss */
 .icon-apple:before {
   content: "\f179";
 }
 
-/* line 1531, ../../src/sass/_typography.scss */
+/* line 1532, ../../src/sass/_typography.scss */
 .icon-windows:before {
   content: "\f17a";
 }
 
-/* line 1534, ../../src/sass/_typography.scss */
+/* line 1535, ../../src/sass/_typography.scss */
 .icon-android:before {
   content: "\f17b";
 }
 
-/* line 1537, ../../src/sass/_typography.scss */
+/* line 1538, ../../src/sass/_typography.scss */
 .icon-linux:before {
   content: "\f17c";
 }
 
-/* line 1540, ../../src/sass/_typography.scss */
+/* line 1541, ../../src/sass/_typography.scss */
 .icon-dribbble:before {
   content: "\f17d";
 }
 
-/* line 1543, ../../src/sass/_typography.scss */
+/* line 1544, ../../src/sass/_typography.scss */
 .icon-skype:before {
   content: "\f17e";
 }
 
-/* line 1546, ../../src/sass/_typography.scss */
+/* line 1547, ../../src/sass/_typography.scss */
 .icon-foursquare:before {
   content: "\f180";
 }
 
-/* line 1549, ../../src/sass/_typography.scss */
+/* line 1550, ../../src/sass/_typography.scss */
 .icon-trello:before {
   content: "\f181";
 }
 
-/* line 1552, ../../src/sass/_typography.scss */
+/* line 1553, ../../src/sass/_typography.scss */
 .icon-female:before {
   content: "\f182";
 }
 
-/* line 1555, ../../src/sass/_typography.scss */
+/* line 1556, ../../src/sass/_typography.scss */
 .icon-male:before {
   content: "\f183";
 }
 
-/* line 1558, ../../src/sass/_typography.scss */
+/* line 1559, ../../src/sass/_typography.scss */
 .icon-gittip:before {
   content: "\f184";
 }
 
-/* line 1561, ../../src/sass/_typography.scss */
+/* line 1562, ../../src/sass/_typography.scss */
 .icon-sun:before {
   content: "\f185";
 }
 
-/* line 1564, ../../src/sass/_typography.scss */
+/* line 1565, ../../src/sass/_typography.scss */
 .icon-moon:before {
   content: "\f186";
 }
 
-/* line 1567, ../../src/sass/_typography.scss */
+/* line 1568, ../../src/sass/_typography.scss */
 .icon-archive:before {
   content: "\f187";
 }
 
-/* line 1570, ../../src/sass/_typography.scss */
+/* line 1571, ../../src/sass/_typography.scss */
 .icon-bug:before {
   content: "\f188";
 }
 
-/* line 1573, ../../src/sass/_typography.scss */
+/* line 1574, ../../src/sass/_typography.scss */
 .icon-vk:before {
   content: "\f189";
 }
 
-/* line 1576, ../../src/sass/_typography.scss */
+/* line 1577, ../../src/sass/_typography.scss */
 .icon-weibo:before {
   content: "\f18a";
 }
 
-/* line 1579, ../../src/sass/_typography.scss */
+/* line 1580, ../../src/sass/_typography.scss */
 .icon-renren:before {
   content: "\f18b";
 }
 
-/**
- * Flip styles
- */
-/* line 4, ../../src/sass/_flip.scss */
-.flip {
-  -webkit-perspective: 400px;
-  -moz-perspective: 400px;
-  -ms-perspective: 400px;
-  -o-perspective: 400px;
-  perspective: 400px;
-  -webkit-perspective-origin: 50% 50%;
-  -moz-perspective-origin: 50% 50%;
-  -ms-perspective-origin: 50% 50%;
-  -o-perspective-origin: 50% 50%;
-  perspective-origin: 50% 50%;
+/* line 10, ../../src/sass/_components.scss */
+.news-item {
+  border: 1px solid #C6C6C6;
+  height: auto;
+  min-height: 450px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+/* line 17, ../../src/sass/_components.scss */
+.news-item a {
+  display: block;
+  outline: none;
+  border: none;
+  text-decoration: none;
 }
 
-/* line 17, ../../src/sass/_flip.scss */
-.flip li {
-  -webkit-transition: all 600ms ease, opacity 300ms ease;
-  -moz-transition: all 600ms ease;
-  -ms-transition: all 600ms ease, opacity 300ms ease;
-  -o-transition: all 600ms ease, opacity 300ms ease;
-  transition: all 600ms ease, opacity 300ms ease;
-  -webkit-transform-origin: 0% 0%;
-  -moz-transform-origin: 0% 0%;
-  -ms-transform-origin: 0% 0%;
-  -o-transform-origin: 0% 0%;
-  transform-origin: 0% 0%;
+/* line 25, ../../src/sass/_components.scss */
+.news-link-image {
+  position: relative;
 }
 
-/* line 34, ../../src/sass/_flip.scss */
-.flip li.past {
-  opacity: 0;
-  -webkit-transform-origin: 0% 100%;
-  -moz-transform-origin: 0% 100%;
-  -ms-transform-origin: 0% 100%;
-  -o-transform-origin: 0% 100%;
-  transform-origin: 0% 100%;
-  -webkit-transform: rotateX(80deg);
-  -moz-transform: rotateX(80deg);
-  -ms-transform: rotateX(80deg);
-  -o-transform: rotateX(80deg);
-  transform: rotateX(80deg);
+/* line 29, ../../src/sass/_components.scss */
+.news-image {
+  overflow: hidden;
+  height: 180px;
+}
+/* line 33, ../../src/sass/_components.scss */
+.news-image img {
+  min-width: 100%;
 }
 
-/* line 49, ../../src/sass/_flip.scss */
-.flip li.future {
-  opacity: 0;
-  -webkit-transform: rotateX(-80deg);
-  -moz-transform: rotateX(-80deg);
-  -ms-transform: rotateX(-80deg);
-  -o-transform: rotateX(-80deg);
-  transform: rotateX(-80deg);
+/* line 36, ../../src/sass/_components.scss */
+.news-date {
+  border: 1px solid #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 1rem;
+  color: #FFFFFF;
+  font-family: "OpenSansRegular";
+  font-size: 5rem;
+  text-align: center;
+}
+/* line 48, ../../src/sass/_components.scss */
+.news-date span {
+  font-size: 1.8rem;
+  font-family: "OpenSansLight";
+  display: block;
+  margin-top: 0.5rem;
 }
 
-/**
- * Zipper styles
- */
-/* line 62, ../../src/sass/_flip.scss */
-.zipper li {
-  -webkit-transition: all 600ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  -moz-transition: all 600ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  -ms-transition: all 600ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  -o-transition: all 600ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  transition: all 600ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  -webkit-transform-origin: 50% 0%;
-  -moz-transform-origin: 50% 0%;
-  -ms-transform-origin: 50% 0%;
-  -o-transform-origin: 50% 0%;
-  transform-origin: 50% 0%;
+/* line 56, ../../src/sass/_components.scss */
+.news-text {
+  padding: 0 2rem;
+  position: relative;
 }
 
-/* line 75, ../../src/sass/_flip.scss */
-.zipper li.past:nth-child(odd),
-.zipper li.future:nth-child(odd) {
-  -webkit-transform: translateX(80%);
-  -moz-transform: translateX(80%);
-  -ms-transform: translateX(80%);
-  -o-transform: translateX(80%);
-  transform: translateX(80%);
+/* line 61, ../../src/sass/_components.scss */
+.news-title {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  line-height: 2.5rem;
+}
+/* line 66, ../../src/sass/_components.scss */
+.news-title a {
+  text-decoration: none;
+  display: block;
+  color: #3F6F92;
 }
 
-/* line 83, ../../src/sass/_flip.scss */
-.zipper li.past:nth-child(even),
-.zipper li.future:nth-child(even) {
-  -webkit-transform: translateX(-80%);
-  -moz-transform: translateX(-80%);
-  -ms-transform: translateX(-80%);
-  -o-transform: translateX(-80%);
-  transform: translateX(-80%);
+/* line 73, ../../src/sass/_components.scss */
+.news-description {
+  color: #757575;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
 }
 
+/* line 79, ../../src/sass/_components.scss */
+.read-more {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: #3F6F92;
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  font-family: "OpenSansBold";
+  padding: 1.2rem 0;
+  -webkit-transition: all 0.2s linear 0s;
+  -moz-transition: all 0.2s linear 0s;
+  -ms-transition: all 0.2s linear 0s;
+  -o-transition: all 0.2s linear 0s;
+  transition: all 0.2s linear 0s;
+}
+/* line 91, ../../src/sass/_components.scss */
+.read-more:hover {
+  color: #3F6F92;
+  background: #ECECEC;
+}
+
+@media (min-width: 768px) {
+  /* line 100, ../../src/sass/_components.scss */
+  .news-item {
+    min-height: 510px;
+  }
+}
 /* line 5, ../../src/sass/_general.scss */
-body {
+html {
   font-size: 62.5%;
+  font-family: "OpenSansRegular";
 }
 
-/* line 9, ../../src/sass/_general.scss */
+/* line 10, ../../src/sass/_general.scss */
 ::-moz-selection {
   background: #005272;
   color: #ECECEC;
   text-shadow: none;
 }
 
-/* line 15, ../../src/sass/_general.scss */
+/* line 16, ../../src/sass/_general.scss */
 ::selection {
   background: #005272;
   color: #ECECEC;
   text-shadow: none;
+}
+
+/* line 26, ../../src/sass/_general.scss */
+.title-section {
+  color: #3F6F92;
+  font-family: "OpenSansLight";
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  /* line 44, ../../src/sass/_general.scss */
+  .title-section {
+    font-size: 5rem;
+  }
 }
