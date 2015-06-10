@@ -1,5 +1,7 @@
 <nav class="nav-primary">
-  <h1 class="logo-primary">Flu Near You</h1>
+  <h1 class="logo-primary">
+    <a href="/" title="Flu Near You">Flu Near You</a>
+  </h1>
 
   <ul class="nav-list">
     <li class="nav-item"><a href="#" title="Flu Map" class="nav-link">Flu Map</a></li>
