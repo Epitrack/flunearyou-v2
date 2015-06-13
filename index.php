@@ -12,7 +12,12 @@
     <a href="/flu-news" class="btn btn-secondary medium" title="Read More">Read More News</a>
   </section>
 
-  <div ng-include src="'includes/about-tabs.html'"></div>
+  <!-- About Tabs -->
+  <div class="row">
+    <div ng-include src="'includes/about-tabs.html'"></div>
+  </div>
+
+  <!-- Join Us -->
   <?php include 'php/includes/joinUs.inc.php'; ?>
 
   <section class="complementary-info">
