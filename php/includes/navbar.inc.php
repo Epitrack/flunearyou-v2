@@ -8,7 +8,8 @@
     <li class="nav-item"><a href="about" title="About" class="nav-link">About</a></a></li>
     <li class="nav-item"><a href="flu-news" title="News" class="nav-link">News</a></li>
     <li class="nav-item"><a href="press" title="Press" class="nav-link">Press</a></a></li>
-    <li class="nav-item"><a href="faq" title="FAQ" class="nav-link">FAQ</a></li>
+    <li class="nav-item"><a href="faq" title="Faq" class="nav-link">FAQ</a></li>
+    <li class="nav-item"><a href="#" title="Login" class="nav-link">Login</a></li>
   </ul>
 
   <div class="dropdown">

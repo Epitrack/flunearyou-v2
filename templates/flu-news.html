@@ -1,21 +1,27 @@
-<article class="news-item" ng-repeat="news in newsFeeds">
-  <a href="{{ news.link }}" title="{{ news.title }}" target="_blank" class="news-link-image">
-    <figure class="news-image">
-      <img src="{{ news.image }}" alt="{{ news.title }}">
-    </figure>
-  </a>
+<h2 class="title-section">Flu News</h2>
 
-  <time datetime="{{ news.time }}" class="news-date">
-    {{ news.day }} <span>{{ news.month }}</span>
-  </time>
+<div class="row">
+  <div class="col-sm-4 col-md-3 ng-scope" ng-repeat="news in newsFeeds">
+    <article class="news-item">
+      <a href="{{ news.url }}" title="{{ news.title }}" target="_blank" class="news-link-image">
+        <figure class="news-image">
+          <img src="{{ news.imageUrl }}" alt="{{ news.title }}">
+        </figure>
+      </a>
 
-  <div class="news-text">
-    <h3 class="news-title">
-      <a href="{{ news.link }}" title="{{ news.title }}">{{ news.title }}</a>
-    </h3>
+      <time datetime="{{ news.time }}" class="news-date">
+        {{ news.publicationDateDay }} <span>{{ news.publicationDateMonth }}</span>
+      </time>
 
-    <p class="news-description"> {{ news.description }} </p>
+      <div class="news-text">
+        <h3 class="news-title">
+          <a href="{{ news.url }}" title="{{ news.title }}">{{ news.title }}</a>
+        </h3>
+
+        <p class="news-description"> {{ news.content }} </p>
+      </div>
+
+      <a href="{{ news.url }}" title="Read More" target="_blank" class="read-more"> Read More </a>
+    </article>
   </div>
-
-  <a href="{{ news.link }}" title="Read More" target="_blank" class="read-more"> Read More </a>
-</article>
+</div>

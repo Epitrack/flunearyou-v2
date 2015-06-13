@@ -9,6 +9,7 @@
 // Hexadecimals
 $blue-primary:                  #3F6F92;
 $blue-lighten:                  #D6E0EF;
+$blue-clean:                    #4fc4f6;
 $blue-dark:                     #005272;
 $blue-secondary:                #428BCA;
 $red-primary:                   #D33041;
@@ -22,6 +23,7 @@ $white-primary:                 #FFFFFF;
 // RGB
 $blue-primary-rgb:              rgb(63, 111, 146);
 $blue-lighten-rgb:              rgb(214, 224, 239);
+$blue-clean-rgb:                rgb(79, 196, 246);
 $blue-dark-rgb:                 rgb(0, 82, 114);
 $blue-secondary-rgb:            rgb(66, 139, 202);
 $red-primary-rgb:               rgb(211, 48, 65);
@@ -35,6 +37,7 @@ $white-primary-rgb:             rgb(255, 255, 255);
 // Names
 $bg-links:                      $blue-primary;
 $bg-primary:                    $blue-lighten;
+$bg-about-text:                 $blue-clean;
 $survey-text:                   $blue-dark;
 $some-links:                    $blue-secondary;
 $btn-links:                     $red-primary;
@@ -104,11 +107,11 @@ $bg-secondary:                  $white-primary;
 
 // box-shadow
 @mixin bsd($x, $y, $blur, $color) {
-  -webkit-box-shadow: $x $y $color;
-     -moz-box-shadow: $x $y $color;
-      -ms-box-shadow: $x $y $color;
-       -o-box-shadow: $x $y $color;
-          box-shadow: $x $y $color;
+  -webkit-box-shadow: $x $y $blur $color;
+     -moz-box-shadow: $x $y $blur $color;
+      -ms-box-shadow: $x $y $blur $color;
+       -o-box-shadow: $x $y $blur $color;
+          box-shadow: $x $y $blur $color;
 }
 
 @mixin bsd-multiples($rulers...) {

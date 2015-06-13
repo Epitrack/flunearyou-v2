@@ -1,12 +1,11 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section">
-  <h2 class="title-section">About Flu Near You</h2>
-
-  <?php include 'php/includes/aboutTabs.inc.php'; ?>
-
-  <?php include 'php/includes/joinUs.inc.php'; ?>
+<section class="container">
+  <div class="row">
+    <ng-view></ng-view>
+  </div>
 </section>
 
+<div ng-include src="'includes/join-us.html'"></div>
 <?php include 'php/includes/footer.inc.php'; ?>

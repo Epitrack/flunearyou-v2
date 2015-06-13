@@ -2,23 +2,58 @@
 //     Components
 // —————————————————————————
 
+//
+// Buttons
+//
+
+.btn-secondary {
+  font-family: $ff-bold;
+  vertical-align: middle;
+  text-align: center;
+  color: $bg-links;
+  font-size: $fs-extra-medium;
+  background-color: $bg-secondary;
+  padding: 5px 25px;
+  outline: none;
+  border: 1px solid $bg-links;
+  cursor: pointer;
+  @include bdr(4px);
+  @include apr(none);
+  @include transition(all, .2s, linear, 0s);
+
+  &:hover {
+    background-color: transparent;
+    color: $bg-secondary;
+    border: 1px solid $bg-secondary;
+  }
+
+  &.medium {
+    width: 150px;
+  }
+}
 
 //
 // Scoopit cards
 //
 
 .news-item {
-  border: 1px solid $border-color-secondary;
   height: auto;
   min-height: 450px;
   position: relative;
   margin-bottom: ($fs-fine)*2;
+  background-color: $bg-secondary;
+  border: 1px solid $border-color-secondary;
+  @include transition(box-shadow, ease, .2s, 0s);
 
   a {
     display: block;
     outline: none;
     border: none;
     text-decoration: none;
+  }
+
+  &:hover {
+    @include bsd(0, 0, 3px, $bg-links);
   }
 }
 
@@ -54,6 +89,8 @@
 }
 
 .news-text {
+  min-height: 282px;
+  position: relative;
   padding: 0 ($fs-fine)*2;
   position: relative;
 }
@@ -78,8 +115,7 @@
 
 .read-more {
   text-align: center;
-  position: absolute;
-  width: 100%;
+  position: relative;
   bottom: 0;
   background: $bg-links;
   font-size: $fs-extra-small;
@@ -95,13 +131,326 @@
 }
 
 
+//
+// Join Us footer
+//
+
+.join-us {
+  padding: ($fs-fine)*3 0;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  @include path('background_blue.png');
+
+  h3 {
+    color: $bg-secondary;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: $ff-light;
+    font-size: ($fs-large)-.2;
+    margin-bottom: 3rem;
+  }
+
+  button {
+    display: inline-block;
+    text-transform: uppercase;
+  }
+}
+
+
+//
+// Tabs
+//
+
+.nav-tabs {
+  text-align: center;
+
+  li {
+    display: inline-block;
+    cursor: pointer;
+    background-color: rgba(63,111,146,0.3);
+    @include bdr(6px 6px 0 0);
+
+    &:last-child { margin-left: -4px; }
+
+    &.active {
+      background-color: transparent;
+
+      a {
+        color: $bg-links;
+        border: 1px solid $bg-links;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          background: $bg-secondary;
+          bottom: -9px;
+          left: 0;
+          display: inline-block;
+          width: 100%;
+          height: 10px;
+        }
+      }
+    }
+  }
+
+  a {
+    font-family: $ff-bold;
+    line-height: 55px;
+    display: block;
+    color: $bg-secondary;
+    border: 1px solid transparent;
+    padding: 0 ($fs-fine)*2;
+    font-size: $fs-small;
+    @include bdr(6px 6px 0 0);
+    @include transition(all, .2s, linear, 0s);
+
+    &:hover {
+      color: $bg-links;
+      background-color: rgba(63,111,146,0.3);
+    }
+  }
+}
+
+.tab-content {
+  margin-bottom: 60px;
+  padding: ($fs-fine)*2;
+  border: 2px solid $bg-links;
+  @include bdr(6px);
+}
+
+.tab-panes { margin-top: -1px; }
+
+.description {
+  color: $survey-text;
+  font-size: $fs-medium;
+  line-height: ($fs-fine)*2;
+  text-align: center;
+}
+
+.complementary {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 40px;
+
+  li {
+    color: $survey-text;
+    font-size: $fs-small;
+    line-height: ($fs-fine)*2;
+    margin-bottom: 20px;
+    text-indent: 20px;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 20px;
+      @include bdr(100%);
+      @include path('list_style_left_help.png');
+    }
+  }
+}
+
+.did-you-know {
+  color: $btn-links;
+  font-size: $fs-extra-medium;
+  font-family: $ff-light;
+  display: block;
+  margin-bottom: 25px;
+  padding-left: 60px;
+  position: relative;
+  line-height: 50px;
+
+  &::before {
+    content: '';
+    width: 50px;
+    height: 50px;
+    @include bdr(100%);
+    position: absolute;
+    left: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 65px;
+    @include path('icon_help_banner_interna.png');
+  }
+}
+
+.about-image {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  position: relative;
+  padding: 20px 0 0 0;
+  background-color: $bg-primary;
+
+  img {
+    padding-bottom: 10px;
+    height: 270px;
+  }
+
+  figcaption {
+    padding: 20px 10px;
+    height: 80px;
+    background-color: $bg-about-text;
+    color: $bg-secondary;
+    font-size: $fs-small;
+    line-height: $fs-small;
+  }
+}
+
+.who-we-are {
+  .complementary { margin: 10px 0; }
+
+  figure { margin-bottom: 20px; }
+
+  img { width: 90%; }
+
+  p {
+    color: $survey-text;
+    font-size: $fs-small;
+    line-height: ($fs-fine)*2;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}
+
+.title-secondary {
+  font-size: ($fs-fine)*3;
+  margin-bottom: ($fs-fine)*3;
+  color: $survey-text;
+}
+
+.subtitle-primary {
+  font-size: $fs-extra-medium;
+  color: $survey-text;
+}
+
+
 // iPads
 @media (min-width: 768px) {
   .news-item { min-height: 510px; }
+
+  .join-us {
+    height: 110px;
+
+      h3 {
+        font-size: ($fs-large)+1;
+        margin-right: 3rem;
+        margin-bottom: 0
+      }
+
+      button { vertical-align: top; }
+  }
+
+  .nav-tabs {
+    li {
+      &:last-child { margin-left: 25px; }
+
+      &.active {
+        a {
+          &::before {
+            bottom: -10px;
+          }
+        }
+      }
+    }
+
+    a {
+      font-size: ($fs-large)-.2;
+      padding: 0 ($fs-fine)*12;
+    }
+  }
+
+  .complementary {
+    margin-top: 20px;
+    width: 25%;
+
+    &:last-child {
+      margin-left: 2%;
+      width: 72%;
+    }
+  }
+
+  .about-image {
+    width: 32%;
+    margin-right: 2px;
+
+    &:nth-child(2) {
+      img {
+        padding-top: 30px;
+        margin-bottom: 20px;
+        height: 250px;
+      }
+    }
+
+    &:last-child {
+      &::before {
+        background-image: none;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      z-index: 2;
+      right: -40px;
+      display: inline-block;
+      width: 92px;
+      height: 34px;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      @include path('arrow_right_help.png');
+    }
+  }
+
+  .subtitle-primary { width: 40%; }
+
+  .who-we-are {
+    .complementary { width: 38%; }
+
+    .images {
+      width: 55%;
+      height: 180px;
+      margin: -40px 0 0 50px;
+    }
+
+    figure {
+      display: inline-block;
+
+      &.healthmap {  margin-right: 20px;  }
+
+      &.skoll {
+        img { width: 120%; }
+      }
+
+      &.boston { margin: 20px 0 0 120px; }
+    }
+
+    img { width: auto; }
+  }
 }
 
 // Desktops
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  .tab-content {
+    padding: 4rem 2rem;
+  }
+}
 
 // Large Desktops
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .who-we-are {
+    figure {
+      &.healthmap { margin-right: 60px;  }
+    }
+  }
+}
