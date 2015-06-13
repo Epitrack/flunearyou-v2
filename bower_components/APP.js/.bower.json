@@ -1,0 +1,13 @@
+{
+  "name": "APP.js",
+  "homepage": "https://github.com/denniscalazans/APP.js",
+  "_release": "38bcd9e1ac",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "38bcd9e1acbbd3fc6af3d1569cf33c230158ee27"
+  },
+  "_source": "https://github.com/denniscalazans/APP.js.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/denniscalazans/APP.js.git"
+}
