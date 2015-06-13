@@ -1,7 +1,7 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section">
+<section class="section">
   <ng-view></ng-view>
 </section>
 

@@ -37,7 +37,19 @@
       .get('assets/press.json')
       .success(function(data) {
         $scope.pressFeeds = data;
+
+        // angular.extend($scope, {
+        //   day: '03',
+        //   month: 'Feb'
+        // });
     });
+
+    // angular.extend($scope, {
+    // print in html {{ getValue() }}
+    //   getValue: function() {
+    //     return $scope.day + ' ' + $scope.month;
+    //   }
+    // });
   }
 
   // FAQ

@@ -160,7 +160,7 @@
 
 
 //
-// Tabs
+// Tabs about/home
 //
 
 .nav-tabs {
@@ -334,10 +334,105 @@
 }
 
 
+//
+// Press
+//
+
+.press-year { margin-bottom: 30px; }
+
+.year {
+  color: $bg-links;
+  text-align: center;
+  font-size: $fs-extra-medium;
+  margin-bottom: $fs-extra-medium;
+}
+
+.press-item {
+  min-height: 80px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid darken($bg-primary, 5%);
+}
+
+.press-link {
+  text-decoration: none;
+  display: inline-block;
+  width: 78%;
+  vertical-align: top;
+
+  &:hover {
+    h4 { text-decoration: underline;  }
+  }
+
+  time {
+    text-align: center;
+    text-transform: uppercase;
+    min-height: 65px;
+    width: 50px;
+    padding-top: 6px;
+    display: inline-block;
+    background-color: $bg-links;
+    color: $bg-secondary;
+    font-size: $fs-extra-medium;
+  }
+}
+
+.press-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5px;
+  width: 65%;
+
+  h4 {
+    color: $bg-links;
+    text-decoration: none;
+    font-size: $fs-small;
+    line-height: $fs-medium;
+  }
+}
+
+.press-share {
+  display: inline-block;
+  width: 20%;
+
+  a {
+    display: block;
+    height: 35px;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    @include scale(1);
+    @include transition(transform, .2s, ease, 0s);
+
+    &.facebook {
+      @include path('icon-facebook-help.png');
+    }
+
+    &.twitter {
+      @include path('icon-twitter-help.png');
+    }
+
+    &:hover {
+      @include scale(1.2);
+    }
+  }
+}
+
+.press-source {
+  margin-top: 10px;
+  color: $text-primary;
+  font-size: $fs-extra-small;
+}
+
+
+
 // iPads
 @media (min-width: 768px) {
+  // news
   .news-item { min-height: 510px; }
 
+
+  // join us
   .join-us {
     height: 110px;
 
@@ -350,6 +445,8 @@
       button { vertical-align: top; }
   }
 
+
+  // tabs
   .nav-tabs {
     li {
       &:last-child { margin-left: 25px; }
@@ -437,17 +534,49 @@
 
     img { width: auto; }
   }
-}
 
-// Desktops
-@media (min-width: 992px) {
-  .tab-content {
-    padding: 4rem 2rem;
+
+  // press
+  .year { text-align: left; }
+
+  .press-share {
+    width: 20%;
+    margin-left: 0%;
+  }
+
+  .press-info {
+    width: 100%;
+    margin: 5px 0 0 0;
+
+    h4 {
+      font-size: $fs-medium;
+      line-height: ($fs-medium) + .2;
+    }
   }
 }
 
+
+// Desktops
+@media (min-width: 992px) {
+  // about
+  .tab-content { padding: 4rem 2rem; }
+
+  // press
+  .press-info {
+    width: 80%;
+    margin: 0 0 0 5px;
+  }
+
+  .press-share {
+    width: 10%;
+    margin-left: 10%;
+  }
+}
+
+
 // Large Desktops
 @media (min-width: 1200px) {
+  // about
   .who-we-are {
     figure {
       &.healthmap { margin-right: 60px;  }
