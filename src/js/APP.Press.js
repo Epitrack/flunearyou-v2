@@ -13,7 +13,7 @@ APP.Press = {
 
     that = this;
 
-    $('.wrapper-social-networks-help').on('click', 'a', function(event) {
+    $('.press-share').on('click', 'a', function(event) {
       event.preventDefault();
 
       href = this.href;
@@ -30,7 +30,7 @@ APP.Press = {
     } else if (network == 'facebook') {
       url = 'https://www.facebook.com/sharer/sharer.php?u=' + href;
       window.open(url);
-    } else if (network == 'google') {
+    } else if (network == 'gplus') {
       url = 'https://plus.google.com/share?url=' + href;
       window.open(url);
     }

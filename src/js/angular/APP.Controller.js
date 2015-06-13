@@ -1,7 +1,10 @@
 (function() {
   'use strict';
 
+  //
   // About
+  //
+
   var aboutController = angular.module('aboutController', []);
 
   aboutController.controller('AboutCtrl', AboutCtrl);
@@ -10,7 +13,10 @@
     document.body.setAttribute('data-view', 'about');
   }
 
+  //
   // Flu News
+  //
+
   var fluNewsController = angular.module('fluNewsController', []);
 
   fluNewsController.controller('FluNewsCtrl', FluNewsCtrl);
@@ -25,7 +31,10 @@
     });
   }
 
+  //
   // Press
+  //
+
   var pressController = angular.module('pressController', []);
 
   pressController.controller('PressCtrl', PressCtrl);
@@ -45,14 +54,17 @@
     });
 
     // angular.extend($scope, {
-    // print in html {{ getValue() }}
+    //   // print in html {{ getValue() }}
     //   getValue: function() {
     //     return $scope.day + ' ' + $scope.month;
     //   }
     // });
   }
 
+  //
   // FAQ
+  //
+
   var faqController = angular.module('faqController', []);
 
   faqController.controller('FaqCtrl', FaqCtrl);
@@ -67,7 +79,10 @@
     });
   }
 
+  //
   // Terms
+  //
+
   var termsController = angular.module('termsController', []);
 
   termsController.controller('TermsCtrl', TermsCtrl);
@@ -76,7 +91,10 @@
     document.body.setAttribute('data-view', 'terms');
   }
 
+  //
   // Privacy
+  //
+
   var privacyController = angular.module('privacyController', []);
 
   privacyController.controller('PrivacyCtrl', PrivacyCtrl);
@@ -85,7 +103,10 @@
     document.body.setAttribute('data-view', 'privacy');
   }
 
+  //
   // Home
+  //
+
   var homeController = angular.module('homeController', []);
 
   homeController.controller('HomeCtrl', HomeCtrl);

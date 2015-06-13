@@ -17,7 +17,7 @@
 
   <!-- SCRIPTS -->
   <?php $Catrina->writeScripts(); ?>
-  <script>APP.init()</script>
+  <script>APP.init();</script>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
