@@ -7690,14 +7690,20 @@ body[data-view="privacy"] {
   background-color: #D33041;
 }
 
+/* line 78, ../../src/sass/_general.scss */
+.scoopit-logo {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
 @media (min-width: 768px) {
-  /* line 80, ../../src/sass/_general.scss */
+  /* line 89, ../../src/sass/_general.scss */
   .title-section {
     font-size: 5rem;
     margin: 3rem 0;
   }
 
-  /* line 86, ../../src/sass/_general.scss */
+  /* line 95, ../../src/sass/_general.scss */
   .nav-item {
     display: inline-block;
   }
