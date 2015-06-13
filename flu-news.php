@@ -1,12 +1,9 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section">
-  <h2 class="title-section">Flu News</h2>
-
+<section class="section">
   <ng-view></ng-view>
-
-  <?php include 'php/includes/joinUs.inc.php'; ?>
 </section>
 
+<div ng-include src="'includes/join-us.html'"></div>
 <?php include 'php/includes/footer.inc.php'; ?>
