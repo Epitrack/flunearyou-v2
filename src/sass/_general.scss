@@ -7,6 +7,14 @@ html {
   font-family: $ff-primary;
 }
 
+body {
+  &[data-view="flu-news"] { background-color: $bg-primary; }
+  &[data-view="press"] { background-color: $bg-primary; }
+  &[data-view="faq"] { background-color: $bg-primary; }
+  &[data-view="terms"] { background-color: $bg-primary; }
+  &[data-view="privacy"] { background-color: $bg-primary; }
+}
+
 ::-moz-selection {
   background: $survey-text;
   color: $border-color;
@@ -24,11 +32,19 @@ html {
   font-family: $ff-light;
   font-size: $fs-extra-medium;
   text-align: center;
+  margin: ($fs-fine)*2 0;
 }
 
 //
 // Navbar
 //
+
+.nav-primary {
+  position: relative;
+  min-height: 60px;
+  background: rgba(236, 236, 236, .9);
+  @include bsd(1px, 2px, 2px, $bg-primary);
+}
 
 .nav-item {
   display: block;
@@ -47,6 +63,15 @@ html {
 
 
 //
+// Footer
+//
+
+.footer-primary {
+  background-color: $btn-links;
+}
+
+
+//
 // Media queries
 //
 
@@ -54,6 +79,7 @@ html {
 @media (min-width: 768px) {
   .title-section {
     font-size: $fs-extra-large;
+    margin: ($fs-fine)*3 0;
   }
 
   // navbar

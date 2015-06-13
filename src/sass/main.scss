@@ -2,8 +2,9 @@
 @import '_reset';
 
 // Libs
-@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables';
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_mixins';
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables';
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_grid.scss';
 @import '../../bower_components/bootstrap-select/dist/css/bootstrap-select.css';
 @import 'libs/_datepicker';
 @import 'libs/_default.date';
