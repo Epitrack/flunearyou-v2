@@ -74,4 +74,4 @@
   </script>
 </head>
 
-<body ng-app="FnyApp">
+<body>

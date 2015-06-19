@@ -11,7 +11,8 @@
 
   <!-- About Tabs -->
   <div class="row">
-    <div ng-include src="'includes/about-tabs.html'"></div>
+    <?php include 'php/includes/aboutTabs.inc.php' ?>
+    <!-- <div ng-include src="'includes/about-tabs.html'"></div> -->
   </div>
 
   <!-- Join Us -->

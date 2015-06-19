@@ -51,16 +51,7 @@
     "dist": {
       "files": {
         "dist/js/scripts.min.js": [
-          "src/js/angular/APP.Module.js"
-          ,"src/js/angular/controller/aboutController.js"
-          ,"src/js/angular/controller/faqController.js"
-          ,"src/js/angular/controller/fluNewsController.js"
-          ,"src/js/angular/controller/homeController.js"
-          ,"src/js/angular/controller/pressController.js"
-          ,"src/js/angular/controller/privacyController.js"
-          ,"src/js/angular/controller/termsController.js"
-
-          ,"src/js/APP.Status.js"
+          "src/js/APP.Status.js"
           ,"src/js/APP.Cache.js"
           ,"src/js/APP.Language.js"
           ,"src/js/APP.Scroll.js"
@@ -69,9 +60,9 @@
           ,"src/js/APP.Contact.js"
           ,"src/js/APP.Modal.js"
           ,"src/js/APP.EasterEggs.js"
-
           ,"src/js/APP.Calendar.js"
-          ,"src/js/APP.Help.js"
+          ,"src/js/APP.Faq.js"
+          ,"src/js/APP.FluNews.js"
           ,"src/js/APP.Login.js"
           ,"src/js/APP.Main.js"
           ,"src/js/APP.Map.js"
@@ -91,8 +82,6 @@
 
         "dist/js/libs.min.js": [
           "bower_components/jquery/dist/jquery.js"
-          ,"bower_components/angular/angular.min.js"
-          ,"bower_components/angular-ui-bootstrap/src/accordion/accordion.js"
           ,"bower_components/moment/moment.js"
           ,"bower_components/APP.js/APP.js"
           ,"bower_components/sticky/jquery.sticky.js"

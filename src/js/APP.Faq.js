@@ -4,7 +4,9 @@
 
 var APP = APP || {};
 APP.Help = {
-  setUp: function() {},
+  setUp: function() {
+    this.filterFaq();
+  },
 
   filterFaq: function() {
     $('#search-term').on('keyup', function() {

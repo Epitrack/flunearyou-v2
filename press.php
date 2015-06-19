@@ -1,7 +1,7 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="section" ng-controller="PressCtrl">
+<section class="section">
   <h2 class="title-section">Flu Near You Press</h2>
 
   <div class="row">
@@ -11,62 +11,18 @@
       <h3 class="year">2015</h3>
 
       <ul class="press-list">
-        <li class="press-item" ng-repeat="press in pressFeeds">
-          <a class="press-link" href="{{press.link}}" title="{{ press.titulo }}" target="_blank">
-            <time datetime="{{ press.time }}">{{ press.date }}</time>
+        <li class="press-item">
+          <a class="press-link" href="#" title="Título Aqui" target="_blank">
+            <time datetime="24-02">24 feb</time>
             <div class="press-info">
-              <h4 class="press-title">{{ press.titulo }}</h4>
-              <p class="press-source">{{ press.site }}</p>
+              <h4 class="press-title">Track the Flu With the 'Flu Near You</h4>
+              <p class="press-source">coldflu.about.com</p>
             </div>
           </a>
 
           <aside class="press-share">
-            <a href="{{press.link}}" title="Share with Facebook" class="facebook">Facebook</a>
-            <a href="{{press.link}}" title="Share with Twitter" class="twitter">Twitter</a>
-          </aside>
-        </li>
-      </ul>
-    </aside>
-
-    <!-- 2014 -->
-    <aside class="col-xs-12 col-sm-4 col-md-6 press-year">
-      <h3 class="year">2014</h3>
-
-      <ul class="press-list">
-        <li class="press-item" ng-repeat="press in pressFeeds">
-          <a class="press-link" href="{{press.link}}" title="{{ press.titulo }}" target="_blank">
-            <time datetime="{{ press.time }}">{{ press.date }}</time>
-            <div class="press-info">
-              <h4 class="press-title">{{ press.titulo }}</h4>
-              <p class="press-source">{{ press.site }}</p>
-            </div>
-          </a>
-
-          <aside class="press-share">
-            <a href="{{press.link}}" title="Share with Facebook" class="facebook">Facebook</a>
-            <a href="{{press.link}}" title="Share with Twitter" class="twitter">Twitter</a>
-          </aside>
-        </li>
-      </ul>
-    </aside>
-
-    <!-- 2013 -->
-    <aside class="col-xs-12 col-sm-4 col-md-6 press-year">
-      <h3 class="year">2013</h3>
-
-      <ul class="press-list">
-        <li class="press-item" ng-repeat="press in pressFeeds">
-          <a class="press-link" href="{{press.link}}" title="{{ press.titulo }}" target="_blank">
-            <time datetime="{{ press.time }}">{{ press.date }}</time>
-            <div class="press-info">
-              <h4 class="press-title">{{ press.titulo }}</h4>
-              <p class="press-source">{{ press.site }}</p>
-            </div>
-          </a>
-
-          <aside class="press-share">
-            <a href="{{press.link}}" title="Share with Facebook" class="facebook">Facebook</a>
-            <a href="{{press.link}}" title="Share with Twitter" class="twitter">Twitter</a>
+            <a href="http://www.google.com.br" title="Share with Facebook" class="facebook">Facebook</a>
+            <a href="http://www.google.com.br" title="Share with Twitter" class="twitter">Twitter</a>
           </aside>
         </li>
       </ul>
@@ -76,5 +32,5 @@
 
 </section>
 
-<div ng-include src="'includes/join-us.html'"></div>
+<?php include 'php/includes/joinUs.inc.php' ?>
 <?php include 'php/includes/footer.inc.php'; ?>

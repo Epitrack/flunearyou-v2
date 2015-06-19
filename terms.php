@@ -1,7 +1,7 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section" ng-controller="TermsCtrl">
+<section class="section">
   <h2 class="title-section">Terms and Conditions</h2>
 
   <div class="content">
