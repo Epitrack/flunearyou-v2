@@ -52,7 +52,13 @@
       "files": {
         "dist/js/scripts.min.js": [
           "src/js/angular/APP.Module.js"
-          ,"src/js/angular/APP.Controller.js"
+          ,"src/js/angular/controller/aboutController.js"
+          ,"src/js/angular/controller/faqController.js"
+          ,"src/js/angular/controller/fluNewsController.js"
+          ,"src/js/angular/controller/homeController.js"
+          ,"src/js/angular/controller/pressController.js"
+          ,"src/js/angular/controller/privacyController.js"
+          ,"src/js/angular/controller/termsController.js"
 
           ,"src/js/APP.Status.js"
           ,"src/js/APP.Cache.js"
