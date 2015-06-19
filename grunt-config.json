@@ -51,7 +51,10 @@
     "dist": {
       "files": {
         "dist/js/scripts.min.js": [
-          "src/js/APP.Status.js"
+          "src/js/angular/APP.Module.js"
+          ,"src/js/angular/APP.Controller.js"
+
+          ,"src/js/APP.Status.js"
           ,"src/js/APP.Cache.js"
           ,"src/js/APP.Language.js"
           ,"src/js/APP.Scroll.js"
@@ -78,9 +81,6 @@
           ,"src/js/APP.Unsubscribe.js"
           ,"src/js/APP.VaccineFinder.js"
           ,"src/js/APP.Validation.js"
-
-          ,"src/js/angular/APP.Module.js"
-          ,"src/js/angular/APP.Controller.js"
         ],
 
         "dist/js/libs.min.js": [

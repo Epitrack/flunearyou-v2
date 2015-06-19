@@ -1,14 +1,11 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<main class="wrapper-section">
-  <ng-view></ng-view>
+<main class="section">
 
   <section class="news">
     <h2 class="title-section">Keep up-to-date with our news</h2>
-
-    <!-- <ng-view></ng-view> -->
-
+    <!-- feed scoopit-->
     <a href="/flu-news" class="btn btn-secondary medium" title="Read More">Read More News</a>
   </section>
 

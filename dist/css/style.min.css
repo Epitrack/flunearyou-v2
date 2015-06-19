@@ -7606,6 +7606,62 @@ a .icon-flip-vertical:before {
     margin-right: 60px;
   }
 }
+/* line 49, ../../src/sass/_form.scss */
+.input-primary {
+  outline: none;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  color: #3F6F92;
+  font-size: 1.8rem;
+  border: 2px solid #c4d2e8;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 58, ../../src/sass/_form.scss */
+.input-primary.small {
+  width: 30%;
+}
+/* line 59, ../../src/sass/_form.scss */
+.input-primary.medium {
+  width: 100%;
+}
+/* line 60, ../../src/sass/_form.scss */
+.input-primary.large {
+  width: 100%;
+}
+
+/* line 63, ../../src/sass/_form.scss */
+.count-result {
+  background-color: #D33041;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 1.6rem;
+  width: 50%;
+  margin-left: 25%;
+  display: inline-block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+@media (min-width: 992px) {
+  /* line 83, ../../src/sass/_form.scss */
+  .count-result {
+    margin-left: 7%;
+    width: 17%;
+  }
+
+  /* line 89, ../../src/sass/_form.scss */
+  .input-primary.medium {
+    width: 75%;
+  }
+}
 /* line 5, ../../src/sass/_general.scss */
 html {
   font-size: 62.5%;
@@ -7696,15 +7752,94 @@ body[data-view="privacy"] {
   display: inline-block;
 }
 
+/* line 88, ../../src/sass/_general.scss */
+.questions {
+  margin-top: 30px;
+  display: inline-block;
+}
+
+/* line 93, ../../src/sass/_general.scss */
+.faq-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+  position: relative;
+  min-height: 100px;
+}
+/* line 100, ../../src/sass/_general.scss */
+.faq-item::before {
+  content: '';
+  width: 30px;
+  height: 26px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  background-repeat: no-repeat;
+  background-image: url("../../src/img/icon_faq.png");
+}
+
+/* line 112, ../../src/sass/_general.scss */
+.questions-title {
+  color: #3F6F92;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  cursor: pointer;
+  min-height: 60px;
+  text-align: left;
+  position: relative;
+  display: block;
+  padding: 15px 50px 20px 35px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  border-bottom: 1px solid #c4d2e8;
+}
+/* line 126, ../../src/sass/_general.scss */
+.questions-title.js-plus {
+  background-image: url("../../src/img/icon_down_accordion.png");
+}
+/* line 130, ../../src/sass/_general.scss */
+.questions-title.js-minus {
+  background-image: url("../../src/img/icon_contract_accordion.png");
+}
+
+/* line 135, ../../src/sass/_general.scss */
+.questions-description {
+  min-height: 80px;
+  color: #757575;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  padding: 20px 20px 10px 80px;
+  background-repeat: no-repeat;
+  background-position: 10px 20px;
+  background-color: #bccde5;
+  @incude bdr(0 0 6px 6px);
+  background-image: url("../../src/img/icon_bubble_faq.png");
+}
+
+/* line 148, ../../src/sass/_general.scss */
+.search-term {
+  color: #3F6F92;
+  display: block;
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
 @media (min-width: 768px) {
-  /* line 89, ../../src/sass/_general.scss */
+  /* line 163, ../../src/sass/_general.scss */
   .title-section {
     font-size: 5rem;
     margin: 3rem 0;
   }
 
-  /* line 95, ../../src/sass/_general.scss */
+  /* line 169, ../../src/sass/_general.scss */
   .nav-item {
     display: inline-block;
+  }
+
+  /* line 172, ../../src/sass/_general.scss */
+  .search-term {
+    text-align: left;
+    font-size: 3rem;
   }
 }

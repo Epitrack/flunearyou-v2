@@ -46,18 +46,31 @@
 //   &:hover { background-color: $title-primary; }
 // }
 
-// .input-primary {
-//   height: 40px;
-//   padding: 5px 10px;
-//   margin-bottom: 10px;
-//   outline: none;
-//   border: 1px solid $border-primary;
-//   @include bdr(5px);
+.input-primary {
+  outline: none;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  color: $bg-links;
+  font-size: $fs-medium;
+  border: 2px solid darken($bg-primary, 5%);
+  @include bdr(5px);
 
-//   &.small { width: 30%; }
-//   &.medium { width: 50%; }
-//   &.big { width: 100%; }
-// }
+  &.small { width: 30%; }
+  &.medium { width: 100%; }
+  &.large { width: 100%; }
+}
+
+.count-result {
+  background-color: $btn-links;
+  color: $bg-secondary;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: ($fs-medium)-.2;
+  width: 50%;
+  margin-left: 25%;
+  display: inline-block;
+  @include bdr(5px);
+}
 
 
 
@@ -65,4 +78,17 @@
 @media (min-width: 768px) {}
 
 // Desktop
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  // faq
+  .count-result {
+    margin-left: 7%;
+    width: 17%;
+  }
+
+  .input-primary {
+    &.medium { width: 75%; }
+  }
+}
+
+// Large Desktops
+@media (min-width: 1200px) {}

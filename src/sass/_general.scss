@@ -80,6 +80,80 @@ body {
   display: inline-block;
 }
 
+
+//
+// Faq
+//
+
+.questions {
+  margin-top: 30px;
+  display: inline-block;
+}
+
+.faq-item {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+  position: relative;
+  min-height: 100px;
+
+  &::before {
+    content: '';
+    width: 30px;
+    height: 26px;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background-repeat: no-repeat;
+    @include path('icon_faq.png');
+  }
+}
+
+.questions-title {
+  color: $bg-links;
+  font-size: $fs-medium;
+  line-height: ($fs-medium)+.2;
+  cursor: pointer;
+  min-height: 60px;
+  text-align: left;
+  position: relative;
+  display: block;
+  padding: 15px 50px 20px 35px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  border-bottom: 1px solid darken($bg-primary, 5%);
+
+  &.js-plus {
+    @include path('icon_down_accordion.png');
+  }
+
+  &.js-minus {
+    @include path('icon_contract_accordion.png');
+  }
+}
+
+.questions-description {
+  min-height: 80px;
+  color: $text-primary;
+  font-size: ($fs-small)+.2;
+  line-height: ($fs-medium)+.2;
+  padding: 20px 20px 10px 80px;
+  background-repeat: no-repeat;
+  background-position: 10px 20px;
+  background-color: darken($bg-primary, 7%);
+  @incude bdr(0 0 6px 6px);
+  @include path('icon_bubble_faq.png');
+}
+
+.search-term {
+  color: $bg-links;
+  display: block;
+  text-align: center;
+  font-size: ($fs-medium)+.2;
+  margin: 20px 0;
+}
+
+
 //
 // Media queries
 //
@@ -93,6 +167,12 @@ body {
 
   // navbar
   .nav-item { display: inline-block; }
+
+  // faq
+  .search-term {
+    text-align: left;
+    font-size: ($fs-large)-.2;
+  }
 }
 
 // Desktops

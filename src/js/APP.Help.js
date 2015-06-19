@@ -5,6 +5,11 @@
 var APP = APP || {};
 APP.Help = {
   setUp: function() {
+    this.openContent();
+  },
+
+  openContent: function() {
+    console.log('Hey!');
   },
 
   fny: function() {

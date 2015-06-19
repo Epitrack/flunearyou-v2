@@ -28,7 +28,10 @@
       .get('http://dev.flunearyou.org/flu-news.json')
       .success(function(data) {
         $scope.newsFeeds = data;
-    });
+      })
+      .error(function(err) {
+        console.warn(err);
+      });
   }
 
   //
@@ -51,7 +54,10 @@
         //   day: '03',
         //   month: 'Feb'
         // });
-    });
+      })
+      .error(function(err) {
+        console.warn(err);
+      });
 
     // angular.extend($scope, {
     //   // print in html {{ getValue() }}
@@ -76,7 +82,14 @@
       .get('assets/faq.json')
       .success(function(data) {
         $scope.faqFeeds = data;
-    });
+      })
+      .error(function(err) {
+        console.warn(err);
+      });
+
+    $scope.showContent = function(id) {
+      console.log($scope);
+    }
   }
 
   //
