@@ -141,7 +141,7 @@ body {
   background-repeat: no-repeat;
   background-position: 10px 20px;
   background-color: darken($bg-primary, 7%);
-  @incude bdr(0 0 6px 6px);
+  @include bdr(0 0 6px 6px);
   @include path('icon_bubble_faq.png');
 }
 
