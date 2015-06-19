@@ -13,18 +13,18 @@
     document.body.setAttribute('data-view', 'faq');
 
     $http
-      .get('assets/faq.json')
+      .get('http://dev.flunearyou.org/faq.json')
       .success(function(data) {
-        $scope.faqFeeds = data;
+        $scope.faqFeeds = data.data;
       })
       .error(function(err) {
         console.warn(err);
       });
-
-    $scope.showContent = function(id) {
-      console.log($scope);
     }
-  }
 
+    // run app.js modules when angular is ready
+    angular.element(document).ready(function() {
+      APP.Help.filterFaq();
+    });
 
 })();

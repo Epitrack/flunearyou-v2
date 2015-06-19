@@ -13,12 +13,10 @@
 
     <section id="questions" class="questions">
       <ul>
-        <li id="faq-{{$index}}" class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-class="{active:accordion==1}" ng-repeat="faq in faqFeeds | orderBy:'-ordering':true" ng-click="showContent(id)">
-          <h4 class="questions-title js-plus" ng-click="accordion = 1">{{ faq.title }}
-          </h4>
-          <p class="questions-description" ng-show="accordion==1">
-            {{ faq.description }}
-          </p>
+        <li id="faq-{{$index}}" class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6"
+        ng-class="{active:accordion==1}" ng-repeat="faq in faqFeeds | orderBy:'-ordering'">
+          <h4 class="questions-title js-plus" ng-click="accordion = 1">{{ faq.ask }}</h4>
+          <p class="questions-description" ng-show="accordion==1"> {{ faq.answer }} </p>
         </li>
       </ul>
     </section>
