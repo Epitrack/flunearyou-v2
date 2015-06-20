@@ -19,10 +19,8 @@
   <ul>
     {{#each faq}}
       <li class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <h4 class="questions-title js-plus">
-          <a href="#answer-{{ id }}">{{ ask }}</a>
-        </h4>
-
+        <input class="faq-input" id="faq-input-{{ id }}" name="accordion-faq" type="radio" />
+        <label for="faq-input-{{ id }}" class="questions-title">{{ ask }}</label>
         <p id="answer-{{ id }}" class="questions-description">{{ answer }}</p>
       </li>
     {{/each}}

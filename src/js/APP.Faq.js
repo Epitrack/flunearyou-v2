@@ -7,7 +7,6 @@ APP.Faq = {
   setUp: function() {
     this.beforeRequest();
     this.filterFaq();
-    this.collapse();
   },
 
   beforeRequest: function(){
@@ -92,28 +91,6 @@ APP.Faq = {
 
   insertIntoStorage: function(faqFeeds) {
     localStorage.setItem('faq-storage', JSON.stringify(faqFeeds));
-  },
-
-  collapse: function() {
-    function close() {
-      $('.questions-title').removeClass('active');
-      $('.questions-description').slideUp(300).removeClass('open');
-    }
-
-    $('.questions-title').on('click', 'a', function(event) {
-      event.preventDefault();
-
-      var href = $(this).attr('href');
-
-      if ($(event.target).is('active')) {
-        close();
-      } else {
-        close();
-
-        $(this).addClass('active');
-        $(href).slideDown(300).addClass('open');
-      }
-    });
   },
 
   filterFaq: function() {
