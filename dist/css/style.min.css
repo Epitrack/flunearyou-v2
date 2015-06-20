@@ -7795,36 +7795,41 @@ a .icon-flip-vertical:before {
     width: 75%;
   }
 }
-/* line 16, ../../src/sass/_general.scss */
+/* line 13, ../../src/sass/_general.scss */
+.section {
+  min-height: 500px;
+}
+
+/* line 19, ../../src/sass/_general.scss */
 html {
   font-size: 62.5%;
   font-family: "OpenSansRegular";
 }
 
-/* line 22, ../../src/sass/_general.scss */
+/* line 25, ../../src/sass/_general.scss */
 body.bg-primary {
   background-color: #D6E0EF;
 }
-/* line 25, ../../src/sass/_general.scss */
+/* line 28, ../../src/sass/_general.scss */
 body.js-loading .loading {
   display: inline-block;
 }
 
-/* line 29, ../../src/sass/_general.scss */
+/* line 32, ../../src/sass/_general.scss */
 ::-moz-selection {
   background: #005272;
   color: #ECECEC;
   text-shadow: none;
 }
 
-/* line 35, ../../src/sass/_general.scss */
+/* line 38, ../../src/sass/_general.scss */
 ::selection {
   background: #005272;
   color: #ECECEC;
   text-shadow: none;
 }
 
-/* line 41, ../../src/sass/_general.scss */
+/* line 44, ../../src/sass/_general.scss */
 .title-section {
   color: #3F6F92;
   font-family: "OpenSansLight";
@@ -7833,7 +7838,7 @@ body.js-loading .loading {
   margin: 2rem 0;
 }
 
-/* line 53, ../../src/sass/_general.scss */
+/* line 56, ../../src/sass/_general.scss */
 .nav-primary {
   position: relative;
   min-height: 60px;
@@ -7845,12 +7850,12 @@ body.js-loading .loading {
   box-shadow: 1px 2px 2px #D6E0EF;
 }
 
-/* line 60, ../../src/sass/_general.scss */
+/* line 63, ../../src/sass/_general.scss */
 .nav-item {
   display: block;
 }
 
-/* line 64, ../../src/sass/_general.scss */
+/* line 67, ../../src/sass/_general.scss */
 .nav-link {
   display: block;
   position: relative;
@@ -7862,31 +7867,31 @@ body.js-loading .loading {
   color: #3F6F92;
 }
 
-/* line 80, ../../src/sass/_general.scss */
+/* line 83, ../../src/sass/_general.scss */
 .footer-primary {
   background-color: #D33041;
 }
 
-/* line 89, ../../src/sass/_general.scss */
+/* line 92, ../../src/sass/_general.scss */
 .scoopit-logo {
   margin-bottom: 20px;
   display: inline-block;
 }
 
-/* line 99, ../../src/sass/_general.scss */
+/* line 102, ../../src/sass/_general.scss */
 .questions {
   margin: 30px 0;
   min-height: 400px;
   display: inline-block;
 }
 
-/* line 105, ../../src/sass/_general.scss */
+/* line 108, ../../src/sass/_general.scss */
 .faq-item {
   display: inline-block;
   vertical-align: top;
   position: relative;
 }
-/* line 110, ../../src/sass/_general.scss */
+/* line 113, ../../src/sass/_general.scss */
 .faq-item::before {
   content: '';
   width: 30px;
@@ -7898,15 +7903,15 @@ body.js-loading .loading {
   background-image: url("../../src/img/icon_faq.png");
 }
 
-/* line 122, ../../src/sass/_general.scss */
+/* line 125, ../../src/sass/_general.scss */
 .faq-input {
   display: none;
 }
-/* line 125, ../../src/sass/_general.scss */
+/* line 128, ../../src/sass/_general.scss */
 .faq-input:checked ~ label {
   background-image: url("../../src/img/icon_contract_accordion.png");
 }
-/* line 129, ../../src/sass/_general.scss */
+/* line 132, ../../src/sass/_general.scss */
 .faq-input:checked ~ p {
   height: 100%;
   min-height: 80px;
@@ -7918,7 +7923,7 @@ body.js-loading .loading {
   transition: all 0.2s linear 0s;
 }
 
-/* line 137, ../../src/sass/_general.scss */
+/* line 140, ../../src/sass/_general.scss */
 .questions-title {
   color: #3F6F92;
   font-size: 1.8rem;
@@ -7934,14 +7939,14 @@ body.js-loading .loading {
   border-bottom: 1px solid #c4d2e8;
   background-image: url("../../src/img/icon_down_accordion.png");
 }
-/* line 152, ../../src/sass/_general.scss */
+/* line 155, ../../src/sass/_general.scss */
 .questions-title a {
   text-decoration: none;
   color: #3F6F92;
   display: block;
 }
 
-/* line 159, ../../src/sass/_general.scss */
+/* line 162, ../../src/sass/_general.scss */
 .questions-description {
   color: #757575;
   font-size: 1.4rem;
@@ -7967,7 +7972,7 @@ body.js-loading .loading {
   transition: all 0.2s linear 0s;
 }
 
-/* line 176, ../../src/sass/_general.scss */
+/* line 179, ../../src/sass/_general.scss */
 .search-term {
   color: #3F6F92;
   display: block;
@@ -7976,21 +7981,47 @@ body.js-loading .loading {
   margin: 20px 0;
 }
 
+/* line 192, ../../src/sass/_general.scss */
+.description {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #005272;
+  text-align: left;
+}
+
+/* line 200, ../../src/sass/_general.scss */
+.content.text {
+  padding: 25px 33px;
+  margin: 30px 0;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
 @media (min-width: 768px) {
-  /* line 191, ../../src/sass/_general.scss */
+  /* line 214, ../../src/sass/_general.scss */
   .title-section {
     font-size: 5rem;
     margin: 3rem 0;
   }
 
-  /* line 197, ../../src/sass/_general.scss */
+  /* line 220, ../../src/sass/_general.scss */
   .nav-item {
     display: inline-block;
   }
 
-  /* line 200, ../../src/sass/_general.scss */
+  /* line 223, ../../src/sass/_general.scss */
   .search-term {
     text-align: left;
     font-size: 3rem;
+  }
+
+  /* line 229, ../../src/sass/_general.scss */
+  .content.text {
+    padding: 50px 65px;
+    margin: 90px 0;
   }
 }

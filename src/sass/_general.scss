@@ -10,7 +10,10 @@
 .wrapper-section { @extend .row; }
 
 // container-fluid
-.section { @extend .container; }
+.section {
+  @extend .container;
+  min-height: 500px;
+}
 
 
 html {
@@ -183,6 +186,26 @@ body {
 
 
 //
+// Terms & Privacy
+//
+
+.description {
+  font-size: $fs-small;
+  line-height: $fs-medium;
+  color: $survey-text;
+  text-align: left;
+}
+
+.content {
+  &.text {
+    padding: 25px 33px;
+    margin: 30px 0;
+    background-color: $bg-secondary;
+    @include bdr(5px);
+  }
+}
+
+//
 // Media queries
 //
 
@@ -200,6 +223,13 @@ body {
   .search-term {
     text-align: left;
     font-size: ($fs-large)-.2;
+  }
+
+  .content {
+    &.text {
+      padding: 50px 65px;
+      margin: 90px 0;
+    }
   }
 }
 
