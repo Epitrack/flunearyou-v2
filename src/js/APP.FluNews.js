@@ -5,7 +5,7 @@
 var APP = APP || {};
 APP.FluNews = {
   setUp: function() {
-    this.beforeRequest();
+    // this.beforeRequest();
   },
 
   beforeRequest: function(){

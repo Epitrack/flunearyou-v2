@@ -5,7 +5,7 @@
 var APP = APP || {};
 APP.Faq = {
   setUp: function() {
-    this.beforeRequest();
+    // this.beforeRequest();
     this.filterFaq();
   },
 

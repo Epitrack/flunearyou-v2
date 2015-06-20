@@ -5,7 +5,7 @@
 var APP = APP || {};
 APP.Press = {
   setUp: function() {
-    this.beforeRequest();
+    // this.beforeRequest();
     this.trigger();
   },
 
