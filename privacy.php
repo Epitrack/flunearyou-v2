@@ -1,4 +1,4 @@
-<?php include 'php/includes/head.inc.php'; ?>
+<?php $class = 'bg-primary'; include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
 <section class="section" >
