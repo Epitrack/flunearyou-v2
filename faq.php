@@ -1,4 +1,4 @@
-<?php include 'php/includes/head.inc.php'; ?>
+<?php $class = 'bg-primary'; include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
 <section class="section">
@@ -11,16 +11,23 @@
       <span id="count-result" class="count-result">Search</span>
     </form>
 
-    <section id="questions" class="questions">
-      <ul>
-        <li class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6">
-          <h4 class="questions-title js-plus">How can I participate in Flu Near You?</h4>
-          <p class="questions-description">To participate in Flu Near You all you have to do is register. On your first visit to https://flunearyou.org, you will be asked to enter your gender, month and year of birth, zip code and email address. Once you confirm your registration, by clicking on a link in an email that will be sent to you, you can complete your first health survey. Every Monday after, you will receive an email with a link to your health survey where you report any symptoms you had in the past week. It is really fast and easy!</p>
-        </li>
-      </ul>
-    </section>
+    <section id="questions" class="col-xs-12 questions"></section>
   </div>
 </section>
+
+<script id="faq-template" type="text/x-handlebars-template">
+  <ul>
+    {{#each faq}}
+      <li class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <h4 class="questions-title js-plus">
+          <a href="#answer-{{ id }}">{{ ask }}</a>
+        </h4>
+
+        <p id="answer-{{ id }}" class="questions-description">{{ answer }}</p>
+      </li>
+    {{/each}}
+  </ul>
+</script>
 
 <?php include 'php/includes/joinUs.inc.php'; ?>
 <?php include 'php/includes/footer.inc.php'; ?>
