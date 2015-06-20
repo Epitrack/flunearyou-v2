@@ -1,7 +1,7 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section">
+<section class="section">
   <aside id="manage-account" class="manage-account">
     <h3 class="title-primary">Manage Your Account</h3>
     <button>Edit</button>

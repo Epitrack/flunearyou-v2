@@ -1,7 +1,7 @@
 <?php include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section">
+<section class="section">
   <aside class="report-card">
     <h3 class="title-primary">Report Card</h3>
 

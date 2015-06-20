@@ -1,7 +1,7 @@
-<?php include 'php/includes/head.inc.php'; ?>
+<?php $class = 'bg-primary'; include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="section" ng-controller="FaqCtrl">
+<section class="section">
   <h2 class="title-section">Frequently Asked Questions about Flu Near You</h2>
 
   <div class="row">
@@ -11,17 +11,21 @@
       <span id="count-result" class="count-result">Search</span>
     </form>
 
-    <section id="questions" class="questions">
-      <ul>
-        <li id="faq-{{$index}}" class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6"
-        ng-class="{active:accordion==1}" ng-repeat="faq in faqFeeds | orderBy:'-ordering'">
-          <h4 class="questions-title js-plus" ng-click="accordion = 1">{{ faq.ask }}</h4>
-          <p class="questions-description" ng-show="accordion==1"> {{ faq.answer }} </p>
-        </li>
-      </ul>
-    </section>
+    <section id="questions" class="col-xs-12 questions"></section>
   </div>
 </section>
 
-<div ng-include src="'includes/join-us.html'"></div>
+<script id="faq-template" type="text/x-handlebars-template">
+  <ul>
+    {{#each faq}}
+      <li class="faq-item col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <input class="faq-input" id="faq-input-{{ id }}" name="accordion-faq" type="radio" />
+        <label for="faq-input-{{ id }}" class="questions-title">{{ ask }}</label>
+        <p id="answer-{{ id }}" class="questions-description">{{ answer }}</p>
+      </li>
+    {{/each}}
+  </ul>
+</script>
+
+<?php include 'php/includes/joinUs.inc.php'; ?>
 <?php include 'php/includes/footer.inc.php'; ?>

@@ -1,10 +1,10 @@
-<?php include 'php/includes/head.inc.php'; ?>
+<?php $class = 'bg-primary'; include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section" ng-controller="PrivacyCtrl">
+<section class="section">
   <h2 class="title-section">Privacy Policy</h2>
 
-  <div class="content">
+  <div class="content text">
     <p class="description">
       We recognize the sensitive nature of Flu Near You questions, and take the
       security and confidentiality of your information seriously. As we describe

@@ -74,4 +74,14 @@
   </script>
 </head>
 
-<body ng-app="FnyApp">
+<body class="<?php echo $class ?>">
+
+<!-- Loading component -->
+<div class="loading">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+
+  <p>loading data</p>
+</div>

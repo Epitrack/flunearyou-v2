@@ -1,4 +1,4 @@
-<nav class="nav-primary">
+<nav id="nav-primary" class="nav-primary">
   <h1 class="logo-primary">
     <a href="/" title="Flu Near You">Flu Near You</a>
   </h1>

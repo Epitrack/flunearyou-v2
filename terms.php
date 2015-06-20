@@ -1,10 +1,10 @@
-<?php include 'php/includes/head.inc.php'; ?>
+<?php $class = 'bg-primary'; include 'php/includes/head.inc.php'; ?>
 <?php include 'php/includes/navbar.inc.php' ?>
 
-<section class="wrapper-section" ng-controller="TermsCtrl">
+<section class="section">
   <h2 class="title-section">Terms and Conditions</h2>
 
-  <div class="content">
+  <div class="content text">
     <p class="description">
       By sending a written contribution to Flu Near You, you grant a perpetual,
       royalty-free, unconditional license to Boston Children’s Hospital,

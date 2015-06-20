@@ -2,17 +2,31 @@
 //     General
 // —————————————————————————
 
+//
+// Grid
+//
+
+// row
+.wrapper-section { @extend .row; }
+
+// container-fluid
+.section {
+  @extend .container;
+  min-height: 500px;
+}
+
+
 html {
   font-size: $fs-root;
   font-family: $ff-primary;
 }
 
 body {
-  &[data-view="flu-news"] { background-color: $bg-primary; }
-  &[data-view="press"] { background-color: $bg-primary; }
-  &[data-view="faq"] { background-color: $bg-primary; }
-  &[data-view="terms"] { background-color: $bg-primary; }
-  &[data-view="privacy"] { background-color: $bg-primary; }
+  &.bg-primary { background-color: $bg-primary; }
+
+  &.js-loading {
+    .loading { display: inline-block; }
+  }
 }
 
 ::-moz-selection {
@@ -86,16 +100,15 @@ body {
 //
 
 .questions {
-  margin-top: 30px;
+  margin: 30px 0;
+  min-height: 400px;
   display: inline-block;
 }
 
 .faq-item {
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 20px;
   position: relative;
-  min-height: 100px;
 
   &::before {
     content: '';
@@ -106,6 +119,21 @@ body {
     top: 15px;
     background-repeat: no-repeat;
     @include path('icon_faq.png');
+  }
+}
+
+.faq-input {
+  display: none;
+
+  &:checked ~ label {
+    @include path('icon_contract_accordion.png');
+  }
+
+  &:checked ~ p {
+    height: 100%;
+    min-height: 80px;
+    opacity: 1;
+    @include transition(all, .2s, linear, 0s);
   }
 }
 
@@ -122,27 +150,30 @@ body {
   background-repeat: no-repeat;
   background-position: right center;
   border-bottom: 1px solid darken($bg-primary, 5%);
+  @include path('icon_down_accordion.png');
 
-  &.js-plus {
-    @include path('icon_down_accordion.png');
-  }
-
-  &.js-minus {
-    @include path('icon_contract_accordion.png');
+  a {
+    text-decoration: none;
+    color: $bg-links;
+    display: block;
   }
 }
 
 .questions-description {
-  min-height: 80px;
   color: $text-primary;
-  font-size: ($fs-small)+.2;
+  font-size: $fs-small;
   line-height: ($fs-medium)+.2;
-  padding: 20px 20px 10px 80px;
   background-repeat: no-repeat;
+  padding: 20px 20px 10px 80px;
   background-position: 10px 20px;
-  background-color: darken($bg-primary, 7%);
+  background-color: darken($bg-primary, 2%);
+  overflow: hidden;
+  height: 0px;
+  position: relative;
+  opacity: 0;
   @include bdr(0 0 6px 6px);
   @include path('icon_bubble_faq.png');
+  @include transition(all, .2s, linear, 0s);
 }
 
 .search-term {
@@ -153,6 +184,26 @@ body {
   margin: 20px 0;
 }
 
+
+//
+// Terms & Privacy
+//
+
+.description {
+  font-size: $fs-small;
+  line-height: $fs-medium;
+  color: $survey-text;
+  text-align: left;
+}
+
+.content {
+  &.text {
+    padding: 25px 33px;
+    margin: 30px 0;
+    background-color: $bg-secondary;
+    @include bdr(5px);
+  }
+}
 
 //
 // Media queries
@@ -172,6 +223,13 @@ body {
   .search-term {
     text-align: left;
     font-size: ($fs-large)-.2;
+  }
+
+  .content {
+    &.text {
+      padding: 50px 65px;
+      margin: 90px 0;
+    }
   }
 }
 
