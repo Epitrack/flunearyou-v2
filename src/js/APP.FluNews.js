@@ -4,5 +4,11 @@
 
 var APP = APP || {};
 APP.FluNews = {
-  setUp: function() {},
+  setUp: function() {
+    this.request();
+  },
+
+  request: function() {},
+
+  storage: function() {}
 }
