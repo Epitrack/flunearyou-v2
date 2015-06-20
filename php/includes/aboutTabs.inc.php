@@ -2,7 +2,7 @@
 
   <!-- Nav tabs -->
   <ul class="nav-tabs" role="tablist">
-    <li role="presentation" class="active">
+    <li role="presentation">
       <a href="#how-it-works" title="How it works">How it works</a>
     </li>
 

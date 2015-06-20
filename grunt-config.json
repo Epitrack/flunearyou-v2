@@ -52,10 +52,10 @@
       "files": {
         "dist/js/scripts.min.js": [
           "src/js/APP.Status.js"
+          ,"src/js/APP.About.js"
           ,"src/js/APP.Cache.js"
           ,"src/js/APP.Language.js"
           ,"src/js/APP.Scroll.js"
-          ,"src/js/APP.Contact.js"
           ,"src/js/APP.Modal.js"
           ,"src/js/APP.EasterEggs.js"
           ,"src/js/APP.Calendar.js"
