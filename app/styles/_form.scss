@@ -1,0 +1,70 @@
+// —————————————————————————
+//     Forms
+// —————————————————————————
+
+::-webkit-input-placeholder { color: $gray-primary; }
+
+:-moz-placeholder { color: $gray-primary; }
+
+::-moz-placeholder { color: $gray-primary; }
+
+:-ms-input-placeholder { color: $gray-primary; }
+
+%input-state {
+  outline: none;
+  border: 1px solid $link-primary;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 65px;
+}
+
+input,
+textarea {
+  font-family: $ff-primary;
+  @include transition(border, .2s, 0s, linear);
+
+  &:active { @extend %input-state; }
+  &:focus { @extend %input-state; }
+}
+
+.btn-primary {
+  text-transform: uppercase;
+  padding: 5px 20px;
+  text-align: center;
+  border: none;
+  margin: 0 auto;
+  color: $bg-clean;
+  background-color: $link-primary;
+  font-size: ($fs-extra-small)-.2;
+  font-family: $ff-primary;
+  display: block;
+  @include bdr(4px);
+  cursor: pointer;
+  @include transition(background, .2s, 0s, ease);
+
+  &:hover { background-color: $title-primary; }
+}
+
+.input-primary {
+  height: 40px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  outline: none;
+  border: 1px solid $border-primary;
+  font-size: ($fs-extra-small)-.2;
+  @include bdr(5px);
+
+  &.small { width: 30%; }
+  &.medium { width: 50%; }
+  &.big { width: 100%; }
+}
+
+
+
+// iPad
+@media (min-width: 768px) {}
+
+// Desktop
+@media (min-width: 992px) {}

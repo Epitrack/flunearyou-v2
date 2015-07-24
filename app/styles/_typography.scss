@@ -1,0 +1,45 @@
+// —————————————————————————
+//     Typography
+// —————————————————————————
+
+// Size
+$fs-root:           62.5%;
+$fs-extra-large:    5.0rem;
+$fs-large:          3.2rem;
+$fs-extra-medium:   2.5rem;
+$fs-medium:         1.8rem;
+$fs-small:          1.4rem;
+$fs-extra-small:    1.2rem;
+
+// Family
+$ff-general:        'OpenSansRegular';
+$ff-primary:        'OpenSansLight';
+$ff-title:          'OpenSansBold';
+$ff-project:        'sverige_script_decorated_deRg';
+
+
+// Style
+$f-italic:          italic;
+$f-normal:          normal;
+
+// Weight
+$fw-light:          300;
+$fw-semi-bold:      600;
+
+// Custom Font Face
+// @font-face {
+//   font-family: 'OpenSansLight';
+//   src: url('../../fonts/OpenSansLight.eot');
+//   src: url('../../fonts/OpenSansLight.eot') format('embedded-opentype'),
+//   url('../../fonts/OpenSansLight.woff2') format('woff2'),
+//   url('../../fonts/OpenSansLight.woff') format('woff'),
+//   url('../../fonts/OpenSansLight.ttf') format('truetype'),
+//   url('../../fonts/OpenSansLight.svg#OpenSansLight') format('svg');
+// }
+
+
+//
+// Icon
+//
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
