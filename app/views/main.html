@@ -1,35 +1,39 @@
 <!-- Map -->
 <section id="map" class="map">
   <!-- databox -->
-  <div ng-include src="'views/partials/databox.html'"></div>
+  <div class="container">
+    <div class="row">
+      <div ng-include src="'views/partials/databox.html'"></div>
 
-  <!-- form -->
-  <aside id="call-info" class="call-info">
-    <h2>Spread the word. <span>Not the flu.</span></h2>
+      <!-- form -->
+      <aside id="call-info" class="call-info col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-1">
+        <h2>Spread the word. <span>Not the flu.</span></h2>
 
-    <form action="#" id="form-call-info" class="form-call-info">
-      <input type="number" class="input-primary small" placeholder="Enter your City or Zipcode">
-      <input type="submit" class="btn btn-submit" value="Check for flu">
-    </form>
+        <form action="#" id="form-call-info" class="form-call-info">
+          <input type="number" class="input-primary small" placeholder="Enter your City or Zipcode">
+          <input type="submit" class="btn btn-submit" value="Check for flu">
+        </form>
 
-    <ul>
-      <li>Join thousands who are helping report flu.</li>
-      <li>Protect yourself, your family & your community.</li>
-      <li>Ready to report? Let's hear from you.</li>
-    </ul>
-  </aside>
+        <ul>
+          <li>Join thousands who are helping report flu.</li>
+          <li>Protect yourself, your family & your community.</li>
+          <li>Ready to report? Let's hear from you.</li>
+        </ul>
+      </aside>
 
-  <!-- map controls -->
-  <div class="map-controls">
-    <fieldset>
-      <input type="radio" name="user-contributed-flu" id="user-contributed-flu" checked="checked">
-      <label for="user-contributed-flu">User Contributed Flu Activity</label>
-    </fieldset>
+      <!-- map controls -->
+      <div class="map-controls">
+        <fieldset>
+          <input type="radio" name="user-contributed-flu" id="user-contributed-flu" checked="checked">
+          <label for="user-contributed-flu">User Contributed Flu Activity</label>
+        </fieldset>
 
-    <fieldset>
-      <input type="radio" name="cdc-flu-activity" id="cdc-flu-activity">
-      <label for="cdc-flu-activity">CDC Flu Activity</label>
-    </fieldset>
+        <fieldset>
+          <input type="radio" name="cdc-flu-activity" id="cdc-flu-activity">
+          <label for="cdc-flu-activity">CDC Flu Activity</label>
+        </fieldset>
+      </div>
+    </div>
   </div>
 
   <!-- map -->
@@ -37,13 +41,27 @@
 </section>
 
 <div class="learn-more">
-  <h3><span>Flu Near You</span> is a community health project for North America.</h3>
-  <a href="#" title="Learn more about how it works">Learn more about how it works</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3><span>Flu Near You</span> is a community health project for North America.</h3>
+        <a href="#" title="Learn more about how it works">Learn more about how it works</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Flu-news -->
-<div ng-include src="'views/partials/news.html'"></div>
-<a ng-href="#/flu-news" class="btn btn-secondary medium" title="Read More">Read More News</a>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div ng-include src="'views/partials/news.html'"></div>
+      <div class="link-to-read-more">
+        <a ng-href="#/flu-news" class="btn btn-read-news" title="Read More">Read More News</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Tabs -->
 <div ng-include src="'views/partials/about-tabs.html'"></div>

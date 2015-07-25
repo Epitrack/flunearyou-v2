@@ -7,34 +7,46 @@
 // ——————————————
 
 // Hexadecimals
-$dark:                       #1B2126;
-$dark-primary:               #6C7980;
-$dark-secondary:             #2E3B4E;
-$white:                      #FFFFFF;
-$white-primary:              #FAFAFA;
-$gray:                       #E0E0E0;
-$gray-primary:               #5F6A7D;
-$blue-primary:               #2586B7;
+$blue-primary:                    #3f6f92; // link menu
+$blue-lighten:                    #4FC4F6; // background-tab
+$blue-secondary:                  #428BCA; // news link
+$white-light:                     #D7E0EF; // background pages
+$blue-clean:                      #E7EFFA; // background clean
+$blue-dark:                       #3A5898; // background button
+$blue-other:                      #244C68; // some text
+$white-primary:                   #EEEEEE; // hover-menu | background-nav
+$red-primary:                     #D33041; // button
+$gray-primary:                    #C6C6C6; // border
+$brown-primary:                   #898989; // some text
+$brown-secondary:                 #595959; // some text
 
 // RGB
-$dark-rgb:                   rgb(27, 33, 38);
-$dark-primary-rgb:           rgb(108, 121, 128);
-$dark-secondary-rgb:         rgb(46, 59, 78);
-$white-rgb:                  rgb(255, 255, 255);
-$white-primary-rgb:          rgb(250, 250, 250);
-$gray-rgb:                   rgb(224, 224, 224);
-$gray-primary:               rgb(95, 106, 125);
-$blue-primary:               rgb(37, 134, 183);
+$blue-primary-rgb:                rgb(63,111,146);
+$blue-lighten-rgb:                rgb(79,196,246);
+$white-primary-rgb:               rgb(238,238,238);
+$red-primary-rgb:                 rgb(211,48,65);
+$gray-primary-rgb:                rgb(198,198,198);
+$white-light-rgb:                 rgb(215,224,239);
+$blue-clean-rgb:                  rgb(231,239,250);
+$blue-dark-rgb:                   rgb(58,88,152);
+$blue-other-rgb:                  rgb(36,76,104);
+$brown-primary-rgb:               rgb(137,137,137);
+$brown-secondary-rgb:             rgb(89,89,89);
+$blue-secondary-rgb:              rgb(66,139,202);
 
 // Names
-$bg-primary:                 $dark;
-$link-secondary:             $dark-primary;
-$title-primary:              $dark-secondary;
-$bg-clean:                   $white;
-$bg-featured:                $white-primary;
-$border-primary:             $gray;
-$text-primary:               $gray-primary;
-$link-primary:               $blue-primary;
+$link-menu:                        $blue-primary;
+$bg-tab:                           $blue-lighten;
+$bg-nav:                           $white-primary;
+$btn-primary:                      $red-primary;
+$border-primary:                   $gray-primary;
+$bg-primary:                       $white-light;
+$bg-secondary:                     $blue-clean;
+$bg-button:                        $blue-dark;
+$text-primary:                     $blue-other;
+$text-secondary:                   $brown-primary;
+$text-other:                       $brown-secondary;
+$news-link:                        $blue-secondary;
 
 
 // ——————————————————————
@@ -65,7 +77,7 @@ $link-primary:               $blue-primary;
 
 // Background Images
 @mixin path ($rulers...) {
-  background-image: url("../../src/images/"+$rulers);
+  background-image: url("../images/"+$rulers);
 }
 
 @mixin linear-gradient ($angle, $startColor, $endColor) {
@@ -117,11 +129,11 @@ $link-primary:               $blue-primary;
 
 // box-shadow
 @mixin bsd($x, $y, $blur, $color) {
-  -webkit-box-shadow: $x $y $color;
-     -moz-box-shadow: $x $y $color;
-      -ms-box-shadow: $x $y $color;
-       -o-box-shadow: $x $y $color;
-          box-shadow: $x $y $color;
+  -webkit-box-shadow: $x $y $blur $color;
+     -moz-box-shadow: $x $y $blur $color;
+      -ms-box-shadow: $x $y $blur $color;
+       -o-box-shadow: $x $y $blur $color;
+          box-shadow: $x $y $blur $color;
 }
 
 @mixin bsd-multiples($rulers...) {
@@ -225,6 +237,7 @@ $link-primary:               $blue-primary;
        -o-appearance: $value;
           appearance: $value;
 }
+
 
 //
 // Organizes

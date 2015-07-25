@@ -2,6 +2,18 @@
 //     General
 // —————————————————————————
 
+::-moz-selection {
+  // background: $bg-featured;
+  // color: $link-primary;
+  text-shadow: none;
+}
+
+::selection {
+  // background: $bg-featured;
+  // color: $link-primary;
+  text-shadow: none;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -14,59 +26,300 @@ body {
   font-size: $fs-root;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
+//
+// Header
+//
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+  background-color: $bg-nav !important;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
+.navbar {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 0;
+  @include bsd(0px, 1px, 2px, $link-menu);
+}
 
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+button {
+  &.navbar-toggle {
+    background-color: $link-menu;
+
+    &:hover,
+    &:focus {
+      background-color: $link-menu !important;
+      border-color: $white-light;
+    }
+
+    .icon-bar {
+      background-color: $white-light !important;
+    }
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+.nav-link {
+  color: $link-menu !important;
+  font-size: ($fs-normal)+.3;
+  font-family: $ff-bold;
+  text-decoration: none;
+  display: block;
+  @include transition(background, .2s, linear, 0s);
 
-  p + h4 {
-    margin-top: 28px;
+  &:hover { background-color: #FFFFFF !important; }
+}
+
+// map
+.map {
+  height: 530px;
+  position: relative;
+  display: block;
+  background: pink;
+}
+
+// databox
+.databox {
+  background-color: #FFFFFF;
+  position: relative;
+  z-index: 10;
+  padding: 0;
+  @include bdr(3px);
+  @include bsd(0, 0, 8px, rgba(0,0,0,0.3));
+}
+
+.databox-image {
+  position: relative;
+  max-width: 100%;
+
+  img { width: 100%; }
+
+  figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: ($fs-normal)-.2;
+    background-color: rgba(0,0,0,0.4);
   }
 }
 
+%text-primary {
+  color: $link-menu;
+  font-size: ($fs-normal)+.2;
+  font-family: $ff-bold;
+}
+
+.databox-title {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+  margin: 20px 0;
+  @extend %text-primary;
+}
+
+.choose-country {
+  display: inline-block;
+  outline: none;
+  border: none;
+  margin-left: 15px;
+  width: 50%;
+  vertical-align: middle;
+  background: transparent;
+  @include apr(none);
+  @extend %text-primary;
+}
+
+.week-reports {
+  text-align: center;
+  color: $link-menu;
+  font-family: $ff-regular;
+
+  span, h3 {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: ($fs-normal)+.4;
+  }
+
+  span {
+    margin-right: 5px;
+  }
+}
+
+.call-info {
+  background-color: orange;
+}
+
+// learn more
+.learn-more {
+  background-color: $link-menu;
+  text-align: center;
+  color: #FFFFFF;
+  min-height: 60px;
+  font-family: $ff-regular;
+  position: relative;
+  padding: 10px 0;
+  border-top: 1px solid #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+
+  span, a { font-family: $ff-bold; }
+
+  h3 {
+    margin: 0;
+    display: inline-block;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: #FFFFFF;
+    margin-left: 5px;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      right: -30px;
+      top: -3px;
+      background-size: 64%;
+      @include path('icon-go-map.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  }
+
+  h3, span, a {
+    line-height: 20px;
+    font-size: $fs-normal;
+  }
+}
+
+// titles
+.title-primary {
+  color: $link-menu;
+  font-family: $ff-light;
+  text-align: center;
+  margin: 20px 0;
+  font-size: ($fs-normal)+.8;
+}
+
+// buttons
+.btn {
+  border: 2px solid $link-menu;
+  color: $link-menu !important;
+  font-family: $ff-bold;
+  font-size: ($fs-normal)+.6;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  @include bdr(6px);
+  @include transition(background, .2s, linear, 0s);
+
+  &:hover { background-color: $bg-nav; }
+
+  &.btn-read-news {
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+.link-to-read-more {
+  text-align: center;
+}
+
+
+//
+// News
+//
+.news-item {
+  height: auto;
+  min-height: 450px;
+  position: relative;
+  margin-bottom: 20px;
+  background-color: #FFFFFF;
+  border: 1px solid $border-primary;
+  @include bsd(0, 0, 0, transparent);
+  @include transition(box-shadow, .2s, ease, 0s);
+
+  &:hover {
+    @include bsd(0, 0, 3px, $link-menu);
+  }
+
+  a {
+    display: block;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    position: relative;
+  }
+
+  figure {
+    height: 180px;
+    width: 100%;
+
+    img { max-width: 100%; }
+  }
+
+  time {
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    padding: ($fs-normal)-.2;
+    top: 15px;
+    left: 15px;
+    padding: ($fs-normal)-.2;
+    font-family: $ff-regular;
+    font-size: $fs-large;
+    text-align: center;
+
+    span {
+      font-size: ($fs-normal)+.6;
+      font-family: $ff-light;
+      display: block;
+    }
+  }
+}
+
+.news-text {
+  min-height: 280px;
+  position: relative;
+  padding: 0 ($fs-normal)+.8;
+
+  h3 {
+    font-size: ($fs-normal)+.6;
+  }
+
+  a {
+    color: $link-menu;
+    text-decoration: none;
+    display: block;
+  }
+
+  p {
+    font-size: ($fs-normal)+.2;
+    line-height: ($fs-normal)+.6;
+    color: $text-other;
+  }
+}
+
+.read-more {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  background: $link-menu;
+  font-size: $fs-normal;
+  font-family: $ff-bold;
+  padding: $fs-normal 0;
+  color: #FFFFFF;
+  @include transition(all, .2s, linear, 0s);
+
+  &:hover {
+    background: $white-primary;
+    color: $link-menu;
+  }
+}
+
+.scoopit-logo { text-align: center; }
 
 //
 // Media queries
@@ -74,27 +327,50 @@ body {
 
 // iPads
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+  .map { padding-top: 50px; }
+
+  .learn-more {
+    padding: 0;
+
+    h3, span, a {
+      line-height: 60px;
+      font-size: ($fs-normal)+.6;
+    }
+
+    a {
+      &::after {
+        top: 18px;
+        background-size: 100%;
+      }
+    }
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+  .title-primary { font-size: ($fs-normal)*4; }
+
+  .news-item {
+    figure { height: 150px; }
   }
 
-  /* Space out the masthead */
-  .header { margin-bottom: 30px; }
+  .scoopit-logo { text-align: left; }
 
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron { border-bottom: 0; }
+  .btn {
+    &.btn-read-news {
+      display: inline-block;
+      padding: 6px 65px;
+    }
+  }
 }
 
 // Desktops
 @media screen and (min-width: 992px) {}
 
 // Large Desktops
-@media screen and (min-width: 1200px) {}
+@media screen and (min-width: 1200px) {
+  .learn-more {
+    h3, span, a { font-size: ($fs-normal)*2; }
+  }
+
+  .news-item {
+    figure { height: 180px; }
+  }
+}
