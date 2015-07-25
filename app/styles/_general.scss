@@ -24,6 +24,11 @@
 body {
   padding: 0;
   font-size: $fs-root;
+  font-family: $ff-regular;
+}
+
+.nopadding {
+  padding: 0;
 }
 
 //
@@ -222,8 +227,174 @@ button {
   }
 }
 
-.link-to-read-more {
-  text-align: center;
+.link-to-read-more { text-align: center; }
+
+//
+// About
+//
+.wrapper-about-tabs {
+  background-color: $bg-primary;
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+.tabs-nav {
+  li {
+    padding: 0;
+  }
+
+  a {
+    color: #FFFFFF;
+    font-family: $ff-bold;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    line-height: 55px;
+    outline: none;
+    height: 55px;
+    font-size: ($fs-normal)+.6;
+    display: block;
+    cursor: pointer;
+    background-color: rgba(63, 111, 146, .3); // link-menu with alpha
+    @include bdr(6px 6px 0 0);
+    @include transition(all, .2s, linear, 0s);
+
+    &.active {
+      color: $link-menu;
+      border: 2px solid $link-menu;
+      background: transparent;
+
+      &::after {
+        content: '';
+        width: 100%;
+        height: 5px;
+        background: $bg-primary;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        z-index: 2;
+      }
+    }
+
+    &:hover {
+      color: $link-menu;
+    }
+  }
+}
+
+.tabs-container {
+  border: 2px solid $link-menu;
+  padding: 20px;
+  top: -2px;
+
+  .description {
+    color: $link-menu;
+    font-size: ($fs-normal)+.6;
+    font-family: $ff-light;
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+
+  h4 {
+    display: block;
+    position: relative;
+    font-family: $ff-light;
+    font-size: ($fs-normal)*2;
+    color: $btn-primary;
+    margin: 20px 0;
+
+    &.how-it-works {
+      text-align: center;
+
+      &::before {
+        content: '';
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        @include bdr(100%);
+        @include path('icon-help-banner-interna.png');
+      }
+    }
+
+    &.who-we-are {
+      color: $text-primary;
+    }
+  }
+
+  h5 {
+    color: $text-primary;
+    font-size: ($fs-normal)*2;
+  }
+
+  li {
+    color: $link-menu;
+    font-size: ($fs-normal)+.2;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 20px;
+      @include bdr(100%);
+      @include path('list-style-left-help.png');
+    }
+  }
+
+  figure {
+    text-align: center;
+    margin-bottom: 10px;
+
+    &.bg {
+      background-color: $bg-figure;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      @include scale(.9);
+
+      &.scale {
+        margin-left: -15px;
+        @include scale(.7);
+      }
+    }
+  }
+
+  figcaption {
+    background-color: $blue-lighten;
+    color: #FFFFFF;
+    font-size: ($fs-normal)+.2;
+    min-height: 80px;
+    padding: 20px 10px;
+  }
+
+  p {
+    color: $text-primary;
+    font-size: ($fs-normal)+.2;
+  }
+}
+
+.box-healthmap {
+  margin-left: -40px;
+}
+
+.box-skoll {
+  margin-left: -30px;
+}
+
+.box-boston {
+  margin-left: -50px;
 }
 
 
@@ -359,6 +530,88 @@ button {
       padding: 6px 65px;
     }
   }
+
+  .tabs-nav {
+    a {
+      font-size: ($fs-normal)+1.8;
+    }
+  }
+
+  .tabs-container {
+    @include bdr(10px);
+
+    h4 {
+      &.how-it-works { text-align: left; }
+      &.who-we-are {
+        text-align: left;
+        font-size: ($fs-normal)+1.8;
+      }
+    }
+
+    .wrapper-figure {
+      height: 380px;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 92px;
+        height: 34px;
+        display: inline-block;
+        position: absolute;
+        z-index: 1;
+        top: 40%;
+        right: -30px;
+        background-repeat: no-repeat;
+        @include path('arrow-right-help.png');
+      }
+
+      &:last-child {
+
+        &::before { visibility: hidden; }
+      }
+    }
+
+    figure {
+      margin-bottom: 0;
+
+      &.bg {
+        height: 280px;
+        width: 100%;
+        position: relative;
+      }
+
+      img {
+        &.scale {
+          margin-left: -24px;
+        }
+      }
+    }
+
+    figcaption {
+      height: 100px;
+      position: absolute;
+      bottom: -100px;
+    }
+
+    .box {
+      background-color: pink;
+    }
+  }
+
+  .box-healthmap,
+  .box-skoll,
+  .box-boston {
+    margin: 0;
+  }
+
+  .box-skoll {
+    margin-left: 80px;
+  }
+
+  .box-healthmap {
+    margin: 10px;
+  }
+
 }
 
 // Desktops
@@ -372,5 +625,10 @@ button {
 
   .news-item {
     figure { height: 180px; }
+  }
+
+  .box-healthmap,
+  .box-skoll {
+    margin: 0;
   }
 }
