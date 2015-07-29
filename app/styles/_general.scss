@@ -3,14 +3,14 @@
 // —————————————————————————
 
 ::-moz-selection {
-  // background: $bg-featured;
-  // color: $link-primary;
+  background: $link-menu;
+  color: $border-primary;
   text-shadow: none;
 }
 
 ::selection {
-  // background: $bg-featured;
-  // color: $link-primary;
+  background: $link-menu;
+  color: $border-primary;
   text-shadow: none;
 }
 
@@ -492,6 +492,46 @@ button {
 
 .scoopit-logo { text-align: center; }
 
+
+//
+// JoinUs
+//
+
+.wrapper-join-us {
+  padding-bottom: 20px;
+  background-repeat: no-repeat;
+  @include path('background-blue.png');
+}
+
+.join-us {
+  text-align: center;
+
+  h3 {
+    color: #FFFFFF;
+    font-family: $ff-light;
+    font-size: ($fs-normal)+.8;
+  }
+}
+
+.btn-secondary {
+  font-family: $ff-bold;
+  color: $link-menu;
+  outline: none;
+  background: #FFFFFF;
+  font-size: ($fs-medium)/2;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  @include transition(all, .2s, linear, 0s);
+  @include bdr(4px);
+  @include apr(none);
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+  }
+}
+
 //
 // Media queries
 //
@@ -610,6 +650,21 @@ button {
 
   .box-healthmap {
     margin: 10px;
+  }
+
+  .wrapper-join-us {
+    min-height: 90px;
+    padding-bottom: 0;
+
+    h3 {
+      font-size: ($fs-medium)+1;
+    }
+
+    .btn-secondary {
+      font-size: ($fs-large)/2;
+      padding: 5px 25px;
+      margin-top: 20px;
+    }
   }
 
 }
