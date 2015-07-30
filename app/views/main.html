@@ -52,15 +52,8 @@
 </div>
 
 <!-- Flu-news -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div ng-include src="'views/partials/news.html'"></div>
-      <div class="link-to-read-more">
-        <a ng-href="#/flu-news" class="btn btn-read-news" title="Read More">Read More News</a>
-      </div>
-    </div>
-  </div>
+<div class="wrapper-flu-news">
+  <div ng-include src="'views/partials/news.html'"></div>
 </div>
 
 <!-- Tabs -->
@@ -74,4 +67,6 @@
 </div>
 
 <!-- Complementary info -->
-<div ng-include src="'views/partials/complementary-info.html'"></div>
+<div class="wrapper-complementary-info">
+  <div ng-include src="'views/partials/complementary-info.html'"></div>
+</div>

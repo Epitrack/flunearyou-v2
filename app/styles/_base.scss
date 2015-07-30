@@ -246,14 +246,22 @@ $news-link:                        $blue-secondary;
 // Organizes
 //
 
-@mixin organizers ($type) {
+%social {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  width: 34px;
+  height: 34px;
+  background-color: #FFFFFF;
+  margin-right: 0;
   vertical-align: middle;
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 80%;
+  background-position: center center;
+  text-indent: -9999px;
+  @include bdr(100%);
+}
+
+@mixin social ($type) {
+  @extend %social;
 
   @if $type == 'facebook' {
     @include path('icon-facebook.svg');
@@ -261,7 +269,7 @@ $news-link:                        $blue-secondary;
   @else if $type == 'twitter' {
     @include path('icon-twitter.svg');
   }
-  @else if $type == 'github' {
-    @include path('icon-github.svg');
+  @else if $type == 'google-plus' {
+    @include path('icon-google-plus.svg');
   }
 }

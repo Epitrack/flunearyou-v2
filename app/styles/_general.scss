@@ -31,6 +31,11 @@ body {
   padding: 0;
 }
 
+#main {
+  display: block;
+  position: relative;
+}
+
 //
 // Header
 //
@@ -204,7 +209,8 @@ button {
   font-family: $ff-light;
   text-align: center;
   margin: 20px 0;
-  font-size: ($fs-normal)+.8;
+  font-size: ($fs-medium);
+  position: relative;
 }
 
 // buttons
@@ -426,8 +432,12 @@ button {
   figure {
     height: 180px;
     width: 100%;
+    overflow: hidden;
 
-    img { max-width: 100%; }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   time {
@@ -585,13 +595,52 @@ button {
 }
 
 
-
 //
 // Footer
 //
 .footer {
+  min-height: 80px;
+  padding: 10px 0;
+  position: relative;
   background-color: $btn-primary;
 }
+
+.nav-secondary {
+  text-align: center;
+
+  ul {
+    margin-bottom: 10px;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  a {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: ($fs-normal)+.4;
+
+    &.strong { font-family: $ff-bold; }
+
+    &.facebook {
+      @include social('facebook');
+    }
+
+    &.twitter {
+      @include social('twitter');
+    }
+
+    &.google-plus {
+      @include social('google-plus');
+    }
+  }
+
+}
+
+
 
 //
 // Media queries
@@ -682,6 +731,7 @@ button {
       }
 
       img {
+        @include scale(.6);
         &.scale {
           margin-left: -24px;
         }
@@ -747,6 +797,43 @@ button {
     }
   }
 
+  .nav-secondary {
+    ul {
+      margin-top: 20px;
+
+      &:first-child { text-align: left; }
+
+      &.social {
+        margin-top: 15px;
+        a {
+          background-color: #FFFFFF;
+          text-decoration: none;
+          @include transition(background, .2s, linear, 0s);
+
+          &:hover {
+            text-decoration: none;
+            background-color: $link-menu;
+          }
+        }
+      }
+
+      li {
+        position: relative;
+
+        &.mailto {
+          position: absolute;
+          right: -30px;
+        }
+      }
+
+      a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
 }
 
 // Desktops
@@ -765,5 +852,13 @@ button {
   .box-healthmap,
   .box-skoll {
     margin: 0;
+  }
+
+  .nav-secondary {
+    li {
+      &.mailto {
+        right: -90px !important;
+      }
+    }
   }
 }
