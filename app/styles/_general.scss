@@ -235,7 +235,7 @@ button {
 .wrapper-about-tabs {
   background-color: $bg-primary;
   margin-top: 20px;
-  padding: 20px 0;
+  padding: 40px 0;
 }
 
 .tabs-nav {
@@ -532,6 +532,67 @@ button {
   }
 }
 
+
+//
+// Complementary info
+//
+.complementary-info {
+  .get-flu-shot,
+  .public-health-near-you {
+    margin-bottom: 30px;
+  }
+
+  .description {
+    font-size: ($fs-normal)+.4;
+    color: $text-secondary;
+  }
+
+  .title-primary {
+    font-size: ($fs-medium)-.2;
+  }
+
+  .btn-primary {
+    margin-top: 10px;
+  }
+}
+
+.some-news {
+  li { margin-bottom: 5px; }
+
+  a {
+    display: inline-block;
+    color: $news-link;
+    position: relative;
+    text-decoration: none;
+    font-size: ($fs-normal)+.4;
+
+    &::before {
+      content: '';
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+      width: 8px;
+      height: 8px;
+      background-color: $btn-primary;
+      background-repeat: no-repeat;
+      @include bdr(100%);
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+
+//
+// Footer
+//
+.footer {
+  background-color: $btn-primary;
+}
+
 //
 // Media queries
 //
@@ -664,6 +725,25 @@ button {
       font-size: ($fs-large)/2;
       padding: 5px 25px;
       margin-top: 20px;
+    }
+  }
+
+  .complementary-info {
+    padding: 20px 0;
+
+    .get-flu-shot,
+    .public-health-near-you {
+      margin-bottom: 20px;
+    }
+
+    .title-primary {
+      text-align: left;
+      margin-bottom: 10px;
+      font-size: ($fs-medium)+.8;
+    }
+
+    .input-secondary {
+      margin-right: 10px;
     }
   }
 
