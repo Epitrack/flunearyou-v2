@@ -42,9 +42,13 @@ body {
 .header { background-color: $bg-nav !important; }
 
 .navbar {
-  text-align: center;
   margin-bottom: 0;
-  @include bsd(0px, 1px, 2px, $link-menu);
+}
+
+.nav {
+  &.navbar-nav {
+    text-align: center;
+  }
 }
 
 button {
@@ -61,6 +65,13 @@ button {
       background-color: $white-light !important;
     }
   }
+}
+
+// mobile
+.logo-secondary {
+  margin-top: 10px;
+
+  img { max-width: 100%; }
 }
 
 .nav-link {
@@ -680,6 +691,7 @@ button {
     h3, span, a {
       line-height: 60px;
       font-size: ($fs-normal)+.6;
+      margin-top: 0;
     }
 
     a {
@@ -691,6 +703,38 @@ button {
   }
 
   .title-primary { font-size: ($fs-normal)*4; }
+
+  // desktop & others
+  .logo-primary {
+    text-indent: -9999px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    @include path('logo.svg');
+    margin-top: 40px;
+
+    a {
+      display: block;
+      opacity: 0;
+    }
+  }
+
+  .nav {
+    &.navbar-nav { margin-top: 30px; }
+  }
+
+  .navbar {
+    &.navbar-default {
+      background-color: $bg-nav;
+      min-height: 110px;
+      @include bsd(1px, 2px, 2px, $link-menu);
+    }
+  }
+
+  .btn-call-to-action {
+    margin-top: 30px;
+    background: red;
+    height: 20px;
+  }
 
   .news-item {
     figure { height: 150px; }
@@ -773,19 +817,13 @@ button {
     }
   }
 
-  .box-healthmap,
-  .box-skoll,
-  .box-boston {
+  .box-healthmap, .box-skoll, .box-boston {
     margin: 0;
   }
 
-  .box-skoll {
-    margin-left: 80px;
-  }
+  .box-skoll { margin-left: 80px; }
 
-  .box-healthmap {
-    margin: 10px;
-  }
+  .box-healthmap { margin: 10px; }
 
   .wrapper-join-us {
     min-height: 90px;
