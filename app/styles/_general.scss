@@ -27,21 +27,19 @@ body {
   font-family: $ff-regular;
 }
 
-.nopadding {
-  padding: 0;
-}
+.nopadding { padding: 0; }
 
 #main {
   display: block;
   position: relative;
 }
 
+
 //
 // Header
 //
-.header {
-  background-color: $bg-nav !important;
-}
+
+.header { background-color: $bg-nav !important; }
 
 .navbar {
   text-align: center;
@@ -76,7 +74,13 @@ button {
   &:hover { background-color: #FFFFFF !important; }
 }
 
-// map
+// ===
+
+
+//
+// Map & databox
+//
+
 .map {
   height: 530px;
   position: relative;
@@ -84,7 +88,6 @@ button {
   background: pink;
 }
 
-// databox
 .databox {
   background-color: #FFFFFF;
   position: relative;
@@ -157,7 +160,13 @@ button {
   background-color: orange;
 }
 
-// learn more
+// ===
+
+
+//
+// Learn more
+//
+
 .learn-more {
   background-color: $link-menu;
   text-align: center;
@@ -203,7 +212,13 @@ button {
   }
 }
 
-// titles
+// ===
+
+
+//
+// Title & buttons
+//
+
 .title-primary {
   color: $link-menu;
   font-family: $ff-light;
@@ -213,7 +228,7 @@ button {
   position: relative;
 }
 
-// buttons
+
 .btn {
   border: 2px solid $link-menu;
   color: $link-menu !important;
@@ -235,9 +250,13 @@ button {
 
 .link-to-read-more { text-align: center; }
 
+// ===
+
+
 //
 // About
 //
+
 .wrapper-about-tabs {
   background-color: $bg-primary;
   margin-top: 20px;
@@ -391,17 +410,13 @@ button {
   }
 }
 
-.box-healthmap {
-  margin-left: -40px;
-}
+.box-healthmap { margin-left: -40px; }
 
-.box-skoll {
-  margin-left: -30px;
-}
+.box-skoll { margin-left: -30px; }
 
-.box-boston {
-  margin-left: -50px;
-}
+.box-boston { margin-left: -50px; }
+
+// ===
 
 
 //
@@ -502,6 +517,8 @@ button {
 
 .scoopit-logo { text-align: center; }
 
+// ===
+
 
 //
 // JoinUs
@@ -542,10 +559,13 @@ button {
   }
 }
 
+// ===
+
 
 //
 // Complementary info
 //
+
 .complementary-info {
   .get-flu-shot,
   .public-health-near-you {
@@ -594,10 +614,13 @@ button {
   }
 }
 
+// ===
+
 
 //
 // Footer
 //
+
 .footer {
   min-height: 80px;
   padding: 10px 0;
@@ -640,6 +663,7 @@ button {
 
 }
 
+// ===
 
 
 //
@@ -833,7 +857,6 @@ button {
       }
     }
   }
-
 }
 
 // Desktops
