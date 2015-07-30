@@ -707,10 +707,10 @@ button {
   // desktop & others
   .logo-primary {
     text-indent: -9999px;
+    margin: 40px 0 0 -15px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     @include path('logo.svg');
-    margin-top: 40px;
 
     a {
       display: block;
@@ -913,6 +913,10 @@ button {
   .box-healthmap,
   .box-skoll {
     margin: 0;
+  }
+
+  .logo-primary {
+    background-position: -30px;
   }
 
   .nav-secondary {
