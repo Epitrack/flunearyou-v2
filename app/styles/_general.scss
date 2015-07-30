@@ -28,12 +28,34 @@ body {
 }
 
 .nopadding { padding: 0; }
+.no-margin { margin: 0; }
 
 #main {
   display: block;
   position: relative;
 }
 
+.wrapper-inside {
+  min-height: 800px;
+
+  .title-primary {
+    margin: 40px 0;
+  }
+
+  &.bg {
+    background-color: darken($bg-figure, 2%);
+  }
+
+  .clean {
+    background: #FFFFFF;
+    @include bdr(5px);
+  }
+
+  .description {
+    padding: 20px 25px;
+    font-size: ($fs-normal)+.2;
+  }
+}
 
 //
 // Header
@@ -539,6 +561,8 @@ button {
   padding-bottom: 20px;
   background-repeat: no-repeat;
   @include path('background-blue.png');
+
+  &.m-top { margin-top: 60px; }
 }
 
 .join-us {
@@ -678,6 +702,19 @@ button {
 
 
 //
+// Privacy
+//
+
+.wrapper-privacy {
+  padding-bottom: 40px;
+
+  .description { padding: 20px 25px !important; }
+}
+
+// ===
+
+
+//
 // Media queries
 //
 
@@ -699,6 +736,15 @@ button {
         top: 18px;
         background-size: 100%;
       }
+    }
+  }
+
+  .wrapper-inside {
+    min-height: 600px;
+
+    .description {
+      color: $text-primary;
+      padding: 50px 65px;
     }
   }
 
@@ -895,6 +941,10 @@ button {
       }
     }
   }
+
+  .wrapper-privacy {
+    padding-bottom: 0;
+  }
 }
 
 // Desktops
@@ -926,4 +976,5 @@ button {
       }
     }
   }
+
 }
