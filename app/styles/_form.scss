@@ -2,22 +2,36 @@
 //     Forms
 // —————————————————————————
 
-// ::-webkit-input-placeholder { color: $gray-primary; }
+::-webkit-input-placeholder { color: $text-other; }
 
-// :-moz-placeholder { color: $gray-primary; }
+:-moz-placeholder { color: $text-other; }
 
-// ::-moz-placeholder { color: $gray-primary; }
+::-moz-placeholder { color: $text-other; }
 
-// :-ms-input-placeholder { color: $gray-primary; }
+:-ms-input-placeholder { color: $text-other; }
 
 %input-state {
   // outline: none;
   // border: 1px solid $link-primary;
 }
 
+%focus {
+  color: #FFFFFF;
+  background-color: $link-menu;
+}
+
 textarea {
   // resize: vertical;
   // min-height: 65px;
+}
+
+input {
+  &[type="number"],
+  &[type="text"],
+  &[type="email"] {
+    &:active { @extend %focus; }
+    &:focus {  @extend %focus; }
+  }
 }
 
 input,
@@ -69,6 +83,7 @@ textarea {
   &.small { width: 30%; }
   &.medium { width: 50%; }
   &.large { width: 100%; }
+
 }
 
 

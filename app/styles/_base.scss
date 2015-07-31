@@ -61,26 +61,13 @@ $news-link:                        $blue-secondary;
 // Gradient
 //
 
-// Progress Bar
-@mixin progressBar($background) {
-  &::-webkit-progress-bar  {
-    background-color: transparent;
-  }
-
-  &::-webkit-progress-value {
-    background-color: $background;
-    @include transition(all, .2s, 0s, linear);
-  }
-
-  &::-moz-progress-bar {
-    background-color: $background;
-    @include transition(all, .2s, 0s, linear);
-  }
-}
-
 // Background Images
 @mixin path ($rulers...) {
   background-image: url("../images/"+$rulers);
+}
+
+@mixin rgba ($color, $alpha) {
+  background-color: rgba($color, $alpha);
 }
 
 @mixin linear-gradient ($angle, $startColor, $endColor) {
