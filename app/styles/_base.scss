@@ -188,12 +188,12 @@ $news-link:                        $blue-secondary;
 }
 
 // skew
-@mixin skew($value) {
-  -webkit-transform: skew($value);
-     -moz-transform: skew($value);
-      -ms-transform: skew($value);
-       -o-transform: skew($value);
-          transform: skew($value);
+@mixin skew($rulers...) {
+  -webkit-transform: skew($rulers);
+     -moz-transform: skew($rulers);
+      -ms-transform: skew($rulers);
+       -o-transform: skew($rulers);
+          transform: skew($rulers);
 }
 
 // rotate

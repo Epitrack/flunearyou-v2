@@ -559,7 +559,7 @@ button {
 
 .wrapper-join-us {
   padding-bottom: 20px;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   @include path('background-blue.png');
 
   &.m-top { margin-top: 60px; }
@@ -776,10 +776,66 @@ button {
     }
   }
 
-  .btn-call-to-action {
-    margin-top: 30px;
-    background: red;
-    height: 20px;
+  .btn-cta {
+    position: absolute;
+    background-color: transparent;
+    text-align: center;
+    height: 170px;
+    z-index: 9;
+    right: 0;
+    top: -50px;
+    border: none;
+    outline: none;
+    @include apr(none);
+    @include transition(top, .2s, linear, 0s);
+
+    &:hover {
+      top: -40px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 51%;
+      background: $btn-primary;
+      @include skew(0deg, 10deg);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      background: $btn-primary;
+      @include skew(0deg, -10deg);
+    }
+
+    span {
+      text-transform: uppercase;
+      color: #FFFFFF;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+
+      &.btn-title { font-size: ($fs-normal)+.2; }
+
+      &.btn-subtitle {
+        font-family: $ff-bold;
+        display: block;
+        margin-top: 10px;
+        font-size: ($fs-normal)+2;
+      }
+    }
+  }
+
+  .navbar-collapse {
+    position: relative;
   }
 
   .news-item {
