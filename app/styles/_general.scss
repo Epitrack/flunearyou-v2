@@ -115,17 +115,30 @@ button {
 //
 
 .map {
-  height: 530px;
+  min-height: 530px;
+  max-height: 600px;
+  // height: 530px;
   position: relative;
   display: block;
   background: pink;
 }
 
+.map-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  z-index: 1;
+}
+
 .databox {
+  margin-top: 20px;
   background-color: #FFFFFF;
   position: relative;
-  z-index: 10;
-  padding: 0;
+  z-index: 2;
+  padding: 10px 0 20px 0;
   @include bdr(3px);
   @include bsd(0, 0, 8px, rgba(0,0,0,0.3));
 }
@@ -157,17 +170,15 @@ button {
   display: inline-block;
   vertical-align: middle;
   padding-left: 10px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   @extend %text-primary;
 }
 
 .choose-country {
-  display: inline-block;
   outline: none;
   border: none;
-  margin-left: 15px;
-  width: 50%;
-  vertical-align: middle;
+  margin: 0 0 10px 15px;
+  width: 46%;
   background: transparent;
   @include apr(none);
   @extend %text-primary;
@@ -187,6 +198,79 @@ button {
   span {
     margin-right: 5px;
   }
+}
+
+.legend-item {
+
+  &.more-info {
+    color: #FFFFFF;
+    font-size: ($fs-normal)+.1;
+    text-align: left;
+    background-color: $btn-primary;
+    padding-top: 10px;
+    height: 0px;
+    opacity: 0;
+    margin-top: -10px;
+    @include transition(all, .2s, linear, 0s);
+
+    &.js-active {
+      height: auto;
+      opacity: 1;
+      margin-top: auto;
+    }
+  }
+
+  span {
+    height: 44px;
+    border: 1px solid $border-primary;
+    color: $link-menu;
+    position: relative;
+  }
+}
+
+.legend-value {
+  font-family: $ff-bold;
+  text-align: right;
+  font-size: ($fs-normal)+.2;
+  padding: 13px 3px 0 0;
+  background-repeat: no-repeat;
+  background-position: 5px 15px;
+
+  &.js-red {
+    @include path('icon-symptoms-1.png');
+  }
+
+  &.js-yellow {
+    @include path('icon-symptoms-3.png');
+  }
+
+  &.js-blue {
+    @include path('icon-symptoms-4.png');
+  }
+}
+
+.legend-description {
+  text-align: left;
+  padding: 12px 0 0 10px;
+  font-size: ($fs-normal);
+
+  &.arrow {
+    background-position: 95%;
+    background-repeat: no-repeat;
+    @include transition(background, .2s, linear, 0s);
+
+    &.js-up {
+      @include path('arrow-up.png');
+    }
+
+    &.js-down {
+      @include path('arrow-down.png');
+    }
+  }
+}
+
+.open-more-info {
+  cursor: pointer;
 }
 
 .call-info {
@@ -783,15 +867,13 @@ button {
     height: 170px;
     z-index: 9;
     right: 0;
-    top: -50px;
+    top: -47px;
     border: none;
     outline: none;
     @include apr(none);
     @include transition(top, .2s, linear, 0s);
 
-    &:hover {
-      top: -40px;
-    }
+    &:hover { top: -40px; }
 
     &::before {
       content: '';
@@ -998,8 +1080,13 @@ button {
     }
   }
 
-  .wrapper-privacy {
-    padding-bottom: 0;
+  .wrapper-privacy { padding-bottom: 0; }
+
+  .databox { margin-top: 0; }
+
+  .legend-value {
+    padding: 10px 5px 0 0;
+    font-size: ($fs-normal)+.4;
   }
 }
 
