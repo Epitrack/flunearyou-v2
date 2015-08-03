@@ -1,17 +1,20 @@
-// reset
+// Reset
 @import '_reset';
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
-// typography styles
+// Typography styles
 @import '_typography';
 
-// base styles
+// Base styles
 @import '_base';
 
-// form styles
+// Form styles
 @import '_form';
 
-// general styles
+// Modal | components
+@import '_modal';
+
+// General styles
 @import '_general';

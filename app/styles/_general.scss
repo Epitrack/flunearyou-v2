@@ -122,6 +122,7 @@ button {
   font-family: $ff-bold;
   text-decoration: none;
   display: block;
+  cursor: pointer;
   @include transition(background, .2s, linear, 0s);
 
   &:hover, &.js-active {
