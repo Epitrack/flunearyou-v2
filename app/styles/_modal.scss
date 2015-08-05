@@ -1,1 +1,222 @@
-.modal {}
+.modal-content {
+  background-color: $white-light;
+}
+
+.modal-header {
+  border: none;
+  padding-bottom: 0;
+}
+
+.modal-title {
+  color: $text-other;
+  font-size: $fs-medium;
+  text-align: center;
+
+  span {
+    color: $link-menu;
+  }
+}
+
+.modal-body {
+  li {
+    @extend %li-pattern;
+
+    &.modal-list {
+      font-size: $fs-normal;
+      margin: auto auto 0 15px;
+      list-style-type: disc;
+      &::before { display: none; }
+    }
+  }
+
+  h5 {
+    color: $link-menu;
+    font-size: ($fs-normal)+.2;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.btn-wrapper {
+  text-align: center;
+
+  button {
+    @include apr(none);
+    @include bdr(5px);
+    width: 80%;
+    font-size: $fs-normal;
+    font-weight: bold;
+    padding: 15px 40px;
+    background-position: 0 0;
+    background-size: 40%;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+    text-align: center;
+    text-indent: 30px;
+    @include transition(background, .2s, linear, 0s);
+
+    &:hover {
+      background-size: 33%;
+    }
+
+    &.btn-facebook {
+      background-color: $bg-button;
+      color: #FFFFFF;
+      @include path('icon-facebook-button.svg');
+    }
+
+    &.btn-google-plus {
+      background-color: #FFFFFF;
+      color: $btn-primary;
+      @include path('icon-google-plus.svg');
+    }
+  }
+}
+
+.never-post {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: $fs-normal;
+  position: relative;
+  color: $link-menu;
+  margin: 10px 0;
+
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    left: -5px;
+    @include path('icon-lock.svg');
+    background-repeat: no-repeat;
+    background-size: 16px;
+  }
+}
+
+.or {
+  @extend .never-post;
+  margin: 0;
+
+  &::before {
+    width: 30%;
+    height: 1px;
+    background-color: #FFFFFF;
+    vertical-align: middle;
+    background-image: none;
+    left: -20px;
+  }
+
+  &::after {
+    content: '';
+    width: 30%;
+    height: 1px;
+    background-color: #FFFFFF;
+    vertical-align: middle;
+    background-image: none;
+    display: inline-block;
+    position: relative;
+    right: -15px;
+  }
+}
+
+.register-form {
+  color: $link-menu;
+  display: inline-block;
+  font-weight: bold;
+  padding: 2px;
+  text-decoration: underline;
+  text-align: center;
+  font-size: $fs-normal;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.modal-footer {
+  text-align: center;
+  border: none;
+  color: $text-other;
+  font-size: ($fs-normal)+.6;
+  padding-top: 15px;
+
+  a {
+    font-weight: 900;
+    color: $btn-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.wrapper-terms-privacy {
+  @extend .modal-footer;
+  margin-top: 10px;
+  font-size: $fs-normal;
+  padding: 0;
+}
+
+
+// iPad
+@media (min-width: 768px) {
+  .modal-title {
+    font-size: ($fs-medium)+1; // 4rem
+  }
+
+  .modal-body {
+    padding-bottom: 0;
+
+    li {
+      &.modal-list {
+        font-size: ($fs-medium)-1; // 2rem
+        margin: auto auto 0 25px;
+      }
+    }
+
+    h5 {
+      font-size: ($fs-normal)*2;
+    }
+  }
+
+  .btn-wrapper {
+    margin-bottom: 20px;
+
+    button {
+      padding: 15px 0;
+      width: 60%;
+      margin-bottom: 0;
+
+      &.btn-facebook {
+        margin-left: 110px;
+      }
+
+      &.btn-google-plus {
+        text-indent: 50px;
+        margin-left: -110px;
+      }
+    }
+  }
+
+  .never-post {
+    margin: 0;
+  }
+
+  .modal-footer {
+    padding-top: 0;
+  }
+
+  .or {
+    &::before, &::after { width: 15%; }
+  }
+
+
+}
+
+// Desktop
+@media (min-width: 992px) {}

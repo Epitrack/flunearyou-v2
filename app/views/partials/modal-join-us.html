@@ -11,19 +11,21 @@
 
       <div class="modal-body modal-join-us-body">
         <div class="container-fluid">
-          <ul>
-            <li>Join thousands who are helping report flu.</li>
-            <li>Protect yourself, your family & your community.</li>
-          </ul>
+          <div class="row">
+            <ul>
+              <li class="modal-list">Join thousands who are helping report flu.</li>
+              <li class="modal-list">Protect yourself, your family & your community.</li>
+            </ul>
 
-          <h5>Ready to report? Let's hear from you.</h5>
+            <h5>Ready to report? Let's hear from you.</h5>
+          </div>
 
           <div class="row">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6 btn-wrapper">
               <button class="btn-facebook">Facebook</button>
             </div>
 
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-6 btn-wrapper">
               <button class="btn-google-plus">Google Plus</button>
             </div>
           </div>
@@ -36,44 +38,58 @@
           </div>
 
           <form action="#" name="register-form" id="register-form" class="row register-form">
-            <fieldset class="form-group">
+            <fieldset class="form-group col-sm-6">
               <label for="register-email">Email address</label>
               <input id="register-email" type="email" class="input-primary">
             </fieldset>
 
-            <fieldset class="form-group">
+            <fieldset class="form-group col-sm-6">
               <label for="register-password">Password</label>
               <input id="register-password" type="password" class="input-primary">
             </fieldset>
 
-            <fieldset class="form-group">
+            <fieldset class="form-group col-sm-6">
               <label for="register-year">When were you born?</label>
               <small>You must be at least 13 years old</small>
 
-              <select name="register-choose-month" id="register-choose-month" class="register-choose-month">
+              <select name="register-choose-month" id="register-choose-month" class="col-xs-12 col-sm-5 register-choose-month select-primary">
+                <option value="Month" disabled selected>Month</option>
                 <option value="Month_1">Month_1</option>
                 <option value="Month_2">Month_2</option>
                 <option value="Month_3">Month_3</option>
               </select>
 
-              <input id="register-year" type="password" class="input-primary">
+              <input id="register-year" type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
             </fieldset>
 
-            <fieldset class="form-group">
+            <fieldset class="form-group col-sm-6">
               <label for="register-zip-code">Zip code</label>
               <small>You must be a resident of the U.S. or Canada</small>
               <input id="register-zip-code" type="tel" class="input-primary">
             </fieldset>
 
-            <fieldset class="form-group">
+            <fieldset class="form-group col-sm-12">
               <label for="register-gender">Gender:</label>
-              <input type="radio" name="register-gender" value="" id="" class="input-primary">
-              <input type="radio" name="register-gender" value="" id="" class="input-primary">
+
+              <div class="col-xs-5 wrapper-small full">
+                <input type="radio" name="register-gender" value="M" id="male" class="radio-primary">
+                <label for="male" class="label-sexo">Male</label>
+                <span class="check round"><span class="inside"></span></span>
+              </div>
+
+              <div class="col-xs-6 col-xs-offset-1 wrapper-small full">
+                <input type="radio" name="register-gender" value="F" id="female" class="radio-primary">
+                <label for="female" class="label-sexo">Female</label>
+                <span class="check round"><span class="inside"></span></span>
+              </div>
             </fieldset>
 
-            <p>By signing up, I agree to Flu Near You <a ng-href="#/terms" title="Terms and Conditions" data-dismiss="modal" class="link-close-modal">Terms and Conditions</a> and <a ng-href="#/privacy" title="Privacy Policy" data-dismiss="modal" class="link-close-modal">Privacy Policy</a>.</p>
+            <div class="col-sm-12 wrapper-terms-privacy">
+              <p>By signing up, I agree to Flu Near You <a ng-href="#/terms" title="Terms and Conditions" data-dismiss="modal" class="link-close-modal">Terms and Conditions</a> and <a ng-href="#/privacy" title="Privacy Policy" data-dismiss="modal" class="link-close-modal">Privacy Policy</a>.</p>
 
-            <button type="submit" class="btn btn-secondary">Get started</button>
+              <button type="submit" class="btn-primary">Get started</button>
+            </div>
+
           </form>
         </div>
       </div>

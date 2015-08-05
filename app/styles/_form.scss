@@ -43,6 +43,23 @@ textarea {
   // &:focus { @extend %input-state; }
 }
 
+select {
+  &.select-primary {
+    display: block;
+    margin: 10px 0;
+    height: 35px;
+    border: none;
+    outline: none;
+    @include apr(none);
+    @include bdr(0);
+    @include path('icon-arrow.svg');
+    background-color: #FFFFFF;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 90% 12px;
+  }
+}
+
 .btn-primary {
   background-color: $btn-primary;
   color: #FFFFFF;
@@ -58,17 +75,17 @@ textarea {
 }
 
 .input-primary {
-  // height: 40px;
-  // padding: 5px 10px;
-  // margin-bottom: 10px;
-  // outline: none;
-  // border: 1px solid $border-primary;
-  // font-size: ($fs-extra-small)-.2;
-  // @include bdr(5px);
+  border: none;
+  width: 100%;
+  font-size: ($fs-normal)+.4;
+  padding: 5px 10px;
+  color: $link-menu;
+  border: none;
+  margin-bottom: 10px;
 
-  // &.small { width: 30%; }
-  // &.medium { width: 50%; }
-  // &.large { width: 100%; }
+  &.small { width: 30%; }
+  &.medium { width: 50%; }
+  &.large { width: 100%; }
 }
 
 .input-secondary {
@@ -83,7 +100,86 @@ textarea {
   &.small { width: 30%; }
   &.medium { width: 50%; }
   &.large { width: 100%; }
+}
 
+.wrapper-small {
+  cursor: pointer;
+  position: relative;
+  // background-color: red;
+  text-align: center;
+  color: $link-menu;
+
+  input {
+    @include apr(none);
+    opacity: 0;
+    font-size: ($fs-normal)+.4;
+    padding: 7px 10px;
+    position: absolute;
+    z-index: 1;
+    left: 10px;
+
+    &:hover {
+     ~ .inside {
+        background-color: pink;
+      }
+    }
+  }
+
+  label {
+    text-align: right !important;
+  }
+
+  span {
+    &.check {
+      display: inline-block;
+      border: 2px solid $link-menu;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      @include bdr(3px);
+      left: 5px;
+      top: 0;
+
+      .inside {
+        background-color: transparent;
+        @include transition(background, .2s, ease-out, 0s);
+      }
+    }
+
+    &.round {
+      @include bdr(100%);
+    }
+  }
+}
+
+
+//
+// Register form | Modal
+//
+
+.register-form {
+  label {
+    display: block;
+    position: relative;
+    font-size: ($fs-normal)+.4;
+    color: $link-menu;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .form-group {
+    padding: 0;
+    margin-bottom: 5px;
+  }
+
+  small {
+    font-size: ($fs-normal)-.2;
+    font-weight: lighter;
+    text-align: left;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
 }
 
 
@@ -91,6 +187,31 @@ textarea {
 @media (min-width: 768px) {
   .input-secondary {
     &.large { width: 60%; }
+  }
+
+  .register-form {
+    .form-group {
+      padding: 0 15px;
+    }
+
+    small {
+      margin-top: -7px;
+      font-size: ($fs-normal)-.4;
+    }
+
+    select {
+      margin-top: 0;
+    }
+  }
+
+  .register-year {
+    width: 40%;
+    margin-left: 40px;
+    height: 35px;
+  }
+
+  .btn-primary {
+    padding: 10px 30px;
   }
 }
 
