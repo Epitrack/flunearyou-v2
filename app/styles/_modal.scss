@@ -123,6 +123,12 @@
     position: relative;
     right: -15px;
   }
+
+  &.or-login {
+    &::after, &::before {
+      width: 20%;
+    }
+  }
 }
 
 .register-form {
@@ -162,11 +168,26 @@
   padding: 0;
 }
 
+.login-forgot-pass {
+  display: block;
+  margin-bottom: 20px;
+  color: $btn-primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 
 // iPad
 @media (min-width: 768px) {
   .modal-title {
     font-size: ($fs-medium)+1; // 4rem
+
+    &.login-title {
+      font-size: ($fs-medium);
+    }
   }
 
   .modal-body {
@@ -215,6 +236,11 @@
     &::before, &::after { width: 15%; }
   }
 
+  .login-forgot-pass {
+    font-size: ($fs-normal)+.2;
+    text-align: left;
+    margin-left: 15px;
+  }
 
 }
 

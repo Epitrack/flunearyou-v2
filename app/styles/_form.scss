@@ -15,23 +15,9 @@
   // border: 1px solid $link-primary;
 }
 
-%focus {
-  color: #FFFFFF;
-  background-color: $link-menu;
-}
-
 textarea {
   // resize: vertical;
   // min-height: 65px;
-}
-
-input {
-  &[type="number"],
-  &[type="text"],
-  &[type="email"] {
-    &:active { @extend %focus; }
-    &:focus {  @extend %focus; }
-  }
 }
 
 input,
@@ -181,6 +167,7 @@ select {
     margin-bottom: 10px;
   }
 }
+
 
 
 // iPad
