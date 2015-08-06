@@ -12,6 +12,10 @@
   font-size: $fs-medium;
   text-align: center;
 
+  &.thanks-title {
+    font-size: ($fs-medium)-1;
+  }
+
   span {
     color: $link-menu;
   }
@@ -44,6 +48,7 @@
   button {
     @include apr(none);
     @include bdr(5px);
+    text-decoration: none;
     width: 80%;
     font-size: $fs-normal;
     font-weight: bold;
@@ -62,6 +67,10 @@
       background-size: 33%;
     }
 
+    &.full {
+      text-align: right;
+    }
+
     &.btn-facebook {
       background-color: $bg-button;
       color: #FFFFFF;
@@ -72,6 +81,12 @@
       background-color: #FFFFFF;
       color: $btn-primary;
       @include path('icon-google-plus.svg');
+    }
+
+    &.btn-twitter {
+      background-color: #5FA9DD;
+      color: #FFFFFF;
+      @include path('icon-twitter-share.svg');
     }
   }
 }
@@ -179,6 +194,42 @@
   }
 }
 
+.modal-thanks-body {
+  button {
+    text-align: right;
+  }
+}
+
+.no-thanks {
+  color: $link-menu !important;
+}
+
+.share-friends-title {
+  display: block;
+  color: $link-menu;
+  text-align: center;
+  font-size: ($fs-normal)+.4;
+}
+
+.wrapper-report-week {
+  color: $link-menu;
+  font-family: $ff-bold;
+  text-align: center;
+  font-size: ($fs-normal)+.4;
+  margin: 0 0 20px 0;
+}
+
+.emoticon {
+  display: block;
+  text-align: center;
+  height: 65px;
+  margin: 0;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: 20%;
+  @include path('icon-thanks.gif');
+}
+
 
 // iPad
 @media (min-width: 768px) {
@@ -186,6 +237,10 @@
     font-size: ($fs-medium)+1; // 4rem
 
     &.login-title {
+      font-size: ($fs-medium);
+    }
+
+    &.thanks-title {
       font-size: ($fs-medium);
     }
   }
@@ -221,6 +276,20 @@
         text-indent: 50px;
         margin-left: -110px;
       }
+
+      &.full {
+        text-align: center;
+        width: 100% !important;
+        text-indent: 20px;
+
+        &.btn-facebook,
+        &.btn-google-plus,
+        &.btn-twitter {
+          background-position: 0 10px;
+          background-size: 20%;
+          margin-left: 0;
+        }
+      }
     }
   }
 
@@ -240,6 +309,24 @@
     font-size: ($fs-normal)+.2;
     text-align: left;
     margin-left: 15px;
+  }
+
+  .share-friends-title {
+    margin-bottom: 20px;
+    font-size: ($fs-medium)-1;
+  }
+
+  .wrapper-report-week {
+    font-size: ($fs-medium)-1;
+
+    h4 {
+      font-size: ($fs-medium)-1;
+    }
+  }
+
+  .emoticon {
+    background-size: 10%;
+    margin: 20px 0;
   }
 
 }
