@@ -387,6 +387,10 @@ button {
       text-indent: 40px;
       @include path('img-view-map-us.png');
     }
+
+    &.js-active {
+      background-color: $btn-primary;
+    }
   }
 }
 
