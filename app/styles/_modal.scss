@@ -84,7 +84,7 @@
     }
 
     &.btn-twitter {
-      background-color: #5FA9DD;
+      background-color: $bg-twitter;
       color: #FFFFFF;
       @include path('icon-twitter-share.svg');
     }

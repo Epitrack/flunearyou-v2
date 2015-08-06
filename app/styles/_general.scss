@@ -394,8 +394,8 @@ button {
   }
 }
 
-
 // ===
+
 
 
 //
@@ -849,6 +849,112 @@ button {
 // ===
 
 
+
+//
+// Press
+//
+
+.wrapper-press {
+  .year {
+    text-align: center;
+    color: $link-menu;
+    margin-bottom: 25px;
+    font-size: ($fs-normal)*2;
+  }
+}
+
+.press-item {
+  min-height: 80px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid darken($bg-primary, 7%);;
+}
+
+.press-link {
+  text-decoration: none;
+  display: inline-block;
+  width: 78%;
+  vertical-align: top;
+
+  time {
+    text-align: center;
+    text-transform: uppercase;
+    min-height: 65px;
+    width: 50px;
+    padding-top: 6px;
+    display: inline-block;
+    background-color: $link-menu;
+    color: #FFFFFF;
+    font-size: ($fs-normal)*2;
+    @include transition(all, .2s, linear, 0s);
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    time {
+      background-color: #FFFFFF;
+      color: $link-menu;
+    }
+  }
+}
+
+.press-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5px;
+  width: 65%;
+
+  h4 {
+    color: $link-menu;
+    text-decoration: none;
+    font-size: ($fs-normal)+.2;
+    line-height: ($fs-normal)+.6;
+  }
+}
+
+.press-forward {
+  margin-top: 10px;
+  color: $text-other;
+  font-size: $fs-normal;
+}
+
+.press-share {
+  display: inline-block;
+  width: 20%;
+
+  a {
+    display: block;
+    height: 33px;
+    margin-bottom: 2px;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    background-size: 60%;
+    @include transition(transform, .2s, ease-in-out, 0s);
+    @include scale(1);
+
+    &.facebook {
+      background-color: $bg-button;
+      @include path('icon-facebook-button.svg');
+    }
+
+    &.twitter {
+      background-color: $bg-twitter;
+      @include path('icon-twitter-share.svg');
+    }
+
+    &:hover {
+      @include scale(1.1);
+    }
+  }
+}
+
+
+// ===
+
+
+
 //
 // Media queries
 //
@@ -1197,6 +1303,19 @@ button {
     .btn-primary { padding: 10px 20px; }
   }
 
+  .year {
+    text-align: left;
+  }
+
+  .press-share {
+    width: 20%;
+    margin-left: 0%;
+
+    a {
+      background-size: 40%;
+    }
+  }
+
 }
 
 // Desktops
@@ -1234,6 +1353,11 @@ button {
         font-size: ($fs-large)+2.2;
       }
     }
+  }
+
+  .press-share {
+    width: 10%;
+    margin-left: 10%;
   }
 
 }
