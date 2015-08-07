@@ -83,15 +83,7 @@ body {
 
 .header { background-color: $bg-nav !important; }
 
-.navbar {
-  margin-bottom: 0;
-}
-
-.nav {
-  &.navbar-nav {
-    text-align: center;
-  }
-}
+.navbar { margin-bottom: 0; }
 
 button {
   &.navbar-toggle {
@@ -110,23 +102,37 @@ button {
 }
 
 // mobile
+.lets-go {
+  background-color: $btn-primary;
+  color: #FFFFFF !important;
+}
+
 .logo-secondary {
   margin-top: 10px;
 
   img { max-width: 100%; }
 }
 
-.nav-link {
-  color: $link-menu !important;
-  font-size: ($fs-normal)+.3;
-  font-family: $ff-bold;
-  text-decoration: none;
-  display: block;
-  cursor: pointer;
-  @include transition(background, .2s, linear, 0s);
+.nav {
+  &.navbar-nav {
+    text-align: center;
 
-  &:hover, &.js-active {
-    background-color: #FFFFFF !important;
+    li {
+      a {
+        color: $link-menu;
+        font-size: ($fs-normal)+.3;
+        font-family: $ff-bold;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        @include transition(background, .2s, linear, 0s);
+
+        &:hover, &:focus, &.js-active {
+          color: $link-menu !important;
+          background-color: #FFFFFF;
+        }
+      }
+    }
   }
 }
 
