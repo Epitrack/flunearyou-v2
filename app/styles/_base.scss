@@ -93,7 +93,7 @@ $news-link:                        $blue-secondary;
 
 // Text Truncate
 @mixin truncate {
-  white-space: pre-line;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

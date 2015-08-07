@@ -33,10 +33,26 @@
           <li> <a class="nav-link lets-go hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#modal-join-us">Let's go!</a> </li>
         </ul>
 
+        <!-- dropdown when user is logged -->
+        <div class="dropdown hidden-xs col-sm-3">
+          <button class="btn btn-default dropdown-toggle dropdown-user" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            email@thulioph.com
+            <span class="caret"></span>
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdown-user">
+            <li><a ng-href="#/settings" title="Settings">Settings</a></li>
+            <li><a ng-href="#/health-reports" title="Health Reports">Health Reports</a></li>
+            <li><a ng-href="#/" title="Log out">Log out</a></li>
+          </ul>
+      </div>
+
+        <!--
         <button class="hidden-xs col-sm-3 btn-cta" title="Join us" data-toggle="modal" data-target="#modal-join-us">
           <span class="btn-title">Help Fight disease now:</span>
           <span class="btn-subtitle">join us</span>
         </button>
+         -->
       </div>
     </div>
   </div>

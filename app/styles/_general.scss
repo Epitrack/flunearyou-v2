@@ -136,6 +136,30 @@ button {
   }
 }
 
+// dropdown
+.dropdown {
+  button {
+    border: none;
+    background-color: transparent;
+    font-family: $ff-regular;
+    font-size: ($fs-normal)+.2;
+
+    @include truncate();
+    width: 175px;
+  }
+
+  li {
+    a {
+      color: $link-menu;
+      font-size: ($fs-normal)+.3;
+      font-family: $ff-bold;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
+
 // ===
 
 
@@ -1170,6 +1194,10 @@ button {
 
   .nav {
     &.navbar-nav { margin-top: 30px; }
+  }
+
+  .dropdown {
+    margin-top: 40px;
   }
 
   .navbar {
