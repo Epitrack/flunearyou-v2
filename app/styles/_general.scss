@@ -950,9 +950,105 @@ button {
   }
 }
 
-
 // ===
 
+
+
+//
+// Faq
+//
+
+.faq-form {
+  .input-primary {
+    height: 40px;
+    border: 1px solid $news-link;
+  }
+}
+
+.search-term {
+  color: $link-menu;
+  display: block;
+  text-align: center;
+  font-size: ($fs-medium)-1;
+  margin: 20px 0;
+}
+
+.count-result {
+  background-color: $btn-primary;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 8px 12px;
+  font-size: ($fs-normal)+.4;
+  display: block;
+  @include bdr(5px);
+}
+
+.questions {
+  margin: 30px 0;
+  min-height: 400px;
+  display: inline-block;
+}
+
+.faq-item {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background-repeat: no-repeat;
+    @include path('icon-faq.svg');
+  }
+
+  &:hover {
+    ~ .questions-title {
+      border-bottom: 2px solid darken($bg-primary, 7%);
+    }
+  }
+}
+
+.questions-title {
+  color: $link-menu;
+  font-size: ($fs-normal)+.6;
+  cursor: pointer;
+  min-height: 60px;
+  text-align: left;
+  position: relative;
+  display: block;
+  padding: 10px 50px 10px 35px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  border-bottom: 1px solid darken($bg-primary, 7%);
+}
+
+.questions-description {
+  color: $text-secondary;
+  font-size: ($fs-normal)+.2;
+  line-height: ($fs-medium)-1;
+  background-repeat: no-repeat;
+  padding: 20px 20px 10px 80px;
+  overflow: hidden;
+  position: relative;
+  background-color: $bg-secondary;
+  height: 0;
+  opacity: 0;
+  @include path('bg-questions.svg');
+  @include bdr(0 0 6px 6px);
+  @include transition(all, .2s, linear, 0s);
+
+  &.js-active {
+    height: 100%;
+    min-height: 80px;
+    opacity: 1;
+  }
+}
+
+//  ===
 
 
 //
@@ -1316,6 +1412,17 @@ button {
     }
   }
 
+  .search-term {
+    text-align: left;
+    font-size: ($fs-medium)-.5;
+  }
+
+  .count-result {
+    display: inline-block;
+    padding: 8px 40px;
+    margin-left: 2%;
+  }
+
 }
 
 // Desktops
@@ -1359,5 +1466,7 @@ button {
     width: 10%;
     margin-left: 10%;
   }
+
+  .count-result { margin-left: 12%; }
 
 }
