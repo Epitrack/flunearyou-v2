@@ -62,16 +62,13 @@ select {
 
 .input-primary {
   border: none;
-  width: 100%;
   font-size: ($fs-normal)+.4;
   padding: 5px 10px;
   color: $link-menu;
-  border: none;
   margin-bottom: 10px;
-
-  &.small { width: 30%; }
-  &.medium { width: 50%; }
-  &.large { width: 100%; }
+  @include bdr(5px);
+  @extend .col-xs-12;
+  float: none;
 }
 
 .input-secondary {
@@ -82,16 +79,13 @@ select {
   outline: none;
   color: $brown-primary;
   @include bdr(7px);
-
-  &.small { width: 30%; }
-  &.medium { width: 50%; }
-  &.large { width: 100%; }
+  @extend .col-xs-12;
+  float: none;
 }
 
 .wrapper-small {
   cursor: pointer;
   position: relative;
-  // background-color: red;
   text-align: center;
   color: $link-menu;
 
