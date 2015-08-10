@@ -1,0 +1,57 @@
+<section class="modal fade" id="modal-first-report" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <header class="modal-header">
+        <button class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <span class="emoticon"></span>
+
+        <h4 class="modal-title thanks-title">Thank you for submitting your report.</h4>
+      </header>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form action="#" name="first-report-form" id="first-report-form" class="row first-report-form">
+            <fieldset>
+              <legend>Now, would you like to add a family member?</legend>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <div class="wrapper-small full">
+                <input type="radio" name="first-report" value="Yes" id="first-report-yes" class="radio-primary">
+                <label for="first-report-yes" class="label-sexo">Yes</label>
+                <span class="check round"><span class="inside"></span></span>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <div class="wrapper-small full">
+                <input type="radio" name="first-report" value="Not Now, ask me next week." id="first-report-not-now" class="radio-primary">
+                <label for="first-report-not-now" class="label-sexo">Not now, ask me next week.</label>
+                <span class="check round"><span class="inside"></span></span>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <div class="wrapper-small full">
+                <input type="radio" name="first-report" value="No thanks, please don't ask me again." id="first-report-no-thanks" class="radio-primary">
+                <label for="first-report-no-thanks" class="label-sexo">No thanks, please don't ask me again.</label>
+                <span class="check round"><span class="inside"></span></span>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="btn-primary next">Next</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="modal-footer">
+        <p>Don't have an account?
+        <a ng-href="#" title="Sign Up" data-toggle="modal" data-dismiss="modal" data-target="#modal-join-us">Sign Up</a>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
