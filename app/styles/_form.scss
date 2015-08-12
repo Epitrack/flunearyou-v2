@@ -20,15 +20,6 @@ textarea {
   // min-height: 65px;
 }
 
-input,
-textarea {
-  // font-family: $ff-primary;
-  // @include transition(border, .2s, 0s, linear);
-
-  // &:active { @extend %input-state; }
-  // &:focus { @extend %input-state; }
-}
-
 select {
   &.select-primary {
     display: block;
@@ -44,6 +35,14 @@ select {
     background-repeat: no-repeat;
     background-position: 90% 12px;
   }
+}
+
+.legend {
+  border: none;
+  color: $link-menu;
+  font-size: ($fs-normal)+.4;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .btn-primary {
@@ -143,11 +142,15 @@ select {
   }
 }
 
+
+
 //
 // Register form | Modal
 //
 
 .register-form {
+  cursor: pointer;
+
   label {
     display: block;
     position: relative;
@@ -155,6 +158,7 @@ select {
     color: $link-menu;
     margin-bottom: 5px;
     text-align: left;
+    background-color: transparent;
   }
 
   .form-group {
@@ -221,20 +225,6 @@ select {
   }
 }
 
-
-
-//
-// First report | Modal
-//
-
-.first-report-form {
-  legend {
-    border: none;
-    color: $link-menu;
-    font-size: ($fs-normal)+.4;
-    text-align: center;
-  }
-}
 
 
 // iPad

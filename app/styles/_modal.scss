@@ -7,17 +7,6 @@
 }
 
 .modal-body {
-  // li {
-  //   @extend %li-pattern;
-
-  //   &.modal-list {
-  //     font-size: $fs-normal;
-  //     margin: auto auto 0 15px;
-  //     list-style-type: disc;
-  //     &::before { display: none; }
-  //   }
-  // }
-
   h5 {
     color: $link-menu;
     font-size: ($fs-normal)+.2;
@@ -229,7 +218,10 @@
   text-align: center;
   padding-top: 10px;
 
-  span { color: $link-menu; }
+  span {
+    font-family: $ff-bold;
+    display: block;
+  }
 }
 
 .modal-icon {
@@ -351,6 +343,27 @@
 
 
 
+//
+// Join Us modal
+//
+
+.modal-join-us {
+  .modal-header {
+    &.bg { height: 65px; }
+  }
+
+  .modal-item {
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 10px 20px;
+    font-size: ($fs-normal)+.2;
+    list-style-type: disc;
+  }
+}
+
+// =====
+
+
 // iPad
 @media (min-width: 768px) {
   .modal-header {
@@ -377,12 +390,7 @@
   }
 
   .modal-body {
-    li {
-      &.modal-list {
-        font-size: ($fs-medium)-1; // 2rem
-        margin: auto auto 0 25px;
-      }
-    }
+    .modal-list { margin-top: 45px; }
 
     h5 {
       font-size: ($fs-normal)*2;
@@ -390,12 +398,6 @@
 
     .modal-icon {
       margin-top: 45px;
-    }
-
-    ul {
-      &.modal-list {
-        margin-top: 45px;
-      }
     }
   }
 
@@ -433,7 +435,8 @@
   }
 
   .never-post {
-    margin: 0;
+    margin-bottom: 10px;
+    margin-top: -10px;
   }
 
   .modal-footer {
@@ -485,6 +488,36 @@
       &.bg { height: 80px }
     }
   }
+
+
+
+  //
+  // Join Us modal
+  //
+
+  .modal-join-us {
+    .modal-header {
+      &.bg { height: 80px; }
+    }
+
+    .modal-title {
+      font-size: $fs-medium;
+
+      span { display: inline-block; }
+    }
+
+    .modal-list { margin-top: 0; }
+
+    .modal-item {
+      margin-left: 70px;
+      font-size: ($fs-medium)-1;
+    }
+
+    .legend {
+      text-align: left;
+    }
+  }
+
 
 }
 

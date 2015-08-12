@@ -1,7 +1,7 @@
-<section class="modal fade" id="modal-join-us" tabindex="-1" role="dialog">
+<section class="modal fade modal-join-us" id="modal-join-us" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <header class="modal-header">
+      <header class="modal-header bg">
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -9,12 +9,12 @@
         <h4 class="modal-title">Spread the word. <span>Not the flu.</span></h4>
       </header>
 
-      <div class="modal-body modal-join-us-body">
+      <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
-            <ul>
-              <li class="modal-list">Join thousands who are helping report flu.</li>
-              <li class="modal-list">Protect yourself, your family & your community.</li>
+            <ul class="modal-list">
+              <li class="modal-item">Join thousands who are helping report flu.</li>
+              <li class="modal-item">Protect yourself, your family & your community.</li>
             </ul>
 
             <h5>Ready to report? Let's hear from you.</h5>
@@ -34,10 +34,10 @@
             <small class="never-post">We will never post on your wall</small>
             <span class="or">or you can</span>
 
-            <a href="#register-form" class="register-form">Register with email address</a>
+            <a ng-click="showRegisterForm=true" class="register-form">Register with email address</a>
           </div>
 
-          <form action="#" name="register-form" id="register-form" class="row register-form">
+          <form action="#" ng-show="showRegisterForm" name="register-form" id="register-form" class="row register-form">
             <fieldset class="form-group col-sm-6">
               <label for="register-email">Email address</label>
               <input id="register-email" type="email" class="input-primary">
@@ -69,19 +69,19 @@
             </fieldset>
 
             <fieldset class="form-group col-sm-12">
-              <label for="register-gender">Gender:</label>
+              <legend class="legend">Gender:</legend>
 
-              <div class="col-xs-5 wrapper-small full">
-                <input type="radio" name="register-gender" value="M" id="male" class="radio-primary">
-                <label for="male" class="label-sexo">Male</label>
-                <span class="check round"><span class="inside"></span></span>
-              </div>
+              <fieldset class="radio-group col-xs-6 col-sm-3">
+                <input type="radio" value="M" id="male" class="radio-primary" name="register-gender">
+                <label for="male">Male</label>
+                <div class="check"><div class="inside"></div></div>
+              </fieldset>
 
-              <div class="col-xs-6 col-xs-offset-1 wrapper-small full">
-                <input type="radio" name="register-gender" value="F" id="female" class="radio-primary">
-                <label for="female" class="label-sexo">Female</label>
-                <span class="check round"><span class="inside"></span></span>
-              </div>
+              <fieldset class="radio-group col-xs-6 col-sm-3">
+                <input type="radio" value="F" id="female" class="radio-primary" name="register-gender">
+                <label for="female">Female</label>
+                <div class="check"><div class="inside"></div></div>
+              </fieldset>
             </fieldset>
 
             <div class="col-sm-12 wrapper-terms-privacy">
@@ -89,7 +89,6 @@
 
               <button type="submit" class="btn-primary">Get started</button>
             </div>
-
           </form>
         </div>
       </div>
