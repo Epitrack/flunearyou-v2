@@ -1,53 +1,65 @@
-<section class="modal fade" id="modal-login" tabindex="-1" role="dialog">
+<section class="modal fade modal-add-household-member" id="modal-add-household-member" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <header class="modal-header">
+      <header class="modal-header bg">
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <h4 class="modal-title login-title">Please provide brief information about your household member.</h4>
+        <h4 class="modal-title">Add household member</h4>
       </header>
 
-      <div class="modal-body moda-login-body">
+      <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 btn-wrapper">
-              <button class="btn-facebook">Facebook</button>
-            </div>
-
-            <div class="col-xs-12 col-sm-6 btn-wrapper">
-              <button class="btn-google-plus">Google Plus</button>
-            </div>
+            <h5>Please provide brief information about your household member.</h5>
           </div>
 
-          <div class="row">
-            <span class="or or-login">Login with your email</span>
-          </div>
+          <form action="#" id="form-modal-add-household-member" class="register-form modal-add-household-member" name="modal-add-household-member">
+            <div class="row">
+              <fieldset class="form-group">
+                <label for="nickname-member">Enter a nickname for family member.</label>
+                <input id="nickname-member" type="text" class="input-primary">
+              </fieldset>
+            </div>
 
-          <form action="#" name="login-form" id="login-form" class="row login-form register-form">
-            <fieldset class="form-group">
-              <label for="login-email">Email address</label>
-              <input id="login-email" type="email" class="input-primary">
-            </fieldset>
+            <div class="row">
+              <fieldset class="form-group col-sm-6">
+                <legend class="legend">Gender:</legend>
 
-            <fieldset class="form-group">
-              <label for="login-password">Password</label>
-              <input id="login-password" type="password" class="input-primary">
-            </fieldset>
+                <fieldset class="radio-group col-xs-6">
+                  <input type="radio" value="M" id="household-male" class="radio-primary" name="add-household-member">
+                  <label for="household-male">Male</label>
+                  <div class="check"><div class="inside"></div></div>
+                </fieldset>
 
-            <a href="#/" class="login-forgot-pass">Forgot your password?</a>
+                <fieldset class="radio-group col-xs-6">
+                  <input type="radio" value="F" id="household-female" class="radio-primary" name="add-household-member">
+                  <label for="household-female">Female</label>
+                  <div class="check"><div class="inside"></div></div>
+                </fieldset>
+              </fieldset>
 
-            <button type="submit" class="btn-primary">Login Now</button>
+              <fieldset class="form-group col-sm-6">
+                <label>Birthdate</label>
+
+                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 birthdate-household-member select-primary">
+                  <option value="Month" disabled selected>Month</option>
+                  <option value="Month_1">Month_1</option>
+                  <option value="Month_2">Month_2</option>
+                  <option value="Month_3">Month_3</option>
+                </select>
+
+                <input type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
+              </fieldset>
+            </div>
+
+            <div class="row">
+              <button type="submit" class="col-xs-12 col-sm-5 col-sm-offset-3 btn-primary add-member">Add member</button>
+            </div>
           </form>
         </div>
       </div>
-
-      <footer class="modal-footer">
-        <p>Don't have an account?
-        <a ng-href="#" title="Sign Up" data-toggle="modal" data-dismiss="modal" data-target="#modal-join-us">Sign Up</a>
-        </p>
-      </footer>
     </div>
   </div>
 </section>

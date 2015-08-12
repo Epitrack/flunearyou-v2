@@ -57,6 +57,13 @@ select {
   @include transition(background, .2s, linear, 0s);
 
   &:hover { background-color: $link-menu; }
+
+  &.add-member {
+    background-repeat: no-repeat;
+    background-position: 13% 3px;
+    background-size: 13%;
+    @include path('icon-add-household.svg');
+  }
 }
 
 .input-primary {
