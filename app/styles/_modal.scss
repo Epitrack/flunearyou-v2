@@ -343,6 +343,21 @@
   line-height: ($fs-normal)+.4;
 }
 
+// =====
+
+
+//
+// Login modal
+//
+
+.modal-login {
+  header {
+    &.bg {
+      height: 70px;
+    }
+  }
+}
+
 
 
 
@@ -363,7 +378,7 @@
     padding-top: 0;
 
     &.login-title {
-      font-size: ($fs-medium);
+      font-size: ($fs-normal)+1.4;
     }
   }
 
@@ -457,6 +472,18 @@
   .emoticon {
     background-size: 10%;
     margin: 20px 0;
+  }
+
+
+
+  //
+  // Login modal
+  //
+
+  .modal-login {
+    header {
+      &.bg { height: 90px; }
+    }
   }
 
 }
