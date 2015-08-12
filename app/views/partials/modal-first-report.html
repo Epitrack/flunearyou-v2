@@ -1,14 +1,12 @@
-<section class="modal fade" id="modal-first-report" tabindex="-1" role="dialog">
+<section class="modal fade modal-first-report" id="modal-first-report" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <header class="modal-header">
+      <header class="modal-header bg">
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <span class="emoticon"></span>
-
-        <h4 class="modal-title thanks-title">Thank you for submitting your report.</h4>
+        <h4 class="modal-title first-report">Thank you for submitting your report.</h4>
       </header>
 
       <div class="modal-body">
@@ -18,31 +16,25 @@
               <legend>Now, would you like to add a family member?</legend>
             </fieldset>
 
-            <fieldset class="form-group">
-              <div class="wrapper-small full">
-                <input type="radio" name="first-report" value="Yes" id="first-report-yes" class="radio-primary">
-                <label for="first-report-yes" class="label-sexo">Yes</label>
-                <span class="check round"><span class="inside"></span></span>
-              </div>
+            <fieldset class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+              <input type="radio" id="first-report-yes" class="radio-primary" name="first-report">
+              <label for="first-report-yes">Yes</label>
+              <div class="check"><div class="inside"></div></div>
             </fieldset>
 
-            <fieldset class="form-group">
-              <div class="wrapper-small full">
-                <input type="radio" name="first-report" value="Not Now, ask me next week." id="first-report-not-now" class="radio-primary">
-                <label for="first-report-not-now" class="label-sexo">Not now, ask me next week.</label>
-                <span class="check round"><span class="inside"></span></span>
-              </div>
+            <fieldset class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+              <input type="radio" id="first-report-not-now" class="radio-primary" name="first-report">
+              <label for="first-report-not-now">Not now, ask me next week.</label>
+              <div class="check"><div class="inside"></div></div>
             </fieldset>
 
-            <fieldset class="form-group">
-              <div class="wrapper-small full">
-                <input type="radio" name="first-report" value="No thanks, please don't ask me again." id="first-report-no-thanks" class="radio-primary">
-                <label for="first-report-no-thanks" class="label-sexo">No thanks, please don't ask me again.</label>
-                <span class="check round"><span class="inside"></span></span>
-              </div>
+            <fieldset class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+              <input type="radio" id="first-report-no-thanks" class="radio-primary" name="first-report">
+              <label for="first-report-no-thanks">No thanks, please don't ask me again.</label>
+              <div class="check"><div class="inside"></div></div>
             </fieldset>
 
-            <button type="submit" class="btn-primary next">Next</button>
+            <button type="submit" class="btn-primary col-xs-12 col-sm-8 col-sm-offset-2">Next</button>
           </form>
         </div>
       </div>

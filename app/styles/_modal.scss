@@ -204,17 +204,6 @@
   margin: 0 0 20px 0;
 }
 
-.emoticon {
-  display: block;
-  text-align: center;
-  height: 65px;
-  margin: 0;
-  background-position: center 0;
-  background-repeat: no-repeat;
-  background-size: 20%;
-  @include path('icon-thanks.gif');
-}
-
 
 // =====
 
@@ -358,6 +347,7 @@
   }
 }
 
+// =====
 
 
 
@@ -379,6 +369,10 @@
 
     &.login-title {
       font-size: ($fs-normal)+1.4;
+    }
+
+    &.first-report {
+      font-size: ($fs-normal)+1.2;
     }
   }
 
@@ -469,20 +463,26 @@
     }
   }
 
-  .emoticon {
-    background-size: 10%;
-    margin: 20px 0;
-  }
-
-
 
   //
   // Login modal
   //
 
   .modal-login {
-    header {
+    .modal-header {
       &.bg { height: 90px; }
+    }
+  }
+
+
+
+  //
+  // First Report
+  //
+
+  .modal-first-report {
+    .modal-header {
+      &.bg { height: 80px }
     }
   }
 
