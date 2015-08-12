@@ -168,6 +168,55 @@ select {
 
 
 
+//
+// Refer a friend | Modal
+//
+
+.refer-a-friend-form {
+  position: relative;
+
+  legend {
+    font-size: ($fs-normal)-.1;
+    color: $link-menu;
+    border: none;
+    margin-bottom: -10px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .input-primary {
+    font-size: $fs-normal;
+    height: 40px;
+    padding: 5px 50px 5px 10px;
+  }
+}
+
+.btn-submit {
+  @include apr(none);
+  @include bdr(0 5px 5px 0);
+  background-color: $link-menu;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+  @include path('icon-btn-submit.svg');
+  @include transition(background, .2s, ease-in, 0s);
+
+  &:hover, &:focus, &:active {
+    background-color: $btn-primary;
+    // @include path('');
+  }
+}
+
+
+
 // iPad
 @media (min-width: 768px) {
   .input-secondary {
