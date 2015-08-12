@@ -54,6 +54,11 @@ angular
         controller: 'TermsCtrl',
         controllerAs: 'terms'
       })
+      .when('/survey', {
+        templateUrl: 'views/survey.html',
+        controller: 'SurveyCtrl',
+        controllerAs: 'survey'
+      })
       .otherwise({
         redirectTo: '/'
       });
