@@ -1,43 +1,66 @@
 <section class="modal fade" id="modal-thanks" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <header class="modal-header">
+      <header class="modal-header bg">
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <span class="emoticon"></span>
-
-        <h4 class="modal-title thanks-title">Thank you for submitting your report!</h4>
+        <h4 class="modal-title">Thank you for submitting your report!</h4>
       </header>
 
-      <div class="modal-body moda-thanks-body">
+      <div class="modal-body">
         <div class="container-fluid">
-          <div class="row wrapper-report-week">
-            <h4 class="report-week-title">Report for the week of:</h4>
-            <div id="thanks-date-report" class="thanks-date-report">07/27/2015 - 08/02/2015</div>
-          </div>
-
           <div class="row">
-            <h6 class="col-xs-12 share-friends-title">Share with your friends</h6>
-
-            <div class="col-xs-12 col-md-4 btn-wrapper">
-              <button class="btn-facebook full">Share with facebook</button>
+            <div class="col-xs-12 col-sm-3">
+              <figure class="modal-icon">
+                <img src="../images/icon-modal.svg" alt="">
+              </figure>
             </div>
 
-            <div class="col-xs-12 col-md-4 btn-wrapper">
-              <button class="btn-google-plus full">Share with google plus</button>
+            <div class="col-xs-12 col-sm-5">
+              <h3 class="modal-subtitle">Almost 100</h3>
+              <p class="modal-description">New Hampshire needs just 5 more users to reach 100 participants.</p>
+
+              <div class="refer-a-friend">
+                <h5>Refer a friend in your area:</h5>
+
+                <button class="btn-modal facebook" ng-hide="showform">Facebook</button>
+                <button class="btn-modal mail" ng-click="showform=true" ng-hide="showform">Mail</button>
+                <!-- <button class="btn-modal twitter" ng-hide="showform">Twitter</button> -->
+
+                <!-- invite a friend -->
+                <form action="#" class="refer-a-friend-form" ng-show="showform" name="refer-a-friend-form" id="refer-a-friend-form">
+                  <fieldset>
+                    <input type="email" class="input-primary" placeholder="Add friend's email addresses">
+                    <legend>Separate multiple emails with commas.</legend>
+                  </fieldset>
+
+                  <input type="submit" class="btn-submit" value="">
+                </form>
+
+                <a href="#">No thanks, continue</a>
+              </div>
             </div>
 
-            <div class="col-xs-12 col-md-4 btn-wrapper">
-              <button class="btn-twitter full">Share with twitter</button>
+            <div class="col-xs-12 col-sm-4">
+              <ul class="modal-list">
+                <li class="modal-item featured">Participation Rate: <span>35.9%</span></li>
+                <li class="modal-item">Weeks eligible to report <span>39</span></li>
+                <li class="modal-item">Weeks reported <span>14</span></li>
+                <li class="modal-item">Weeks since last report <span>0</span></li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
       <footer class="modal-footer">
-        <a ng-href="#" class="no-thanks" data-dismiss="modal" aria-label="Close">No, thanks. Continue.</a>
+        <div class="container-fluid">
+          <div class="row">
+            <p> This tool does not provide medical advice. It is intended for informational and educational purposes only.It is not a substitute for professional medical advice, diagnosis or treatment. Call your doctor to receive medical advice.If you think you may have a medical emergency, immediately call your doctor or dial 911.</p>
+          </div>
+        </div>
       </footer>
     </div>
   </div>

@@ -1097,7 +1097,7 @@ button {
   background-color: $bg-secondary;
   height: 0;
   opacity: 0;
-  @include path('bg-questions.svg');
+  @include path('icon-questions.svg');
   @include bdr(0 0 6px 6px);
   @include transition(all, .2s, linear, 0s);
 

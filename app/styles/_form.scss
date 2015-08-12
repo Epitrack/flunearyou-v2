@@ -20,15 +20,6 @@ textarea {
   // min-height: 65px;
 }
 
-input,
-textarea {
-  // font-family: $ff-primary;
-  // @include transition(border, .2s, 0s, linear);
-
-  // &:active { @extend %input-state; }
-  // &:focus { @extend %input-state; }
-}
-
 select {
   &.select-primary {
     display: block;
@@ -46,6 +37,14 @@ select {
   }
 }
 
+.legend {
+  border: none;
+  color: $link-menu;
+  font-size: ($fs-normal)+.4;
+  text-align: center;
+  margin-bottom: 0;
+}
+
 .btn-primary {
   background-color: $btn-primary;
   color: #FFFFFF;
@@ -58,6 +57,13 @@ select {
   @include transition(background, .2s, linear, 0s);
 
   &:hover { background-color: $link-menu; }
+
+  &.add-member {
+    background-repeat: no-repeat;
+    background-position: 13% 3px;
+    background-size: 13%;
+    @include path('icon-add-household.svg');
+  }
 }
 
 .input-primary {
@@ -83,54 +89,66 @@ select {
   float: none;
 }
 
-.wrapper-small {
-  cursor: pointer;
+.radio-group {
   position: relative;
-  text-align: center;
-  color: $link-menu;
-
-  input {
-    @include apr(none);
-    opacity: 0;
-    font-size: ($fs-normal)+.4;
-    padding: 7px 10px;
-    position: absolute;
-    z-index: 1;
-    left: 10px;
-
-    &:hover {
-     ~ .inside {
-        background-color: pink;
-      }
-    }
-  }
+  margin-bottom: 0;
+  padding: 0;
 
   label {
-    text-align: right !important;
+    color: $link-menu;
+    display: block;
+    position: relative;
+    font-size: ($fs-normal)+.4;
+    padding: 10px 15px 10px 55px;
+    margin: 10px auto;
+    min-height: 30px;
+    z-index: 9;
+    cursor: pointer;
+    background: #FFFFFF;
   }
 
-  span {
-    &.check {
-      display: inline-block;
-      border: 2px solid $link-menu;
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      @include bdr(3px);
-      left: 5px;
-      top: 0;
+  .check {
+    display: block;
+    position: absolute;
+    border: 2px solid $link-menu;
+    @include bdr(100%);
+    height: 25px;
+    width: 25px;
+    z-index: 9;
+    top: 17px;
+    left: 4%;
+  }
+}
 
+.radio-primary {
+  position: absolute;
+  z-index: 10;
+  left: 5%;
+  top: 16px;
+  width: 20px;
+  height: 20px;
+  @include apr(none);
+
+  &:checked ~ {
+    .check {
       .inside {
-        background-color: transparent;
-        @include transition(background, .2s, ease-out, 0s);
+        display: block;
+        position: relative;
+        background: $btn-primary;
+        @include bdr(100%);
+        height: 70%;
+        width: 70%;
+        top: 15%;
+        margin: auto;
       }
     }
 
-    &.round {
-      @include bdr(100%);
+    .label {
+      color: $link-menu;
     }
   }
 }
+
 
 
 //
@@ -138,6 +156,8 @@ select {
 //
 
 .register-form {
+  cursor: pointer;
+
   label {
     display: block;
     position: relative;
@@ -145,6 +165,7 @@ select {
     color: $link-menu;
     margin-bottom: 5px;
     text-align: left;
+    background-color: transparent;
   }
 
   .form-group {
@@ -159,6 +180,55 @@ select {
     display: block;
     text-decoration: none;
     margin-bottom: 10px;
+  }
+}
+
+
+
+//
+// Refer a friend | Modal
+//
+
+.refer-a-friend-form {
+  position: relative;
+
+  legend {
+    font-size: ($fs-normal)-.1;
+    color: $link-menu;
+    border: none;
+    margin-bottom: -10px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .input-primary {
+    font-size: $fs-normal;
+    height: 40px;
+    padding: 5px 50px 5px 10px;
+  }
+}
+
+.btn-submit {
+  @include apr(none);
+  @include bdr(0 5px 5px 0);
+  background-color: $link-menu;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center center;
+  @include path('icon-btn-submit.svg');
+  @include transition(background, .2s, ease-in, 0s);
+
+  &:hover, &:focus, &:active {
+    background-color: $btn-primary;
+    // @include path('');
   }
 }
 

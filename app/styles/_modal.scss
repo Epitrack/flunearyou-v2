@@ -6,37 +6,7 @@
   background-color: $white-light;
 }
 
-.modal-header {
-  border: none;
-  padding-bottom: 0;
-}
-
-.modal-title {
-  color: $text-other;
-  font-size: $fs-medium;
-  text-align: center;
-
-  &.thanks-title {
-    font-size: ($fs-medium)-1;
-  }
-
-  span {
-    color: $link-menu;
-  }
-}
-
 .modal-body {
-  li {
-    @extend %li-pattern;
-
-    &.modal-list {
-      font-size: $fs-normal;
-      margin: auto auto 0 15px;
-      list-style-type: disc;
-      &::before { display: none; }
-    }
-  }
-
   h5 {
     color: $link-menu;
     font-size: ($fs-normal)+.2;
@@ -223,44 +193,227 @@
   margin: 0 0 20px 0;
 }
 
-.emoticon {
-  display: block;
-  text-align: center;
-  height: 65px;
-  margin: 0;
-  background-position: center 0;
-  background-repeat: no-repeat;
-  background-size: 20%;
-  @include path('icon-thanks.gif');
+
+// =====
+
+//
+// Thanks modal
+//
+
+.modal-header {
+  border: none;
+  padding-top: 0;
+
+  &.bg {
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center;
+    @include path('bg-title-modal.svg');
+  }
 }
+
+.modal-title {
+  color: #FFFFFF;
+  font-size: ($fs-normal)+.4;
+  text-align: center;
+  padding-top: 10px;
+
+  span {
+    font-family: $ff-bold;
+    display: block;
+  }
+}
+
+.modal-icon {
+  width: 170px;
+  height: 170px;
+  margin: 0 auto;
+  position: relative;
+  @include bdr(100%);
+}
+
+.modal-subtitle {
+  font-family: $ff-bold;
+  color: $link-menu;
+  font-size: $fs-medium;
+  text-align: center;
+}
+
+.modal-description {
+  text-align: center;
+  font-size: ($fs-normal)+.6;
+  color: $link-menu;
+}
+
+.refer-a-friend {
+  margin-top: 25px;
+  text-align: center;
+
+  h5 {
+    color: $link-menu;
+    font-size: ($fs-normal)+.2;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  a {
+    text-decoration: underline;
+    font-size: ($fs-normal)+.2;
+    margin: 80px 0 30px 0;
+    display: block;
+  }
+}
+
+.btn-modal {
+  @include apr(none);
+  @include bdr(5px);
+  border: none;
+  outline: none;
+  height: 40px;
+  background-repeat: no-repeat;
+  text-indent: -9999px;
+  background-size: 25%;
+  background-position: center center;
+
+  @extend .col-xs-5;
+
+  &.facebook {
+    background-color: #395185;
+    @include path('icon-facebook-modal.svg');
+  }
+
+  &.twitter {
+    margin-left: 16%;
+    background-color: #FFFFFF;
+    @include path('icon-twitter-modal.svg');
+  }
+
+  &.mail {
+    margin-left: 16%;
+    background-color: #FFFFFF;
+    @include path('icon-mail-modal.svg');
+  }
+}
+
+.modal-item {
+  font-size: $fs-normal;
+  background-color: #FFFFFF;
+  color: $link-menu;
+  @include bdr(5px);
+  text-align: left;
+  margin-bottom: 5px;
+  padding: 10px 12px;
+  position: relative;
+
+  &.featured {
+    background-color: $btn-primary;
+    color: #FFFFFF;
+  }
+
+  span {
+    font-family: $ff-bold;
+    position: absolute;
+    right: 10px;
+  }
+}
+
+.modal-footer {
+  font-size: ($fs-normal)-.1;
+  color: $link-menu;
+  text-align: center;
+  line-height: ($fs-normal)+.4;
+}
+
+// =====
+
+
+//
+// Login modal
+//
+
+.modal-login {
+  header {
+    &.bg {
+      height: 70px;
+    }
+  }
+}
+
+// =====
+
+
+
+//
+// Join Us modal
+//
+
+.modal-join-us {
+  .modal-header {
+    &.bg { height: 65px; }
+  }
+
+  .modal-item {
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 10px 20px;
+    font-size: ($fs-normal)+.2;
+    list-style-type: disc;
+  }
+}
+
+// =====
+
+
+
+//
+// modal-add-household-member
+//
+
+.modal-add-household-member {
+  .modal-header {
+    &.bg { height: 65px; }
+  }
+}
+
+// =====
+
+
 
 
 // iPad
 @media (min-width: 768px) {
+  .modal-header {
+    padding-top: 15px;
+
+    &.bg {
+      background-size: 80%;
+      height: 140px;
+      background-position: center -5px;
+    }
+  }
+
   .modal-title {
-    font-size: ($fs-medium)+1; // 4rem
+    font-size: ($fs-medium)+.5;
+    padding-top: 0;
 
     &.login-title {
-      font-size: ($fs-medium);
+      font-size: ($fs-normal)+1.4;
     }
 
-    &.thanks-title {
-      font-size: ($fs-medium);
+    &.first-report {
+      font-size: ($fs-normal)+1.2;
     }
   }
 
   .modal-body {
-    padding-bottom: 0;
-
-    li {
-      &.modal-list {
-        font-size: ($fs-medium)-1; // 2rem
-        margin: auto auto 0 25px;
-      }
-    }
+    .modal-list { margin-top: 45px; }
 
     h5 {
       font-size: ($fs-normal)*2;
+    }
+
+    .modal-icon {
+      margin-top: 45px;
     }
   }
 
@@ -298,7 +451,8 @@
   }
 
   .never-post {
-    margin: 0;
+    margin-bottom: 10px;
+    margin-top: -10px;
   }
 
   .modal-footer {
@@ -328,10 +482,95 @@
     }
   }
 
-  .emoticon {
-    background-size: 10%;
-    margin: 20px 0;
+
+  //
+  // Login modal
+  //
+
+  .modal-login {
+    .modal-header {
+      &.bg { height: 90px; }
+    }
   }
+
+
+
+  //
+  // First Report
+  //
+
+  .modal-first-report {
+    .modal-header {
+      &.bg { height: 80px }
+    }
+  }
+
+
+
+  //
+  // Join Us modal
+  //
+
+  .modal-join-us {
+    .modal-header {
+      &.bg { height: 80px; }
+    }
+
+    .modal-title {
+      font-size: $fs-medium;
+
+      span { display: inline-block; }
+    }
+
+    .modal-list { margin-top: 0; }
+
+    .modal-item {
+      margin-left: 70px;
+      font-size: ($fs-medium)-1;
+    }
+
+    .legend {
+      text-align: left;
+    }
+  }
+
+
+
+  //
+  // modal-add-household-member
+  //
+
+  .modal-add-household-member {
+    .modal-header {
+      &.bg { height: 80px; }
+    }
+
+    .modal-title {
+      font-size: $fs-medium;
+    }
+
+    h5 {
+      font-size: ($fs-normal)+.6;
+      margin-top: 0;
+    }
+
+    .form-group {
+      padding: 0;
+    }
+
+    .legend {
+      text-align: left;
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      padding: 10px 30px 10px 60px;
+    }
+  }
+
 
 }
 
