@@ -728,7 +728,7 @@ button {
 
 
 //
-// JoinUs
+// Join Us
 //
 
 .wrapper-join-us {
@@ -1127,6 +1127,9 @@ button {
 // Survey
 //
 
+.wrapper-survey {
+  min-height: 660px;
+}
 
 
 // ===
@@ -1228,7 +1231,7 @@ button {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 6;
+      z-index: 10;
       @include rgba(lighten($white-primary-rgb, 1%), .9);
       @include bsd(1px, 2px, 2px, lighten($link-menu, 35%));
     }

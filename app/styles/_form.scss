@@ -10,16 +10,6 @@
 
 :-ms-input-placeholder { color: $text-other; }
 
-%input-state {
-  // outline: none;
-  // border: 1px solid $link-primary;
-}
-
-textarea {
-  // resize: vertical;
-  // min-height: 65px;
-}
-
 select {
   &.select-primary {
     display: block;
@@ -149,6 +139,33 @@ select {
   }
 }
 
+.checkbox-group {
+  @extend .radio-group;
+
+  .check {
+    @include bdr(5px);
+  }
+}
+
+.checkbox-primary {
+  @extend .radio-primary;
+
+  &:checked ~ {
+    .check {
+      .inside {
+        width: 100%;
+        background-size: 100%;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center center;
+        @include path('icon-survey-check.svg');
+      }
+    }
+  }
+}
+
+// ===
+
 
 
 //
@@ -182,6 +199,8 @@ select {
     margin-bottom: 10px;
   }
 }
+
+// ===
 
 
 
@@ -232,6 +251,39 @@ select {
   }
 }
 
+// ===
+
+
+
+//
+// Survey
+//
+
+.survey-form-first {
+  .legend {
+    margin-bottom: 20px;
+    font-weight: bold;
+    @extend .col-sm-10;
+    @extend .col-sm-offset-1;
+  }
+
+  .btn-primary {
+    margin: 20px 0 10px 0;
+    background-color: $link-menu;
+    width: 100%;
+
+    &:last-child {
+      margin-top: 0;
+      font-size: ($fs-normal)+.2;
+    }
+
+    &:hover {
+      background-color: $btn-primary;
+    }
+  }
+}
+
+// ===
 
 
 // iPad
