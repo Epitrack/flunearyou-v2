@@ -1129,6 +1129,99 @@ button {
 
 .wrapper-survey {
   min-height: 660px;
+
+  .legend {
+    font-weight: bold;
+    margin-top: 0;
+  }
+}
+
+.previously-symptoms {
+  color: $link-menu;
+  font-size: ($fs-normal)+.4;
+  text-align: center;
+  margin-bottom: 30px;
+
+  time, p {
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  time {
+    @extend .col-sm-4;
+  }
+
+  p {
+    @extend .col-sm-7;
+    @extend .col-sm-offset-1;
+  }
+}
+
+// temperature
+.temperature {
+  margin-top: 30px;
+
+  h3 {
+    font-size: ($fs-normal)+.4;
+    color: $link-menu;
+    text-align: center;
+  }
+
+  .text-slider {
+    text-align: center;
+    font-size: ($fs-normal)+.6;
+    font-family: $ff-bold;
+    color: $link-menu;
+  }
+
+  .button-thermometer {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    text-indent: -9999px;
+    @include bdr(100%);
+    @include apr(none);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80%;
+    background-color: transparent;
+
+    &.minus {
+      margin-left: 25%;
+      @include path('icon-btn-minus.svg');
+    }
+
+    &.plus {
+      @include path('icon-btn-plus.svg');
+    }
+  }
+}
+
+// datepicker
+.wrapper-datepicker {
+  margin: 20px 0 30px 0;
+
+  h3 {
+    font-size: ($fs-normal)+.4;
+    color: $link-menu;
+    text-align: center;
+  }
+
+  .pick-a-date {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    margin: 10px 0;
+    color: $text-secondary;
+    cursor: pointer;
+    font-size: ($fs-normal)+.2;
+    text-align: center;
+  }
 }
 
 
@@ -1508,6 +1601,12 @@ button {
     display: inline-block;
     padding: 8px 40px;
     margin-left: 2%;
+  }
+
+  .previously-symptoms {
+    time, p {
+      display: inline-block;
+    }
   }
 
 }

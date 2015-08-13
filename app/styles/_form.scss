@@ -259,28 +259,44 @@ select {
 // Survey
 //
 
-.survey-form-first {
+.survey-form {
+
   .legend {
-    margin-bottom: 20px;
     font-weight: bold;
-    @extend .col-sm-10;
-    @extend .col-sm-offset-1;
   }
 
-  .btn-primary {
-    margin: 20px 0 10px 0;
-    background-color: $link-menu;
-    width: 100%;
-
-    &:last-child {
-      margin-top: 0;
-      font-size: ($fs-normal)+.2;
+  // first step
+  &.first {
+    .legend {
+      margin-bottom: 20px;
+      @extend .col-sm-10;
+      @extend .col-sm-offset-1;
     }
 
-    &:hover {
-      background-color: $btn-primary;
+    .btn-primary {
+      margin: 20px 0 10px 0;
+      background-color: $link-menu;
+      width: 100%;
+
+      &:last-child {
+        margin-top: 0;
+        font-size: ($fs-normal)+.2;
+      }
+
+      &:hover {
+        background-color: $btn-primary;
+      }
     }
   }
+
+  // second step
+  &.second {
+    .btn-primary {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
 }
 
 // ===
