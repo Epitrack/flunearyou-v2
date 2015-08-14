@@ -77,6 +77,10 @@ body {
   }
 }
 
+// ===
+
+
+
 //
 // Header
 //
@@ -163,6 +167,7 @@ button {
 // ===
 
 
+
 //
 // Map & databox
 //
@@ -193,7 +198,7 @@ button {
   top: 0;
   left: 0;
   z-index: -1;
-  background-color: red;
+  background-color: black;
   @include transition(z-index, .2s, ease-out, 0s);
 
   // when show map, use this class
@@ -350,9 +355,7 @@ button {
   }
 }
 
-.open-more-info {
-  cursor: pointer;
-}
+.open-more-info { cursor: pointer; }
 
 .call-info {
   h2 {
@@ -382,6 +385,8 @@ button {
 }
 
 // ===
+
+
 
 //
 // Hide & show assets | only mobile
@@ -466,6 +471,7 @@ button {
 // ===
 
 
+
 //
 // About
 //
@@ -506,7 +512,7 @@ button {
         content: '';
         width: 100%;
         height: 5px;
-        background: $bg-primary;
+        background: darken($bg-figure, 2%);
         position: absolute;
         bottom: -3px;
         left: 0;
@@ -617,9 +623,11 @@ button {
 // ===
 
 
+
 //
 // News
 //
+
 .news-item {
   height: auto;
   min-height: 450px;
@@ -718,8 +726,9 @@ button {
 // ===
 
 
+
 //
-// JoinUs
+// Join Us
 //
 
 .wrapper-join-us {
@@ -760,6 +769,7 @@ button {
 }
 
 // ===
+
 
 
 //
@@ -817,6 +827,7 @@ button {
 // ===
 
 
+
 //
 // Footer
 //
@@ -860,10 +871,10 @@ button {
       @include social('google-plus');
     }
   }
-
 }
 
 // ===
+
 
 
 //
@@ -1108,7 +1119,118 @@ button {
   }
 }
 
-//  ===
+// ===
+
+
+
+//
+// Survey
+//
+
+.wrapper-survey {
+  min-height: 660px;
+
+  .legend {
+    font-weight: bold;
+    margin-top: 0;
+  }
+}
+
+.previously-symptoms {
+  min-height: 60px;
+  color: $link-menu;
+  font-size: ($fs-normal)+.4;
+  text-align: center;
+  margin-bottom: 30px;
+
+  time, p {
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  time {
+    @extend .col-sm-4;
+  }
+
+  p {
+    @extend .col-sm-7;
+  }
+}
+
+// temperature
+.temperature {
+  margin-top: 30px;
+
+  h3 {
+    font-size: ($fs-normal)+.4;
+    color: $link-menu;
+    text-align: center;
+  }
+
+  .text-slider {
+    text-align: center;
+    font-size: ($fs-normal)+.6;
+    font-family: $ff-bold;
+    color: $link-menu;
+  }
+
+  .button-thermometer {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    text-indent: -9999px;
+    @include bdr(100%);
+    @include apr(none);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80%;
+    background-color: transparent;
+    @extend .hidden-sm;
+    @extend .hidden-md;
+    @extend .hidden-lg;
+
+    &.minus {
+      margin-left: 25%;
+      @include path('icon-btn-minus.svg');
+    }
+
+    &.plus {
+      @include path('icon-btn-plus.svg');
+    }
+  }
+}
+
+// datepicker
+.wrapper-datepicker {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  h3 {
+    font-size: ($fs-normal)+.4;
+    color: $link-menu;
+    text-align: center;
+  }
+
+  .pick-a-date {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    margin: 10px 0;
+    color: $text-secondary;
+    cursor: pointer;
+    font-size: ($fs-normal)+.2;
+    text-align: center;
+  }
+}
+
+
+// ===
+
 
 
 //
@@ -1206,7 +1328,7 @@ button {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 6;
+      z-index: 11;
       @include rgba(lighten($white-primary-rgb, 1%), .9);
       @include bsd(1px, 2px, 2px, lighten($link-menu, 35%));
     }
@@ -1463,9 +1585,7 @@ button {
     .btn-primary { padding: 10px 20px; }
   }
 
-  .year {
-    text-align: left;
-  }
+  .year { text-align: left; }
 
   .press-share {
     width: 20%;
@@ -1485,6 +1605,46 @@ button {
     display: inline-block;
     padding: 8px 40px;
     margin-left: 2%;
+  }
+
+  //
+  // Survey
+  //
+
+  .previously-symptoms {
+    time, p {
+      display: inline-block;
+    }
+
+    time {
+      margin-right: 6%;
+    }
+  }
+
+  .wrapper-survey {
+    .legend {
+      font-size: ($fs-medium)-1;
+    }
+
+    .radio-group-survey {
+      width: 31%;
+      margin-right: 3%;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .temperature, .wrapper-datepicker {
+    h3 { font-size: ($fs-medium)-1; }
+  }
+
+  .temperature {
+    .checkbox-group {
+      margin-left: 27% !important;
+      width: 56% !important;
+    }
   }
 
 }
