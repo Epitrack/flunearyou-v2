@@ -10,6 +10,11 @@
 
 :-ms-input-placeholder { color: $text-other; }
 
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
 select {
   &.select-primary {
     display: block;
@@ -251,6 +256,31 @@ select {
   }
 }
 
+.modal-raf {
+  .btn-secondary {
+    padding: 10px;
+    margin-right: 20px;
+  }
+
+  .modal-header {
+    &.bg { height: 70px; }
+  }
+
+  .modal-title {
+    font-size: ($fs-medium)-1;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .legend {
+    position: absolute;
+    font-size: ($fs-normal)-.2;
+    bottom: -5px;
+  }
+}
 // ===
 
 
@@ -337,6 +367,20 @@ select {
         width: 47%;
         margin-right: 3%;
       }
+    }
+  }
+
+  .modal-raf {
+    .modal-header {
+      &.bg { height: 80px; }
+    }
+
+    .modal-title { font-size: $fs-medium; }
+
+    .legend { right: -30%; }
+
+    textarea {
+      min-height: 110px;
     }
   }
 }
