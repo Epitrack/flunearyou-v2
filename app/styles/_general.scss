@@ -1137,6 +1137,7 @@ button {
 }
 
 .previously-symptoms {
+  min-height: 60px;
   color: $link-menu;
   font-size: ($fs-normal)+.4;
   text-align: center;
@@ -1156,7 +1157,6 @@ button {
 
   p {
     @extend .col-sm-7;
-    @extend .col-sm-offset-1;
   }
 }
 
@@ -1190,6 +1190,9 @@ button {
     background-position: center center;
     background-size: 80%;
     background-color: transparent;
+    @extend .hidden-sm;
+    @extend .hidden-md;
+    @extend .hidden-lg;
 
     &.minus {
       margin-left: 25%;
@@ -1204,7 +1207,8 @@ button {
 
 // datepicker
 .wrapper-datepicker {
-  margin: 20px 0 30px 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
 
   h3 {
     font-size: ($fs-normal)+.4;
@@ -1324,7 +1328,7 @@ button {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 10;
+      z-index: 11;
       @include rgba(lighten($white-primary-rgb, 1%), .9);
       @include bsd(1px, 2px, 2px, lighten($link-menu, 35%));
     }
@@ -1603,9 +1607,43 @@ button {
     margin-left: 2%;
   }
 
+  //
+  // Survey
+  //
+
   .previously-symptoms {
     time, p {
       display: inline-block;
+    }
+
+    time {
+      margin-right: 6%;
+    }
+  }
+
+  .wrapper-survey {
+    .legend {
+      font-size: ($fs-medium)-1;
+    }
+
+    .radio-group-survey {
+      width: 31%;
+      margin-right: 3%;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .temperature, .wrapper-datepicker {
+    h3 { font-size: ($fs-medium)-1; }
+  }
+
+  .temperature {
+    .checkbox-group {
+      margin-left: 27% !important;
+      width: 56% !important;
     }
   }
 

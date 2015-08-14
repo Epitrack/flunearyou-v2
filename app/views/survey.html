@@ -7,8 +7,8 @@
           <h3 class="legend">You previously experienced the following symptoms:</h3>
 
           <div class="previously-symptoms">
-            <time datetime="2015-08-13 16:20">08/13/2015</time>
-            <p>Fatigue, Nause or vomiting, diarrhea</p>
+            <time datetime="2015-08-13 16:20" class="col-sm-4">08/13/2015</time>
+            <p class="col-sm-7">Fatigue, Nause or vomiting, diarrhea</p>
           </div>
 
           <form action="#" class="survey-form second" name="survey-form" id="survey-form">
@@ -81,7 +81,7 @@
                 <button id="button-thermometer-minus" class="button-thermometer minus">minus</button>
                 <button id="button-thermometer-plus" class="button-thermometer plus">plus</button>
 
-                <fieldset class="checkbox-group col-xs-12 col-sm-6">
+                <fieldset class="checkbox-group col-xs-12 col-sm-6 col-sm-offset-3">
                   <input type="checkbox" value="not-measured" id="survey-symptom-not-measured" class="checkbox-primary" name="survey-symptom">
                   <label for="survey-symptom-not-measured">not measured</label>
                   <div class="check"><div class="inside"></div></div>
@@ -90,7 +90,7 @@
             </aside>
 
             <!-- datepicker -->
-            <fieldset class="col-xs-12 col-sm-6 wrapper-datepicker">
+            <fieldset class="col-xs-12 col-sm-7 col-sm-offset-3 wrapper-datepicker">
               <h3>What day did Yuri start feeling ill?</h3>
               <aside id="pick-a-date" class="pick-a-date">click to pick a date</aside>
             </fieldset>
@@ -98,19 +98,19 @@
             <fieldset class="form-group col-sm-12">
               <legend class="legend">Did You receive the flu vaccine after July 31, 2015?</legend>
 
-              <fieldset class="radio-group col-xs-12 col-sm-4">
+              <fieldset class="col-xs-12 col-sm-4 radio-group radio-group-survey">
                 <input type="radio" value="flu-vaccine-yes" id="flu-vaccine-yes" class="radio-primary" name="flu-vaccine">
                 <label for="flu-vaccine-yes">Yes</label>
                 <div class="check"><div class="inside"></div></div>
               </fieldset>
 
-              <fieldset class="radio-group col-xs-12 col-sm-4">
+              <fieldset class="col-xs-12 col-sm-4 radio-group radio-group-survey">
                 <input type="radio" value="flu-vaccine-no" id="flu-vaccine-no" class="radio-primary" name="flu-vaccine">
                 <label for="flu-vaccine-no">No</label>
                 <div class="check"><div class="inside"></div></div>
               </fieldset>
 
-              <fieldset class="radio-group col-xs-12 col-sm-4">
+              <fieldset class="col-xs-12 col-sm-4 radio-group radio-group-survey">
                 <input type="radio" value="flu-vaccine-dont-know" id="flu-vaccine-dont-know" class="radio-primary" name="flu-vaccine">
                 <label for="flu-vaccine-dont-know">Don't know</label>
                 <div class="check"><div class="inside"></div></div>
@@ -118,7 +118,7 @@
             </fieldset>
 
 
-            <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+            <div class="col-xs-12 ">
               <input type="submit" value="Submit" class="btn-primary">
             </div>
           </form>

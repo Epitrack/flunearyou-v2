@@ -330,6 +330,15 @@ select {
   }
 
   .btn-primary { padding: 10px 30px; }
+
+  .survey-form {
+    &.second {
+      .checkbox-group {
+        width: 47%;
+        margin-right: 3%;
+      }
+    }
+  }
 }
 
 // Desktop
