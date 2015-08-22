@@ -193,6 +193,8 @@ select {
   .form-group {
     padding: 0;
     margin-bottom: 5px;
+    border: 0 solid transparent;
+    text-decoration: none;
   }
 
   small {
@@ -332,6 +334,19 @@ select {
 // ===
 
 
+
+//
+// Settings
+//
+
+.form-change-pass {
+  margin-top: 0 !important;
+}
+
+// ===
+
+
+
 // iPad
 @media (min-width: 768px) {
   .input-secondary {
@@ -383,6 +398,30 @@ select {
       min-height: 110px;
     }
   }
+
+
+
+  //
+  // Settings
+  //
+
+  .form-change-pass {
+    .form-group {
+      text-align: left;
+    }
+
+    label {
+      display: inline-block;
+      width: 45%;
+    }
+
+    .input-primary {
+      display: inline-block;
+      width: 50%;
+      margin-left: 10px;
+    }
+  }
+
 }
 
 // Desktop

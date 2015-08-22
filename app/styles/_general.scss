@@ -77,6 +77,45 @@ body {
   }
 }
 
+.fny-icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  top: 15px;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20px;
+  @include bdr(2px);
+  @include transition(opacity, .2s, linear, 0s);
+
+  &:hover {
+    opacity: .6;
+  }
+
+  &.report {
+    background-color: #28a4c9;
+    @include path('icon-report.svg');
+  }
+
+  &.check {
+    background-color: #3e8f3e;
+    @include path('icon-check.svg');
+  }
+
+  &.edit {
+    background-color: #2B669A;
+    @include path('icon-edit.svg');
+  }
+
+  &.deactivate {
+    background-color: #C12E2A;
+    @include path('icon-deactivate.svg');
+  }
+}
+
 // ===
 
 
@@ -1236,7 +1275,7 @@ button {
 // Reports
 //
 
-.info-report-card {
+.info-box {
   background-color: $bg-secondary;
   padding: 15px;
   margin-bottom: 15px;
@@ -1337,27 +1376,69 @@ button {
   }
 }
 
-.reports-icon {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  right: 10px;
-  top: 15px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 20px;
-  @include bdr(2px);
+// ===
 
-  &.report {
-    background-color: #28a4c9;
-    @include path('icon-report.svg');
+
+
+//
+// Settings
+//
+
+.wrapper-settings {
+  .default {
+    color: #414141;
+    text-align: left;
+    font-size: ($fs-normal)+.2 !important;
+    font-style: normal !important;
   }
 
-  &.check {
-    background-color: #3e8f3e;
-    @include path('icon-check.svg');
+  .link {
+    a { color: $btn-primary; }
   }
 }
+
+.btn-change-pass {
+  @extend .col-xs-12;
+  margin: 10px 0 20px 0;
+  background-size: 30px;
+  background-position: 20px center;
+  background-repeat: no-repeat;
+  @include path('icon-key.svg');
+}
+
+.settings-table {
+  @extend .reports-table;
+  font-size: $fs-normal;
+
+  tr { text-align: center; }
+
+  td { position: relative; }
+
+  .fny-icon {
+    position: relative;
+    display: inline-block;
+    right: 0;
+    top: 0;
+  }
+}
+
+.form-change-pass {
+  h4 {
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+
+  .wrapper-buttons {
+    text-align: right;
+    margin-right: 0;
+    margin-top: 20px;
+
+    button {
+      background-color: $link-menu;
+    }
+  }
+}
+
 
 // ===
 
@@ -1784,6 +1865,28 @@ button {
 
   .wrapper-reports {
     .title-primary { text-align: left; }
+  }
+
+
+  //
+  // Settings
+  //
+
+  .wrapper-settings {
+    .title-primary {
+      font-size: ($fs-medium)+.7;
+      text-align: left;
+    }
+  }
+
+  .settings-table {
+    font-size: ($fs-normal)+.2;
+  }
+
+  .form-change-pass {
+    .wrapper-buttons {
+      margin-right: 20px;
+    }
   }
 
 }
