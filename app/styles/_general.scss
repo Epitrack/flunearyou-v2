@@ -1409,6 +1409,7 @@ button {
 .settings-table {
   @extend .reports-table;
   font-size: $fs-normal;
+  margin-bottom: 20px;
 
   tr { text-align: center; }
 
@@ -1880,6 +1881,7 @@ button {
   }
 
   .settings-table {
+    margin-bottom: 0;
     font-size: ($fs-normal)+.2;
   }
 
