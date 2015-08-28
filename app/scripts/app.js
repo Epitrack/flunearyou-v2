@@ -64,6 +64,16 @@ angular
         controller: 'ReportsCtrl',
         controllerAs: 'reports'
       })
+      .when('/settings', {
+        templateUrl: 'views/settings.html',
+        controller: 'SettingsCtrl',
+        controllerAs: 'settings'
+      })
+      .when('/unsubscribe', {
+        templateUrl: 'views/unsubscribe.html',
+        controller: 'UnsubscribeCtrl',
+        controllerAs: 'unsubscribe'
+      })
       .otherwise({
         redirectTo: '/'
       });

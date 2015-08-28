@@ -12,7 +12,14 @@
 
 textarea {
   resize: vertical;
+  width: 100%;
   min-height: 100px;
+  height: auto;
+  outline: none;
+  border: none;
+  font-size: ($fs-normal)+.2;
+  color: $link-menu;
+  padding: 10px;
 }
 
 select {
@@ -178,7 +185,6 @@ select {
 //
 
 .register-form {
-  cursor: pointer;
 
   label {
     display: block;
@@ -193,6 +199,8 @@ select {
   .form-group {
     padding: 0;
     margin-bottom: 5px;
+    border: 0 solid transparent;
+    text-decoration: none;
   }
 
   small {
@@ -281,6 +289,7 @@ select {
     bottom: -5px;
   }
 }
+
 // ===
 
 
@@ -330,6 +339,44 @@ select {
 }
 
 // ===
+
+
+
+//
+// Settings
+//
+
+.form-change-pass {
+  margin-top: 0 !important;
+}
+
+// ===
+
+
+
+//
+// Unsubscribe
+//
+
+.unsubscribe-form {
+  .radio-primary {
+    left: 4%;
+    width: 23px;
+  }
+
+  .reason {
+    display: block;
+    position: relative;
+    font-size: ($fs-normal)+.4;
+    color: $link-menu;
+    margin-bottom: 5px;
+    text-align: left;
+    background-color: transparent;
+  }
+}
+
+// ===
+
 
 
 // iPad
@@ -383,6 +430,58 @@ select {
       min-height: 110px;
     }
   }
+
+
+
+  //
+  // Settings
+  //
+
+  .form-change-pass {
+    .form-group {
+      text-align: left;
+    }
+
+    label {
+      display: inline-block;
+      width: 45%;
+    }
+
+    .input-primary {
+      display: inline-block;
+      width: 50%;
+      margin-left: 10px;
+    }
+  }
+
+  .form-add-household-member {
+    label {
+      &.block { display: block !important; }
+      &.nickname { width: 20% !important; }
+    }
+
+    .input-primary {
+      &.full { width: 76%; }
+    }
+  }
+
+
+
+  //
+  // Unsubscribe
+  //
+
+  .unsubscribe-form {
+    .col-sm-6 {
+      width: 48%;
+      margin-right: 2%;
+    }
+
+    textarea { width: 98%; }
+  }
+
+  // ===
+
 }
 
 // Desktop
