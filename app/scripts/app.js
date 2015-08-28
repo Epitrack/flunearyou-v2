@@ -69,6 +69,11 @@ angular
         controller: 'SettingsCtrl',
         controllerAs: 'settings'
       })
+      .when('/unsubscribe', {
+        templateUrl: 'views/unsubscribe.html',
+        controller: 'UnsubscribeCtrl',
+        controllerAs: 'unsubscribe'
+      })
       .otherwise({
         redirectTo: '/'
       });

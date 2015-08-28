@@ -178,7 +178,6 @@ select {
 //
 
 .register-form {
-  cursor: pointer;
 
   label {
     display: block;
@@ -421,6 +420,18 @@ select {
       margin-left: 10px;
     }
   }
+
+  .form-add-household-member {
+    label {
+      &.block { display: block !important; }
+      &.nickname { width: 20% !important; }
+    }
+
+    .input-primary {
+      &.full { width: 76%; }
+    }
+  }
+
 
 }
 

@@ -57,7 +57,7 @@
                 <input id="confirm-pass" type="password" class="input-primary">
               </fieldset>
 
-              <div class="row wrapper-buttons">
+              <div class="col-xs-12 wrapper-buttons">
                 <button class="btn-primary">Cancel</button>
                 <button class="btn-primary">Save</button>
               </div>
@@ -168,6 +168,54 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- Add household member -->
+        <div class="col-xs-12 nopadding">
+          <div class="info-box">
+            <form action="#" name="form-add-household-member" class="register-form form-change-pass form-add-household-member" id="form-add-household-member">
+              <h4>Add household member</h4>
+
+              <fieldset class="form-group">
+                <label class="nickname" for="add-household-nickname">Nickname</label>
+                <input id="add-household-nickname" type="text" class="input-primary full">
+              </fieldset>
+
+              <fieldset class="form-group col-sm-6">
+                <legend class="legend">Gender:</legend>
+
+                <fieldset class="radio-group col-xs-6">
+                  <input type="radio" value="M" id="add-household-male" class="radio-primary" name="add-household-member">
+                  <label for="add-household-male">Male</label>
+                  <div class="check"><div class="inside"></div></div>
+                </fieldset>
+
+                <fieldset class="radio-group col-xs-6">
+                  <input type="radio" value="F" id="add-household-female" class="radio-primary" name="add-household-member">
+                  <label for="add-household-female">Female</label>
+                  <div class="check"><div class="inside"></div></div>
+                </fieldset>
+              </fieldset>
+
+              <fieldset class="form-group col-sm-6">
+                <label class="block">Birthdate</label>
+
+                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 birthdate-household-member select-primary">
+                  <option value="Month" disabled selected>Month</option>
+                  <option value="Month_1">Month_1</option>
+                  <option value="Month_2">Month_2</option>
+                  <option value="Month_3">Month_3</option>
+                </select>
+
+                <input type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
+              </fieldset>
+
+              <div class="col-xs-12 wrapper-buttons">
+                <button class="btn-primary">Cancel</button>
+                <button class="btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </section>
     </div>
   </div>

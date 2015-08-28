@@ -27,6 +27,11 @@ body {
   font-family: $ff-regular;
 }
 
+h4, label {
+  border-bottom-color: transparent !important;
+  text-decoration: none !important;
+}
+
 .nopadding { padding: 0; }
 .no-margin { margin: 0; }
 
@@ -1440,6 +1445,19 @@ button {
   }
 }
 
+.form-add-household-member {
+  .legend {
+    text-align: left;
+  }
+
+  .radio-group {
+    label {
+      padding: 7px 15px 10px 40px;
+    }
+  }
+
+}
+
 
 // ===
 
@@ -1530,9 +1548,7 @@ button {
     &.navbar-nav { margin-top: 30px; }
   }
 
-  .dropdown {
-    margin-top: 40px;
-  }
+  .dropdown { margin-top: 40px; }
 
   .navbar {
     &.navbar-default {
@@ -1602,9 +1618,7 @@ button {
     }
   }
 
-  .navbar-collapse {
-    position: relative;
-  }
+  .navbar-collapse { position: relative; }
 
   .news-item {
     figure { height: 150px; }
@@ -1881,7 +1895,6 @@ button {
   }
 
   .settings-table {
-    margin-bottom: 0;
     font-size: ($fs-normal)+.2;
   }
 
