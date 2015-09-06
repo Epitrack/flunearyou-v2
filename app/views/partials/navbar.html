@@ -23,8 +23,8 @@
           <a ng-href="#/" title="Flu Near You">Flu Near You</a>
         </h1>
 
-        <ul class="nav navbar-nav col-sm-6 nopadding">
-          <li> <a class="nav-link" title="Flu Map" ng-href="#/" data-toggle="modal" data-dismiss="modal" data-target="#modal-raf">Flu Map</a> </li>
+        <ul class="nav navbar-nav col-sm-6 nopadding" ng-controller="MainCtrl">
+          <li> <a class="nav-link" title="Flu Map" ng-click="geolocation()">Flu Map</a> </li>
           <li> <a class="nav-link" title="About" ng-href="#/about">About</a> </li>
           <li> <a class="nav-link" title="News" ng-href="#/flu-news">News</a> </li>
           <li> <a class="nav-link" title="Press" ng-href="#/press">Press</a> </li>
