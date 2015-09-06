@@ -65,6 +65,7 @@ angular.module('flunearyouV2App')
       console.log('Error, geolocation: ', msg);
     };
 
+    // Use to add marker dynamically
     $scope.updateMarker = function(text, lat, lng) {
       markers = new L.LayerGroup().addTo(map);
       marker = L.marker([lat, lng]).addTo(markers).bindPopup(text).openPopup();
