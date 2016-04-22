@@ -1,0 +1,113 @@
+//
+// About
+//
+
+.wrapper-about-tabs
+  background-color: $bg-primary
+  margin-top: 20px
+  padding: 40px 0
+
+.tabs-nav
+  li
+    padding: 0
+  a
+    color: #FFFFFF
+    font-family: $ff-bold
+    text-decoration: none
+    text-align: center
+    position: relative
+    line-height: 55px
+    outline: none
+    height: 55px
+    font-size: $fs-normal + 0.6
+    display: block
+    cursor: pointer
+    background-color: rgba(63, 111, 146, 0.3)
+    // link-menu with alpha
+    +bdr(6px 6px 0 0)
+    +transition(all, 0.2s, linear, 0s)
+    &.active
+      color: $link-menu
+      border: 2px solid $link-menu
+      background: transparent
+      &::after
+        content: ''
+        width: 100%
+        height: 5px
+        background: darken($bg-figure, 2%)
+        position: absolute
+        bottom: -3px
+        left: 0
+        z-index: 2
+    &:hover
+      color: $link-menu
+
+.tabs-container
+  border: 2px solid $link-menu
+  padding: 20px
+  top: -2px
+  .description
+    color: $link-menu
+    font-size: $fs-normal + 0.6
+    font-family: $ff-light
+    margin: 0 0 20px 0
+    text-align: center
+  h4
+    display: block
+    position: relative
+    font-family: $ff-light
+    font-size: $fs-normal * 2
+    color: $btn-primary
+    margin: 20px 0
+    &.how-it-works
+      text-align: center
+      &::before
+        content: ''
+        width: 40px
+        height: 40px
+        display: inline-block
+        position: relative
+        vertical-align: middle
+        margin-right: 10px
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: contain
+        +bdr(100%)
+        background-image: url("../images/icon-help-banner-interna.png")
+    &.who-we-are
+      color: $text-primary
+  h5
+    color: $text-primary
+    font-size: $fs-normal * 2
+  li
+    @extend %li-pattern
+  figure
+    text-align: center
+    margin-bottom: 10px
+    &.bg
+      background-color: $bg-figure
+    img
+      display: block
+      margin: 0 auto
+      +scale(0.9)
+      &.scale
+        margin-left: -15px
+        +scale(0.7)
+  figcaption
+    background-color: $blue-lighten
+    color: #FFFFFF
+    font-size: $fs-normal + 0.2
+    min-height: 80px
+    padding: 20px 10px
+  p
+    color: $text-primary
+    font-size: $fs-normal + 0.2
+
+.box-healthmap
+  margin-left: -40px
+
+.box-skoll
+  margin-left: -30px
+
+.box-boston
+  margin-left: -50px

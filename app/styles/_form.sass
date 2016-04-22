@@ -1,0 +1,452 @@
+::-webkit-input-placeholder
+  color: $text-other
+
+:-moz-placeholder
+  color: $text-other
+
+::-moz-placeholder
+  color: $text-other
+
+:-ms-input-placeholder
+  color: $text-other
+
+textarea
+  resize: vertical
+  width: 100%
+  min-height: 100px
+  height: auto
+  outline: none
+  border: none
+  font-size: ($fs-normal)+.2
+  color: $link-menu
+  padding: 10px
+
+
+select
+  &.select-primary
+    display: block
+    margin: 10px 0
+    height: 35px
+    border: none
+    outline: none
+    @include apr(none)
+    @include bdr(0)
+    @include path('icon-arrow.svg')
+    background-color: #FFFFFF
+    background-size: 12px
+    background-repeat: no-repeat
+    background-position: 90% 12px
+  
+
+
+.legend
+  border: none
+  color: $link-menu
+  font-size: ($fs-normal)+.4
+  text-align: center
+  margin-bottom: 0
+
+
+.btn-primary
+  background-color: $btn-primary
+  color: #FFFFFF
+  font-size: ($fs-normal)+.4
+  cursor: pointer
+  border: none
+  outline: none
+  padding: 8px 20px
+  @include bdr(5px)
+  @include transition(background, .2s, linear, 0s)
+  &:hover 
+    background-color: $link-menu 
+  &.add-member
+    background-repeat: no-repeat
+    background-position: 13% 3px
+    background-size: 13%
+    @include path('icon-add-household.svg')
+  
+
+
+.input-primary
+  border: none
+  font-size: ($fs-normal)+.4
+  padding: 5px 10px
+  color: $link-menu
+  margin-bottom: 10px
+  @include bdr(5px)
+  @extend .col-xs-12
+  float: none
+
+
+.input-secondary
+  background-color: lighten($border-primary, 8%)
+  padding: 8px 10px
+  font-size: ($fs-normal)+.6
+  border: none
+  outline: none
+  color: $brown-primary
+  @include bdr(7px)
+  @extend .col-xs-12
+  float: none
+
+
+.radio-group
+  position: relative
+  margin-bottom: 0
+  padding: 0
+
+  label
+    color: $link-menu
+    display: block
+    position: relative
+    font-size: ($fs-normal)+.4
+    padding: 10px 15px 10px 55px
+    margin: 10px auto
+    min-height: 30px
+    z-index: 9
+    cursor: pointer
+    background: #FFFFFF
+  
+
+  .check
+    display: block
+    position: absolute
+    border: 2px solid $link-menu
+    @include bdr(100%)
+    height: 25px
+    width: 25px
+    z-index: 9
+    top: 17px
+    left: 4%
+  
+
+
+.radio-primary
+  position: absolute
+  z-index: 10
+  left: 5%
+  top: 16px
+  width: 20px
+  height: 20px
+  @include apr(none)
+
+  &:checked ~
+    .check
+      .inside
+        display: block
+        position: relative
+        background: $btn-primary
+        @include bdr(100%)
+        height: 70%
+        width: 70%
+        top: 15%
+        margin: auto
+      
+    
+
+    .label
+      color: $link-menu
+    
+  
+
+
+.checkbox-group
+  @extend .radio-group
+
+  .check
+    @include bdr(5px)
+  
+
+
+.checkbox-primary
+  @extend .radio-primary
+
+  &:checked
+    .check
+      .inside
+        width: 100%
+        background-size: 100%
+        background-color: transparent
+        background-repeat: no-repeat
+        background-position: center center
+        @include path('icon-survey-check.svg')
+
+
+//
+// Register form | Modal
+//
+
+.register-form
+
+  label
+    display: block
+    position: relative
+    font-size: ($fs-normal)+.4
+    color: $link-menu
+    margin-bottom: 5px
+    text-align: left
+    background-color: transparent
+  
+
+  .form-group
+    padding: 0
+    margin-bottom: 5px
+    border: 0 solid transparent
+    text-decoration: none
+  
+
+  small
+    font-size: ($fs-normal)-.2
+    font-weight: lighter
+    text-align: left
+    display: block
+    text-decoration: none
+    margin-bottom: 10px
+  
+//
+// Refer a friend | Modal
+//
+
+.refer-a-friend-form
+  position: relative
+
+  legend
+    font-size: ($fs-normal)-.1
+    color: $link-menu
+    border: none
+    margin-bottom: -10px
+    position: absolute
+    bottom: 0
+  
+
+  .input-primary
+    font-size: $fs-normal
+    height: 40px
+    padding: 5px 50px 5px 10px
+  
+
+
+.btn-submit
+  @include apr(none)
+  @include bdr(0 5px 5px 0)
+  background-color: $link-menu
+  cursor: pointer
+  position: absolute
+  right: 0
+  top: 0
+  border: none
+  outline: none
+  height: 40px
+  width: 40px
+  background-repeat: no-repeat
+  background-size: 50%
+  background-position: center center
+  @include path('icon-btn-submit.svg')
+  @include transition(background, .2s, ease-in, 0s)
+
+  &:hover, &:focus, &:active
+    background-color: $btn-primary
+    // @include path('')
+  
+
+
+.modal-raf
+  .btn-secondary
+    padding: 10px
+    margin-right: 20px
+  .modal-header
+    &.bg 
+      height: 70px 
+  
+
+  .modal-title
+    font-size: ($fs-medium)-1
+  
+
+  .form-group
+    position: relative
+    margin-bottom: 10px
+  
+
+  .legend
+    position: absolute
+    font-size: ($fs-normal)-.2
+    bottom: -5px
+
+//
+// Survey
+//
+
+.survey-form
+
+  .legend
+    font-weight: bold
+  
+
+  // first step
+  &.first
+    .legend
+      margin-bottom: 20px
+      @extend .col-sm-10
+      @extend .col-sm-offset-1
+    
+
+    .btn-primary
+      margin: 20px 0 10px 0
+      background-color: $link-menu
+      width: 100%
+
+      &:last-child
+        margin-top: 0
+        font-size: ($fs-normal)+.2
+      
+
+      &:hover
+        background-color: $btn-primary
+      
+    
+  
+
+  // second step
+  &.second
+    .btn-primary
+      width: 100%
+      margin-bottom: 20px
+
+//
+// Settings
+//
+
+.form-change-pass
+  margin-top: 0 !important
+
+
+//
+// Unsubscribe
+//
+
+.unsubscribe-form
+  .radio-primary
+    left: 4%
+    width: 23px
+  
+
+  .reason
+    display: block
+    position: relative
+    font-size: ($fs-normal)+.4
+    color: $link-menu
+    margin-bottom: 5px
+    text-align: left
+    background-color: transparent
+
+// iPad
+@media (min-width: 768px)
+  .input-secondary
+    &.large 
+      width: 60% 
+
+  .register-form
+    .form-group
+      padding: 0 15px
+    
+
+    small
+      margin-top: -7px
+      font-size: ($fs-normal)-.4
+    
+
+    select
+      margin-top: 0
+    
+  
+
+  .register-year
+    width: 40%
+    margin-left: 40px
+    height: 35px
+  
+
+  .btn-primary 
+    padding: 10px 30px 
+
+  .survey-form
+    &.second
+      .checkbox-group
+        width: 47%
+        margin-right: 3%
+      
+    
+  
+
+  .modal-raf
+    .modal-header
+      &.bg 
+        height: 80px 
+    
+
+    .modal-title 
+      font-size: $fs-medium 
+
+    .legend 
+      right: -30% 
+
+    textarea
+      min-height: 110px
+    
+  
+
+
+
+  //
+  // Settings
+  //
+
+  .form-change-pass
+    .form-group
+      text-align: left
+    
+
+    label
+      display: inline-block
+      width: 45%
+    
+
+    .input-primary
+      display: inline-block
+      width: 50%
+      margin-left: 10px
+    
+  
+
+  .form-add-household-member
+    label
+      &.block 
+        display: block !important 
+      &.nickname 
+        width: 20% !important 
+    
+
+    .input-primary
+      &.full 
+        width: 76% 
+    
+  
+
+
+
+  //
+  // Unsubscribe
+  //
+
+  .unsubscribe-form
+    .col-sm-6
+      width: 48%
+      margin-right: 2%
+    
+
+    textarea 
+      width: 98% 
+
+// Desktop
+// @media (min-width: 992px)

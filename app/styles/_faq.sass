@@ -1,0 +1,100 @@
+//
+// Faq
+//
+
+.faq-form
+  .input-primary
+    height: 40px
+    border: 1px solid $news-link
+
+.search-term
+  color: $link-menu
+  display: block
+  text-align: center
+  font-size: $fs-medium -1
+  margin: 20px 0
+
+.count-result
+  background-color: $btn-primary
+  color: #FFFFFF
+  text-align: center
+  padding: 8px 12px
+  font-size: $fs-normal + 0.4
+  display: block
+  +bdr(5px)
+
+.questions
+  margin: 30px 0
+  min-height: 400px
+  display: inline-block
+
+%faq-item
+  content: ''
+  width: 30px
+  height: 30px
+  top: 15px
+  position: absolute
+
+%js-faq-item
+  font-size: $fs-medium -1
+  color: $link-menu
+  right: 0
+  border: 1px solid $link-menu
+  text-align: center
+  +bdr(100%)
+
+.faq-item
+  display: inline-block
+  vertical-align: top
+  position: relative
+  &::before
+    @extend %faq-item
+    left: 15px
+    background-repeat: no-repeat
+    background-image: url("../images/icon-faq.svg")
+  &.js-closed
+    &::after
+      @extend %faq-item
+      @extend %js-faq-item
+      content: '+'
+  &.js-open
+    &::after
+      @extend %faq-item
+      @extend %js-faq-item
+      content: '-'
+      line-height: 25px
+  &:hover
+    ~ .questions-title
+      border-bottom: 2px solid darken($bg-primary, 7%)
+
+.questions-title
+  color: $link-menu
+  font-size: $fs-normal + 0.6
+  cursor: pointer
+  min-height: 60px
+  text-align: left
+  position: relative
+  display: block
+  padding: 10px 50px 10px 35px
+  background-repeat: no-repeat
+  background-position: right center
+  border-bottom: 1px solid darken($bg-primary, 7%)
+
+.questions-description
+  color: $text-secondary
+  font-size: $fs-normal + 0.2
+  line-height: $fs-medium -1
+  background-repeat: no-repeat
+  padding: 20px 20px 10px 80px
+  overflow: hidden
+  position: relative
+  background-color: $bg-secondary
+  height: 0
+  opacity: 0
+  background-image: url("../images/icon-questions.svg")
+  +bdr(0 0 6px 6px)
+  +transition(all, 0.2s, linear, 0s)
+  &.js-active
+    height: 100%
+    min-height: 80px
+    opacity: 1

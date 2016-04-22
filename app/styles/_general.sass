@@ -1,0 +1,268 @@
+// —————————————————————————
+//     General
+// —————————————————————————
+
+::-moz-selection
+  background: $link-menu
+  color: $border-primary
+  text-shadow: none
+
+::selection
+  background: $link-menu
+  color: $border-primary
+  text-shadow: none
+
+.browsehappy
+  margin: 0.2em 0
+  background: #ccc
+  color: #000
+  padding: 0.2em 0
+
+html
+  height: 100%
+
+body
+  padding: 0
+  margin: 0
+  font-size: $fs-root
+  font-family: $ff-regular
+
+h4, label
+  border-bottom-color: transparent !important
+  text-decoration: none !important
+
+.nopadding
+  padding: 0
+
+.no-margin
+  margin: 0
+
+.main
+  display: block
+  position: relative
+
+.wrapper-inside
+  min-height: 800px
+  .title-primary
+    margin: 40px 0
+  &.bg
+    background-color: darken($bg-figure, 2%)
+  .clean
+    background: #FFFFFF
+    +bdr(5px)
+  .description
+    padding: 20px 25px
+    font-size: $fs-normal + 0.2
+
+%li-pattern
+  color: $link-menu
+  font-size: $fs-normal + 0.2
+  margin-bottom: 20px
+  position: relative
+  &::before
+    content: ''
+    width: 15px
+    height: 15px
+    margin-right: 10px
+    display: inline-block
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: 20px
+    +bdr(100%)
+    background-image: url('../images/list-style-left-help.png');
+
+.fny-icon
+  width: 24px
+  height: 24px
+  position: absolute
+  cursor: pointer
+  right: 10px
+  top: 15px
+  opacity: 1
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: 20px
+  +bdr(2px)
+  +transition(opacity, 0.2s, linear, 0s)
+  &:hover
+    opacity: .6
+  &.report
+    background-color: #28a4c9
+    background-image: url("../images/icon-report.svg")
+  &.check
+    background-color: #3e8f3e
+    background-image: url("../images/icon-check.svg")
+  &.edit
+    background-color: #2B669A
+    background-image: url("../images/icon-edit.svg")
+  &.deactivate
+    background-color: #C12E2A
+    background-image: url("../images/icon-deactivate.svg")
+
+
+//
+// Header
+//
+
+.header
+  background-color: $bg-nav !important
+
+.navbar
+  margin-bottom: 0
+
+button
+  &.navbar-toggle
+    background-color: $link-menu
+    &:hover,
+    &:focus
+      background-color: $link-menu !important
+      border-color: $white-light
+    .icon-bar
+      background-color: $white-light !important
+
+// mobile
+.lets-go
+  background-color: $btn-primary
+  color: #FFFFFF !important
+
+.logo-secondary
+  margin-top: 10px
+  img
+    max-width: 100%
+
+.nav
+  &.navbar-nav
+    text-align: center
+    li
+      a
+        color: $link-menu
+        font-size: 1.5rem
+        font-family: $ff-bold
+        text-decoration: none
+        display: block
+        cursor: pointer
+        +transition(background, 0.2s, linear, 0s)
+        &:hover, &:focus, &.js-active
+          color: $link-menu !important
+          background-color: #FFFFFF
+
+// dropdown
+.dropdown
+  button
+    border: none
+    background-color: transparent
+    font-family: $ff-regular
+    font-size: $fs-normal + 0.2
+    +truncate
+    width: 175px
+  li
+    a
+      color: $link-menu
+      font-size: $fs-normal + 0.3
+      font-family: $ff-bold
+      text-decoration: none
+      display: block
+      cursor: pointer
+
+//
+// Hide & show assets | only mobile
+//
+
+.hide-show
+  text-align: center
+  min-height: 60px
+  position: relative
+  border-top: 1px solid #FFFFFF
+  button
+    background-color: $link-menu
+    color: #FFFFFF
+    font-family: $ff-regular
+    outline: none
+    text-transform: uppercase
+    font-size: $fs-normal + 0.2
+    border: none
+    height: 100%
+    padding: 20px 0
+    background-repeat: no-repeat
+    background-position: 10px 15px
+    +apr(none)
+    &:first-child
+      text-indent: 20px
+      border-right: 1px solid #FFFFFF
+      background-image: url("../images/icon-view-stats.png")
+    &:last-child
+      text-indent: 40px
+      background-image: url("../images/img-view-map-us.png")
+    &.js-active
+      background-color: $btn-primary
+
+
+//
+// Title & buttons
+//
+
+.title-primary
+  color: $link-menu
+  font-family: $ff-light
+  text-align: center
+  margin: 20px 0
+  font-size: $fs-medium
+  position: relative
+
+.btn
+  border: 2px solid $link-menu
+  color: $link-menu !important
+  font-family: $ff-bold
+  font-size: $fs-normal + 0.6
+  text-decoration: none
+  display: inline-block
+  position: relative
+  +bdr(6px)
+  +transition(background, 0.2s, linear, 0s)
+  &:hover
+    background-color: $bg-nav
+  &.btn-read-news
+    display: block
+    margin: 20px auto
+
+.link-to-read-more
+  text-align: center
+
+//
+// Privacy
+//
+
+.wrapper-privacy
+  padding-bottom: 40px
+  .description
+    padding: 20px 25px !important
+
+// Desktops
+// @media screen and (min-width: 992px)
+
+// Large Desktops
+@media screen and (min-width: 1200px)
+  .learn-more
+    h3, span, a
+      font-size: $fs-normal * 2
+  .news-item
+    figure
+      height: 180px
+  .box-healthmap, .box-skoll
+    margin: 0
+  .logo-primary
+    background-position: -30px
+  .nav-secondary
+    li
+      &.mailto
+        right: -90px !important
+  .call-info
+    h2
+      font-size: $fs-large + 1
+      span
+        font-size: $fs-large + 2.2
+  .press-share
+    width: 10%
+    margin-left: 10%
+  .count-result
+    margin-left: 12%

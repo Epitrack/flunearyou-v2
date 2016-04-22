@@ -1,0 +1,51 @@
+.navbar-toggle
+  position: absolute
+  top: 50%
+  right: 0
+  margin-top: -16px
+  
+.select-language
+  width: 60px
+  height: 41px
+  position: absolute
+  top: 5px
+  left: 0px
+  border: 2px solid #3f6f92
+  border-radius: 5px
+  background-color: rgba(242,241,236,1)
+  overflow: hidden
+  font-family: 14px
+  color: #3f6f92
+  cursor: pointer
+  transform: all 0.5s
+  -webkit-transform: all 0.5s
+  z-index: 9998
+
+  &.opened
+    height: 82px
+
+  .eng, .spa
+    width: 100%
+    display: block
+    padding: 9px 0
+    position: absolute
+    top: 40px
+    left: 0
+    text-align: center
+    cursor: pointer
+
+  .ativo
+    top: 0
+    left: 0
+    border-bottom: 1px solid #ccc
+
+  .arrow-down 
+    width: 0 
+    height: 0 
+    position: absolute
+    top: 30px
+    left: 50%
+    margin-left: -6px
+    border-left: 5px solid transparent
+    border-right: 5px solid transparent
+    border-top: 5px solid #3f6f92

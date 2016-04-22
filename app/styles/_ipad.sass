@@ -1,0 +1,299 @@
+// iPad
+@media screen and (min-width: 768px)
+  .map
+    padding-top: 50px
+
+  .learn-more
+    background-color: $link-menu
+    text-align: center
+    color: #FFFFFF
+    min-height: 60px
+    font-family: $ff-regular
+    position: relative
+    border-top: 1px solid #FFFFFF
+    border-bottom: 1px solid #FFFFFF
+    span, a
+      font-family: $ff-bold
+    h3
+      margin: 0
+      display: inline-block
+    a
+      display: inline-block
+      text-decoration: none
+      color: #FFFFFF
+      margin-left: 5px
+      position: relative
+      &::after
+        content: ''
+        width: 25px
+        height: 25px
+        position: absolute
+        right: -30px
+        top: 18px
+        background-size: 100%
+        background-image: url("../images/icon-go-map.png")
+        background-repeat: no-repeat
+        background-position: center center
+    h3, span, a
+      line-height: 60px
+      font-size: $fs-normal + 0.6
+      margin-top: 0
+      
+  .main
+    margin-top: 110px
+  .wrapper-inside
+    min-height: 800px
+    .description
+      color: $text-primary
+      padding: 50px 65px
+  .title-primary
+    font-size: $fs-normal * 4
+  // desktop & others
+  .logo-primary
+    text-indent: -9999px
+    margin: 40px 0 0 -15px
+    background-size: 100% 100%
+    background-repeat: no-repeat
+    background-image: url('../images/logo.svg')
+    a
+      display: block
+      opacity: 0
+  .nav
+    &.navbar-nav
+      margin-top: 30px
+  .dropdown
+    margin-top: 40px
+  .navbar
+    &.navbar-default
+      min-height: 110px
+      position: fixed
+      top: 0
+      width: 100%
+      z-index: 11
+      +rgba(lighten($white-primary-rgb, 1%), 0.9)
+      +bsd(1px, 2px, 2px, lighten($link-menu, 35%))
+  .btn-cta
+    position: absolute
+    background-color: transparent
+    text-align: center
+    height: 170px
+    z-index: 9
+    right: 0
+    top: -47px
+    border: none
+    outline: none
+    +apr(none)
+    +transition(top, 0.2s, linear, 0s)
+    &:hover
+      top: -40px
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      height: 100%
+      width: 51%
+      background: $btn-primary
+      +skew(0deg, 10deg)
+    &::after
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      height: 100%
+      width: 50%
+      background: $btn-primary
+      +skew(0deg, -10deg)
+    span
+      text-transform: uppercase
+      color: #FFFFFF
+      left: 0
+      position: absolute
+      width: 100%
+      z-index: 10
+      &.btn-title
+        font-size: 16px
+      &.btn-subtitle
+        font-family: $ff-bold
+        display: block
+        margin-top: 15px
+        font-size: 42px
+  .navbar-collapse
+    position: relative
+  .news-item
+    figure
+      height: 150px
+  .scoopit-logo
+    text-align: left
+  .btn
+    &.btn-read-news
+      display: inline-block
+      padding: 6px 65px
+  .tabs-nav
+    a
+      font-size: $fs-normal + 1.8
+  .tabs-container
+    +bdr(10px)
+    h4
+      &.how-it-works
+        text-align: left
+      &.who-we-are
+        text-align: left
+        font-size: $fs-normal + 1.8
+    .wrapper-figure
+      height: 380px
+      position: relative
+      &::before
+        content: ''
+        width: 92px
+        height: 34px
+        display: inline-block
+        position: absolute
+        z-index: 1
+        top: 40%
+        right: -30px
+        background-repeat: no-repeat
+        background-image: url("../images/arrow-right-help.png")
+      &:last-child
+        &::before
+          visibility: hidden
+    figure
+      margin-bottom: 0
+      &.bg
+        height: 280px
+        width: 100%
+        position: relative
+      img
+        +scale(0.6)
+        &.scale
+          margin-left: -24px
+    figcaption
+      height: 100px
+      position: absolute
+      bottom: -100px
+    .box
+      background-color: pink
+  .box-healthmap, .box-skoll, .box-boston
+    margin: 0
+  .box-skoll
+    margin-left: 80px
+  .box-healthmap
+    margin: 10px
+  .wrapper-join-us
+    min-height: 90px
+    padding-bottom: 0
+    h3
+      font-size: $fs-medium + 1
+    .btn-secondary
+      font-size: $fs-large / 2
+      padding: 5px 25px
+      margin-top: 20px
+  .complementary-info
+    padding: 20px 0
+    .get-flu-shot,
+    .public-health-near-you
+      margin-bottom: 20px
+    .title-primary
+      text-align: left
+      margin-bottom: 10px
+      font-size: $fs-medium + 0.8
+    .input-secondary
+      margin-right: 10px
+  .nav-secondary
+    ul
+      margin-top: 20px
+      &:first-child
+        text-align: left
+      &.social
+        margin-top: 15px
+        a
+          background-color: #FFFFFF
+          text-decoration: none
+          +transition(background, 0.2s, linear, 0s)
+          &:hover
+            text-decoration: none
+            background-color: $link-menu
+      li
+        position: relative
+        &.mailto
+          position: absolute
+          right: -30px
+      a
+        &:hover
+          text-decoration: underline
+  .wrapper-privacy
+    padding-bottom: 0
+  .databox
+    margin-top: 0
+  .legend-value
+    padding: 10px 5px 0 0
+    font-size: $fs-normal + 0.4
+  .call-info
+    h2
+      margin-top: 0
+      text-align: left
+    li
+      font-size: $fs-normal + 1.2
+  .form-call-info
+    .input-secondary
+      border: 1px solid $border-primary
+      color: $text-other
+      margin: 0 5px 0 -12%
+      +bdr(4px)
+    .btn-primary
+      padding: 10px 20px
+  .year
+    text-align: left
+  .press-share
+    width: 20%
+    margin-left: 0%
+    a
+      background-size: 40%
+  .search-term
+    text-align: left
+    font-size: $fs-medium -0.5
+  .count-result
+    display: inline-block
+    padding: 8px 40px
+    margin-left: 2%
+  //
+  // Survey
+  //
+  .previously-symptoms
+    time, p
+      display: inline-block
+    time
+      margin-right: 6%
+  .wrapper-survey
+    .legend
+      font-size: $fs-medium -1
+    .radio-group-survey
+      width: 31%
+      margin-right: 3%
+      &:last-child
+        margin-right: 0
+  .temperature, .wrapper-datepicker
+    h3
+      font-size: $fs-medium -1
+  .temperature
+    .checkbox-group
+      margin-left: 27% !important
+      width: 56% !important
+  //
+  // Reports
+  //
+  .wrapper-reports
+    .title-primary
+      text-align: left
+  //
+  // Settings
+  //
+  .wrapper-settings
+    .title-primary
+      font-size: $fs-medium + 0.7
+      text-align: left
+  .settings-table
+    font-size: $fs-normal + 0.2
+  .form-change-pass
+    .wrapper-buttons
+      margin-right: 20px

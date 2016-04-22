@@ -1,0 +1,78 @@
+//
+// Survey
+//
+
+.wrapper-survey
+  min-height: 660px
+  .legend
+    font-weight: bold
+    margin-top: 0
+
+.previously-symptoms
+  min-height: 60px
+  color: $link-menu
+  font-size: $fs-normal + 0.4
+  text-align: center
+  margin-bottom: 30px
+  time, p
+    background-color: #FFFFFF
+    padding: 10px 0
+    margin-top: 10px
+    margin-bottom: 10px
+    display: block
+  time
+    @extend .col-sm-4
+  p
+    @extend .col-sm-7
+
+// temperature
+.temperature
+  margin-top: 30px
+  h3
+    font-size: $fs-normal + 0.4
+    color: $link-menu
+    text-align: center
+  .text-slider
+    text-align: center
+    font-size: $fs-normal + 0.6
+    font-family: $ff-bold
+    color: $link-menu
+  .button-thermometer
+    width: 60px
+    height: 60px
+    display: inline-block
+    border: none
+    outline: none
+    text-indent: -9999px
+    +bdr(100%)
+    +apr(none)
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: 80%
+    background-color: transparent
+    @extend .hidden-sm
+    @extend .hidden-md
+    @extend .hidden-lg
+    &.minus
+      margin-left: 25%
+      background-image: url("../images/icon-btn-minus.svg")
+    &.plus
+      background-image: url("../images/icon-btn-plus.svg")
+
+// datepicker
+.wrapper-datepicker
+  margin-top: 20px
+  margin-bottom: 30px
+  h3
+    font-size: $fs-normal + 0.4
+    color: $link-menu
+    text-align: center
+  .pick-a-date
+    width: 100%
+    background-color: #FFFFFF
+    padding: 10px 0
+    margin: 10px 0
+    color: $text-secondary
+    cursor: pointer
+    font-size: $fs-normal + 0.2
+    text-align: center

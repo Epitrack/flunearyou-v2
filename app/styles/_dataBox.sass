@@ -1,0 +1,146 @@
+//
+// Map & databox
+//
+.databox
+  margin-top: 20px
+  background-color: #FFFFFF
+  position: relative
+  z-index: 4
+  padding: 10px 0 20px 0
+  +bdr(3px)
+  +bsd(0, 0, 8px, rgba(0, 0, 0, 0.3))
+
+.legend-list
+  padding: 0
+
+.wrapper-databox-image
+  position: relative
+
+.mini-image
+  position: absolute
+  top: -10px
+  left: 50%
+  width: 67px
+  height: 67px
+  margin-left: -33px
+  background-color: purple
+  +bdr(100%)
+
+.databox-image
+  max-width: 100%
+  height: 150px
+  background-color: black
+  // change here to background-color of each state;
+  img
+    width: 100%
+  figcaption
+    position: absolute
+    right: 0
+    bottom: 0
+    padding: 5px
+    color: #FFFFFF
+    font-size: $fs-normal -0.2
+    background-color: rgba(0, 0, 0, 0.4)
+
+%text-primary
+  color: $link-menu
+  font-size: $fs-normal + 0.2
+  font-family: $ff-bold
+
+.databox-title
+  display: inline-block
+  vertical-align: middle
+  padding-left: 10px
+  margin-bottom: 20px
+  @extend %text-primary
+
+.choose-country
+  outline: none
+  border: none
+  margin: 0 0 10px 15px
+  width: 46%
+  background: transparent
+  +apr(none)
+  @extend %text-primary
+
+.week-reports
+  text-align: center
+  color: $link-menu
+  font-family: $ff-regular
+  span, h3
+    display: inline-block
+    margin-top: 10px
+    font-size: $fs-normal + 0.4
+  span
+    margin-right: 5px
+
+.legend-item
+  &.more-info
+    color: #FFFFFF
+    font-size: $fs-normal + 0.1
+    text-align: left
+    background-color: $btn-primary
+    padding-top: 10px
+    height: 0px
+    opacity: 0
+    margin-top: -10px
+    +transition(all, 0.2s, linear, 0s)
+    &.js-active
+      height: auto
+      opacity: 1
+      margin-top: auto
+  span
+    height: 44px
+    border: 1px solid $border-primary
+    color: $link-menu
+    position: relative
+
+.legend-value
+  font-family: $ff-bold
+  text-align: right
+  font-size: $fs-normal + 0.2
+  padding: 13px 3px 0 0
+  background-repeat: no-repeat
+  background-position: 5px 15px
+  &.js-red
+    background-image: url("../images/icon-symptoms-1.png")
+  &.js-yellow
+    background-image: url("../images/icon-symptoms-3.png")
+  &.js-blue
+    background-image: url("../images/icon-symptoms-4.png")
+
+.legend-description
+  text-align: left
+  padding: 12px 0 0 10px
+  font-size: $fs-normal
+  &.arrow
+    background-position: 95%
+    background-repeat: no-repeat
+    +transition(background, 0.2s, linear, 0s)
+    &.js-up
+      background-image: url("../images/arrow-up.png")
+    &.js-down
+      background-image: url("../images/arrow-down.png")
+
+.open-more-info
+  cursor: pointer
+
+.call-info
+  h2
+    color: $text-other
+    font-size: $fs-medium + 0.4
+    text-align: center
+    span
+      color: $link-menu
+      font-size: $fs-medium + 0.2
+      display: block
+      font-family: $ff-bold
+  li
+    @extend %li-pattern
+
+.form-call-info
+  text-align: center
+  .input-secondary
+    background-color: #FFFFFF
+  .btn-primary
+    margin: 10px 0 20px 0

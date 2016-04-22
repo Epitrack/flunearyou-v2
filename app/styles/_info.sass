@@ -1,0 +1,37 @@
+//
+// Complementary info
+//
+
+.complementary-info
+  .get-flu-shot,
+  .public-health-near-you
+    margin-bottom: 30px
+  .description
+    font-size: $fs-normal + 0.4
+    color: $text-secondary
+  .title-primary
+    font-size: $fs-medium -0.2
+  .btn-primary
+    margin-top: 10px
+
+.some-news
+  li
+    margin-bottom: 5px
+  a
+    display: inline-block
+    color: $news-link
+    position: relative
+    text-decoration: none
+    font-size: $fs-normal + 0.4
+    &::before
+      content: ''
+      position: relative
+      display: inline-block
+      margin-right: 10px
+      width: 8px
+      height: 8px
+      background-color: $btn-primary
+      background-repeat: no-repeat
+      +bdr(100%)
+    &:hover
+      text-decoration: underline

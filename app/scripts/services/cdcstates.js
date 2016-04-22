@@ -7,8 +7,7 @@
  * # cdcstates
  * Service in the flunearyouV2App.
  */
-angular.module('flunearyouV2App')
-  .service('cdcstates', function ($http) {
+app.service('cdcstates', function ($http) {
 
     var obj = {};
     var states = [];

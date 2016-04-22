@@ -1,0 +1,33 @@
+//
+// Footer
+//
+
+.footer
+  min-height: 80px
+  padding: 10px 0
+  position: relative
+  background-color: $btn-primary
+
+.nav-secondary
+  text-align: center
+  ul
+    margin-bottom: 10px
+  li
+    display: inline-block
+    margin-right: 10px
+  a
+    display: block
+    color: #FFFFFF
+    text-decoration: none
+    font-size: $fs-normal + 0.4
+    &.strong
+      font-family: $ff-bold
+    &.facebook
+      +social("facebook")
+      background-image: url('../images/icon-facebook.svg')!important
+    &.twitter
+      +social("twitter")
+      background-image: url('../images/icon-twitter.svg')!important
+    &.google-plus
+      +social("google-plus")
+      background-image: url('../images/icon-google-plus.svg')!important

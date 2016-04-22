@@ -1,25 +1,25 @@
-<nav class="navbar navbar-default" role="navigation">
-  <!-- mobile -->
-  <div class="navbar-header">
-    <a class="col-xs-8 hidden-sm hidden-md hidden-lg" ng-href="#/" title="Go home">
-      <figure class="logo-secondary">
-       <img src="images/logo.svg" alt="Flu Near You">
-      </figure>
-    </a>
+<!-- mobile -->
+    <div class="navbar-header hidden-md hidden-lg">
+        <a class="col-xs-6" ng-href="#/" title="Go home">
+            <figure class="logo-secondary">
+                <img src="images/logo.svg" class="img-responsive" alt="Flu Near You">
+            </figure>
+        </a>
 
-    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-      <span class="sr-only">Toggle Navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  </div>
+        <!-- <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> -->
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
 
   <!-- desktop -->
-  <div class="container">
+  <div class="container hidden-sm">
     <div class="row">
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
-        <h1 class="hidden-xs col-sm-3 logo-primary">
+        <h1 class="hidden-sm col-sm-3 logo-primary">
           <a ng-href="#/" title="Flu Near You">Flu Near You</a>
         </h1>
 
@@ -30,6 +30,13 @@
           <li> <a class="nav-link" title="Press" ng-href="#/press">Press</a> </li>
           <li> <a class="nav-link" title="FAQ" ng-href="#/faq">FAQ</a> </li>
           <li> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login">Login</a> </li>
+          <li class="relative">
+            <div class="select-language">
+                <span class="arrow-down"></span>
+                <span data-href="en" class="eng">ENG</span>
+                <span data-href="es" class="spa">SPA</span>
+            </div>
+          </li>
           <li> <a class="nav-link lets-go hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#modal-join-us">Let's go!</a> </li>
         </ul>
 
@@ -48,7 +55,7 @@
         </div>
 
         <!-- button | call to action -->
-        <button class="hidden-xs col-sm-3 btn-cta" title="Join us" data-toggle="modal" data-target="#modal-join-us">
+        <button class="hidden-sm col-sm-3 btn-cta" title="Join us" data-toggle="modal" data-target="#modal-join-us">
           <span class="btn-title">Help Fight disease now:</span>
           <span class="btn-subtitle">join us</span>
         </button>
@@ -56,4 +63,3 @@
       </div>
     </div>
   </div>
-</nav>

@@ -1,0 +1,83 @@
+<!-- Map -->
+<section id="map" class="map">
+  <!-- assets to map -->
+  <div class="container map-assets">
+    <div class="row">
+      <!-- databox -->
+      <div ng-include src="'views/partials/databox.html'"></div>
+
+      <!-- form -->
+      <aside id="call-info" class="call-info col-xs-12 col-sm-5 col-sm-offset-2 col-md-7 col-md-offset-1 col-lg-6">
+        <h2>Spread the word. <span>Not the flu.</span></h2>
+
+        <form action="#" id="form-call-info" class="form-call-info" name="form-call-info">
+          <input type="tel" class="input-secondary large" placeholder="Enter your City or Zipcode">
+          <input type="submit" class="btn-primary" value="Check for flu">
+        </form>
+
+        <ul>
+          <li>Join thousands who are helping report flu.</li>
+          <li>Protect yourself, your family & your community.</li>
+          <li>Ready to report? Let's hear from you.</li>
+        </ul>
+      </aside>
+
+      <!-- map controls -->
+      <div id="map-controls" class="map-controls">
+        <fieldset>
+          <input type="radio" name="user-contributed-flu" id="user-contributed-flu" checked="checked">
+          <label for="user-contributed-flu">User Contributed Flu Activity</label>
+        </fieldset>
+
+        <fieldset>
+          <input type="radio" name="cdc-flu-activity" id="cdc-flu-activity">
+          <label for="cdc-flu-activity">CDC Flu Activity</label>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <!-- put your map here :) -->
+  <div id="map-content" class="map-content"></div>
+</section>
+
+<!-- map buttons -->
+<section class="hide-show hidden-sm hidden-md hidden-lg">
+  <div class="container">
+    <div class="row">
+      <button class="col-xs-6 js-active">show data</button>
+      <button class="col-xs-6">view map</button>
+    </div>
+  </div>
+</section>
+
+<!-- Learn more -->
+<section class="learn-more hidden-xs">
+  <div class="container">
+    <div class="row">
+      <h3><span>Flu Near You</span> is a community health project for North America.</h3>
+      <a href="#" title="Learn more about how it works">Learn more about how it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- Flu-news -->
+<section class="wrapper-flu-news">
+  <h2 class="title-primary">Keep up-to-date with our news</h2>
+  <div ng-include src="'views/partials/news.html'"></div>
+</section>
+
+<!-- Tabs -->
+<section class="wrapper-about-tabs">
+  <div ng-include src="'views/partials/about-tabs.html'"></div>
+</section>
+
+<!-- Join us -->
+<section class="wrapper-join-us">
+  <div ng-include src="'views/partials/join-us.html'"></div>
+</section>
+
+<!-- Complementary info -->
+<section class="wrapper-complementary-info">
+  <div ng-include src="'views/partials/complementary-info.html'"></div>
+</section>

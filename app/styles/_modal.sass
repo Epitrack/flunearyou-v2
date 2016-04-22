@@ -1,0 +1,421 @@
+// —————————————————————————
+//     Modal's
+// —————————————————————————
+.modal-content
+  background-color: $white-light
+
+.modal-body
+  h5
+    color: $link-menu
+    font-size: $fs-normal + 0.2
+    margin-top: 20px
+    text-align: center
+    font-weight: bold
+
+.btn-wrapper
+  text-align: center
+  button
+    +apr(none)
+    +bdr(5px)
+    text-decoration: none
+    width: 80%
+    font-size: $fs-normal
+    font-weight: bold
+    padding: 15px 40px
+    background-position: 0 0
+    background-size: 40%
+    margin-bottom: 10px
+    border: none
+    outline: none
+    background-repeat: no-repeat
+    text-align: center
+    text-indent: 30px
+    +transition(background, 0.2s, linear, 0s)
+    &:hover
+      background-size: 33%
+    &.full
+      text-align: right
+    &.btn-facebook
+      background-color: $bg-button
+      color: #FFFFFF
+      background-image: url("../images/icon-facebook-button.svg")
+    &.btn-google-plus
+      background-color: #FFFFFF
+      color: $btn-primary
+      background-image: url("../images/icon-google-plus.svg")
+    &.btn-twitter
+      background-color: $bg-twitter
+      color: #FFFFFF
+      background-image: url("../images/icon-twitter-share.svg")
+
+.never-post
+  display: inline-block
+  width: 100%
+  text-align: center
+  font-size: $fs-normal
+  position: relative
+  color: $link-menu
+  margin: 10px 0
+  &::before
+    content: ''
+    width: 16px
+    height: 16px
+    display: inline-block
+    position: relative
+    vertical-align: top
+    left: -5px
+    background-image: url("../images/icon-lock.svg")
+    background-repeat: no-repeat
+    background-size: 16px
+
+.or
+  @extend .never-post
+  margin: 0
+  &::before
+    width: 30%
+    height: 1px
+    background-color: #FFFFFF
+    vertical-align: middle
+    background-image: none
+    left: -20px
+  &::after
+    content: ''
+    width: 30%
+    height: 1px
+    background-color: #FFFFFF
+    vertical-align: middle
+    background-image: none
+    display: inline-block
+    position: relative
+    right: -15px
+  &.or-login
+    &::after, &::before
+      width: 20%
+
+.register-form
+  color: $link-menu
+  display: inline-block
+  font-weight: bold
+  padding: 2px
+  text-decoration: underline
+  text-align: center
+  font-size: $fs-normal
+  width: 100%
+  margin: 10px 0
+
+.modal-footer
+  text-align: center
+  border: none
+  color: $text-other
+  font-size: $fs-normal + 0.6
+  padding-top: 15px
+  a
+    font-weight: 900
+    color: $btn-primary
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+
+.wrapper-terms-privacy
+  @extend .modal-footer
+  margin-top: 10px
+  font-size: $fs-normal
+  padding: 0
+
+.login-forgot-pass
+  display: block
+  margin-bottom: 20px
+  color: $btn-primary
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+.modal-thanks-body
+  button
+    text-align: right
+
+.no-thanks
+  color: $link-menu !important
+
+.share-friends-title
+  display: block
+  color: $link-menu
+  text-align: center
+  font-size: $fs-normal + 0.4
+
+.wrapper-report-week
+  color: $link-menu
+  font-family: $ff-bold
+  text-align: center
+  font-size: $fs-normal + 0.4
+  margin: 0 0 20px 0
+
+
+//
+// Thanks modal
+//
+
+.modal-header
+  border: none
+  padding-top: 0
+  &.bg
+    background-repeat: no-repeat
+    background-size: auto
+    background-position: center center
+    background-image: url("../images/bg-title-modal.svg")
+
+.modal-title
+  color: #FFFFFF
+  font-size: $fs-normal + 0.4
+  text-align: center
+  padding-top: 10px
+  span
+    font-family: $ff-bold
+    display: block
+
+.modal-icon
+  width: 100px
+  height: 100px
+  margin: 0 auto
+  position: relative
+  text-align: center
+  +bdr(100%)
+  img
+    max-width: 100%
+    height: auto
+  figcaption
+    background-color: $link-menu
+    color: #FFFFFF
+    font-size: $fs-normal
+    position: absolute
+    bottom: -4px
+    left: 50%
+    margin-left: -15%
+    padding: 2px 5px
+    +bdr(5px)
+
+.modal-subtitle
+  font-family: $ff-bold
+  color: $link-menu
+  font-size: $fs-medium
+  text-align: center
+
+.modal-description
+  text-align: center
+  font-size: $fs-normal + 0.6
+  color: $link-menu
+
+.refer-a-friend
+  margin-top: 25px
+  text-align: center
+  h5
+    color: $link-menu
+    font-size: $fs-normal + 0.2
+    margin-bottom: 10px
+    font-weight: 700
+  a
+    text-decoration: underline
+    font-size: $fs-normal + 0.2
+    margin: 80px 0 30px 0
+    display: block
+
+.btn-modal
+  +apr(none)
+  +bdr(5px)
+  border: none
+  outline: none
+  height: 40px
+  background-repeat: no-repeat
+  text-indent: -9999px
+  background-size: 25%
+  background-position: center center
+  @extend .col-xs-5
+  &.facebook
+    background-color: #395185
+    background-image: url("../images/icon-facebook-modal.svg")
+  &.twitter
+    margin-left: 16%
+    background-color: #FFFFFF
+    background-image: url("../images/icon-twitter-modal.svg")
+  &.mail
+    margin-left: 16%
+    background-color: #FFFFFF
+    background-image: url("../images/icon-mail-modal.svg")
+
+.modal-item
+  font-size: $fs-normal
+  background-color: #FFFFFF
+  color: $link-menu
+  +bdr(5px)
+  text-align: left
+  margin-bottom: 5px
+  padding: 10px 12px
+  position: relative
+  &.featured
+    background-color: $btn-primary
+    color: #FFFFFF
+  span
+    font-family: $ff-bold
+    position: absolute
+    right: 10px
+
+.modal-footer
+  font-size: $fs-normal -0.1
+  color: $link-menu
+  text-align: center
+  line-height: $fs-normal + 0.4
+
+
+//
+// Login modal
+//
+
+.modal-login
+  header
+    &.bg
+      height: 70px
+
+
+//
+// Join Us modal
+//
+
+.modal-join-us
+  .modal-header
+    &.bg
+      height: 65px
+  .modal-item
+    background-color: transparent
+    padding: 0
+    margin: 0 0 10px 20px
+    font-size: $fs-normal + 0.2
+    list-style-type: disc
+
+
+//
+// modal-add-household-member
+//
+
+.modal-add-household-member
+  .modal-header
+    &.bg
+      height: 65px
+
+
+// iPad
+@media (min-width: 768px)
+  .modal-header
+    padding-top: 15px
+    &.bg
+      background-size: 80%
+      height: 140px
+      background-position: center -5px
+  .modal-title
+    font-size: $fs-medium + 0.5
+    padding-top: 0
+    &.login-title
+      font-size: $fs-normal + 1.4
+    &.first-report
+      font-size: $fs-normal + 1.2
+  .modal-body
+    .modal-list
+      margin-top: 45px
+    h5
+      font-size: $fs-normal * 2
+    .modal-icon
+      margin-top: 45px
+  .btn-wrapper
+    margin-bottom: 20px
+    button
+      padding: 15px 0
+      width: 60%
+      margin-bottom: 0
+      &.btn-facebook
+        margin-left: 110px
+      &.btn-google-plus
+        text-indent: 50px
+        margin-left: -110px
+      &.full
+        text-align: center
+        width: 100% !important
+        text-indent: 20px
+        &.btn-facebook,
+        &.btn-google-plus,
+        &.btn-twitter
+          background-position: 0 10px
+          background-size: 20%
+          margin-left: 0
+  .never-post
+    margin-bottom: 10px
+    margin-top: -10px
+  .modal-footer
+    padding-top: 0
+  .or
+    &::before, &::after
+      width: 15%
+  .login-forgot-pass
+    font-size: $fs-normal + 0.2
+    text-align: left
+    margin-left: 15px
+  .share-friends-title
+    margin-bottom: 20px
+    font-size: $fs-medium -1
+  .wrapper-report-week
+    font-size: $fs-medium -1
+    h4
+      font-size: $fs-medium -1
+  //
+  // Login modal
+  //
+  .modal-login
+    .modal-header
+      &.bg
+        height: 90px
+  //
+  // First Report
+  //
+  .modal-first-report
+    .modal-header
+      &.bg
+        height: 80px
+  //
+  // Join Us modal
+  //
+  .modal-join-us
+    .modal-header
+      &.bg
+        height: 80px
+    .modal-title
+      font-size: $fs-medium
+      span
+        display: inline-block
+    .modal-list
+      margin-top: 0
+    .modal-item
+      margin-left: 70px
+      font-size: $fs-medium -1
+    .legend
+      text-align: left
+  //
+  // modal-add-household-member
+  //
+  .modal-add-household-member
+    .modal-header
+      &.bg
+        height: 80px
+    .modal-title
+      font-size: $fs-medium
+    h5
+      font-size: $fs-normal + 0.6
+      margin-top: 0
+    .form-group
+      padding: 0
+    .legend
+      text-align: left
+    label
+      margin-bottom: 10px
+    .btn-primary
+      padding: 10px 30px 10px 60px
+
+// Desktop
+// @media (min-width: 992px)

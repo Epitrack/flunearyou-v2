@@ -1,0 +1,65 @@
+<section class="modal fade modal-add-household-member" id="modal-add-household-member" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <header class="modal-header bg">
+        <button class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <h4 class="modal-title">Add household member</h4>
+      </header>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <h5>Please provide brief information about your household member.</h5>
+          </div>
+
+          <form action="#" id="form-modal-add-household-member" class="register-form modal-add-household-member" name="modal-add-household-member">
+            <div class="row">
+              <fieldset class="form-group">
+                <label for="nickname-member">Enter a nickname for family member.</label>
+                <input id="nickname-member" type="text" class="input-primary">
+              </fieldset>
+            </div>
+
+            <div class="row">
+              <fieldset class="form-group col-sm-6">
+                <legend class="legend">Gender:</legend>
+
+                <fieldset class="radio-group col-xs-6">
+                  <input type="radio" value="M" id="household-male" class="radio-primary" name="add-household-member">
+                  <label for="household-male">Male</label>
+                  <div class="check"><div class="inside"></div></div>
+                </fieldset>
+
+                <fieldset class="radio-group col-xs-6">
+                  <input type="radio" value="F" id="household-female" class="radio-primary" name="add-household-member">
+                  <label for="household-female">Female</label>
+                  <div class="check"><div class="inside"></div></div>
+                </fieldset>
+              </fieldset>
+
+              <fieldset class="form-group col-sm-6">
+                <label>Birthdate</label>
+
+                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 birthdate-household-member select-primary">
+                  <option value="Month" disabled selected>Month</option>
+                  <option value="Month_1">Month_1</option>
+                  <option value="Month_2">Month_2</option>
+                  <option value="Month_3">Month_3</option>
+                </select>
+
+                <input type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
+              </fieldset>
+            </div>
+
+            <div class="row">
+              <button type="submit" class="col-xs-12 col-sm-5 col-sm-offset-3 btn-primary add-member">Add member</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

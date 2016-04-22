@@ -1,0 +1,76 @@
+//
+// News
+//
+
+.news-item
+  height: auto
+  min-height: 450px
+  position: relative
+  margin-bottom: 20px
+  background-color: #FFFFFF
+  border: 1px solid $border-primary
+  +bsd(0, 0, 0, transparent)
+  +transition(box-shadow, 0.2s, ease, 0s)
+  &:hover
+    +bsd(0, 0, 3px, $link-menu)
+  a
+    display: block
+    outline: none
+    border: none
+    text-decoration: none
+    position: relative
+  figure
+    height: 180px
+    width: 100%
+    overflow: hidden
+    img
+      max-width: 100%
+      height: auto
+  time
+    border: 1px solid #FFFFFF
+    color: #FFFFFF
+    background-color: rgba(0, 0, 0, 0.4)
+    position: absolute
+    padding: $fs-normal -0.2
+    top: 15px
+    left: 15px
+    padding: $fs-normal -0.2
+    font-family: $ff-regular
+    font-size: $fs-large
+    text-align: center
+    span
+      font-size: $fs-normal + 0.6
+      font-family: $ff-light
+      display: block
+
+.news-text
+  min-height: 280px
+  position: relative
+  padding: 0 $fs-normal + 0.8
+  h3
+    font-size: $fs-normal + 0.6
+  a
+    color: $link-menu
+    text-decoration: none
+    display: block
+  p
+    font-size: $fs-normal + 0.2
+    line-height: $fs-normal + 0.6
+    color: $text-other
+
+.read-more
+  text-align: center
+  position: relative
+  bottom: 0
+  background: $link-menu
+  font-size: $fs-normal
+  font-family: $ff-bold
+  padding: $fs-normal 0
+  color: #FFFFFF
+  +transition(all, 0.2s, linear, 0s)
+  &:hover
+    background: $white-primary
+    color: $link-menu
+
+.scoopit-logo
+  text-align: center

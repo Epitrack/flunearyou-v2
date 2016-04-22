@@ -1,0 +1,72 @@
+//
+// Reports
+//
+
+.info-box
+  background-color: $bg-secondary
+  padding: 15px
+  margin-bottom: 15px
+  table
+    width: 100%
+  tr
+    border-bottom: 1px solid $bg-primary
+    &:last-child
+      border-bottom: none
+  td
+    padding: 5px 10px 5px 5px
+    color: $link-menu
+    &:first-child
+      text-align: left
+      font-size: $fs-normal + 0.4
+    &:last-child
+      font-style: $f-italic
+      text-align: right
+      font-size: $fs-medium
+
+.health-reports-accordion
+  .panel
+    background-color: transparent
+    margin-bottom: 20px
+  .panel-body
+    padding: 10px 0
+  header
+    cursor: pointer
+    padding: 10px 0 10px 35px
+    text-align: left
+    position: relative
+    height: 50px
+    background-color: #FFFFFF !important
+    background-repeat: no-repeat
+    background-position: 10px center
+    background-size: 20px
+    background-image: url("../images/icon-minus.svg")
+    +bdr(5px)
+    &.collapsed
+      background-image: url("../images/icon-plus.svg")
+    &.reports-ok
+      background-color: #C5D5E5 !important
+      h4
+        color: #708DA1
+    h4
+      color: $link-menu
+      font-size: $fs-normal + 0.2
+      line-height: 30px
+      span
+        font-size: $fs-normal -0.1
+
+.reports-table
+  width: 100%
+  font-size: $fs-normal + 0.2
+  td
+    padding: 10px
+  thead
+    background-color: darken($bg-secondary, 20%)
+    color: #FFFFFF
+    td
+      &:first-child
+        width: 100px
+  tbody
+    color: $text-other
+    tr
+      &:nth-child(2n+1)
+        background-color: $bg-secondary

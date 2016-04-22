@@ -7,8 +7,7 @@
  * # MainCtrl
  * Controller of the flunearyouV2App
  // */
-angular.module('flunearyouV2App')
-  .controller('MainCtrl', ['$scope', 'cdcstates', function ($scope, cdcstates) {
+app.controller('MainCtrl', ['$scope', 'cdcstates', function ($scope, cdcstates) {
     var map, socket, markers, marker;
 
     $scope.geolocation = function() {
