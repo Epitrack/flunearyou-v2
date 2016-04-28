@@ -39,8 +39,9 @@
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
+    <script src="http://maps.google.cn/maps/api/js?v=3.exp&key=AIzaSyAXLFk5RjQPOcZ9cogb-PU8ncb5yZfBlQE&libraries=places"></script>
 </head>
-<body ng-controller="homeCtrl">
+<body>
     
     <!-- Header -->
     <header class="header">
@@ -78,8 +79,11 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
+    <script src="/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -88,18 +92,23 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/config/route.js"></script>
+        <script src="scripts/app.js"></script>
 
-    <!-- Controller -->
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/homeCtrl.js"></script>
-    <script src="scripts/controllers/aboutCtrl.js"></script>
-    <script src="scripts/controllers/fluNewsCtrl.js"></script>
+        <!-- Config -->
+        <script src="scripts/config/route.js"></script>
+        <script src="scripts/config/value.js"></script>
+        <script src="scripts/config/mapConfig.js"></script>
 
-    <!-- Service -->
-    <script src="scripts/services/dataservice.js"></script>
-    <script src="scripts/services/cdcstates.js"></script>
+        <!-- Controller -->
+        <script src="scripts/controllers/mainCtrl.js"></script>
+        <script src="scripts/controllers/navCtrl.js"></script>
+        <script src="scripts/controllers/homeCtrl.js"></script>
+        <script src="scripts/controllers/aboutCtrl.js"></script>
+        <script src="scripts/controllers/fluNewsCtrl.js"></script>
+
+        <!-- Service -->
+        <script src="scripts/services/dataservice.js"></script>
+        <script src="scripts/services/cdcstates.js"></script>
     <!-- endbuild -->
 </body>
 </html>
