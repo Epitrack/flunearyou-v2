@@ -7,21 +7,6 @@
 app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
 
 	/*
-	*	Clear the localStorage showFluMap for restart the flu-map
-	*/ 
-	localStorage.removeItem('showFluMap');
-
-
-	/*
-	*	Whach the localStorage  
-	*/ 
-	$scope.watchShowFluMap = function() {
-		$rootScope.showFluMap = localStorage.getItem('showFluMap');
-	};
-	$rootScope.$on("SHOWFLUMAP", $scope.watchShowFluMap);
-
-
-	/*
 	*	Flu map customer
 	*/ 
 	$scope.map = { 
@@ -35,10 +20,24 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 			streetViewControl: false,
 			panControl: false,
 			overviewMapControl: false,
-			mapTypeControl: false
+			mapTypeControl: false,
+			scrollwheel: false
 		}
 	};
 
+	/*
+	*	Clear the localStorage showFluMap for restart the flu-map
+	*/ 
+	localStorage.removeItem('showFluMap');
+
+
+	/*
+	*	Whach the localStorage  
+	*/ 
+	$scope.watchShowFluMap = function() {
+		$rootScope.showFluMap = localStorage.getItem('showFluMap');
+	};
+	$rootScope.$on("SHOWFLUMAP", $scope.watchShowFluMap);
 
 	/*
 	*	Get marker for flu map
@@ -52,19 +51,17 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	*	Get states databox
 	*/ 
 	$http.get($urlBase+'/states').success(function(data, status, headers, config){
-		
-		// State list
-		$scope.stateList = data;
+		$scope.stateList = data; // State list
 
 		// Initial position dataBox
 		$scope.infoDataBox = {
-			'surveys' :  data[0].last_week_data.total_surveys,
-			'nosymptoms' : data[0].last_week_data.no_symptoms,
-			'nosymptomspercent' : data[0].last_week_data.none_percentage,
-			'symptoms' : data[0].last_week_data.symptoms,
-			'symptomspercent' : data[0].last_week_data.symptoms_percentage,
-			'flulike' : data[0].last_week_data.ili,
-			'flulikepercent' : data[0].last_week_data.ili_percentage
+			'surveys' :  data[0].data.total_surveys,
+			'nosymptoms' : data[0].data.no_symptoms,
+			'nosymptomspercent' : data[0].data.none_percentage,
+			'symptoms' : data[0].data.symptoms,
+			'symptomspercent' : data[0].data.symptoms_percentage,
+			'flulike' : data[0].data.ili,
+			'flulikepercent' : data[0].data.ili_percentage
 		};
 	});
 
@@ -74,6 +71,8 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	*/
 	$scope.updateInfoDataBox = function(){
 		$scope.infoDataBox = JSON.parse(sessionStorage.getItem('objDataSurvey'));
+		$scope.map.center  = JSON.parse(sessionStorage.getItem('centerMap'));
+		$scope.map.zoom    = Number(sessionStorage.getItem('zoomMap'));
 		$scope.$apply(); // Update $scope
 	};
 
