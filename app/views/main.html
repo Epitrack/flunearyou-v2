@@ -1,17 +1,29 @@
-
 <section id="map" class="map relative">
         
     <!-- databox -->
     <div ng-include src="'views/partials/databox.html'"></div>
     
     <!-- Flu-map -->
-    <ui-gmap-google-map ng-if="showFluMap" refresh="showFluMap" center="map.center" zoom="map.zoom" options="map.options">
-
-        <ui-gmap-markers ng-repeat="marker in markers" models="marker" coords="marker.coords" click="teste()"> 
-            <ui-gmap-window coords="marker.coords" isIconVisibleOnClick="false" show="true">
-               <p>teste</p>
+    <ui-gmap-google-map ng-if="showFluMap" center='map.center' zoom='map.zoom' aria-label="Google map" options="map.options">
+        <ui-gmap-marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.coords.id" click="teste()">
+            <ui-gmap-window width="260" options="map.infoBoxOptions">
+                <div class="info-box relative">
+                    <header class="header-info-box"><h3>{{marker.infos.city}}</h3></header>
+                    <div class="infos">
+                        <p class="qtdSym">{{marker.infos.flu}}</p>
+                        <p>FLU<br>SYMPTOMS</p>
+                    </div>
+                    <div class="infos border">
+                        <p class="qtdSym">{{marker.infos.flu}}</p>
+                        <p>ANY<br>SYMPTOMS</p>
+                    </div>
+                    <div class="infos">
+                        <p class="qtdSym">{{marker.infos.flu}}</p>
+                        <p>NO<br>SYMPTOMS</p>
+                    </div>
+                </div>
             </ui-gmap-window>
-        </ui-gmap-markers>
+        </ui-gmap-marker>
     </ui-gmap-google-map>
 
 

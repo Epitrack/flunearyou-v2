@@ -42,7 +42,6 @@
     <script src="http://maps.google.cn/maps/api/js?v=3.exp&key=AIzaSyAXLFk5RjQPOcZ9cogb-PU8ncb5yZfBlQE&libraries=places"></script>
 </head>
 <body>
-    
     <!-- Header -->
     <header class="header">
         <nav class="navbar navbar-default" role="navigation" ng-include src="'views/partials/navbar.html'"></nav>
@@ -92,6 +91,7 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
+        <script src="scripts/default.js"></script>
         <script src="scripts/app.js"></script>
 
         <!-- Config -->
@@ -106,9 +106,14 @@
         <script src="scripts/controllers/aboutCtrl.js"></script>
         <script src="scripts/controllers/fluNewsCtrl.js"></script>
 
+        <!-- Directives -->
+        <script src="scripts/directive/chooseStateDirective.js"></script>
+
         <!-- Service -->
         <script src="scripts/services/dataservice.js"></script>
         <script src="scripts/services/cdcstates.js"></script>
     <!-- endbuild -->
+
+    <!-- <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script> -->
 </body>
 </html>

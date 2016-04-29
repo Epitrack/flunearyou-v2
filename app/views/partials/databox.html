@@ -1,13 +1,22 @@
 <aside id="databox" class="databox col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-4 col-lg-3 ng-scope">
-  <div>
-    <h4 class="databox-title">Flu Activity in:</h4>
-
-    <select name="choose-country" id="choose-country" class="choose-country">
-      <option value="Brazil">Brazil</option>
-      <option value="Italy">Italy</option>
-      <option value="United States">United States</option>
-    </select>
-  </div>
+    <div class="relative">
+        {{objDataSurvey}}
+        <h4 class="databox-title">Flu Activity in:</h4>
+    
+        <select  name="choose-state" id="choose-state" class="choose-country" choose-state-directive>
+            <option ng-repeat="state in stateList" 
+            data-lat="{{state.lat}}" 
+            data-lon="{{state.lon}}"
+            data-surveys="{{state.data.total_surveys}}" 
+            data-nosymptoms="{{state.data.no_symptoms}}"
+            data-nosymptomspercent="{{state.data.none_percentage}}"
+            data-symptoms="{{state.data.symptoms}}"
+            data-symptomspercent="{{state.data.symptoms_percentage}}"
+            data-flulike="{{state.data.ili}}"
+            data-flulikepercent="{{state.data.ili_percentage}}" 
+            value="{{state.name}}">{{state.name}}</option>
+        </select>
+    </div>
 
   <div class="wrapper-databox-image">
     <figure id="databox-image" class="databox-image">
@@ -22,14 +31,14 @@
 
 
   <div id="week-reports" class="week-reports">
-    <span>8583</span>
+    <span>{{infoDataBox.surveys}}</span>
     <h3 id="reports-of-week" class="reports-of-week">reports this week</h3>
   </div>
 
   <ul id="legend-list" class="legend-list">
     <li class="legend-item open-more-info col-xs-12" id="open-more-info">
-      <span class="legend-value col-xs-3 col-sm-4 js-red">156</span>
-      <span class="legend-description col-xs-9 col-sm-8 arrow js-up">Flu-like Symptoms 2%</span>
+      <span class="legend-value col-xs-3 col-sm-4 js-red">{{infoDataBox.flulike}}</span>
+      <span class="legend-description col-xs-9 col-sm-8 arrow js-up">Flu-like Symptoms {{infoDataBox.flulikepercent}}%</span>
     </li>
 
     <li class="legend-item col-xs-12 more-info" id="more-info">
@@ -37,13 +46,13 @@
     </li>
 
     <li class="legend-item col-xs-12">
-      <span class="legend-value col-xs-3 col-sm-4 js-blue">958</span>
-      <span class="legend-description col-xs-9 col-sm-8">Any Symptoms 11%</span>
+      <span class="legend-value col-xs-3 col-sm-4 js-blue">{{infoDataBox.symptoms}}</span>
+      <span class="legend-description col-xs-9 col-sm-8">Any Symptoms {{infoDataBox.symptomspercent}}%</span>
     </li>
 
     <li class="legend-item col-xs-12">
-      <span class="legend-value col-xs-3 col-sm-4 js-yellow">7625</span>
-      <span class="legend-description col-xs-9 col-sm-8">No Symptoms 11%</span>
+      <span class="legend-value col-xs-3 col-sm-4 js-yellow">{{infoDataBox.nosymptoms}}</span>
+      <span class="legend-description col-xs-9 col-sm-8">No Symptoms {{infoDataBox.nosymptomspercent}}%</span>
     </li>
   </ul>
 </aside>

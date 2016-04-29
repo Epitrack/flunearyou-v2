@@ -5,10 +5,12 @@
 'use strict';
 
 app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
+
 	/*
 	*	Clear the localStorage showFluMap for restart the flu-map
 	*/ 
 	localStorage.removeItem('showFluMap');
+
 
 	/*
 	*	Whach the localStorage  
@@ -17,6 +19,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 		$rootScope.showFluMap = localStorage.getItem('showFluMap');
 	};
 	$rootScope.$on("SHOWFLUMAP", $scope.watchShowFluMap);
+
 
 	/*
 	*	Flu map customer
@@ -36,17 +39,45 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 		}
 	};
 
+
 	/*
 	*	Get marker for flu map
 	*/ 
 	$http.get($urlBase+'/map/markers').success(function(data, status, headers, config){
 		// $scope.markers = data;
-		// console.log(data)
 	});
 
-	$scope.teste = function(){
-		$scope.showWin = true;
+
+	/*
+	*	Get states databox
+	*/ 
+	$http.get($urlBase+'/states').success(function(data, status, headers, config){
+		
+		// State list
+		$scope.stateList = data;
+
+		// Initial position dataBox
+		$scope.infoDataBox = {
+			'surveys' :  data[0].last_week_data.total_surveys,
+			'nosymptoms' : data[0].last_week_data.no_symptoms,
+			'nosymptomspercent' : data[0].last_week_data.none_percentage,
+			'symptoms' : data[0].last_week_data.symptoms,
+			'symptomspercent' : data[0].last_week_data.symptoms_percentage,
+			'flulike' : data[0].last_week_data.ili,
+			'flulikepercent' : data[0].last_week_data.ili_percentage
+		};
+	});
+
+
+	/*
+	*	Get info's data box
+	*/
+	$scope.updateInfoDataBox = function(){
+		$scope.infoDataBox = JSON.parse(sessionStorage.getItem('objDataSurvey'));
+		$scope.$apply(); // Update $scope
 	};
+
+	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
 
 
 	$scope.markers = [
@@ -56,8 +87,8 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 				"latitude": "45.5200",
 				"longitude": "-122.6819"
 			},
-			showWindow: false,
-			"options": {
+			showInfo: false,
+			"infos": {
 				"chick": "0",
 		        "dengue": "0",
 		        "flu": "0",
