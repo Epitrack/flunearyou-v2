@@ -1,0 +1,24 @@
+<aside id="temperature" class="temperature">
+    <h3>Please specify highest temperature measured</h3>
+
+    <div id="thermometer">
+        <div id="thermometer_slider" temperature>
+            <div id="thermometer_bg"></div>
+        </div>
+    </div>
+    <div id="button-thermometer-minus" class="button-thermometer minus"></div>
+    <p id="text-slider" class="text-slider"></p>
+
+    <div id="button-thermometer-plus" class="button-thermometer plus"></div>
+    <div class="row">
+        <fieldset class="medium full">
+            <input id="not_measured"
+                   class="input-primary"
+                   type="checkbox"
+                   name="not_measured"
+                   value="1">
+            <label for="not_measured" class="full">{{ site.content.not_measured }}</label>
+            <span class="check"><span class="inside"></span></span>
+        </fieldset>
+    </div>
+</aside>

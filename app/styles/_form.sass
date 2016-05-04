@@ -73,7 +73,7 @@ select
   padding: 5px 10px
   color: $link-menu
   margin-bottom: 10px
-  @include bdr(5px)
+  // @include bdr(5px)
   @extend .col-xs-12
   float: none
 
@@ -159,6 +159,8 @@ select
 
 
 .checkbox-primary
+  outline: none!important
+  cursor: pointer
   @extend .radio-primary
 
   &:checked
@@ -177,7 +179,7 @@ select
 //
 
 .register-form
-
+  cursor: pointer
   label
     display: block
     position: relative
@@ -373,8 +375,7 @@ select
   .survey-form
     &.second
       .checkbox-group
-        width: 47%
-        margin-right: 3%
+        width: 48%
       
     
   

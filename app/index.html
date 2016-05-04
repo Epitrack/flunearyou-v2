@@ -38,8 +38,10 @@
 
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- endbuild -->
-    <script src="http://maps.google.cn/maps/api/js?v=3.exp&key=AIzaSyAXLFk5RjQPOcZ9cogb-PU8ncb5yZfBlQE&libraries=places"></script>
+    <!-- <script src="http://maps.google.cn/maps/api/js?v=3.exp&key=AIzaSyAXLFk5RjQPOcZ9cogb-PU8ncb5yZfBlQE&libraries=places"></script> -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDRHloTNr68meTs9Afgqqm3IEy9E7tSLQc"></script>
 </head>
 <body>
     <!-- Header -->
@@ -78,6 +80,8 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/bower_components/jquery-ui/ui/minified/effect-slide.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
@@ -101,13 +105,19 @@
 
         <!-- Controller -->
         <script src="scripts/controllers/mainCtrl.js"></script>
+        <script src="scripts/controllers/mapCtrl.js"></script>
         <script src="scripts/controllers/navCtrl.js"></script>
         <script src="scripts/controllers/homeCtrl.js"></script>
         <script src="scripts/controllers/aboutCtrl.js"></script>
         <script src="scripts/controllers/fluNewsCtrl.js"></script>
+        <script src="scripts/controllers/modalsCtrl.js"></script>
+        <script src="scripts/controllers/reportCtrl.js"></script>
+        <script src="scripts/controllers/surveyCtrl.js"></script>
 
         <!-- Directives -->
         <script src="scripts/directive/chooseStateDirective.js"></script>
+        <script src="scripts/directive/inOutChecked.js"></script>
+        <script src="scripts/directive/temperatureDirective.js"></script>
 
         <!-- Service -->
         <script src="scripts/services/dataservice.js"></script>

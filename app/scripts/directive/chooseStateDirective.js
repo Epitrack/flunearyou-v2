@@ -48,8 +48,6 @@ app.directive('chooseStateDirective', function($rootScope){
 					image : image
 				};
 
-				console.log(colorImage.image);
-
 				$('.wrapper-databox-image').css({
 					'background' : ''+colorImage.color+' url(../images/states/'+colorImage.image+'.png) no-repeat center center' 
 				})

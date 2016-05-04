@@ -1,4 +1,4 @@
-<section class="modal fade modal-join-us" id="modal-join-us" tabindex="-1" role="dialog">
+<section class="modal fade modal-join-us" id="modal-join-us" tabindex="-1" role="dialog" ng-controller="modalsCtrl">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <header class="modal-header bg">
@@ -37,7 +37,7 @@
             <a ng-click="showRegisterForm=true" class="register-form">Register with email address</a>
           </div>
 
-          <form action="#" ng-show="showRegisterForm" name="register-form" id="register-form" class="row register-form">
+          <form ng-show="showRegisterForm" name="register-form" id="register-form" class="row register-form">
             <fieldset class="form-group col-sm-6">
               <label for="register-email">Email address</label>
               <input id="register-email" type="email" class="input-primary">
@@ -87,7 +87,7 @@
             <div class="col-sm-12 wrapper-terms-privacy">
               <p>By signing up, I agree to Flu Near You <a ng-href="#/terms" title="Terms and Conditions" data-dismiss="modal" class="link-close-modal">Terms and Conditions</a> and <a ng-href="#/privacy" title="Privacy Policy" data-dismiss="modal" class="link-close-modal">Privacy Policy</a>.</p>
 
-              <button type="submit" class="btn-primary">Get started</button>
+              <button type="submit" class="btn-primary" ng-click="sendUser">Get started</button>
             </div>
           </form>
         </div>

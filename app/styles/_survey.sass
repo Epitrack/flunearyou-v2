@@ -8,6 +8,9 @@
     font-weight: bold
     margin-top: 0
 
+.survey-form.second
+  fieldset
+    float: left
 .previously-symptoms
   min-height: 60px
   color: $link-menu
@@ -76,3 +79,67 @@
     cursor: pointer
     font-size: $fs-normal + 0.2
     text-align: center
+
+//
+// Temperature
+//
+#thermometer
+  margin: 0 auto
+  height: 75px
+  width: 550px
+  overflow: hidden
+  background-image: url("../images/thermometer.svg")
+  background-repeat: no-repeat
+  background-color: transparent
+  background-size: 100% 100%
+  border: none
+  #thermometer_slider
+    border: none
+    left: 60px
+    width: 482px
+    background: none
+    #thermometer_bg
+      width: 40px
+      background: #FFFFFF !important
+      height: 29px !important
+      top: 23px
+      position: relative
+      -webkit-transition: all .2s linear
+      border-radius: 0 40px 40px 0px
+  .ui-slider-handle
+    width: 5px
+    height: 27px
+    position: relative
+    top: -28px
+    left: 0
+    margin: 0
+    padding: 10px 0 0 0
+    border-right: 2px solid #587895
+    border-radius: 0
+    &:before
+      content: ''
+      width: 20px
+      height: 20px
+      top: 0
+      left: -10px
+      position: absolute
+      background-image: url("../images/icon-drag-thermo.svg")
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: 15px 15px
+
+.ui-slider 
+  .ui-slider-handle
+    position: absolute
+    z-index: 2
+    background-color: transparent
+    background-image: none !important
+    cursor: ew-resize !important
+    -ms-touch-action: none
+    touch-action: none
+    outline: none!important
+
+
+
+
+

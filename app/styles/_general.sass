@@ -40,6 +40,7 @@ h4, label
 .main
   display: block
   position: relative
+  background-color: #d7e0ef
 
 .wrapper-inside
   min-height: 800px
@@ -147,14 +148,21 @@ button
           background-color: #FFFFFF
 
 // dropdown
+.dropdown-menu
+  display: block
 .dropdown
+  cursor: pointer
   button
+    padding: 6px 0
     border: none
     background-color: transparent
     font-family: $ff-regular
     font-size: $fs-normal + 0.2
     +truncate
     width: 175px
+    &:hover
+      background-color: transparent
+
   li
     a
       color: $link-menu

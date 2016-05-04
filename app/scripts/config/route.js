@@ -8,6 +8,10 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/about.html',
         controller: 'homeCtrl'
       })
+      .when('/map', {
+        templateUrl: 'views/map.html',
+        controller: 'mapCtrl'
+      })
       .when('/flu-news', {
         templateUrl: 'views/flu-news.html',
         controller: 'homeCtrl'
@@ -31,6 +35,10 @@ app.config(function ($routeProvider) {
       .when('/survey', {
         templateUrl: 'views/survey.html',
         controller: 'homeCtrl'
+      })
+      .when('/report', {
+        templateUrl: 'views/report.html',
+        controller: 'reportCtrl'
       })
       .when('/reports', {
         templateUrl: 'views/reports.html',

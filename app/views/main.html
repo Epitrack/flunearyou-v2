@@ -1,30 +1,9 @@
-<section id="map" class="map relative">
+<section class="map relative">
         
     <!-- databox -->
     <div ng-include src="'views/partials/databox.html'"></div>
     
-    <!-- Flu-map -->
-    <ui-gmap-google-map ng-if="showFluMap" center='map.center' zoom='map.zoom' aria-label="Google map" options="map.options">
-        <ui-gmap-marker ng-repeat="marker in markers" coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.coords.id" click="teste()">
-            <ui-gmap-window width="260" options="map.infoBoxOptions">
-                <div class="info-box relative">
-                    <header class="header-info-box"><h3>{{marker.infos.city}}</h3></header>
-                    <div class="infos">
-                        <p class="qtdSym">{{marker.infos.flu}}</p>
-                        <p>FLU<br>SYMPTOMS</p>
-                    </div>
-                    <div class="infos border">
-                        <p class="qtdSym">{{marker.infos.flu}}</p>
-                        <p>ANY<br>SYMPTOMS</p>
-                    </div>
-                    <div class="infos">
-                        <p class="qtdSym">{{marker.infos.flu}}</p>
-                        <p>NO<br>SYMPTOMS</p>
-                    </div>
-                </div>
-            </ui-gmap-window>
-        </ui-gmap-marker>
-    </ui-gmap-google-map>
+   
 
 
     <!-- assets to map -->
@@ -48,19 +27,6 @@
                     <li>Ready to report? Let's hear from you.</li>
                 </ul>
             </aside>
-
-            <!-- map controls -->
-            <div id="map-controls" class="map-controls">
-                <fieldset>
-                    <input type="radio" name="user-contributed-flu" id="user-contributed-flu" checked="checked">
-                    <label for="user-contributed-flu">User Contributed Flu Activity</label>
-                </fieldset>
-
-                <fieldset>
-                    <input type="radio" name="cdc-flu-activity" id="cdc-flu-activity">
-                    <label for="cdc-flu-activity">CDC Flu Activity</label>
-                </fieldset>
-            </div>
         </div>
     </div>
 </section>
@@ -74,16 +40,9 @@
         </div>
     </div>
 </section>
-
+ 
 <!-- Learn more -->
-<section class="learn-more hidden-xs">
-    <div class="container">
-        <div class="row">
-            <h3><span>Flu Near You</span> is a community health project for North America.</h3>
-            <a href="#" title="Learn more about how it works">Learn more about how it works</a>
-        </div>
-    </div>
-</section>
+<div ng-include src="'views/partials/learn-more.html'"></div>
 
 <!-- Flu-news -->
 <section class="wrapper-flu-news">

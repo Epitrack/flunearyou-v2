@@ -1,4 +1,4 @@
-<section class="modal fade modal-login" id="modal-login" tabindex="-1" role="dialog">
+<section class="modal fade modal-login" id="modal-login" tabindex="-1" role="dialog" ng-controller="modalsCtrl">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <header class="modal-header bg">
@@ -24,22 +24,23 @@
           <div class="row">
             <span class="or or-login">Login with your email</span>
           </div>
-
-          <form action="#" name="login-form" id="login-form" class="row login-form register-form">
+          
+          <form class="row login-form register-form">
             <fieldset class="form-group">
               <label for="login-email">Email address</label>
-              <input id="login-email" type="email" class="input-primary">
+              <input id="login-email" type="email" name="email" class="input-primary" ng-model="email">
             </fieldset>
 
             <fieldset class="form-group">
               <label for="login-password">Password</label>
-              <input id="login-password" type="password" class="input-primary">
+              <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass">
             </fieldset>
 
             <a href="#/" class="login-forgot-pass">Forgot your password?</a>
 
-            <button type="submit" class="btn-primary">Login Now</button>
+            <button type="submit" class="btn-primary" ng-click="login(email, pass)">Login Now</button>
           </form>
+
         </div>
       </div>
 
