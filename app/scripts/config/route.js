@@ -34,7 +34,7 @@ app.config(function ($routeProvider) {
       })
       .when('/survey', {
         templateUrl: 'views/survey.html',
-        controller: 'homeCtrl'
+        controller: 'surveyCtrl'
       })
       .when('/report', {
         templateUrl: 'views/report.html',

@@ -11,14 +11,10 @@
 
     <div id="button-thermometer-plus" class="button-thermometer plus"></div>
     <div class="row">
-        <fieldset class="medium full">
-            <input id="not_measured"
-                   class="input-primary"
-                   type="checkbox"
-                   name="not_measured"
-                   value="1">
-            <label for="not_measured" class="full">{{ site.content.not_measured }}</label>
-            <span class="check"><span class="inside"></span></span>
+       <fieldset class="checkbox-group">
+            <input type="checkbox" value="shortness-of-breath" id="not-measured" class="checkbox-primary" name="survey-symptom">
+            <label for="not-measured">not measured</label>
+            <div class="check"><div class="inside"></div></div>
         </fieldset>
     </div>
 </aside>

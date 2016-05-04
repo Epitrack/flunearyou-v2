@@ -1,154 +1,147 @@
 <section class="wrapper-inside bg wrapper-survey">
-  <div class="container">
-    <div class="header-survey  row">
-        <h2 class="title-primary">Health Report</h2>
+    <div class="container">
+        <div class="header-survey  row">
+            <h2 class="title-primary">Health Report</h2>
 
-        <div class="col-xs-12 col-md-8 col-md-offset-2">
-          <h3 class="legend">You previously experienced the following symptoms:</h3>
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <h3 class="legend">You previously experienced the following symptoms:</h3>
 
-          <div class="previously-symptoms">
-            <time datetime="2015-08-13 16:20" class="col-sm-4">08/13/2015</time>
-            <p class="col-sm-7">Fatigue, Nause or vomiting, diarrhea</p>
-          </div>
+                <div class="previously-symptoms">
+                    <time datetime="2015-08-13 16:20" class="col-sm-4">08/13/2015</time>
+                    <p class="col-sm-7">Fatigue, Nause or vomiting, diarrhea</p>
+                </div>
 
-          <form action="#" class="survey-form second" name="survey-form" id="survey-form">
-            <legend class="legend">What symptoms are you currently experiencing?</legend>
+                <form class="survey-form second" name="survey-form" id="survey-form">
+                    <legend class="legend">What symptoms are you currently experiencing?</legend>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="fever" id="survey-symptom-fever" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-fever">Fever</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                    <fieldset class="checkbox-group any-symptoms-below relative">
+                        <input type="checkbox" value="nosymptoms" id="any-symptoms-below" class="checkbox-primary absolute" name="survey-symptom" ng-click="toggleDisabledSymptoms()" disabled-survey>
+                        <label for="any-symptoms-below">You did not have any of the symptoms listed below</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="cough" id="survey-symptom-cough" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-cough">Cough</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                    <p id="survey_symptoms_or" class="or">or</p>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="headache" id="survey-symptom-headache" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-headache">Headache</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                    <div id="conditional" ng-class="{'disabled' : disabledSymptoms}" show-traveling>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6" >
+                            <input type="checkbox" value="fever" id="survey-symptom-fever" class="checkbox-primary" name="survey-symptom" ng-click="toggleTemperature()">
+                            <label for="survey-symptom-fever">Fever {{custom}}</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="sore-throat" id="survey-symptom-sore-throat" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-sore-throat">Sore throat</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="cough" id="survey-symptom-cough" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-cough">Cough</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="diarrhea" id="survey-symptom-diarrhea" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-diarrhea">Diarrhea</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="headache" id="survey-symptom-headache" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-headache">Headache</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="body-aches" id="survey-symptom-body-aches" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-body-aches">Body aches</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="sore-throat" id="survey-symptom-sore-throat" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-sore-throat">Sore throat</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="chills" id="survey-symptom-chills" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-chills">Fatigue</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="diarrhea" id="survey-symptom-diarrhea" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-diarrhea">Diarrhea</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="chills" id="survey-symptom-chills" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-chills">Chills/night sweats</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="body-aches" id="survey-symptom-body-aches" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-body-aches">Body aches</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="nausea-or-vomiting" id="survey-symptom-nausea-or-vomiting" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-nausea-or-vomiting">Nausea or vomiting</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="Fatigue" id="survey-symptom-fatigue" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-fatigue">Fatigue</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Shortness of breath</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="chills" id="survey-symptom-chills" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-chills">Chills/night sweats</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-             <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Rash</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="nausea-or-vomiting" id="survey-symptom-nausea-or-vomiting" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-nausea-or-vomiting">Nausea or vomiting</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Eye pain</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-shortness-of-breath">Shortness of breath</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Yellow skin/eyes</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-rash" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-rash">Rash</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Joint/bone pain</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-eye-pain" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-eye-pain">Eye pain</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-             <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Red Eyes</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-yellow-skin-eyes" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-yellow-skin-eyes">Yellow skin/eyes</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
-              <input type="checkbox" value="shortness-of-breath" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
-              <label for="survey-symptom-shortness-of-breath">Dark, tea-colored urine</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-joint-bone-pain" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-joint-bone-pain">Joint/bone pain</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <!-- thermometer -->
-            <aside class="col-xs-12 wrapper-temperature">
-              <div ng-include src="'views/partials/temperature.html'"></div>
-            </aside>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-red-eyes" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-red-eyes">Red Eyes</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <!-- datepicker -->
-            <fieldset class="col-xs-12 col-sm-7 col-sm-offset-3 wrapper-datepicker">
-              <h3>What day did Yuri start feeling ill?</h3>
-              <aside id="pick-a-date" class="pick-a-date">click to pick a date</aside>
-            </fieldset>
+                        <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
+                            <input type="checkbox" value="shortness-of-breath" id="survey-symptom-dark-urine" class="checkbox-primary" name="survey-symptom">
+                            <label for="survey-symptom-dark-urine">Dark, tea-colored urine</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-            <fieldset class="form-group col-sm-12">
-              <legend class="legend">Did You receive the flu vaccine after July 31, 2015?</legend>
+                        <!-- thermometer -->
+                        <aside class="col-xs-12 wrapper-temperature" ng-show="temperature">
+                            <div ng-include src="'views/partials/temperature.html'"></div>
+                        </aside>
 
-              <fieldset class="col-xs-12 col-sm-4 radio-group radio-group-survey">
-                <input type="radio" value="flu-vaccine-yes" id="flu-vaccine-yes" class="radio-primary" name="flu-vaccine">
-                <label for="flu-vaccine-yes">Yes</label>
-                <div class="check"><div class="inside"></div></div>
-              </fieldset>
+                        <fieldset class="checkbox-group fieldset-traveling none">
+                            <input type="checkbox" value="shortness-of-breath" id="traveling" class="checkbox-primary" name="survey-symptom" ng-click="toggleTreveling()">
+                            <label for="traveling">I was traveling while experiencing these symptoms</label>
+                            <div class="check"><div class="inside"></div></div>
+                        </fieldset>
 
-              <fieldset class="col-xs-12 col-sm-4 radio-group radio-group-survey">
-                <input type="radio" value="flu-vaccine-no" id="flu-vaccine-no" class="radio-primary" name="flu-vaccine">
-                <label for="flu-vaccine-no">No</label>
-                <div class="check"><div class="inside"></div></div>
-              </fieldset>
+                        <aside class="datepicker travel-where" ng-show="treveling">
+                            <h3 id="survey_travel_where">Where did You travel?</h3>
+                            <input type="text" name="travel_where" placeholder="Type a city or a zip code">
+                        </aside>
+                    </div>
 
-              <fieldset class="col-xs-12 col-sm-4 radio-group radio-group-survey">
-                <input type="radio" value="flu-vaccine-dont-know" id="flu-vaccine-dont-know" class="radio-primary" name="flu-vaccine">
-                <label for="flu-vaccine-dont-know">Don't know</label>
-                <div class="check"><div class="inside"></div></div>
-              </fieldset>
-            </fieldset>
-
-
-            <div class="col-xs-12 ">
-              <input type="submit" value="Submit" class="btn-primary">
+                    <div class="form-buttons col-xs-12">
+                        <a href="#/report" class="button btn-info">Go Back</a>
+                        <button type="submit" class="button btn-danger" data-toggle="modal" data-dismiss="modal" data-target="#modal-thanks" ng-click="sendSurvey()">Submit</button>
+                    </div>
+                </form>
             </div>
-          </form>
         </div>
     </div>
-  </div>
 </section>

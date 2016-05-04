@@ -8,15 +8,14 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	$scope.isLogged = function(){
 		var userLogged = localStorage.getItem('userLogged');
 		if(userLogged){
-			console.log('logado');
 			$('.btn-cta').addClass('none');
 		}else{
-			console.log('deslogado');
 			$('.btn-cta').removeClass('none');
 		};
 	};
 
 	$rootScope.$on("IS_LOGGED", $scope.isLogged);
+	$rootScope.$emit("IS_LOGGED");
 	
 
 	/*
