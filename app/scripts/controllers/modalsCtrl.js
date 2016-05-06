@@ -7,6 +7,14 @@
 app.controller('modalsCtrl', ['$scope', '$rootScope', '$route', '$http', '$urlBase', '$window',function($scope, $rootScope, $route, $http, $urlBase, $window){
 	
 	/*
+	*	Init
+	*/ 
+	$scope.resgisterSocial = true;
+	$scope.toggleResgisterSocial = function(){
+		$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
+	}
+
+	/*
 	*	Login
 	*/ 
 	$scope.login = function(email, pass){

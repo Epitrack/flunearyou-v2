@@ -1,23 +1,21 @@
-<div class="col-xs-12 col-sm-6 col-md-3">
+<div ng-repeat="notice in news | limitTo: 4" class="col-xs-12 col-sm-6 col-md-3">
   <article class="news-item">
-    <a href="#" title="Title here" target="_blank">
+    <a href="{{notice.imageUrl}}" title="Title here" target="_blank">
       <figure class="news-image">
-        <img src="http://dummyimage.com/800x600/4d494d/686a82.gif&text=placeholder+image" alt="placeholder+image">
+        <img src="{{notice.imageUrl}}" alt="placeholder+image">
       </figure>
     </a>
 
-    <time datetime="24/07/2015" class="news-date">24 <span>feb</span></time>
+    <time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time>
 
     <div class="news-text">
       <h3 class="news-title">
-        <a href="#" title="Title Here">Title Here</a>
+        <a href="#" title="Title Here">{{notice.title}}</a>
       </h3>
 
-      <p class="news-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reprehenderit quisquam incidunt nihil porro iste molestias ipsam adipisci vero quaerat!
-      </p>
+      <p class="news-description">{{notice.content}}</p>
     </div>
 
-    <a href="#" title="Read More" target="_blank" class="read-more">Read More</a>
+    <a href="{{notice.url}}" title="Read More" target="_blank" class="read-more">Read More</a>
   </article>
 </div>

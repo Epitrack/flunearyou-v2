@@ -5,21 +5,23 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     
-    <!-- FACEBOOK  -->
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:title" content="">
-    <meta property="og:image" content="">
-    <meta property="og:description" content="">
+    <!-- Google -->
+    <meta name="google-signin-clientid" content="770859028405-l4lorinouhnhab97b84ippk2d31nsjh6.apps.googleusercontent.com"/>
+    <meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login"/>
+    <meta name="google-signin-requestvisibleactions" content="http://schema.org/AddAction"/>
+    <meta name="google-signin-cookiepolicy" content="single_host_origin"/>
 
-    <!-- TWITTER -->
-    <meta name="twitter:card" value="">
-    <meta name="twitter:card" value="">
-    <meta name="twitter:creator" value="">
-    <meta name="twitter:site" value="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image:src" content="">
+    <!-- Facebook -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:image:url" content="https://flunearyou.org/img/fny-fb-image.jpg"/>
+    <meta property="og:image" content="https://flunearyou.org/img/fny-fb-image.jpg"/>
+    <meta property="og:image:secure_url" content="https://flunearyou.org/img/fny-fb-image.jpg"/>
+    <meta property="og:image:type" content="image/jpg"/>
+    <meta property="og:image:width" content="1500"/>
+    <meta property="og:image:height" content="760"/>
+    <meta property="og:description" content=""/>
 
     <title>flunearyou v2</title>
 
@@ -79,7 +81,10 @@
 
     <!-- Facebook -->
     <script src="scripts/facebook.js"></script>
-    <!-- <script src="scripts/signup-facebook.js"></script> -->
+    
+    <!-- Google Plus -->
+    <script src="scripts/google-plus.js" async defer></script>
+    <!-- <script src="https://apis.google.com/js/client:platform.js?onload=render" async defer></script> -->
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -124,6 +129,9 @@
         <script src="scripts/directive/disabledSurveyDirective.js"></script>
         <script src="scripts/directive/showTraveling.js"></script>
         <script src="scripts/directive/loginFacebookDirective.js"></script>
+        <script src="scripts/directive/signUpFacebookDirective.js"></script>
+        <script src="scripts/directive/loginGooglePlusDirective.js"></script>
+        <script src="scripts/directive/signUpGooglePlusDirective.js"></script>
 
         <!-- Service -->
         <script src="scripts/services/dataservice.js"></script>
