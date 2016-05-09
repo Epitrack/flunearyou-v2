@@ -1,54 +1,54 @@
 <section class="modal fade modal-login" id="modal-login" tabindex="-1" role="dialog" ng-controller="modalsCtrl">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <header class="modal-header bg">
-        <button class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <header class="modal-header bg">
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
 
-        <h4 class="modal-title login-title">Login and report your symptoms</h4>
-      </header>
+                <h4 class="modal-title login-title">Login and report your symptoms</h4>
+            </header>
 
-      <div class="modal-body moda-login-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 btn-wrapper">
-              <button class="btn-facebook" login-facebook>Facebook</button>
+            <div class="modal-body moda-login-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 btn-wrapper">
+                            <button class="btn-facebook" login-facebook>Facebook</button>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 btn-wrapper">
+                            <button class="btn-google-plus" login-google-plus>Google Plus</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <span class="or or-login">Login with your email</span>
+                    </div>
+
+                    <form class="row login-form register-form">
+                        <fieldset class="form-group">
+                            <label for="login-email">Email address</label>
+                            <input id="login-email" type="email" name="email" class="input-primary" ng-model="email">
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="login-password">Password</label>
+                            <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass">
+                        </fieldset>
+
+                        <a href="#/" class="login-forgot-pass">Forgot your password?</a>
+
+                        <button type="submit" class="button btn-danger" ng-click="login(email, pass)">Login Now</button>
+                    </form>
+
+                </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 btn-wrapper">
-              <button class="btn-google-plus">Google Plus</button>
-            </div>
-          </div>
-
-          <div class="row">
-            <span class="or or-login">Login with your email</span>
-          </div>
-          
-          <form class="row login-form register-form">
-            <fieldset class="form-group">
-              <label for="login-email">Email address</label>
-              <input id="login-email" type="email" name="email" class="input-primary" ng-model="email">
-            </fieldset>
-
-            <fieldset class="form-group">
-              <label for="login-password">Password</label>
-              <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass">
-            </fieldset>
-
-            <a href="#/" class="login-forgot-pass">Forgot your password?</a>
-
-            <button type="submit" class="btn-primary" ng-click="login(email, pass)">Login Now</button>
-          </form>
-
+            <footer class="modal-footer">
+                <p>Don't have an account?
+                    <a ng-href="#" title="Sign Up" data-toggle="modal" data-dismiss="modal" data-target="#modal-join-us">Sign Up</a>
+                </p>
+            </footer>
         </div>
-      </div>
-
-      <footer class="modal-footer">
-        <p>Don't have an account?
-        <a ng-href="#" title="Sign Up" data-toggle="modal" data-dismiss="modal" data-target="#modal-join-us">Sign Up</a>
-        </p>
-      </footer>
     </div>
-  </div>
 </section>

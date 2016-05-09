@@ -4,7 +4,43 @@
         <h2 class="title-primary">Flu News</h2>
 
         <div class="col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0">
-          <div ng-include="'views/partials/news.html'"></div>
+        	<div class="container">
+        		<div class="row">
+        			
+    				<div ng-repeat="notice in news" class="col-xs-12 col-sm-6 col-md-3">
+    					<article class="news-item">
+    						<a href="{{notice.imageUrl}}" title="Title here" target="_blank">
+    							<figure class="news-image">
+    								<img src="{{notice.imageUrl}}" alt="placeholder+image">
+    							</figure>
+    						</a>
+
+    						<time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time>
+
+    						<div class="news-text">
+    							<h3 class="news-title">
+    								<a href="#" title="Title Here">{{notice.title}}</a>
+    							</h3>
+
+    							<p class="news-description">{{notice.content}}</p>
+    						</div>
+
+    						<a href="{{notice.url}}" title="Read More" target="_blank" class="read-more">Read More</a>
+    					</article>
+    				</div>
+        			
+
+        			<a ng-href="http://www.scoop.it/" target="_blank" class="scoopit-logo" title="Go to Scoop.it site">
+        				<figure><img src="images/scoopit.png" alt="Soop.it Logo"></figure>
+        			</a>
+
+
+        			<div class="link-to-read-more col-xs-10 col-xs-offset-1">
+        				<a ng-href="#/flu-news" class="btn btn-read-news" title="Read More" ng-show="showReadMore">Read More News</a>
+        			</div>
+        		</div>
+        	</div>
+
         </div>
     </div>
   </div>

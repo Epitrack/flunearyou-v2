@@ -4,12 +4,12 @@
 
 'use strict';
 
-app.directive('signupFacebook', function(){
+app.directive('signUpFacebook', function(){
 	return {
 		restrict : 'A',
 		link: function(scope, elem){
 			elem.on('click', function(){
-				function doFacebookRegistration(response) {
+				var doFacebookRegistration = function(response) {
 				    var retorno = $('#input-modal-zip').val();
 				    var token = response.authResponse.accessToken;
 				    var query = {'access_token': token, zip: retorno, platform: "web"};
@@ -55,26 +55,23 @@ app.directive('signupFacebook', function(){
 				        }
 				    }).retry({times: 3});
 				}
-				
-				// if (typeof FB != 'undefined') {
-			 //        $("#facebook-register").prop("disabled", true);
-			 //        FB.login(function (response) {
-			 //            console.warn(response);
-			 //            if (response.status === 'connected') {
-			 //                modalZipFlip("facebook", response);
-			 //            } else if (response.status === 'not_authorized') {
-			 //                // The person is logged into Facebook, but not your app.
-			 //                alert('Please authorize Facebook - and try again!');
-			 //            } else {
-			 //                // The person is not logged into Facebook, so we're not sure if
-			 //                // they are logged into thOis app or not.
-			 //                alert('Unknown error occurred - please try again.');
-			 //            }
-			 //        }, {scope: 'email, user_birthday, user_location'});
-			 //    }else{
-			 //    	doFacebookRegistration(response)
-			 //    }
-			}
+
+				$("#facebook-register").prop("disabled", true);
+
+
+				FB.login(function (response) {
+		            if (response.status === 'connected') {
+		                doFacebookRegistration(response);
+		            } else if (response.status === 'not_authorized') {
+		                // The person is logged into Facebook, but not your app.
+		                alert('Please authorize Facebook - and try again!');
+		            } else {
+		                // The person is not logged into Facebook, so we're not sure if
+		                // they are logged into thOis app or not.
+		                alert('Unknown error occurred - please try again.');
+		            }
+		        }, {scope: 'email, user_birthday, user_location'});
+			});
 		}
 	}
 }); 

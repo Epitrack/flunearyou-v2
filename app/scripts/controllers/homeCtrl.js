@@ -5,6 +5,10 @@
 'use strict';
 
 app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
+	
+	/*
+	*	Init
+	*/ 
 	$scope.isLogged = function(){
 		var userLogged = localStorage.getItem('userLogged');
 		if(userLogged){
@@ -13,9 +17,14 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 			$('.btn-cta').removeClass('none');
 		};
 	};
-
 	$rootScope.$on("IS_LOGGED", $scope.isLogged);
+		
+
+	/*
+	*	Calls
+	*/ 
 	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("NEWS");
 	
 
 	/*
@@ -53,4 +62,13 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	};
 
 	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
+
+	/*
+	*
+	*/
+	$http.get($urlBase+'/flu-news.json?FNY_Site=flunearyou.org').success(function(data, status){
+		$scope.news = data;
+	});
+
+	$scope.showReadMore = true;
 }]);

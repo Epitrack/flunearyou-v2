@@ -14,7 +14,7 @@ app.config(function ($routeProvider) {
       })
       .when('/flu-news', {
         templateUrl: 'views/flu-news.html',
-        controller: 'homeCtrl'
+        controller: 'fluNewsCtrl'
       })
       .when('/press', {
         templateUrl: 'views/press.html',

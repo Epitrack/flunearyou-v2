@@ -1,113 +1,133 @@
 <section class="modal fade modal-join-us" id="modal-join-us" tabindex="-1" role="dialog" ng-controller="modalsCtrl">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <header class="modal-header bg">
-        <button class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <header class="modal-header bg">
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
 
-        <h4 class="modal-title">Spread the word. <span>Not the flu.</span></h4>
-      </header>
+                <h4 class="modal-title">Spread the word. <span>Not the flu.</span></h4>
+            </header>
 
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
             <ul class="modal-list">
-              <li class="modal-item">Join thousands who are helping report flu.</li>
-              <li class="modal-item">Protect yourself, your family & your community.</li>
+                <li class="modal-item">Join thousands who are helping report flu.</li>
+                <li class="modal-item">Protect yourself, your family & your community.</li>
             </ul>
+            
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="register-social" ng-show="resgisterSocial">
+                        <div class="row">
+                            <h5>Ready to report? Let's hear from you.</h5>
+                        </div>
 
-            <h5>Ready to report? Let's hear from you.</h5>
-          </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 btn-wrapper">
+                                <button class="btn-facebook" ng-click="toggleResgisterSocial()" sign-up-facebook>Facebook</button>
+                            </div>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 btn-wrapper">
-              <button class="btn-facebook">Facebook</button>
+                            <div class="col-xs-12 col-sm-6 btn-wrapper">
+                                <button class="btn-google-plus" sing-up-google-plus>Google Plus</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <small class="never-post">We will never post on your wall</small>
+                            <span class="or">or you can</span>
+
+                            <a ng-click="showRegisterForm=true" class="register-form">Register with email address</a>
+                        </div>
+
+                        <form ng-show="showRegisterForm" name="registerForm" id="register-form" class="row register-form">
+                            <fieldset class="form-group col-sm-6">
+                                <label for="register-email">Email address</label>
+                                <input type="email" class="input-primary" name="email" placeholder="E-mail" ng-model="newUser.email" ng-required="true" ng-blur="validaEmail(newUser.email)" ng-class="{'error' : !isEmailValid}">
+                            </fieldset>
+
+                            <fieldset class="form-group col-sm-6">
+                                <label for="register-password">Password</label>
+                                <input id="register-password" class="input-primary" type="password" name="password" ng-model="newUser.password" ng-required="true"  ng-minlength="3" ng-maxlength="12" ng-blur="passEmpty(newUser.password)" ng-class="{'error' : !isPassEmpty}">
+                            </fieldset>
+
+                            <fieldset class="form-group col-sm-6">
+                                <label for="register-year">When were you born?</label>
+                                <small>You must be at least 13 years old</small>
+
+                                <select name="register-choose-month" id="register-choose-month" class="col-xs-12 col-sm-5 register-choose-month select-primary" ng-model="newUser.birthmonth" ng-required="true">
+                                    <option value="1" disabled selected>Month</option>
+                                    <option value="2">January</option>
+                                    <option value="3">February</option>
+                                    <option value="4">March</option>
+                                    <option value="5">April</option>
+                                    <option value="6">May</option>
+                                    <option value="7">June</option>
+                                    <option value="8">July</option>
+                                    <option value="9">August</option>
+                                    <option value="10">September</option>
+                                    <option value="11">October</option>
+                                    <option value="12">November</option>
+                                    <option value="13">December</option>
+                                </select>
+
+                                <input id="register-year" type="number" class="col-sm-3 input-primary register-year" name="year" placeholder="YYYY" ng-model="newUser.year" ng-blur="yearEmpty(newUser.year)">
+                            </fieldset>
+
+                            <fieldset class="form-group col-sm-6">
+                                <label for="register-zip-code">Zip code</label>
+                                <small>You must be a resident of the U.S. or Canada</small>
+                                <input id="register-zip-code" type="number" class="input-primary" name="zip" ng-model="newUser.zip" ng-required="true"  ng-blur="zipEmpty(newUser.zip)" ng-class="{'error' : !isZipEmpty}">
+                            </fieldset>
+
+                            <fieldset class="form-group col-sm-12">
+                                <legend class="legend">Gender:</legend>
+
+                                <fieldset class="radio-group col-xs-6 col-sm-3">
+                                    <input type="radio" value="M" id="male" class="radio-primary" name="register-gender" ng-model="newUser.gender">
+                                    <label for="male">Male</label>
+                                    <div class="check" ng-class="{'check-error' : noGender}"><div class="inside"></div></div>
+                                </fieldset>
+
+                                <fieldset class="radio-group col-xs-6 col-sm-3">
+                                    <input type="radio" value="F" id="female" class="radio-primary" name="register-gender" ng-model="newUser.gender">
+                                    <label for="female">Female</label>
+                                    <div class="check" ng-class="{'check-error' : noGender}"><div class="inside"></div></div>
+                                </fieldset>
+                            </fieldset>
+                            
+                            <div class="col-sm-12 wrapper-terms-privacy relative">
+                                <div class="alert alert-danger msg-error" ng-show="!isEmailValid || !isZipEmpty || !isPassEmpty || !isYearEmpty || !isGenderValid">{{errorMsg}}</div>
+                                <p>By signing up, I agree to Flu Near You <a ng-href="#/terms" title="Terms and Conditions" data-dismiss="modal" class="link-close-modal">Terms and Conditions</a> and <a ng-href="#/privacy" title="Privacy Policy" data-dismiss="modal" class="link-close-modal">Privacy Policy</a>.</p>
+
+                                <button type="submit" class="button btn-danger" ng-click="sendNewUser()" ng-disabled="!registerForm.$valid">Get started</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Register ZIP -->
+                    <div class="register-zip" ng-show="!resgisterSocial">
+                        <div id="modal-zip" class="modal-zip">
+                            <div class="card">
+                                <div class="back">
+                                    <h4>What's your zip code?</h4>
+
+                                    <form id="registration-form-zip" name="registration-form-zip" novalidate="novalidate" class="relative">
+                                        <input name="zip" id="input-modal-zip" type="hidden">
+                                        <input id="input-modal-zip-label" class="bootbox-input bootbox-input-text form-control" autocomplete="off" name="zip" type="text" required="" aria-required="true">
+                                        <button type="submit" id="bt-zip" class="button btn-danger">Create User</button>
+                                        <button type="button" id="bt-zip-cancel" class="button btn-info absolute" ng-click="toggleResgisterSocial()">Go back</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 btn-wrapper">
-              <button class="btn-google-plus">Google Plus</button>
-            </div>
-          </div>
-
-          <div class="row">
-            <small class="never-post">We will never post on your wall</small>
-            <span class="or">or you can</span>
-
-            <a ng-click="showRegisterForm=true" class="register-form">Register with email address</a>
-          </div>
-
-          <form ng-show="showRegisterForm" name="register-form" id="register-form" class="row register-form">
-            <fieldset class="form-group col-sm-6">
-              <label for="register-email">Email address</label>
-              <input id="register-email" type="email" class="input-primary">
-            </fieldset>
-
-            <fieldset class="form-group col-sm-6">
-              <label for="register-password">Password</label>
-              <input id="register-password" type="password" class="input-primary">
-            </fieldset>
-
-            <fieldset class="form-group col-sm-6">
-              <label for="register-year">When were you born?</label>
-              <small>You must be at least 13 years old</small>
-
-              <select name="register-choose-month" id="register-choose-month" class="col-xs-12 col-sm-5 register-choose-month select-primary">
-                <option value="Month" disabled selected>Month</option>
-                <option value="Month_1">Month_1</option>
-                <option value="Month_2">Month_2</option>
-                <option value="Month_3">Month_3</option>
-              </select>
-
-              <input id="register-year" type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
-            </fieldset>
-
-            <fieldset class="form-group col-sm-6">
-              <label for="register-zip-code">Zip code</label>
-              <small>You must be a resident of the U.S. or Canada</small>
-              <input id="register-zip-code" type="tel" class="input-primary">
-            </fieldset>
-
-            <fieldset class="form-group col-sm-12">
-              <legend class="legend">Gender:</legend>
-
-              <fieldset class="radio-group col-xs-6 col-sm-3">
-                <input type="radio" value="M" id="male" class="radio-primary" name="register-gender">
-                <label for="male">Male</label>
-                <div class="check"><div class="inside"></div></div>
-              </fieldset>
-
-              <fieldset class="radio-group col-xs-6 col-sm-3">
-                <input type="radio" value="F" id="female" class="radio-primary" name="register-gender">
-                <label for="female">Female</label>
-                <div class="check"><div class="inside"></div></div>
-              </fieldset>
-            </fieldset>
-
-            <div class="col-sm-12 wrapper-terms-privacy">
-              <p>By signing up, I agree to Flu Near You <a ng-href="#/terms" title="Terms and Conditions" data-dismiss="modal" class="link-close-modal">Terms and Conditions</a> and <a ng-href="#/privacy" title="Privacy Policy" data-dismiss="modal" class="link-close-modal">Privacy Policy</a>.</p>
-
-              <button type="submit" class="btn-primary" ng-click="sendUser">Get started</button>
-            </div>
-          </form>
+            <footer class="modal-footer">
+                <p>Already registered with Flu Near You?
+                    <a ng-href="#" title="Sign in" data-toggle="modal" data-dismiss="modal" data-target="#modal-login">Sign in here</a>
+                </p>
+            </footer>
         </div>
-      </div>
-
-      <footer class="modal-footer">
-        <p>Already registered with Flu Near You?
-        <a ng-href="#" title="Sign in" data-toggle="modal" data-dismiss="modal" data-target="#modal-login">Sign in here</a>
-        </p>
-      </footer>
     </div>
-  </div>
 </section>
-
-<!--
-
-  To '#/terms' and '#/privacy' use this code to hide modal when click
-  and 'submit' page correctly.
-
-  $('.link-close-modal').click(function(){
-        $($(this).closest('.modal')).modal('hide');
-   })
- -->
