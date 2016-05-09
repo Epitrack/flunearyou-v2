@@ -118,7 +118,7 @@
 
 .wrapper-terms-privacy
   @extend .modal-footer
-  margin-top: 10px
+  margin-top: 30px
   font-size: $fs-normal
   padding: 0
 
@@ -266,52 +266,6 @@
   line-height: $fs-normal + 0.4
 
 
-//
-// Login modal
-//
-
-.modal-login
-  header
-    &.bg
-      height: 70px
-
-
-//
-// Join Us modal
-//
-
-.modal-join-us
-  .modal-header
-    &.bg
-      height: 65px
-  .modal-item
-    background-color: transparent
-    padding: 0
-    margin: 10px 0 10px 20px
-    font-size: 2rem
-    list-style-type: disc
-  .modal-zip
-    height: 182px
-    margin-top: 10px
-    margin-bottom: 10px
-    background-color: #d6e0ef
-    border-top: 1px solid white
-    border-bottom: 1px solid white
-    h4
-      color: #3f6f92
-      font-size: 2.1rem
-      margin: 20px 0
-      text-align: center
-      padding-left: 20px
-      font-weight: bold
-    button[type="submit"]
-      width: 150px
-      margin: 11px auto 0
-      display: block
-    button[type="button"]
-      top: 45px
-      left: 0
-
 
 //
 // modal-add-household-member
@@ -438,5 +392,70 @@
     .btn-primary
       padding: 10px 30px 10px 60px
 
-// Desktop
-// @media (min-width: 992px)
+
+// Modal
+.msg-error
+  width: 100%
+  padding: 5px
+  position: absolute
+  top: -38px
+  left: 0
+
+#register-form
+  input
+    outline: none
+  select
+    border-radius: 5px
+  fieldset
+    cursor: default
+  .check-error
+    border: 2px solid #d33041
+
+//
+// Login modal
+//
+
+.error
+  background-color: #f2dede
+  border-color: #a94442
+.modal-login
+  header
+    &.bg
+      height: 70px
+
+
+//
+// Join Us modal
+//
+
+.modal-join-us
+  .modal-header
+    &.bg
+      height: 65px
+  .modal-item
+    background-color: transparent
+    padding: 0
+    margin: 10px 0 10px 20px
+    font-size: 2rem
+    list-style-type: disc
+  .modal-zip
+    height: 182px
+    margin-top: 10px
+    margin-bottom: 10px
+    background-color: #d6e0ef
+    border-top: 1px solid white
+    border-bottom: 1px solid white
+    h4
+      color: #3f6f92
+      font-size: 2.1rem
+      margin: 20px 0
+      text-align: center
+      padding-left: 20px
+      font-weight: bold
+    button[type="submit"]
+      width: 150px
+      margin: 11px auto 0
+      display: block
+    button[type="button"]
+      top: 45px
+      left: 0

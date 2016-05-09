@@ -71,13 +71,15 @@
       width: 100%
       z-index: 11
       +rgba(lighten($white-primary-rgb, 1%), 0.9)
-      +bsd(1px, 2px, 2px, lighten($link-menu, 35%))
+      -ms-box-shadow: 1px 2px 2px #ccc
+      -o-box-shadow: 1px 2px 2px #ccc
+      box-shadow: 1px 2px 2px #ccc
   .btn-cta
     position: absolute
     background-color: transparent
     text-align: center
     height: 170px
-    z-index: 9
+    z-index: 9999
     right: 0
     top: -47px
     border: none

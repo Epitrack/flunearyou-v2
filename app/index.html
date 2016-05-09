@@ -31,6 +31,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -47,7 +48,8 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header relative">
+        <div id="loading-bar-container" class="absolute"></div>
         <nav class="navbar navbar-default" role="navigation" ng-include src="'views/partials/navbar.html'"></nav>
     </header>
 
@@ -89,13 +91,14 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/bower_components/jquery-ui/ui/minified/effect-slide.min.js"></script>
-    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
-    <script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
-    <script src="/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="/bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="/bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -110,6 +113,7 @@
         <script src="scripts/config/route.js"></script>
         <script src="scripts/config/value.js"></script>
         <script src="scripts/config/mapConfig.js"></script>
+        <script src="scripts/config/loadingBarConfig.js"></script>
 
         <!-- Controller -->
         <script src="scripts/controllers/mainCtrl.js"></script>
