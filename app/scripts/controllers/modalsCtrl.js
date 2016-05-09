@@ -22,7 +22,8 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$route', '$http', '$urlBa
 				userToken     = data.info.basic.token,
 				userLoggedObj = {
 					'name'  : user.nickname,
-					'email' : user.email
+					'email' : user.email,
+					'token' : user.token
 				};
 
 			localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));

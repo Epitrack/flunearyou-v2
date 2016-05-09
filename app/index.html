@@ -61,7 +61,7 @@
     <!-- Modal's -->
     <div ng-include src="'views/partials/modal-join-us.html'"></div>
     <div ng-include src="'views/partials/modal-login.html'"></div>
-    <div ng-include src="'views/partials/modal-thanks.html'"></div>
+    <!-- <div ng-include src="'views/partials/modal-thanks.html'"></div> -->
     <div ng-include src="'views/partials/modal-first-report.html'"></div>
     <div ng-include src="'views/partials/modal-refer-a-friend.html'"></div>
     <div ng-include src="'views/partials/modal-add-household-member.html'"></div>
@@ -91,6 +91,7 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
     <script src="/bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -116,6 +117,7 @@
         <script src="scripts/controllers/modalsCtrl.js"></script>
         <script src="scripts/controllers/reportCtrl.js"></script>
         <script src="scripts/controllers/surveyCtrl.js"></script>
+        <script src="scripts/controllers/modalThanksCtrl.js"></script>
 
         <!-- Directives -->
         <script src="scripts/directive/chooseStateDirective.js"></script>
@@ -128,6 +130,7 @@
         <!-- Service -->
         <script src="scripts/services/dataservice.js"></script>
         <script src="scripts/services/cdcstates.js"></script>
+        <script src="scripts/services/reportApi.js"></script>
     <!-- endbuild -->
 </body>
 </html>
