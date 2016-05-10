@@ -1,17 +1,16 @@
 /*
-*	Modas Controller
+*	Modals Controller
 */
 
 'use strict';
 
-app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'reportApi',
-	function($scope, $rootScope, $http, $urlBase, $window, reportApi){
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny',
+	function($scope, $rootScope, $http, $urlBase, $window, $fny){
 	
 	/*
 	*	Init
 	*/
-	
-	// $('#register-choose-month option:eq(0)').remove(); 
+
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(){
 		$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
@@ -25,8 +24,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			"email"     : email,
 			"password"  : pass
 		}
-
-		reportApi.login(loginObj);
+		$fny.login(loginObj);
 	};
 
 	
@@ -40,16 +38,16 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			$scope.isGenderValid = false;
 			$scope.errorMsg = 'Gender is empty';
 		}else{
-			reportApi.registerNewUser(objNewUser)
+			$fny.registerNewUser(objNewUser)
 		}
-		
-
 		return false;
 	};
 
 	
 	/*
+	*
 	*	Validation form
+	*
 	*/ 
 	$scope.isEmailValid  = true;
 	$scope.isZipEmpty	 = true;

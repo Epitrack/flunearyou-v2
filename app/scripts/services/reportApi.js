@@ -50,45 +50,5 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         });
     };
 
-
-    obj.login = function(loginObj){
-        $http.post($urlBase+'/user/login', loginObj).success(function(data, status){
-            console.log(loginObj);
-            console.log(data);
-            var user          = data.info.basic,
-                userToken     = data.info.basic.token,
-                userLoggedObj = {
-                    'name'  : user.nickname,
-                    'email' : user.email,
-                    'token' : user.token
-                };
-
-            console.log(userLoggedObj)
-
-            localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-            $rootScope.$emit("IS_LOGGED");
-            $window.location.href = '#/report?token='+userToken;
-        }).error(function(data, status){
-            console.log(status)
-        });
-    }
-
-    // 
-    obj.registerNewUser = function(objNewUser){
-        $http.post($urlBase+'/user', objNewUser).success(function(data, status){
-            
-            var loginObj = {
-                "email"     : objNewUser.email,
-                "password"  : objNewUser.password
-            }
-
-            obj.login(loginObj);
-
-        }).error(function(data, status){
-            console.log(data);
-            console.log(status);            
-        });
-    }
-
     return obj;
 }]);

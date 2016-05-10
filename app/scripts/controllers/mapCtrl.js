@@ -222,5 +222,13 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 	$scope.hideMarkers = function(){ MAP.hideMarkers(); }
 	$scope.showMarkers = function(){ MAP.showMarkers(); }
 	
+	/*
+	*	Flu News
+	*/
+	$http.get($urlBase+'/flu-news.json?FNY_Site=flunearyou.org').success(function(data, status){
+		$scope.news = data;
+	});
+
+	$scope.showReadMore = true;
 
 }]);
