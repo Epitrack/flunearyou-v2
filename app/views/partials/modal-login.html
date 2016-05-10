@@ -25,20 +25,22 @@
                         <span class="or or-login">Login with your email</span>
                     </div>
 
-                    <form class="row login-form register-form">
+                    <form class="row login-form register-form" name="loginForm">
                         <fieldset class="form-group">
                             <label for="login-email">Email address</label>
-                            <input id="login-email" type="email" name="email" class="input-primary" ng-model="email">
+                            <input id="login-email" type="email" name="email" class="input-primary" ng-model="email" ng-blur="validaEmail(email)" ng-required="true">
                         </fieldset>
 
                         <fieldset class="form-group">
                             <label for="login-password">Password</label>
-                            <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass">
+                            <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass" ng-blur="passEmpty(pass)" ng-required="true">
                         </fieldset>
 
                         <a href="#/" class="login-forgot-pass">Forgot your password?</a>
-
-                        <button type="submit" class="button btn-danger" ng-click="login(email, pass)">Login Now</button>
+                        <div id="error-login" class="relative">
+                            <div class="alert alert-danger msg-error" ng-show="!isEmailValid || !isPassEmpty">{{errorMsg}}</div>
+                        </div>
+                        <button type="submit" class="button btn-danger" ng-click="login(email, pass)" ng-disabled="!loginForm.$valid">Login Now</button>
                     </form>
 
                 </div>
