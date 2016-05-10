@@ -10,6 +10,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	/*
 	*	Init
 	*/
+	
 	// $('#register-choose-month option:eq(0)').remove(); 
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(){

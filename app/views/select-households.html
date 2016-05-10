@@ -34,7 +34,7 @@
             </tr>
         </table>  
     </header>
-
+    
     <div class="row">
         <!-- <form class="survey-form col-md-4 col-md-offset-4" id="form_household_select">
              <fieldset class="checkbox-group any-symptoms-below relative large full">
@@ -42,23 +42,21 @@
                 <label for="user_you">You</label>
                 <div class="check"><div class="inside"></div></div> -->
         <form class="survey-form col-md-4 col-md-offset-4" id="form_household_select" name="householdForm">
-            {{members.length}}
             <fieldset class="checkbox-group relative large full" ng-if="user">
-                <input id="user_you" name="user_you" ng-model="members[user.user_id]" class="checkbox-primary absolute users" type="checkbox" ng-value="{{ user.user_id }}">
+                <input id="user_you" name="members" checklist-model="members" class="checkbox-primary absolute users" type="checkbox" checklist-value="user.user_id">
                 <label for="user_you">You</label>
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
 
             <fieldset class="checkbox-group relative large full" ng-repeat="household in households" ng-if="household.active == 'Y'">
-                <input id="user_{{household.user_household_id}}" name="user_{{household.user_household_id}}" class="checkbox-primary absolute users" type="checkbox" ng-model="members[household.user_household_id]" ng-value="{{ household.user_household_id }}">
+                <input id="user_{{household.user_household_id}}" name="members" class="checkbox-primary absolute users" type="checkbox" checklist-model="members" checklist-value="household.user_household_id">
                 <label for="user_{{household.user_household_id}}" class="full">{{ household.nickname }}</label>
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
-           
-            <div id="household-error" class="alert alert-danger" ng-show="members.length == 0" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
+            <div id="household-error" class="alert alert-danger" ng-show="members.length == 0 && error" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
                 <span id="household-error-message">You must select at least one member</span>
             </div>
-            <button id="bt-okay" class="button btn-danger btn-lg btn-block" ng-click="openSymtoms()">Report Symptoms</button>
+            <button id="bt-okay" class="button btn-danger btn-lg btn-block" ng-click="selectMembers()">Report Symptoms</button>
             <p class="or">or</p>
             <button type="button" id="bt-no-symptoms" class="button btn-success btn-lg btn-block nav-link" ng-click="everyoneHealthy()">Everyone is healthy, nothing to report</button>
         </form>

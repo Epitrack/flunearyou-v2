@@ -43,6 +43,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 		});
 	};
 
+	var successReport = function(){
+		openModalThanks();
+		$location.path( "/map" );
+	};
+
 	$scope.goBack = function(){
 		$scope.page_members = true;		
 	}
@@ -51,17 +56,13 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 		reportApi.everyoneHealthy(function(result){
 			if (result){
 				console.log('everyone is healthy');
-				openModalThanks();
-				$location.path( "/map" );
+				successReport();
 			}
 		});
 	};
 
 	$scope.selectMembers = function(){
 		if ($scope.members.length > 0){
-			angular.forEach($scope.members, function(value, key){
-				$scope.seleted_members.push(key);
-			});
 			$scope.openSymtoms();
 		}else{
 			$scope.error = 'You must select at least one member';
@@ -70,16 +71,24 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	$scope.openSymtoms = function(){
 		if ($scope.members.length <= 0){
-			$location.path( "/map" );
+			successReport();
 		}else{
 			$scope.page_members = false;
-			$scope.current_id = $scope.seleted_members.shift();
+			$scope.current_id = $scope.members.shift();
+			angular.forEach($scope.households, function(value, key){
+				if (value.user_household_id == $scope.current_id){
+					$scope.user_name = value.nickname;
+				}
+			});
 		}
 	};
 
 	$scope.sendReport = function(){
 		console.log('$scope.current_id', $scope.current_id);
 		console.log($scope.symptoms);
+		reportApi.sendReport($scope.symptoms, 0, $scope.user.user_id, $scope.current_id, $scope.members, $scope.user.current_survey, function(result){
+			console.log(result);
+		});
 		$scope.openSymtoms();
 	}
 

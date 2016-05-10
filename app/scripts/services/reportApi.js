@@ -28,8 +28,28 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         }).error(function(error) {
             console.log('Error getUser: ', error);
         });
-
     };
+
+    obj.sendReport = function(symptoms, no_symptoms, user_id, current_user_id, members, realtime, callback){
+        var url = realtime ? $urlBase+'/survey/now' : $urlBase+'/survey/new';
+        var data = {
+            'platform': 'web',
+            'user_id': user_id,
+            'current_member': current_user_id,
+            'healthy_members': members.join(),
+            'no_symptoms': no_symptoms
+        }
+        angular.forEach(symptoms, function(value, key){
+            data[value] = 1;
+        });
+
+        $http.post(url, data, {headers: {'token': token}}).success(function(data) {
+            callback(true);
+        }).error(function(error) {
+            console.log('Error getUser: ', error);
+        });
+    };
+
 
     obj.login = function(loginObj){
         $http.post($urlBase+'/user/login', loginObj).success(function(data, status){
