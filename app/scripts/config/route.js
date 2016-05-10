@@ -3,6 +3,10 @@ app.config(function ($routeProvider) {
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'homeCtrl'
+      }).
+      when('/landing', {
+        templateUrl: 'views/landing.html',
+        controller: 'homeCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',

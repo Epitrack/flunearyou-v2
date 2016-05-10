@@ -12,7 +12,6 @@ app.controller('fluNewsCtrl', ['$scope','$http', '$urlBase', '$window', '$rootSc
 	$rootScope.$emit("SCROLL_TOP");
 
 	$scope.news = function(){
-		console.log(123);
 		$http.get($urlBase+'/flu-news.json?FNY_Site=flunearyou.org').success(function(data, status){
 			$scope.news = data;
 		});

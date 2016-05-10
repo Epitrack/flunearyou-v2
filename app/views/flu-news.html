@@ -9,11 +9,11 @@
         			
     				<div ng-repeat="notice in news" class="col-xs-12 col-sm-6 col-md-3">
     					<article class="news-item">
-    						<a href="{{notice.imageUrl}}" title="Title here" target="_blank">
-    							<figure class="news-image">
-    								<img src="{{notice.imageUrl}}" alt="placeholder+image">
-    							</figure>
-    						</a>
+    						
+							<figure class="news-image">
+								<img ng-src="{{notice.imageUrl}}" alt="">
+							</figure>
+    						
 
     						<time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time>
 

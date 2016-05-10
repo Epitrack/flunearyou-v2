@@ -4,8 +4,8 @@
 
 'use strict';
 
-app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'reportApi',
-	function($scope, $rootScope, $http, $urlBase, $window, reportApi){
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny',
+	function($scope, $rootScope, $http, $urlBase, $window, $fny){
 	
 	/*
 	*	Init
@@ -23,7 +23,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			"email"     : email,
 			"password"  : pass
 		}
-		reportApi.login(loginObj);
+		$fny.login(loginObj);
 	};
 
 	
@@ -37,7 +37,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			$scope.isGenderValid = false;
 			$scope.errorMsg = 'Gender is empty';
 		}else{
-			reportApi.registerNewUser(objNewUser)
+			$fny.registerNewUser(objNewUser)
 		}
 		return false;
 	};

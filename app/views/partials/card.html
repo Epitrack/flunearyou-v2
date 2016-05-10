@@ -1,10 +1,9 @@
 <div ng-repeat="notice in news | limitTo: 4" class="col-xs-12 col-sm-6 col-md-3">
   <article class="news-item">
-    <a href="{{notice.imageUrl}}" title="Title here" target="_blank">
+    
       <figure class="news-image">
-        <img src="{{notice.imageUrl}}" alt="placeholder+image">
+        <img ng-src="{{notice.imageUrl}}" alt="">
       </figure>
-    </a>
 
     <time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time>
 
