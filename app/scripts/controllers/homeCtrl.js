@@ -18,6 +18,12 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 		};
 	};
 	$rootScope.$on("IS_LOGGED", $scope.isLogged);
+
+	// ScrollTop all pages
+	$scope.scrolltop = function(){
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+	};
+	$rootScope.$on('SCROLL_TOP', $scope.scrolltop);
 		
 
 	/*
@@ -25,6 +31,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	*/ 
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("NEWS");
+	$rootScope.$emit("SCROLL_TOP");
 	
 
 	/*

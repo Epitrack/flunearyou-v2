@@ -9,6 +9,7 @@ app.controller('fluNewsCtrl', ['$scope','$http', '$urlBase', '$window', '$rootSc
 	*	Init
 	*/
 	$rootScope.$emit("IS_LOGGED"); 
+	$rootScope.$emit("SCROLL_TOP");
 
 	$scope.news = function(){
 		console.log(123);

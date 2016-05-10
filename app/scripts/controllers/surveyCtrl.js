@@ -5,7 +5,12 @@
 'use strict';
 
 app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window){
+	
+	/*
+	*	Init
+	*/ 
 	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
 
 
 	// Toggle disabledSymptoms

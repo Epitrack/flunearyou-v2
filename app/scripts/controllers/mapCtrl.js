@@ -5,7 +5,13 @@
 'use strict';
 
 app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
+	
+	/*
+	*	Init
+	*/ 
 	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+	
 	var MAP = {
 		
 		_markers : [],

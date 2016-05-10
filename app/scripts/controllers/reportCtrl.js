@@ -10,6 +10,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	*/ 
 	$('#modal-join-us').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
 	
 	// Arrays 
 	$scope.page_members = true;

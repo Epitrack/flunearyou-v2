@@ -5,5 +5,8 @@
 'use strict';
 
 app.controller('aboutCtrl', ['$scope', function($scope){
-	console.log(123)
+	/*
+	*	Init
+	*/ 
+	$rootScope.$emit("SCROLL_TOP");
 }]);
