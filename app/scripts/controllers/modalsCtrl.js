@@ -10,6 +10,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	/*
 	*	Init
 	*/
+
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(){
 		$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
