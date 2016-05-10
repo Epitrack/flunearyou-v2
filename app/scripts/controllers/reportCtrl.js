@@ -5,7 +5,13 @@
 'use strict';
 
 app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi',function($scope, $rootScope, $window, $location, $uibModal, reportApi){
+	/*
+	*	Init
+	*/ 
+	$('#modal-join-us').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
+	
+	// Arrays 
 	$scope.page_members = true;
 	$scope.members = [];
 	$scope.seleted_members = [];

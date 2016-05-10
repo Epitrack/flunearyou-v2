@@ -41,7 +41,7 @@
                         <form ng-show="showRegisterForm" name="registerForm" id="register-form" class="row register-form">
                             <fieldset class="form-group col-sm-6">
                                 <label for="register-email">Email address</label>
-                                <input type="email" class="input-primary" name="email" placeholder="E-mail" ng-model="newUser.email" ng-required="true" ng-blur="validaEmail(newUser.email)" ng-class="{'error' : !isEmailValid}">
+                                <input type="email" class="input-primary" name="email" ng-model="newUser.email" ng-required="true" ng-blur="validaEmail(newUser.email)" ng-class="{'error' : !isEmailValid}">
                             </fieldset>
 
                             <fieldset class="form-group col-sm-6">
@@ -54,7 +54,7 @@
                                 <small>You must be at least 13 years old</small>
 
                                 <select name="register-choose-month" id="register-choose-month" class="col-xs-12 col-sm-5 register-choose-month select-primary" ng-model="newUser.birthmonth" ng-required="true">
-                                    <option value="1" disabled selected>Month</option>
+                                    <option value="1">Month</option>
                                     <option value="2">January</option>
                                     <option value="3">February</option>
                                     <option value="4">March</option>
@@ -69,7 +69,7 @@
                                     <option value="13">December</option>
                                 </select>
 
-                                <input id="register-year" type="number" class="col-sm-3 input-primary register-year" name="year" placeholder="YYYY" ng-model="newUser.year" ng-blur="yearEmpty(newUser.year)">
+                                <input id="register-year" type="number" class="col-sm-3 input-primary register-year" name="year" placeholder="YYYY" ng-model="newUser.birthyear" ng-blur="yearEmpty(newUser.birthyear)">
                             </fieldset>
 
                             <fieldset class="form-group col-sm-6">

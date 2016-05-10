@@ -4,12 +4,13 @@
 
 'use strict';
 
-app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', function($scope, $rootScope, $http, $urlBase, $window){
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'reportApi',
+	function($scope, $rootScope, $http, $urlBase, $window, reportApi){
 	
 	/*
 	*	Init
 	*/
-	$('#register-choose-month').find('option').eq(0).remove(); 
+	// $('#register-choose-month option:eq(0)').remove(); 
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(){
 		$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
@@ -19,34 +20,12 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	*	Login
 	*/ 
 	$scope.login = function(email, pass){
-		
-		// loadingBar
-		cfpLoadingBar.start();
-
 		var loginObj = {
 			"email"     : email,
 			"password"  : pass
 		}
 
-
-		$http.post($urlBase+'/user/login', loginObj).success(function(data, status){
-			
-			var user          = data.info.basic,
-				userToken     = data.info.basic.token,
-				userLoggedObj = {
-					'name'  : user.nickname,
-					'email' : user.email,
-					'token' : user.token
-				};
-
-			localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-			$rootScope.$emit("IS_LOGGED");
-			$('.close').trigger('click');
-			$window.location.href = '#/report?token='+userToken;
-			cfpLoadingBar.complete();
-		}).error(function(data, status){
-			console.log(status)
-		});
+		reportApi.login(loginObj);
 	};
 
 	
@@ -60,13 +39,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			$scope.isGenderValid = false;
 			$scope.errorMsg = 'Gender is empty';
 		}else{
-			$http.post($urlBase+'/user', objNewUser).success(function(data, status){
-				console.log(data);
-				console.log(status);
-			}).error(function(data, status){
-				console.log(data);
-				console.log(status);			
-			});
+			reportApi.registerNewUser(objNewUser)
 		}
 		
 
