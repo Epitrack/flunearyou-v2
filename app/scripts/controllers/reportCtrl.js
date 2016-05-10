@@ -1,5 +1,5 @@
 /*
-*
+*	Report Controller
 */
 
 'use strict';
@@ -8,7 +8,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	/*
 	*	Init
 	*/ 
-	$('#modal-join-us').modal('hide');
+	$('#modal-join-us, #modal-login').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 	
@@ -27,7 +27,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	      size: 'lg',
 	      resolve: {
 	        items: function () {
-	          return $scope.items;
+	        	return $scope.items;
 	        }
 	      }
 	    });
@@ -35,7 +35,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	var getUser = function(){
 		reportApi.getUser(function(result){
-			console.log(result);
 			if (result.info){
 				$scope.user = result.info.basic;
 				$scope.households = result.info.household;
