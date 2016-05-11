@@ -4,7 +4,13 @@
 
 'use strict';
 
-app.controller('navCtrl', ['$scope', '$rootScope', function($scope, $rootScope){	
+app.controller('navCtrl', ['$scope', '$rootScope', '$translate', function($scope, $rootScope, $translate){	
+
+	/*
+	*	Init
+	*/ 
+	localStorage.setItem('translations_en', '{"nav" : { "fluMap": "Flu Map", "about" : "About", "news" : "News", "press" : "Press", "faq" : "FAQ", "login" : "login"} }')
+	localStorage.setItem('translations_es', '{"nav" : { "fluMap": "Mapa", "about" : "Sobre", "news" : "Noticias", "press" : "Prensa", "faq" : "FAQ", "login" : "Ingresa"} }')
 
 	$scope.isLogged = function(){
 		// Hide Join Us button 
@@ -31,4 +37,17 @@ app.controller('navCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
 	$scope.toggleCustom = function(){
 		$scope.custom = $scope.custom === false ? true: false;
 	}
+
+	// Change language 
+	$scope.changeLanguage = function(lng){
+		$translate.use(lng);
+	} 
+
+
+
+
+
+
+
+
 }]);

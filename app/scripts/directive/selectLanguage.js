@@ -13,6 +13,9 @@ app.directive('selectLanguage', function(){
 			});
 
 			elem.find('.lng').on('click', function(){
+				var lng = $(this).attr('data-lng');
+				
+				// Change language
 				elem.find('.lng').removeClass('ativo');
 				$(this).addClass('ativo');
 			});

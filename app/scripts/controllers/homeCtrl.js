@@ -5,7 +5,7 @@
 'use strict';
 
 app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
-	
+
 	/*
 	*	Init
 	*/ 
