@@ -5,7 +5,7 @@
 'use strict';
 
 app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
-	
+
 	/*
 	*	Init
 	*/ 
@@ -71,7 +71,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
 
 	/*
-	*
+	*	Flu News
 	*/
 	$http.get($urlBase+'/flu-news.json?FNY_Site=flunearyou.org').success(function(data, status){
 		$scope.news = data;

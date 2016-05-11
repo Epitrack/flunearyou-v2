@@ -26,17 +26,17 @@
             </h1>
 
             <ul class="nav navbar-nav nopadding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
-                <li> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu Map</a> </li>
-                <li> <a class="nav-link" title="About" ng-href="#/about">About</a> </li>
-                <li> <a class="nav-link" title="News" ng-href="#/flu-news">News</a> </li>
-                <li> <a class="nav-link" title="Press" ng-href="#/press">Press</a> </li>
-                <li> <a class="nav-link" title="FAQ" ng-href="#/faq">FAQ</a> </li>
-                <li> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged">Login</a> </li>
+                <li> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()" translate="nav.fluMap"></a> </li>
+                <li> <a class="nav-link" title="About" ng-href="#/about" translate="nav.about"></a> </li>
+                <li> <a class="nav-link" title="News" ng-href="#/flu-news" translate="nav.about">News</a> </li>
+                <li> <a class="nav-link" title="Press" ng-href="#/press" translate="nav.press">Press</a> </li>
+                <li> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="nav.faq">FAQ</a> </li>
+                <li> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav.login">Login</a> </li>
                 <li class="relative">
-                    <div class="select-language">
+                    <div class="select-language" select-language>
                         <span class="arrow-down"></span>
-                        <span data-href="en" class="eng">ENG</span>
-                        <span data-href="es" class="spa">SPA</span>
+                        <span data-lng="en" class="lng eng ativo" ng-click="changeLanguage('en')">ENG</span>
+                        <span data-lng="es" class="lng spa" ng-click="changeLanguage('es')">SPA</span>
                     </div>
                 </li>
                 <li> <a class="nav-link lets-go hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#modal-join-us">Let's go!</a> </li>
