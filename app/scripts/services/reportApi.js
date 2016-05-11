@@ -30,14 +30,19 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         });
     };
 
-    obj.sendReport = function(symptoms, no_symptoms, user_id, current_user_id, members, realtime, callback){
+    obj.sendReport = function(symptoms, user_id, current_user_id, members, realtime, travel_where, callback){
         var url = realtime ? $urlBase+'/survey/now' : $urlBase+'/survey/new';
+        var no_symptoms = symptoms.length == 0 ? 1 : 0;
         var data = {
             'platform': 'web',
             'user_id': user_id,
             'current_member': current_user_id,
             'healthy_members': members.join(),
             'no_symptoms': no_symptoms
+        }
+        if (travel_where){
+            data.travel_where = travel_where;
+            data.traveling = 'Y';
         }
         angular.forEach(symptoms, function(value, key){
             data[value] = 1;

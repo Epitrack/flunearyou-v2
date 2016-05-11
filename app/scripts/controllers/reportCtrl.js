@@ -11,7 +11,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	$('#modal-join-us, #modal-login').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
-	
+
 	// Arrays 
 	$scope.page_members = true;
 	$scope.members = [];
@@ -38,6 +38,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 			if (result.info){
 				$scope.user = result.info.basic;
 				$scope.households = result.info.household;
+				console.log($scope.user.current_survey);
 			}
 		});
 	};
@@ -85,7 +86,8 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	$scope.sendReport = function(){
 		console.log('$scope.current_id', $scope.current_id);
 		console.log($scope.symptoms);
-		reportApi.sendReport($scope.symptoms, 0, $scope.user.user_id, $scope.current_id, $scope.members, $scope.user.current_survey, function(result){
+		console.log($scope.travel_where);
+		reportApi.sendReport($scope.symptoms, $scope.user.user_id, $scope.current_id, $scope.members, $scope.user.current_survey, $scope.travel_where, function(result){
 			console.log(result);
 		});
 		$scope.openSymtoms();
