@@ -18,7 +18,7 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 	                    'email' : user.email,
 	                    'token' : user.token
 	                };
-
+	                
 		            localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 		            $rootScope.$emit("IS_LOGGED");
 		            $window.location.href = '#/report?token='+userToken;
