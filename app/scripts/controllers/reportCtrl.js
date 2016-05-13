@@ -12,6 +12,9 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 
+	$scope.optionsDate = new Date();
+	$scope.options = { format: 'dd/mm/yy', selectYears: true };
+
 	// Arrays 
 	$scope.page_members = true;
 	$scope.members = [];

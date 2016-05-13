@@ -12,6 +12,9 @@ app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', function($scope
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 
+	$scope.optionsDate = new Date();
+	$scope.options = { format: 'dd/mm/yy', selectYears: true };
+
 
 	// Toggle disabledSymptoms
 	$scope.disabledSymptoms = false
