@@ -56,4 +56,20 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/unsubscribe.html',
         controller: 'homeCtrl'
       })
-  });
+  }).animation('.reveal-animation', function() {
+    return {
+      enter: function(element, done) {
+        element.css('display', 'none');
+        element.fadeIn(600);
+        return function() {
+          element.stop();
+        }
+      },
+      leave: function(element, done) {
+        element.fadeOut(100)
+        return function() {
+          element.stop();
+        }
+      }
+    }
+});

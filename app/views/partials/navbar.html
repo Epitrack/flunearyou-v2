@@ -1,22 +1,36 @@
 <!-- mobile -->
-<div class="navbar-header hidden-md hidden-lg">
-    <a class="col-xs-6" ng-href="#/" title="Go home">
+<div class="navbar-header hidden-md hidden-lg relative" ng-controller="navCtrl">
+    <a class="col-xs-5" ng-href="#/" title="Go home">
         <figure class="logo-secondary">
             <img src="images/logo.svg" class="img-responsive" alt="Flu Near You">
         </figure>
     </a>
 
     <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+    <button id="btn-menu-mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse" open-menu-mobile>
         <span class="sr-only">Toggle Navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
+
+    <div class="select-language select-language-mobile" select-language>
+        <span class="arrow-down"></span>
+        <span data-lng="en" class="lng eng ativo" ng-click="changeLanguage('en')">ENG</span>
+        <span data-lng="es" class="lng spa" ng-click="changeLanguage('es')">SPA</span>
+    </div>
+
+     <ul class="nav-mobile navbar-nav no-padding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
+        <li open-menu-mobile> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()" translate="nav.fluMap"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="About" ng-href="#/about" translate="nav.about"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="News" ng-href="#/flu-news" translate="nav.news"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="Press" ng-href="#/press" translate="nav.press"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="nav.faq"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav.login"></a> </li>
+    </ul>
 </div>
 
 <!-- desktop -->
-
 <div class="container hidden-sm" ng-controller="navCtrl">
     
     <div class="row">

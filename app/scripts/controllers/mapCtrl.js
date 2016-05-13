@@ -152,7 +152,11 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 				arrMarkers[i].setVisible(false);
 			};
 
-			MAP.initMap("40.0902", "-110.7129", 4, true)	
+			if(window.innerHeight > window.innerWidth){
+			    MAP.initMap("40.0902", "-98.7129", 3, false);
+			}else{
+				MAP.initMap("40.0902", "-110.7129", 4, false);
+			}
 		},
 
 		showMarkers : function(){
@@ -161,7 +165,11 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 				arrMarkers[i].setVisible(true);
 			};	
 
-			MAP.initMap("40.0902", "-110.7129", 4, false)
+			if(window.innerHeight > window.innerWidth){
+			    MAP.initMap("40.0902", "-98.7129", 3, false);
+			}else{
+				MAP.initMap("40.0902", "-110.7129", 4, false);
+			}
 		},
 
 		openInfoWin : function(marker, msg){
@@ -175,7 +183,12 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 		}
 	};
 
-    MAP.initMap("40.0902", "-110.7129", 4, false);
+ 	// Init Maps
+    if(window.innerHeight > window.innerWidth){
+	    MAP.initMap("40.0902", "-98.7129", 3, false);
+	}else{
+		MAP.initMap("40.0902", "-110.7129", 4, false);
+	}
 
 
 

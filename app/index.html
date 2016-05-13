@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="" ng-app="flunearyouV2App">
 <head>
@@ -56,7 +57,7 @@
 
     <!-- View -->
     <main id="main" class="main">
-      <div ng-view=""></div>
+      <div ng-view class="reveal-animation"></div>
     </main>
 
 
@@ -102,6 +103,7 @@
     <script src="/bower_components/checklist-model/checklist-model.js"></script>
     <script src="/bower_components/angular-translate/angular-translate.js"></script>
     <script src="/bower_components/chosen/chosen.jquery.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -146,6 +148,8 @@
         <script src="scripts/directive/selectLanguage.js"></script>
         <script src="scripts/directive/loadingButtonDirective.js"></script>
         <script src="scripts/directive/autoCompleteDirective.js"></script>
+        <script src="scripts/directive/openMenuMobile.js"></script>
+        <script src="scripts/directive/showHideData.js"></script>
 
         <!-- Service -->
         <script src="scripts/services/dataservice.js"></script>
