@@ -32,6 +32,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="/bower_components/chosen/chosen.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -97,15 +98,16 @@
     <script src="/bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="/bower_components/angular-loading-bar/build/loading-bar.js"></script>
-    <script src="/bower_components/angular-messages/angular-messages.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="/bower_components/checklist-model/checklist-model.js"></script>
-    <script src="/bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="/bower_components/chosen/chosen.jquery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js scripts/plugins.js -->
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
     <!-- endbuild -->
 
     <!-- build:js scripts/main.js -->
@@ -142,6 +144,8 @@
         <script src="scripts/directive/signUpGooglePlusDirective.js"></script>
         <script src="scripts/directive/removeOption.js"></script>
         <script src="scripts/directive/selectLanguage.js"></script>
+        <script src="scripts/directive/loadingButtonDirective.js"></script>
+        <script src="scripts/directive/autoCompleteDirective.js"></script>
 
         <!-- Service -->
         <script src="scripts/services/dataservice.js"></script>

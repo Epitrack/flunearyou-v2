@@ -19,11 +19,12 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	/*
 	*	Login
 	*/ 
-	$scope.login = function(email, pass){
+	$scope.login = function(email, pass, event){
 		var loginObj = {
 			"email"     : email,
 			"password"  : pass
 		}
+		
 		$fny.login(loginObj);
 	};
 

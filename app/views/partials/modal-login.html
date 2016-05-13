@@ -40,7 +40,7 @@
                         <div id="error-login" class="relative">
                             <div class="alert alert-danger msg-error" ng-show="!isEmailValid || !isPassEmpty">{{errorMsg}}</div>
                         </div>
-                        <button type="submit" class="button btn-danger" ng-click="login(email, pass)" ng-disabled="!loginForm.$valid">Login Now</button>
+                        <button type="button" class="button btn-danger" ng-click="login(email, pass, $event)" ng-disabled="!loginForm.$valid" data-loading-text="Loading..." loading-button>Login Now</button>
                     </form>
 
                 </div>
