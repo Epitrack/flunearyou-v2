@@ -30,8 +30,9 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         });
     };
 
-    obj.sendReport = function(symptoms, no_symptoms, user_id, current_user_id, members, realtime, callback){
+    obj.sendReport = function(survey, user_id, current_user_id, members, realtime, callback){
         var url = realtime ? $urlBase+'/survey/now' : $urlBase+'/survey/new';
+        var no_symptoms = survey.symptoms.length == 0 ? 1 : 0;
         var data = {
             'platform': 'web',
             'user_id': user_id,
@@ -39,15 +40,27 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
             'healthy_members': members.join(),
             'no_symptoms': no_symptoms
         }
-        angular.forEach(symptoms, function(value, key){
+
+        if (survey.was_traveling){
+            data.traveling = 'Y';
+            data.travel_where = survey.travel_where;
+        }
+
+        angular.forEach(survey.medical, function(value, key){
+            data[key] = 'Y';
+        });
+
+        angular.forEach(survey.symptoms, function(value, key){
             data[value] = 1;
         });
 
-        $http.post(url, data, {headers: {'token': token}}).success(function(data) {
-            callback(true);
-        }).error(function(error) {
-            console.log('Error getUser: ', error);
-        });
+        console.log('data', data);
+
+        // $http.post(url, data, {headers: {'token': token}}).success(function(data) {
+        //     callback(true);
+        // }).error(function(error) {
+        //     console.log('Error getUser: ', error);
+        // });
     };
 
     return obj;

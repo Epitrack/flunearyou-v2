@@ -11,13 +11,14 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	$('#modal-join-us, #modal-login').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
-	
+
 	// Arrays 
 	$scope.page_members = true;
 	$scope.members = [];
 	$scope.seleted_members = [];
 	$scope.current_id = null;
-	$scope.symptoms = [];
+	$scope.survey = {symptoms: []};
+	$scope.travel_where = null;
 
 	var openModalThanks = function(){
 		var modalInstance = $uibModal.open({
@@ -38,6 +39,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 			if (result.info){
 				$scope.user = result.info.basic;
 				$scope.households = result.info.household;
+				console.log($scope.user.current_survey);
 			}
 		});
 	};
@@ -83,12 +85,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	};
 
 	$scope.sendReport = function(){
-		console.log('$scope.current_id', $scope.current_id);
-		console.log($scope.symptoms);
-		reportApi.sendReport($scope.symptoms, 0, $scope.user.user_id, $scope.current_id, $scope.members, $scope.user.current_survey, function(result){
+		// console.log('$scope.current_id', $scope.current_id);
+		reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members, $scope.user.current_survey, function(result){
 			console.log(result);
 		});
-		$scope.openSymtoms();
+		// $scope.openSymtoms();
 	}
 
 
