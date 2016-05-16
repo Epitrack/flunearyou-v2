@@ -34,7 +34,7 @@ app.directive('temperature', function(){
 		        } else {
 		            $('#text-slider').html("");
 		        }
-		    };
+			};
 
 			elem.slider({
 		        range: false,
@@ -48,6 +48,7 @@ app.directive('temperature', function(){
 		    });
 
 		    $('#text-slider').html('less than ' + 99.9 + ' ºF');
+
 		}
 	}
 }); 

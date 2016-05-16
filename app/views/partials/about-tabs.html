@@ -1,39 +1,28 @@
 <aside class="container about-tabs" ng-init="tab=1">
   <div class="row">
+    {{tab}}
     <ul class="tabs-nav">
       <li class="col-xs-6 col-sm-5 col-sm-offset-1">
-        <a ng-click="tab=1" ng-class="{'active' : tab==1}">How it works</a>
+        <a ng-click="tab=1" ng-class="{'active' : tab==1}" translate="how_it_works_tab"></a>
       </li>
 
       <li class="col-xs-6 col-sm-5">
-        <a ng-click="tab=2" ng-class="{'active' : tab==2}">Who we are</a>
+        <a ng-click="tab=2" ng-class="{'active' : tab==2}" translate="who_we_are_tab"></a>
       </li>
     </ul>
-
+    
     <div class="tabs-container col-xs-12">
       <div class="tab-content" ng-show="tab == 1">
-        <p class="description">
-          Thousands of individuals submit weekly health reports to benefit their
-          community. It’s the power of the crowd!
-        </p>
+        <p class="description" translate="how_it_works_header2"></p>
 
         <div class="complementary col-xs-12 col-sm-4 col-md-3">
-          <h4 class="how-it-works">Did you know?</h4>
+          <h4 class="how-it-works" translate="how_it_works2_did_you_know"></h4>
           <ul>
-            <li>
-              CDC estimates of flu-associated yearly deaths in the United States
-              range from a low of about 3,000 to a high of about 49,000 people.
-            </li>
+            <li translate="how_it_works2_did_sub_1"></li>
 
-            <li>
-              If you have the flu, you can infect others 1 day before showing
-              symptoms and up to 7 days after becoming sick.
-            </li>
+            <li translate="how_it_works2_did_sub_2"></li>
 
-            <li>
-              The single best way to prevent the flu is to get a flu vaccine
-              each season.
-            </li>
+            <li translate="how_it_works2_did_sub_3"></li>
           </ul>
         </div>
 
@@ -41,21 +30,21 @@
           <div class="col-xs-12 col-sm-4 wrapper-figure">
             <figure class="bg">
               <img src="../../images/item-1-right-help.png" height="258" width="162" alt="placeholder+image">
-              <figcaption>Take just a few seconds to report how you’ve been feeling. It’s free and anonymous</figcaption>
+              <figcaption translate="how_it_works_subheader2_1"></figcaption>
             </figure>
           </div>
 
           <div class="col-xs-12 col-sm-4 wrapper-figure">
             <figure class="bg">
               <img class="scale" src="../../images/item-2-right-help.png" height="246" width="243" alt="placeholder+image">
-              <figcaption>Thousands of reporters across the country also contribute weekly</figcaption>
+              <figcaption translate="how_it_works_subheader2_2"></figcaption>
             </figure>
           </div>
 
           <div class="col-xs-12 col-sm-4 wrapper-figure">
             <figure class="bg">
               <img src="../../images/item-3-right-help.png" height="261" width="190" alt="placeholder+image">
-              <figcaption>Reports are collected and mapped so that you know when the flu is around</figcaption>
+              <figcaption translate="how_it_works_subheader2_3"></figcaption>
             </figure>
           </div>
         </div>

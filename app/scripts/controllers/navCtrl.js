@@ -9,8 +9,8 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', function($scope
 	/*
 	*	Init
 	*/ 
-	localStorage.setItem('translations_en', '{"nav" : { "fluMap": "Flu Map", "about" : "About", "news" : "News", "press" : "Press", "faq" : "FAQ", "login" : "Login"} }')
-	localStorage.setItem('translations_es', '{"nav" : { "fluMap": "Mapa", "about" : "Sobre", "news" : "Noticias", "press" : "Prensa", "faq" : "FAQ", "login" : "Ingresa"} }')
+	// localStorage.setItem('translations_en', '{"nav" : { "fluMap": "Flu Map", "about" : "About", "news" : "News", "press" : "Press", "faq" : "FAQ", "login" : "Login"} }')
+	// localStorage.setItem('translations_es', '{"nav" : { "fluMap": "Mapa", "about" : "Sobre", "news" : "Noticias", "press" : "Prensa", "faq" : "FAQ", "login" : "Ingresa"} }')
 
 	$scope.isLogged = function(){
 		// Hide Join Us button 

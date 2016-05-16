@@ -1,35 +1,35 @@
 <div class="container" style="padding-bottom: 20px;">
     <header class="row header-survey">
         <div class="col-xs-12">
-			<h2>Health Report</h2>
+			<h2 translate="survey_rtr"></h2>
 			<p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">04/25/2016</span> - <span id="endDate">05/01/2016</span></p>
-			<h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == true">Select household members who had any of the following symptoms since 05/06/2016</h3>
+			<h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == true" translate="survey_select_household"></h3>
             <h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == false">Select household members who had any of the following symptoms</h3>
         </div>
         <table class="symptoms_table">
             <tr>
-                <td>Fever</td>
-                <td>Cough</td>
-                <td>Headache</td>
-                <td>Sore throa</td>
+                <td translate="fever"></td>
+                <td translate="cough"></td>
+                <td translate="headache"></td>
+                <td translate="sore_throat"></td>
             </tr>
             <tr>
-                <td>Diarrhea</td>
-                <td>Body aches</td>
-                <td>Fatigue</td>
-                <td>Chills/night sweats</td>
+                <td translate="diarrhea"></td>
+                <td translate="bodyache"></td>
+                <td translate="fatigue"></td>
+                <td translate="chills"></td>
             </tr>
             <tr>
-                <td>Nausea or vomiting</td>
-                <td>Shortness of breath</td>
-                <td>Rash</td>
-                <td>Eye pain</td>
+                <td translate="nausea"></td>
+                <td translate="breath"></td>
+                <td translate="rash"></td>
+                <td translate="eye_pain"></td>
             </tr>
             <tr>
-                <td>Yellow skin/eyes</td>
-                <td>Joint/bone pain</td>
-                <td>Red Eyes</td>
-                <td>Dark, tea-colored urine</td>
+                <td translate="yellow_eyes"></td>
+                <td translate="joint_pain"></td>
+                <td translate="red_eyes"></td>
+                <td translate="dark_urine"></td>
             </tr>
         </table>  
     </header>
@@ -37,7 +37,7 @@
         <form class="survey-form col-md-4 col-md-offset-4" id="form_household_select" name="householdForm">
             <fieldset class="checkbox-group relative large full" ng-if="user">
                 <input id="user_you" name="members" checklist-model="members" class="checkbox-primary absolute users" type="checkbox" checklist-value="user.user_id">
-                <label for="user_you">You</label>
+                <label for="user_you" translate="you"></label>
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
 
@@ -49,9 +49,9 @@
             <div id="household-error" class="alert alert-danger" ng-show="members.length == 0 && error" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
                 <span id="household-error-message">You must select at least one member</span>
             </div>
-            <button id="bt-okay" class="button btn-danger btn-lg btn-block" ng-click="selectMembers()">Report Symptoms</button>
-            <p class="or">or</p>
-            <button type="button" id="bt-no-symptoms" class="button btn-success btn-lg btn-block nav-link" ng-click="everyoneHealthy()">Everyone is healthy, nothing to report</button>
+            <button id="bt-okay" class="button btn-danger btn-lg btn-block" ng-click="selectMembers()" translate="survey_report_symptoms"></button>
+            <p class="or" translate="sp_survey_or"></p>
+            <button type="button" id="bt-no-symptoms" class="button btn-success btn-lg btn-block nav-link" ng-click="everyoneHealthy()" translate="survey_experienced_no_symptoms"></button>
         </form>
     </div>
 </div>

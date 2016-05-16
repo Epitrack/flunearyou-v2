@@ -1,7 +1,7 @@
 <aside id="databox" class="databox col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0 col-md-4 col-lg-3 ng-scope hidden-xs">
-    <div class="relative">
-        {{objDataSurvey}}
-        <h4 class="databox-title">Flu Activity in:</h4>
+    <div class="relative">        
+
+    <h4 class="databox-title" translate="flu_activity"></h4>
     
         <select  name="choose-state" id="choose-state" class="choose-country" choose-state-directive auto-complete>
             <option ng-repeat="state in stateList" 
@@ -24,13 +24,14 @@
 
   <div id="week-reports" class="week-reports">
     <span>{{infoDataBox.surveys}}</span>
-    <h3 id="reports-of-week" class="reports-of-week">reports this week</h3>
+    <h3 id="reports-of-week" class="reports-of-week" translate="participants"></h3>
   </div>
 
   <ul id="legend-list" class="legend-list">
-    <li class="legend-item open-more-info col-xs-12" id="open-more-info">
+    <li class="legend-item open-more-info col-xs-12 relative" id="open-more-info">
       <span class="legend-value col-xs-3 col-sm-4 js-red">{{infoDataBox.flulike}}</span>
-      <span class="legend-description col-xs-9 col-sm-8 arrow js-up">Flu-like Symptoms {{infoDataBox.flulikepercent}}%</span>
+      <span class="legend-description col-xs-9 col-sm-8 arrow js-up legend_flu_like_symptoms" translate="legend_flu_like_symptoms"></span>
+      <span class="absolute fw100 flu-like-percent">{{infoDataBox.flulikepercent}}%</span>
     </li>
 
     <li class="legend-item col-xs-12 more-info" id="more-info">
@@ -39,12 +40,14 @@
 
     <li class="legend-item col-xs-12">
       <span class="legend-value col-xs-3 col-sm-4 js-blue">{{infoDataBox.symptoms}}</span>
-      <span class="legend-description col-xs-9 col-sm-8">Any Symptoms {{infoDataBox.symptomspercent}}%</span>
+      <span class="legend-description col-xs-9 col-sm-8" translate="data_box_any_symptoms"></span>
+      <span class="absolute fw100 flu-like-percent">{{infoDataBox.symptomspercent}}%</span>
     </li>
 
     <li class="legend-item col-xs-12">
       <span class="legend-value col-xs-3 col-sm-4 js-yellow">{{infoDataBox.nosymptoms}}</span>
-      <span class="legend-description col-xs-9 col-sm-8">No Symptoms {{infoDataBox.nosymptomspercent}}%</span>
+      <span class="legend-description col-xs-9 col-sm-8" translate="reported_no_symptoms"></span>
+      <span class="absolute fw100 flu-like-percent">{{infoDataBox.nosymptomspercent}}%</span>
     </li>
   </ul>
 </aside>
