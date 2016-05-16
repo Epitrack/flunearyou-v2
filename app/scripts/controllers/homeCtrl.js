@@ -92,4 +92,20 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 		console.log(data);
 		console.log(status);
 	}) 
+
+	/*
+	*	Tabs about
+	*/ 
+	$scope.tab1 = true;
+	$scope.tab2 = false;
+	$scope.changeTab = function(tab){
+
+		if(tab == 'tab1'){
+			$scope.tab1 = true;
+			$scope.tab2 = false;
+		}else{
+			$scope.tab1 = false;
+			$scope.tab2 = true;
+		};
+	};
 }]);
