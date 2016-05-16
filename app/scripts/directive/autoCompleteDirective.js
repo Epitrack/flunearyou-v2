@@ -10,7 +10,7 @@ app.directive('autoComplete', function(){
 		link: function(scope, elem){
 			setTimeout(function(){
 				elem.chosen({});
-			},1000)
+			},1500)
 		}
 	}
 }); 
