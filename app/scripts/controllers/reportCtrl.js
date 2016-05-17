@@ -4,7 +4,7 @@
 
 'use strict';
 
-app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi',function($scope, $rootScope, $window, $location, $uibModal, reportApi){
+app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', function($scope, $rootScope, $window, $location, $uibModal, reportApi){
 	/*
 	*	Init
 	*/ 
@@ -18,10 +18,18 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	// Arrays 
 	$scope.page_members = true;
 	$scope.members = [];
-	$scope.seleted_members = [];
+	$scope.members_ids = [];
 	$scope.current_id = null;
 	$scope.survey = {symptoms: []};
 	$scope.travel_where = null;
+	$scope.checks = [];
+	$scope.checks_perm = [];
+
+	// Week of
+	var d = new Date();
+	var day = d.getDay(), diff = d.getDate() - 7 - day + (day == 0 ? -6:1);
+	$scope.week_of = new Date(d.setDate(diff));
+	$scope.week_end = new Date(d.setDate(diff + 6));
 
 	var openModalThanks = function(){
 		var modalInstance = $uibModal.open({
@@ -42,7 +50,32 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 			if (result.info){
 				$scope.user = result.info.basic;
 				$scope.households = result.info.household;
-				console.log($scope.user.current_survey);
+
+				$scope.members_ids.push($scope.user.user_id);
+				angular.forEach($scope.households, function(value, key){
+					$scope.members_ids.push(value.user_household_id);
+				});
+
+				console.log('RTR:', $scope.user.current_survey);
+			}
+		});
+	};
+
+	var getChecks = function(){
+		reportApi.getChecks(function(result){
+			if (result){
+				$scope.checks = result.checks;
+				$scope.members = result.checks;
+				$scope.checks_perm = result.checks_perm;
+			}
+		});
+	};
+
+	var getReportsThisWeek = function(){
+		reportApi.getReportsThisWeek(function(result){
+			if (result){
+				console.log(result);
+				$scope.reports_this_week = result;
 			}
 		});
 	};
@@ -89,7 +122,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	$scope.sendReport = function(){
 		// console.log('$scope.current_id', $scope.current_id);
-		reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members, $scope.user.current_survey, function(result){
+		var index = $scope.members_ids.indexOf($scope.current_id);
+        if (index > -1) {
+            $scope.members_ids.splice(index, 1);
+        }
+		reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members_ids, $scope.user.current_survey, function(result){
 			console.log(result);
 		});
 		// $scope.openSymtoms();
@@ -97,5 +134,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 
 	getUser();
+	getChecks();
+	getReportsThisWeek();
 	
 }]) 
