@@ -26,7 +26,7 @@ app.config(function ($routeProvider) {
       })
       .when('/faq', {
         templateUrl: 'views/faq.html',
-        controller: 'homeCtrl'
+        controller: 'faqCtrl'
       })
       .when('/privacy', {
         templateUrl: 'views/privacy.html',

@@ -1,38 +1,30 @@
 <section class="wrapper-inside bg wrapper-faq">
-  <div class="container">
-    <div class="row">
-        <h2 class="title-primary">Frequently Asked Questions about Flu Near You</h2>
+    <div class="container">
+        <div class="row">
+            <h2 class="title-primary" translate="faq_title"></h2>
 
-        <div class="col-xs-12">
-          <form action="#" class="faq-form" name="faq-form" id="faq-form">
-            <label for="search-term" class="search-term">What's your question?</label>
-            <input id="search-term" type="text" placeholder="Enter a search term" class="input-primary col-sm-9">
-            <span id="count-result" class="count-result">Search</span>
-          </form>
+            <div class="col-md-12 center">
+                <form action="#" class="faq-form col-md-8 center" name="faq-form" id="faq-form">
+                    <p for="search-term" class="search-term" translate="faq_search_question"></p>
+                    <input id="search-term" type="text" placeholder="{{ 'enter_a_search_term' | translate }}"  class="input-primary col-sm-8" search>
+                    <button id="count-result" class="button btn-danger" translate="search_button"></button>
+                </form>
 
-          <section id="questions" class="questions">
-            <ul>
-              <li class="faq-item col-xs-12 col-md-6 js-open">
-                <h4 class="questions-title">Title Here</h4>
-                <p class="questions-description js-active">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, unde est impedit animi architecto tenetur cupiditate aliquam tempora dolorem nam maxime numquam, corporis praesentium laboriosam culpa sed magni sint quae nisi? At tempore mollitia animi placeat officia, molestias dolorem, pariatur non dicta facere ut nisi nulla. Dolorem quae aspernatur, soluta.
-                </p>
-              </li>
-
-              <li class="faq-item col-xs-12 col-md-6 js-closed">
-                <h4 class="questions-title">Title Here</h4>
-                <p class="questions-description">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, unde est impedit animi architecto tenetur cupiditate aliquam tempora dolorem nam maxime numquam, corporis praesentium laboriosam culpa sed magni sint quae nisi? At tempore mollitia animi placeat officia, molestias dolorem, pariatur non dicta facere ut nisi nulla. Dolorem quae aspernatur, soluta.
-                </p>
-              </li>
-            </ul>
-          </section>
+                <section id="questions" class="questions">
+                    <ul>
+                        <li class="faq-item col-xs-12 col-md-5" ng-repeat="question in questions" accordion>
+                            <h4 class="questions-title">{{question.ask}}</h4>
+                            <p class="questions-description js-active">{{question.answer}}</p>
+                            <span></span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
         </div>
     </div>
-  </div>
 
-  <!-- join us -->
-  <section class="wrapper-join-us m-top">
-    <div ng-include src="'views/partials/join-us.html'"></div>
-  </section>
+    <!-- join us -->
+    <section class="wrapper-join-us m-top">
+        <div ng-include src="'views/partials/join-us.html'"></div>
+    </section>
 </section>

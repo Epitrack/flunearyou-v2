@@ -2,10 +2,21 @@
 // Faq
 //
 
+.wrapper-faq
+  h2
+    font-size: 4.5rem
+
+
 .faq-form
   .input-primary
     height: 40px
     border: 1px solid $news-link
+    margin-right: 10px
+    outline: none
+  p
+    font-size: 2rem
+
+
 
 .search-term
   color: $link-menu
@@ -44,28 +55,32 @@
   +bdr(100%)
 
 .faq-item
+  height: 80px
+  margin-left: 30px
+  padding-bottom: 20px
   display: inline-block
   vertical-align: top
   position: relative
+  overflow: hidden
+  cursor: pointer
+  border-bottom: 1px solid #ccc
+  float: none
   &::before
     @extend %faq-item
     left: 15px
     background-repeat: no-repeat
     background-image: url("../images/icon-faq.svg")
-  &.js-closed
-    &::after
-      @extend %faq-item
-      @extend %js-faq-item
-      content: '+'
-  &.js-open
-    &::after
-      @extend %faq-item
-      @extend %js-faq-item
-      content: '-'
-      line-height: 25px
   &:hover
     ~ .questions-title
       border-bottom: 2px solid darken($bg-primary, 7%)
+  span
+    width: 21px
+    height: 20px
+    position: absolute
+    top: 20px
+    right: 0
+    background: url('../images/icon_down_accordion.png') no-repeat 0 0
+    transition: all 0.2s
 
 .questions-title
   color: $link-menu
@@ -89,12 +104,10 @@
   overflow: hidden
   position: relative
   background-color: $bg-secondary
-  height: 0
-  opacity: 0
   background-image: url("../images/icon-questions.svg")
   +bdr(0 0 6px 6px)
   +transition(all, 0.2s, linear, 0s)
   &.js-active
-    height: 100%
+    height: auto
     min-height: 80px
     opacity: 1

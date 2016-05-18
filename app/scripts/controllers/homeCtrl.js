@@ -24,6 +24,22 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
 	};
 	$rootScope.$on('SCROLL_TOP', $scope.scrolltop);
+
+	/*
+	*	Translation
+	*/ 
+	$scope.getTranslation = function(){
+		$http.get('http://dev.flunearyou.org/translations').success(function(data,status){
+			localStorage.setItem('translations_en', JSON.stringify(data.translations.en))
+			localStorage.setItem('translations_es', JSON.stringify(data.translations.es))
+		}).error(function(data,status){
+			console.log(data);
+			console.log(status);
+		}) 
+	}
+
+	$rootScope.$on("GET_Translation", $scope.getTranslation);
+	
 		
 
 	/*
@@ -32,6 +48,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("NEWS");
 	$rootScope.$emit("SCROLL_TOP");
+	$rootScope.$emit("GET_Translation");
 	
 
 	/*
@@ -80,26 +97,11 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	$scope.showReadMore = true;
 
 	/*
-	*
-	*/
-	$http.get('http://dev.flunearyou.org/translations').success(function(data,status){
-		console.log(data);
-		console.log(status);
-		localStorage.setItem('translations_en', JSON.stringify(data.translations.en))
-		localStorage.setItem('translations_es', JSON.stringify(data.translations.es))
-		
-	}).error(function(data,status){
-		console.log(data);
-		console.log(status);
-	}) 
-
-	/*
 	*	Tabs about
 	*/ 
 	$scope.tab1 = true;
 	$scope.tab2 = false;
 	$scope.changeTab = function(tab){
-
 		if(tab == 'tab1'){
 			$scope.tab1 = true;
 			$scope.tab2 = false;
@@ -108,4 +110,23 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 			$scope.tab2 = true;
 		};
 	};
+
+	/*
+	*	FAQ
+	*/
+	// $http.get('http://dev.flunearyou.org/faq.json').success(function(data, status){
+	// 	var faq = data.data;
+
+	// 	for(var i = 0; i < faq.length; i++){
+	// 		var question = faq[i]
+	// 		var html = '';
+
+	// 		html += '<li class="faq-item col-xs-12 col-md-5" ng-repeat="question in questions" accordion>'
+ //                html += '<h4 class="questions-title">'+question.ask+'</h4>'
+ //                html += '<p class="questions-description js-active">'+question.answer+'</p>'
+ //            html += '</li>'
+
+ //            $('#questions ul').append(html);
+	// 	}
+	// }); 
 }]);
