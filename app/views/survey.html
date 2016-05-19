@@ -3,6 +3,8 @@
         <div class="header-survey  row">
             <h2 class="title-primary" translate="survey_wk_of"></h2>
 
+            <div ng-include="'views/previous-reports.html'"></div>
+
             <div class="col-xs-12 col-md-8 col-md-offset-2">
                 <h3 class="legend">Did {{ user_name || 'you' }} experience any additional symptoms since 05/06/2016?</h3>
 
@@ -127,11 +129,11 @@
 
 
                     <aside id="datepicker"
-                           class="datepicker" ng-show="survey.symptoms.length > 0 && !user.current_survey">
+                           class="datepicker" ng-show="survey.symptoms.length > 0">
                         <h3>What day did {{user_name}} start feeling ill?</h3>
-                        <input class="login-input" id="date_input" type="text" ng-model="survey.date" name="date"
-                               placeholder="{{ site.content.click_to_pick_a_date }}"
-                               style="margin-bottom: 5px;margin-left: 5%;width: 675px;height: 36px;margin-right: 30px"
+                        <input class="login-input" id="date_input" type="text" ng-model="survey.ill_date" name="date"
+                               placeholder="{{ site.content.click_to_pick_a_date }}" ng-value="week_of|date:'EEEE, MMMM d yyyy'"
+                               style="margin-bottom: 5px;margin-left: 5%;width: 675px;height: 36px;margin-right: 30px;font-size: 16px;text-align: center;"
                                ui-calender>
                     </aside>
 
@@ -215,7 +217,7 @@
                     </aside>
 
 
-                    <fieldset class="checkbox-group fieldset-traveling" ng-show="survey.symptoms.length > 0">
+                    <fieldset class="checkbox-group fieldset-traveling" ng-show="survey.symptoms.length > 0" style="margin-top: 20px;margin-bottom: 20px;">
                         <input type="checkbox" ng-value="'Y'" value="Y" id="traveling" ng-model="survey.was_traveling" class="checkbox-primary" name="survey-symptom">
                         <label for="traveling">I was traveling while experiencing these symptoms</label>
                         <div class="check"><div class="inside"></div></div>

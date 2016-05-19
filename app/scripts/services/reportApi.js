@@ -12,6 +12,22 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         token = '';
     }
 
+    obj.getChecks = function(callback){
+        $http.get($urlBase+'/checks.json', {headers: {'token': token}}).success(function(data) {
+            callback(data);
+        }).error(function(error) {
+            console.log('Error getChecks: ', error);
+        }); 
+    }
+
+    obj.getReportsThisWeek = function(callback){
+        $http.get($urlBase+'/reports-this-week.json', {headers: {'token': token}}).success(function(data) {
+            callback(data);
+        }).error(function(error) {
+            console.log('Error getReportsThisWeek: ', error);
+        }); 
+    }
+
     obj.getUser = function(callback) {
         if(token){
            $http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data) {
@@ -33,12 +49,16 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
     obj.sendReport = function(survey, user_id, current_user_id, members, realtime, callback){
         var url = realtime ? $urlBase+'/survey/now' : $urlBase+'/survey/new';
         var no_symptoms = survey.symptoms.length == 0 ? 1 : 0;
+        
         var data = {
             'platform': 'web',
             'user_id': user_id,
             'current_member': current_user_id,
             'healthy_members': members.join(),
             'no_symptoms': no_symptoms
+        }
+        if (survey.ill_date){
+            data.ill_date = new Date(survey.ill_date).toISOString().substring(0, 10);
         }
 
         if (survey.was_traveling){

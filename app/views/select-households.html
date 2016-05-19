@@ -2,7 +2,7 @@
     <header class="row header-survey">
         <div class="col-xs-12">
 			<h2 translate="survey_rtr"></h2>
-			<p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">04/25/2016</span> - <span id="endDate">05/01/2016</span></p>
+			<p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">{{ week_of|date:'MM/dd/yyyy' }}</span> - <span id="endDate">{{ week_end|date:'MM/dd/yyyy' }}</span></p>
 			<h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == true" translate="survey_select_household"></h3>
             <h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == false">Select household members who had any of the following symptoms</h3>
         </div>
@@ -34,15 +34,17 @@
         </table>  
     </header>
     <div class="row">
+
         <form class="survey-form col-md-4 col-md-offset-4" id="form_household_select" name="householdForm">
             <fieldset class="checkbox-group relative large full" ng-if="user">
-                <input id="user_you" name="members" checklist-model="members" class="checkbox-primary absolute users" type="checkbox" checklist-value="user.user_id">
+                <input id="user_you" name="members" checklist-model="members" class="checkbox-primary absolute users" type="checkbox" checklist-value="user.user_id" ng-disabled="checks_perm.indexOf(user.user_id) > -1">
                 <label for="user_you" translate="you"></label>
+
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
 
             <fieldset class="checkbox-group relative large full" ng-repeat="household in households" ng-if="household.active == 'Y'">
-                <input id="user_{{household.user_household_id}}" name="members" class="checkbox-primary absolute users" type="checkbox" checklist-model="members" checklist-value="household.user_household_id">
+                <input id="user_{{household.user_household_id}}" name="members" class="checkbox-primary absolute users" type="checkbox" checklist-model="members" checklist-value="household.user_household_id"ng-disabled="checks_perm.indexOf(household.user_household_id) > -1">
                 <label for="user_{{household.user_household_id}}" class="full">{{ household.nickname }}</label>
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
