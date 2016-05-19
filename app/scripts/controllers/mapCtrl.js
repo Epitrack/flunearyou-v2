@@ -244,4 +244,19 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 
 	$scope.showReadMore = true;
 
+	/*
+	*	Tabs about
+	*/ 
+	$scope.tab1 = true;
+	$scope.tab2 = false;
+	$scope.changeTab = function(tab){
+		if(tab == 'tab1'){
+			$scope.tab1 = true;
+			$scope.tab2 = false;
+		}else{
+			$scope.tab1 = false;
+			$scope.tab2 = true;
+		};
+	};
+
 }]);
