@@ -4,7 +4,7 @@
 
 'use strict';
 
-app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
+app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', function($scope, $rootScope, $http, $urlBase, $window){
 
 	/*
 	*	Init
@@ -56,18 +56,14 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase', function
 	*	Get info's data box
 	*/
 	$scope.updateInfoDataBox = function(){
-
-		var center  = JSON.parse(sessionStorage.getItem('centerMap')),
-			zoom    = Number(sessionStorage.getItem('zoomMap')),
-			lat     = center.latitude,
-			lon     = center.longitude;
-
-		$scope.infoDataBox = JSON.parse(sessionStorage.getItem('objDataSurvey'));
-		MAP.initMap(lat, lon, zoom);
-		$scope.$apply(); // Update $scope
+		if(window.location.href.indexOf('map') != -1 ){
+			$window.location.href = '#/map'
+		};
 	};
 
 	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
+
+	
 
 	/*
 	*	Flu News
