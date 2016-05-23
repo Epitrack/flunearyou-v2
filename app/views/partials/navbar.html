@@ -59,14 +59,14 @@
             <!-- dropdown when user is logged -->
             <div class="dropdown hidden-xs col-sm-3 no-padding relative">
                 <button class="btn btn-default dropdown-toggle dropdown-user" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-click="toggleCustom()">
-                    {{userLoggedEmail}}
+                    {{userLoggedEmail}} 
                     <span class="caret"></span>
                 </button>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom">
-                    <li><a ng-href="#/settings" title="Settings" translate="settings"></a></li>
-                    <li><a ng-href="#/reports" title="Health Reports" translate="reports"></a></li>
-                    <li><a ng-href="#/" title="Log out" ng-click="logout()" translate="logout"></a></li>
+                    <li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings"></a></li>
+                    <li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports"></a></li>
+                    <li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout"></a></li>
                 </ul>
                 <a href="#/report" id="btn-report" class="absolute button btn-danger" ng-hide="!userLogged" translate="navbar_survey_now"></a>
             </div>

@@ -1,222 +1,259 @@
 <section class="wrapper-inside bg wrapper-settings">
-  <div class="container">
-    <div class="row">
-      <section class="col-xs-12 col-sm-5">
-        <!-- Manage Your Account -->
-        <h3 class="title-primary">Manage Your Account</h3>
-        <div class="info-box">
-          <table>
-            <tbody>
-              <tr>
-                <td>Email address</td>
-                <td class="default">email@guinetik.com</td>
-              </tr>
+    <div class="container">
+        <div class="row">
+        <section class="col-xs-12 col-sm-5 relative">
+                <!-- Manage Your Account -->
+                <h3 class="title-primary" translate="settings_user"></h3>
+                <button id="bt-edit" class="button btn-primary" ng-click="showUserUpdate=true"><span translate="settings_edit"></span></button>
+                
+                <form class="form-group" name="update-user-form" id="update-user-form" ng-show="showUserUpdate">
+                    
+                    <fieldset>
+                        <label for="email" translate="email"></label>
+                        <div class="col-md-8 no-padding f-right">
+                            <input class="form-control" value="{{email}}" type="text" name="email" ng-model="email" ng-blur="validaEmail(email)" required/>
+                        </div>
+                    </fieldset>
 
-              <tr>
-                <td>Nickname</td>
-                <td class="default">guinetik</td>
-              </tr>
+                    <fieldset>
+                        <label for="nickname" translate="nickname"></label>
+                        <div class="col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{nick}}" type="text" name="" ng-model="nick" ng-blur="emptyValidEdit(nick)"/></div>
+                    </fieldset>
 
-              <tr>
-                <td>Birthdate</td>
-                <td class="default">8/1988</td>
-              </tr>
+                     <fieldset>
+                        <label for="birthdate" translate="birthdate"></label>
+                        <div class="col-md-5 no-padding f-right m-left">
+                            <input class="survey-birthyear form-control" type="tel" name="birthyear" id="birthyear" required="" value="{{year}}" aria-required="true">
+                        </div>
+                        <div class="col-md-2 no-padding f-right">
+                            <select class="survey-birthmonth form-control" name="birthmonth" id="month" required="" aria-required="true">
+                                <option value="0">month</option>
+                                <option value="1">Jan</option>
+                                <option value="2">Feb</option>
+                                <option value="3">Mar</option>
+                                <option value="4">Apr</option>
+                                <option value="5">May</option>
+                                <option value="6">Jun</option>
+                                <option value="7">Jul</option>
+                                <option value="8">Aug</option>
+                                <option value="9">Sep</option>
+                                <option value="10">Oct</option>
+                                <option value="11">Nov</option>
+                                <option value="12">Dec</option>
+                            </select>
+                        </div>
+                    </fieldset>
 
-              <tr>
-                <td>Gender</td>
-                <td class="default">Male</td>
-              </tr>
+                    <fieldset>
+                        <label for="sex">Sex</label>
+                        <div class="col-md-3 no-padding f-right marginRadio">
+                            <label class="radioLabel marginLabelRadio" translate="female" ng-click="chooseGender('F')"></label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-click="chooseGender('F')" ng-checked="female">
+                        </div>
+                    
+                    
+                        <div class="col-md-3 no-padding f-right">
+                            <label class="radioLabel marginLabelRadio" translate="male" ng-click="chooseGender('M')"></label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-click="chooseGender('M')" ng-checked="male">
+                        </div>
+                    </fieldset>
 
-              <tr>
-                <td>Zip code</td>
-                <td class="default">27892</td>
-              </tr>
-            </tbody>
-          </table>
+                    <fieldset>
+                        <label for="nickname" translate="zipcode"></label>
+                        <div class="col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{zip}}" type="tel" name="zip" ng-model="zip" ng-blur="emptyValidEdit(zip)"></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="alert alert-danger" ng-show="errorEdit">{{errorEdit}}</div>
+                        <div class="alert alert-success" ng-show="msgSuccessUserUpdate">User updated!</div>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <div class="col-md-8 no-padding f-right">
+                            <button class="button btn-success f-right m-left" ng-click="userEdit(email,nick,year,zip)"><span translate="save"></span></button>
+                            <button class="button btn-danger f-right" ng-click="showUserUpdate=false"><span translate="cancel"></span></button>
+                        </div>  
+                    </fieldset>
+                </form>
+
+                <div class="info-box">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td translate="email"></td>
+                                <td class="default">{{email}}</td>
+                            </tr>
+
+                            <tr>
+                                <td translate="nickname"></td>
+                                <td class="default">{{nick}}</td>
+                            </tr>
+
+                            <tr>
+                                <td translate="birthdate"></td>
+                                <td class="default">{{birthdate}}</td>
+                            </tr>
+
+                            <tr>
+                                <td translate="gender"></td>
+                                <td class="default">{{sex}}</td>
+                            </tr>
+
+                            <tr>
+                                <td translate="zipcode"></td>
+                                <td class="default">{{zip}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Change password -->
+                <button class="button btn-danger btn-change-pass" ng-click="changePass=true"><span translate="change"></span> <span translate="password"></span></button>
+
+                <div class="col-xs-12 nopadding" ng-show="changePass">
+                    <div class="info-box">
+                        <form name="form-change-pass" class="register-form form-change-pass" id="form-change-pass">
+                            <h4 translate="settings_change_password"></h4>
+
+                            <fieldset class="form-group">
+                                <label for="current-pass" translate="settings_current_password"></label>
+                                <input id="current-pass" type="password" class="input-primary" ng-model="currentPass" ng-blur="emptyValid(currentPass)">
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <label for="new-pass"><span translate="new"></span> <span translate="password"></span></label>
+                                <input id="new-pass" type="password" class="input-primary" ng-model="newPass" ng-blur="emptyValid(newPass)">
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <label for="confirm-pass"><span translate="confirm"></span> <span translate="password"></span></label>
+                                <input id="confirm-pass" type="password" class="input-primary" ng-model="confirmPass" ng-blur="emptyValid(confirmPass)">
+                            </fieldset>
+                            
+                            <div class="alert alert-danger" ng-show="msgErrorChangePass">{{msgErrorChangePass}}</div>
+                            <div class="alert alert-success" ng-show="msgSuccessChangePass"><p>Password updated!</p></div>
+
+                            <div class="col-xs-12 wrapper-buttons">
+                                <button class="button btn-danger" ng-click="changePass=false"><span translate="cancel"></span></button>
+                                <button class="button btn-success"><span translate="save" ng-click="sendPass(currentPass, newPass, confirmPass)"></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Manage Subscription -->
+                <div class="col-xs-12 nopadding">
+                    <h3 class="title-primary" translate="settings_email"></h3>
+                    <div class="info-box">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td translate="email_receive"></td>
+                                    <td class="default link"><a ng-href="#/unsubscribe" title="Unsubscribe" translate="unsubscribe"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-xs-12 col-sm-6 col-sm-offset-1 relative">
+                <h3 class="title-primary" translate="member"></h3>
+                <button ng-click="addMember=true" class="button btn-primary new-member"><span translate="new_member"></span></button>
+                <table class="settings-table">
+                    <thead>
+                        <tr>
+                            <td translate="nickname"></td>
+                            <td translate="gender"></td>
+                            <td translate="birthdate"></td>
+                            <td translate="settings"></td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="household in households">
+                            <td>{{ household.nickname }}</td>
+                            <td>{{ household.gender }}</td>
+                            <td>{{ household.dob }}</td>
+                            <td>
+                                <a class="nav-link" title="edit" data-toggle="modal" data-dismiss="modal" data-target="#modal-add-household-member"><button type="button" class="button btn-sm btn-info">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button></a>
+
+                                <button type="button" class="button btn-sm btn-danger">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Add household member -->
+                <div class="col-xs-12 nopadding" ng-show="addMember">
+                    <div class="info-box">
+                        <form name="form-add-household-member" class="register-form form-change-pass form-add-household-member" id="form-add-household-member">
+                            <h4 translate="header_add_household"></h4>
+
+                            <fieldset class="form-group">
+                                <label class="nickname" for="add-household-nickname" translate="nickname"></label>
+                                <input id="add-household-nickname" type="text" class="input-primary full" ng-model="newHousehold">
+                            </fieldset>
+
+                            <fieldset class="form-group col-sm-6">
+                                <legend class="legend" translate="gender"></legend>
+
+                                <fieldset class="radio-group col-xs-6">
+                                    <input type="radio" value="M" ng-model="genderHousehold" id="add-household-male" class="radio-primary" name="add-household-member">
+                                    <label for="add-household-male" translate="male"></label>
+                                    <div class="check"><div class="inside"></div></div>
+                                </fieldset>
+
+                                <fieldset class="radio-group col-xs-6">
+                                    <input type="radio" value="F" ng-model="genderHousehold" id="add-household-female" class="radio-primary" name="add-household-member">
+                                    <label for="add-household-female" translate="female"></label>
+                                    <div class="check"><div class="inside"></div></div>
+                                </fieldset>
+                            </fieldset>
+
+                            <fieldset class="form-group col-sm-6">
+                                <label class="block" translate="birthdate"></label>
+
+                                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 form-group">
+                                    <option value="0" translate="month"></option>
+                                    <option value="1" translate="jan"></option>
+                                    <option value="2" translate="feb"></option>
+                                    <option value="3" translate="mar"></option>
+                                    <option value="4" translate="apr"></option>
+                                    <option value="5" translate="may"></option>
+                                    <option value="6" translate="jun"></option>
+                                    <option value="7" translate="jul"></option>
+                                    <option value="8" translate="aug"></option>
+                                    <option value="9" translate="sep"></option>
+                                    <option value="10" translate="oct"></option>
+                                    <option value="11" translate="nov"></option>
+                                    <option value="12" translate="dec"></option>
+                                </select>
+
+                                <input type="tel" class="col-sm-3 input-primary register-year" ng-model="yearNewHousehold" placeholder="YYYY">
+                            </fieldset>
+                            
+                            <fieldset>
+                                <div class="alert alert-success" ng-show="">Household added!</div>
+                            </fieldset> 
+
+                            <div class="col-xs-12 wrapper-buttons">
+                                <button class="button btn-danger" ng-click="addMember=false">
+                                    <span translate="cancel"></span>
+                                </button>
+
+                                <button class="button btn-success"  ng-click="sendNewHousehold(newHousehold, genderHousehold, yearNewHousehold)">
+                                    <span translate="save"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
-
-        <!-- Change password -->
-        <button class="btn-primary btn-change-pass">Change password</button>
-        <div class="col-xs-12 nopadding">
-          <div class="info-box">
-            <form action="#" name="form-change-pass" class="register-form form-change-pass" id="form-change-pass">
-              <h4>Change Password</h4>
-
-              <fieldset class="form-group">
-                <label for="current-pass">Current Password</label>
-                <input id="current-pass" type="password" class="input-primary">
-              </fieldset>
-
-              <fieldset class="form-group">
-                <label for="new-pass">New Password</label>
-                <input id="new-pass" type="password" class="input-primary">
-              </fieldset>
-
-              <fieldset class="form-group">
-                <label for="confirm-pass">Confirm Password</label>
-                <input id="confirm-pass" type="password" class="input-primary">
-              </fieldset>
-
-              <div class="col-xs-12 wrapper-buttons">
-                <button class="btn-primary">Cancel</button>
-                <button class="btn-primary">Save</button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Manage Subscription -->
-        <div class="col-xs-12 nopadding">
-          <h3 class="title-primary">Manage Subscription</h3>
-          <div class="info-box">
-            <table>
-              <tbody>
-                <tr>
-                  <td>E-mail receive</td>
-                  <td class="default link"><a ng-href="#/unsubscribe" title="Unsubscribe">Unsubscribe</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="col-xs-12 col-sm-6 col-sm-offset-1">
-        <h3 class="title-primary">Household Members</h3>
-
-        <table class="settings-table">
-          <thead>
-            <tr>
-              <td>Nickname</td>
-              <td>Gender</td>
-              <td>Birthdate</td>
-              <td>Settings</td>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Yuri</td>
-              <td>M</td>
-              <td>2/1988</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon report"></i>
-                <i class="fny-icon deactivate"></i>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Teste</td>
-              <td>M</td>
-              <td>8/1988</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon check"></i>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Chesecake</td>
-              <td>M</td>
-              <td>4/2005</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon report"></i>
-                <i class="fny-icon deactivate"></i>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Guinetik</td>
-              <td>M</td>
-              <td>4/1988</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon check"></i>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Teste</td>
-              <td>M</td>
-              <td>1/2277</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon check"></i>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Fwefwef</td>
-              <td>F</td>
-              <td>4/2200</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon check"></i>
-              </td>
-            </tr>
-
-            <tr>
-              <td>Teste 2</td>
-              <td>F</td>
-              <td>2/2014</td>
-              <td>
-                <i class="fny-icon edit"></i>
-                <i class="fny-icon check"></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Add household member -->
-        <div class="col-xs-12 nopadding">
-          <div class="info-box">
-            <form action="#" name="form-add-household-member" class="register-form form-change-pass form-add-household-member" id="form-add-household-member">
-              <h4>Add household member</h4>
-
-              <fieldset class="form-group">
-                <label class="nickname" for="add-household-nickname">Nickname</label>
-                <input id="add-household-nickname" type="text" class="input-primary full">
-              </fieldset>
-
-              <fieldset class="form-group col-sm-6">
-                <legend class="legend">Gender:</legend>
-
-                <fieldset class="radio-group col-xs-6">
-                  <input type="radio" value="M" id="add-household-male" class="radio-primary" name="add-household-member">
-                  <label for="add-household-male">Male</label>
-                  <div class="check"><div class="inside"></div></div>
-                </fieldset>
-
-                <fieldset class="radio-group col-xs-6">
-                  <input type="radio" value="F" id="add-household-female" class="radio-primary" name="add-household-member">
-                  <label for="add-household-female">Female</label>
-                  <div class="check"><div class="inside"></div></div>
-                </fieldset>
-              </fieldset>
-
-              <fieldset class="form-group col-sm-6">
-                <label class="block">Birthdate</label>
-
-                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 birthdate-household-member select-primary">
-                  <option value="Month" disabled selected>Month</option>
-                  <option value="Month_1">Month_1</option>
-                  <option value="Month_2">Month_2</option>
-                  <option value="Month_3">Month_3</option>
-                </select>
-
-                <input type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
-              </fieldset>
-
-              <div class="col-xs-12 wrapper-buttons">
-                <button class="btn-primary">Cancel</button>
-                <button class="btn-primary">Save</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
     </div>
-  </div>
 </section>

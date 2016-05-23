@@ -10,7 +10,9 @@ app.directive('loadingButton', function(){
 		link: function(scope, elem){
 			elem.on('click', function(){
 				$(this).button('loading');
-				setTimeout(function () { $(this).button('reset') }, 3000);
+				setTimeout(function () { 
+					$('.btn-login').button('reset');
+				}, 1000);
 			});
 		}
 	}

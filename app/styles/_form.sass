@@ -46,27 +46,6 @@ select
   text-align: center
   margin-bottom: 0
 
-
-.btn-primary
-  background-color: $btn-primary
-  color: #FFFFFF
-  font-size: ($fs-normal)+.4
-  cursor: pointer
-  border: none
-  outline: none
-  padding: 8px 20px
-  @include bdr(5px)
-  @include transition(background, .2s, linear, 0s)
-  &:hover 
-    background-color: $link-menu 
-  &.add-member
-    background-repeat: no-repeat
-    background-position: 13% 3px
-    background-size: 13%
-    @include path('icon-add-household.svg')
-  
-
-
 .input-primary
   border: none
   font-size: ($fs-normal)+.4
@@ -406,17 +385,14 @@ select
   .form-change-pass
     .form-group
       text-align: left
-    
-
     label
       display: inline-block
-      width: 45%
-    
-
     .input-primary
+      float: right
       display: inline-block
       width: 50%
       margin-left: 10px
+      outline: none
     
   
 

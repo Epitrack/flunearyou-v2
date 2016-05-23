@@ -6,26 +6,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <h4 class="modal-title">Add household member</h4>
+        <h4 class="modal-title">Edit Household Member</h4>
       </header>
 
       <div class="modal-body">
         <div class="container-fluid">
-          <div class="row">
-            <h5>Please provide brief information about your household member.</h5>
-          </div>
-
           <form action="#" id="form-modal-add-household-member" class="register-form modal-add-household-member" name="modal-add-household-member">
             <div class="row">
               <fieldset class="form-group">
-                <label for="nickname-member">Enter a nickname for family member.</label>
+                <label for="nickname-member" translate="nickname"></label>
                 <input id="nickname-member" type="text" class="input-primary">
               </fieldset>
             </div>
 
             <div class="row">
               <fieldset class="form-group col-sm-6">
-                <legend class="legend">Gender:</legend>
+                <legend class="legend" translate="gender"></legend>
 
                 <fieldset class="radio-group col-xs-6">
                   <input type="radio" value="M" id="household-male" class="radio-primary" name="add-household-member">
@@ -41,9 +37,9 @@
               </fieldset>
 
               <fieldset class="form-group col-sm-6">
-                <label>Birthdate</label>
+                <label translate="birthdate"></label>
 
-                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 birthdate-household-member select-primary">
+                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 form-group">
                   <option value="Month" disabled selected>Month</option>
                   <option value="Month_1">Month_1</option>
                   <option value="Month_2">Month_2</option>
@@ -55,7 +51,7 @@
             </div>
 
             <div class="row">
-              <button type="submit" class="col-xs-12 col-sm-5 col-sm-offset-3 btn-primary add-member">Add member</button>
+              <button type="submit" class="button btn-danger">Add member</button>
             </div>
           </form>
         </div>

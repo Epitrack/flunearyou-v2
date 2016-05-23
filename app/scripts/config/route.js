@@ -22,11 +22,11 @@ app.config(function ($routeProvider) {
       })
       .when('/press', {
         templateUrl: 'views/press.html',
-        controller: 'homeCtrl'
+        controller: 'pressCtrl'
       })
       .when('/faq', {
         templateUrl: 'views/faq.html',
-        controller: 'faqCtrl'
+        controller: 'homeCtrl'
       })
       .when('/privacy', {
         templateUrl: 'views/privacy.html',
@@ -50,11 +50,11 @@ app.config(function ($routeProvider) {
       })
       .when('/settings', {
         templateUrl: 'views/settings.html',
-        controller: 'homeCtrl'
+        controller: 'settingCtrl'
       })
       .when('/unsubscribe', {
         templateUrl: 'views/unsubscribe.html',
-        controller: 'homeCtrl'
+        controller: 'unsubscribeCtrl'
       })
   }).animation('.reveal-animation', function() {
     return {

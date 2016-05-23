@@ -1,30 +1,32 @@
 <section class="wrapper-inside bg wrapper-unsubscribe">
-  <div class="container">
-    <div class="row">
-        <h2 class="title-primary">Unsubscribe</h2>
+    <div class="container">
+        <div class="row">
+            <h2 class="title-primary">Unsubscribe</h2>
+            <div class="alert alert-success" ng-show="unsubscribeSuccess">
+                <p>Thank you for participating in the Flu Near You project.<br /> You have now been unsubscribed!</p>
+            </div>
+            <div class="col-xs-12">
+                <form class="unsubscribe-form" name="unsubscribe-form" id="unsubscribe-form">
+                    <fieldset class="radio-group col-xs-12 col-sm-6">
+                        <input type="radio" value="Pause communication until next flu season." ng-model="reason" id="pause-communication" class="radio-primary" name="unsubscribe">
+                        <label for="pause-communication">Pause communication until next flu season.</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </fieldset>
 
-        <div class="col-xs-12">
-          <form action="#" class="unsubscribe-form" name="unsubscribe-form" id="unsubscribe-form">
-            <fieldset class="radio-group col-xs-12 col-sm-6">
-              <input type="radio" value="pause" id="pause-communication" class="radio-primary" name="unsubscribe">
-              <label for="pause-communication">Pause communication until next flu season.</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                    <fieldset class="radio-group col-xs-12 col-sm-6">
+                        <input type="radio" value="Please unsubscribe me indefinitely." ng-model="reason" id="unsubscribe-indefinitely" class="radio-primary" name="unsubscribe">
+                        <label for="unsubscribe-indefinitely">Please unsubscribe me indefinitely.</label>
+                        <div class="check"><div class="inside"></div></div>
+                    </fieldset>
 
-            <fieldset class="radio-group col-xs-12 col-sm-6">
-              <input type="radio" value="indefinitely" id="unsubscribe-indefinitely" class="radio-primary" name="unsubscribe">
-              <label for="unsubscribe-indefinitely">Please unsubscribe me indefinitely.</label>
-              <div class="check"><div class="inside"></div></div>
-            </fieldset>
+                    <fieldset class="form-group col-xs-12 nopadding">
+                        <label class="reason" for="unsubscribe-reason">Reason</label>
+                        <textarea name="unsubscribe-reason" id="unsubscribe-reason" class="" ng-model="reasonTxt"></textarea>
+                    </fieldset>
 
-            <fieldset class="form-group col-xs-12 nopadding">
-              <label class="reason" for="unsubscribe-reason">Reason</label>
-              <textarea name="unsubscribe-reason" id="unsubscribe-reason" class=""></textarea>
-            </fieldset>
-
-            <button class="btn-primary">Submit</button>
-          </form>
+                    <button class="button btn-danger" ng-click="sendUnsubscribe(reason, reasonTxt)">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
-  </div>
 </section>

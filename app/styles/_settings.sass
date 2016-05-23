@@ -11,7 +11,20 @@
   .link
     a
       color: $btn-primary
-
+  #bt-edit, .new-member
+    position: absolute
+    top: 40px
+    right: 0
+    cursor: pointer
+  
+.alert
+  padding: 8px
+  font-size: 1.4rem
+  margin: 0
+  cursor: default
+  text-decoration: none
+  text-align: center
+    
 .btn-change-pass
   @extend .col-xs-12
   margin: 10px 0 20px 0
@@ -42,8 +55,6 @@
     text-align: right
     margin-right: 0
     margin-top: 20px
-    button
-      background-color: $link-menu
 
 .form-add-household-member
   .legend
@@ -51,3 +62,43 @@
   .radio-group
     label
       padding: 7px 15px 10px 40px
+
+#update-user-form
+  margin-bottom: 30px
+  padding: 20px 20px 5px 20px
+  background-color: #e7effa
+  font-size: 1.5rem
+  color: #3f6f92
+  label
+    padding-top: 5px
+  fieldset
+    margin-bottom: 15px
+  .radioLabel
+    float: right
+  input[type="text"]
+    float: right
+  input[type="radio"]
+    float: left
+  .m-left
+    margin-left: 34px
+  .marginRadio
+    margin: 0 25px 0 30px
+  .marginLabelRadio
+    margin: 0 20px 0 0
+
+#form-add-household-member
+  #birthdate-household-member
+    height: 35px
+    outline: none
+  fieldset, label
+    cursor: default!important
+  input[type="radio"]
+    top: 15px
+    left: 6px
+    cursor: pointer
+
+
+
+
+
+
