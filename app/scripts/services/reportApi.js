@@ -74,12 +74,25 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
             data[value] = 1;
         });
 
-        console.log('data', data);
+        console.log('sendReport', data);
+        callback(true);
 
         // $http.post(url, data, {headers: {'token': token}}).success(function(data) {
         //     callback(true);
         // }).error(function(error) {
-        //     console.log('Error getUser: ', error);
+        //     console.log('Error sendReport: ', error);
+        // });
+    };
+
+    obj.sendVaccine = function(data, callback){
+        data.token = token;
+        console.log('sendVaccine', data);
+        callback(true);
+
+        // $http.post($urlBase+'/survey/vaccine', data, {headers: {'token': token}}).success(function(data) {
+        //     callback(true);
+        // }).error(function(error) {
+        //     console.log('Error sendVaccine: ', error);
         // });
     };
 
