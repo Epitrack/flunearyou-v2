@@ -21,8 +21,8 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		return false;
 	}
 
-	$http.get($urlBase+'/user?t='+token).success(function(data){
-		// console.log(data);
+	$http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data){
+		console.log(data);
 		// 
 		$scope.email      = data.info.basic.email;
 		$scope.nick       = data.info.basic.nickname;
@@ -70,7 +70,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			'confirm_password' : confirmPass
 		};
 
-		$http.post($urlBase+'/user/update/password?t='+token, objPass).success(function(data){
+		$http.post($urlBase+'/user/update/password', objPass, {headers: {'token': token}}).success(function(data){
 			$scope.msgSuccessChangePass = true;
 
 			$timeout(function(){
@@ -132,7 +132,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			'zip'        : zip
 		} 
 
-		$http.post($urlBase+'/user/update?t='+token, objUserEdited).success(function(data, status){
+		$http.post($urlBase+'/user/update', objUserEdited, {headers: {'token': token}}).success(function(data, status){
 			$scope.$apply();
 			$scope.msgSuccessUserUpdate = true;
 			$timeout(function(){
@@ -172,7 +172,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			'birthyear' : yearNewHousehold	
 		};
 
-		$http.post($urlBase+'/user/household?t='+token, objNewHousehold).success(function(data, status){
+		$http.post($urlBase+'/user/household', objNewHousehold, {headers: {'token': token}}).success(function(data, status){
 			
 			$scope.msgSuccessUserHousehold = true;
 			$timeout(function(){
@@ -244,7 +244,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			'birthyear'         : birthyear		
 		};
 
-		$http.post($urlBase+'/user/household/update?t='+token, $scope.householdEdited).success(function(data, status){
+		$http.post($urlBase+'/user/household/update', $scope.householdEdited, {headers: {'token': token}}).success(function(data, status){
 			
 			$scope.msgSuccessUserHousehold = true;
 			$timeout(function(){
@@ -276,11 +276,11 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		var id = localStorage.getItem('place_id');
 
 		 if(flag == 'deactivate'){
-			$http.post($urlBase+'/user/household/deactivate?t='+token, {user_household_id: id}).success(function(data){
+			$http.post($urlBase+'/user/household/deactivate', {user_household_id: id}, {headers: {'token': token}}).success(function(data){
 				$('.modal').modal('hiden');
 			});
 		}else{
-			$http.post($urlBase+'/user/household/activate?t='+token, {user_household_id: id}).success(function(data){
+			$http.post($urlBase+'/user/household/activate', {user_household_id: id}, {headers: {'token': token}}).success(function(data){
 				console.log(data)
 			})
 		};
