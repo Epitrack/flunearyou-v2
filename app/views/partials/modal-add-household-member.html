@@ -1,21 +1,23 @@
-<section class="modal fade modal-add-household-member" id="modal-add-household-member" tabindex="-1" role="dialog">
+<section class="modal fade modal-add-household-member" id="modal-add-household-member" tabindex="-1" role="dialog" ng-controller="settingCtrl">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <header class="modal-header bg">
-        <button class="close" data-dismiss="modal" aria-label="Close">
+      <header class="modal-header bg relative">
+        <button class="close" data-dismiss="modal" aria-label="Close" ng-click="removeObjHouseholderEdit()">
           <span aria-hidden="true">&times;</span>
         </button>
 
         <h4 class="modal-title">Edit Household Member</h4>
+        <div class="alert alert-success absolute alert-succes-household" ng-show="msgSuccessUserHousehold">User information updated.</div>
       </header>
 
       <div class="modal-body">
         <div class="container-fluid">
-          <form action="#" id="form-modal-add-household-member" class="register-form modal-add-household-member" name="modal-add-household-member">
+          <form id="form-modal-add-household-member" class="register-form modal-add-household-member" name="modal-add-household-member">
             <div class="row">
               <fieldset class="form-group">
+
                 <label for="nickname-member" translate="nickname"></label>
-                <input id="nickname-member" type="text" class="input-primary">
+                <input id="nickname-member" type="text" class="input-primary" ng-model="nicknameEdit"/>
               </fieldset>
             </div>
 
@@ -24,13 +26,13 @@
                 <legend class="legend" translate="gender"></legend>
 
                 <fieldset class="radio-group col-xs-6">
-                  <input type="radio" value="M" id="household-male" class="radio-primary" name="add-household-member">
+                  <input type="radio" value="M" id="household-male" class="radio-primary" name="add-household-member" ng-checked="maleEdit" ng-model="gerndeEdit">
                   <label for="household-male">Male</label>
                   <div class="check"><div class="inside"></div></div>
                 </fieldset>
 
                 <fieldset class="radio-group col-xs-6">
-                  <input type="radio" value="F" id="household-female" class="radio-primary" name="add-household-member">
+                  <input type="radio" value="F" id="household-female" class="radio-primary" name="add-household-member" ng-checked="femaleEdit" ng-model="gerndeEdit">
                   <label for="household-female">Female</label>
                   <div class="check"><div class="inside"></div></div>
                 </fieldset>
@@ -39,19 +41,28 @@
               <fieldset class="form-group col-sm-6">
                 <label translate="birthdate"></label>
 
-                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 form-group">
-                  <option value="Month" disabled selected>Month</option>
-                  <option value="Month_1">Month_1</option>
-                  <option value="Month_2">Month_2</option>
-                  <option value="Month_3">Month_3</option>
+                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 form-group" ng-model="monthEdit">
+                  <option value="0">month</option>
+                  <option value="1">Jan</option>
+                  <option value="2">Feb</option>
+                  <option value="3">Mar</option>
+                  <option value="4">Apr</option>
+                  <option value="5">May</option>
+                  <option value="6">Jun</option>
+                  <option value="7">Jul</option>
+                  <option value="8">Aug</option>
+                  <option value="9">Sep</option>
+                  <option value="10">Oct</option>
+                  <option value="11">Nov</option>
+                  <option value="12">Dec</option>
                 </select>
 
-                <input type="tel" class="col-sm-3 input-primary register-year" placeholder="YYYY">
+                <input type="text" class="col-sm-3 input-primary register-year" placeholder="YYYY" ng-model="birthyearEdit"/>
               </fieldset>
             </div>
 
             <div class="row">
-              <button type="submit" class="button btn-danger">Add member</button>
+              <button type="submit" class="button btn-danger btn-loading" loading-button ng-click="sendHouseholdEdited(nicknameEdit, gerndeEdit, birthyearEdit)">Save</button>
             </div>
           </form>
         </div>

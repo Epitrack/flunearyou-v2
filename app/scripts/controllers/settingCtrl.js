@@ -14,11 +14,15 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 	/*
 	*	Get user account
 	*/ 
-	var user  = JSON.parse(localStorage.getItem('userLogged')),
-		token = user.token;
+	if (localStorage.getItem('userLogged')){
+		var user  = JSON.parse(localStorage.getItem('userLogged')),
+			token = user.token;
+	}else{
+		return false;
+	}
 
 	$http.get($urlBase+'/user?t='+token).success(function(data){
-
+		// console.log(data);
 		// 
 		$scope.email      = data.info.basic.email;
 		$scope.nick       = data.info.basic.nickname;
@@ -26,13 +30,15 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		$scope.sex        = data.info.basic.gender;
 		$scope.zip        = data.info.place.zip;
 		$scope.households = data.info.household;
+		$scope.place_id   = data.info.basic.place_id;
 		
+
 		// Get month and year birthdate
 		var index = $scope.birthdate.indexOf('/'),
 			year  = $scope.birthdate.slice(index+1),
 			month = $scope.birthdate.slice(0,index);
 
-		$scope.year      = year;
+		$scope.year  = year;
 		$('#month').find('option[value="'+ month +'"]').attr('selected', true);	
 
 		// Check radio gender
@@ -75,6 +81,8 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 	};
 
 
+
+
 	/*
 	*	Validation Edit user accout
 	*/
@@ -98,6 +106,8 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			$scope.errorEdit = ''
 		}
 	}
+
+
 
 	/*
 	*	Send user accout updated
@@ -135,6 +145,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		});
 	};
 
+
 	// Choose Gender
 	$scope.chooseGender = function(sex){
 		if(sex == 'M'){
@@ -146,8 +157,10 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		}
 	} 
 
+	
+	
 	/*
-	*	Add household member
+	*	ADD NEW HOUSEHOLD MEMBER
 	*/
 	$scope.sendNewHousehold = function(newHousehold, genderHousehold, yearNewHousehold){
 		var month = $('#birthdate-household-member').val();
@@ -170,21 +183,107 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			if(!$scope.$$phase) {
 				$scope.$apply()
 			}
-			
-
 		}).error(function(data, status){
 			console.log(data);
 			console.log(status);
 		});
-	}
+	};
+
+
+
+	/*
+	*	Fill Form Edit Household Membres
+	*/ 
+	$scope.updateHousehold = function(){
+		$scope.$apply();
+		$scope.objHouseholdEdit = JSON.parse(localStorage.getItem('objHouseholdEdit'));	
+
+		if($scope.objHouseholdEdit.gender == 'M'){
+			$scope.maleEdit = true
+			$scope.femaleEdit = false
+		}else{
+			$scope.maleEdit = false
+			$scope.femaleEdit = true
+		}
+
+		// Fill form edit
+		var index = $scope.objHouseholdEdit.niver.indexOf('/'),
+			year  = $scope.objHouseholdEdit.niver.slice(index+1),
+			month = $scope.objHouseholdEdit.niver.slice(0,index);	
+
+			$scope.nicknameEdit  = $scope.objHouseholdEdit.nickname;
+			$scope.birthyearEdit = year;
+			$scope.monthEdit     = month;
+			$('#birthdate-household-member').find('option[value="'+ month +'"]').attr('selected', true);	
+	};
+
+	$rootScope.$on('updateHousehold', $scope.updateHousehold);
+
 
 	
+	/*
+	*	Send Household Membres Edited
+	*/ 
+	$scope.sendHouseholdEdited = function(nickname, genderEdit, birthyear){
+		var id    = JSON.parse(localStorage.getItem('objHouseholdEdit')).id;
+		var month = $('#birthdate-household-member').val();
+
+		if(genderEdit){
+			var gender = genderEdit
+		}else if(JSON.parse(localStorage.getItem('objHouseholdEdit')).gender == 'M'){
+			var gender = 'M'
+		}else{
+			var gender = 'F'
+		}
+		
+		$scope.householdEdited = {
+			'user_household_id' : id,
+			'nickname'          : nickname,
+			'gender'            : gender,
+			'birthmonth'        : month,
+			'birthyear'         : birthyear		
+		};
+
+		$http.post($urlBase+'/user/household/update?t='+token, $scope.householdEdited).success(function(data, status){
+			
+			$scope.msgSuccessUserHousehold = true;
+			$timeout(function(){
+				$scope.msgSuccessUserHousehold = false;
+				$('.modal').modal('hide');
+			}, 2500);
+
+		}).error(function(data, status){
+			console.log(data);
+		})
+	}
 
 
+	/*
+	*
+	*/
+	$scope.flag = 'deactivate'
+	$scope.deactivateFunction = function(active, id){
+		if (active != 'Y') {
+			$scope.flag = 'activate'
+		};
+		localStorage.setItem('place_id', id);
+	};
 
+	$scope.sendDeactivate = function(flag){
+		var user  = JSON.parse(localStorage.getItem('userLogged')),
+			token = user.token;
 
+		var id = localStorage.getItem('place_id');
 
-
-
+		 if(flag == 'deactivate'){
+			$http.post($urlBase+'/user/household/deactivate?t='+token, {user_household_id: id}).success(function(data){
+				$('.modal').modal('hiden');
+			});
+		}else{
+			$http.post($urlBase+'/user/household/activate?t='+token, {user_household_id: id}).success(function(data){
+				console.log(data)
+			})
+		};
+	}
 
 }]);

@@ -11,8 +11,8 @@ app.directive('loadingButton', function(){
 			elem.on('click', function(){
 				$(this).button('loading');
 				setTimeout(function () { 
-					$('.btn-login').button('reset');
-				}, 1000);
+					$('.btn-login, .btn-loading').button('reset');
+				}, 2000);
 			});
 		}
 	}
