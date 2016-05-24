@@ -137,7 +137,6 @@
                            class="medical_attention" ng-show="survey.symptoms.length > 0 && !user.current_survey">
                             <h3 id="medical_attention_header"
                                 style="margin-top: 5px">Did {{ user_name }} see a doctor, nurse or other health professional for this illness? Please check all that apply.</h3>
-                                {{survey.medical}}
                         <fieldset class="large full">
                             <input id="survey_medical_attention_option_1"
                                    ng-model="survey.medical.medical_attention_no"
@@ -145,7 +144,7 @@
                                    type="checkbox"
                                    ng-value="'Y'">
                             <label for="survey_medical_attention_option_1"
-                                   class="full">{{ site.content.survey_medical_attention_option_1 }}</label>
+                                   class="full" translate="survey_medical_attention_option_1"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
 
@@ -156,7 +155,7 @@
                                    type="checkbox"
                                    value="Y">
                             <label for="survey_medical_attention_option_2"
-                                   class="full">{{ site.content.survey_medical_attention_option_2 }}</label>
+                                   class="full" translate="survey_medical_attention_option_2"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                         <fieldset class="large full">
@@ -166,7 +165,7 @@
                                    type="checkbox"
                                    value="Y">
                             <label for="survey_medical_attention_option_3"
-                                   class="full">{{ site.content.survey_medical_attention_option_3 }}</label>
+                                   class="full" translate="survey_medical_attention_option_3"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                         <fieldset class="large full">
@@ -176,7 +175,7 @@
                                    type="checkbox"
                                    value="Y">
                             <label for="survey_medical_attention_option_4"
-                                   class="full">{{ site.content.survey_medical_attention_option_4 }}</label>
+                                   class="full" translate="survey_medical_attention_option_4"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                         <fieldset class="large full">
@@ -186,7 +185,7 @@
                                    type="checkbox"
                                    value="Y">
                             <label for="survey_medical_attention_option_5"
-                                   class="full">{{ site.content.survey_medical_attention_option_5 }}</label>
+                                   class="full" translate="survey_medical_attention_option_5"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                         <fieldset class="large full">
@@ -196,7 +195,7 @@
                                    type="checkbox"
                                    value="Y">
                             <label for="survey_medical_attention_option_6"
-                                   class="full">{{ site.content.survey_medical_attention_option_6 }}</label>
+                                   class="full" translate="survey_medical_attention_option_6"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                         <fieldset class="large full">
@@ -205,8 +204,8 @@
                                    class="checkbox-primary"
                                    type="checkbox"
                                    value="Y">
-                            <label for="survey_medical_attention_option_7">
-                            {{ site.content.survey_medical_attention_option_7 }}</label>
+                            <label for="survey_medical_attention_option_7" translate="survey_medical_attention_option_7">
+                            </label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                     </aside>
@@ -222,7 +221,11 @@
                         <input type="text" name="travel_where" ng-model="survey.travel_where" placeholder="Type a city or a zip code">
                     </aside>
 
-
+                    <div class="col-xs-12">
+                      <div id="household-error" class="alert alert-danger" ng-show="survey.symptoms.length == 0 && error_symptom" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
+                          <span id="household-error-message">You must select at least one symptom or no symptom</span>
+                      </div>
+                    </div>
                     <div class="form-buttons col-xs-12">
                         <a class="button btn-info" ng-click="goBack()">Go Back</a>
                         <button class="button btn-danger" ng-click="sendReport()">Submit</button>

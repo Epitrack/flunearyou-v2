@@ -96,5 +96,13 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         // });
     };
 
+    obj.sendReminder = function(callback){
+        $http.post($urlBase+'/user/reminder/disable', {}, {headers: {'token': token}}).success(function(data) {
+            callback(true);
+        }).error(function(error) {
+            console.log('Error sendReminder: ', error);
+        });
+    };
+
     return obj;
 }]);
