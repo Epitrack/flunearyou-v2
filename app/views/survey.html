@@ -3,15 +3,10 @@
         <div class="header-survey  row">
             <h2 class="title-primary" translate="survey_wk_of"></h2>
 
-            <div ng-include="'views/previous-reports.html'"></div>
+            <div ng-include="'views/previous-reports.html'" onload="includeContent()"></div>
 
             <div class="col-xs-12 col-md-8 col-md-offset-2">
                 <h3 class="legend">Did {{ user_name || 'you' }} experience any additional symptoms since 05/06/2016?</h3>
-
-                <div class="previously-symptoms" ng-if="false">
-                    <time datetime="2015-08-13 16:20" class="col-sm-4">08/13/2015</time>
-                    <p class="col-sm-7">Fatigue, Nause or vomiting, diarrhea</p>
-                </div>
 
                 <form class="survey-form second" name="survey-form" id="survey-form">
                     <legend class="legend" ng-if="false">What symptoms are you currently experiencing?</legend>
@@ -230,7 +225,7 @@
 
                     <div class="form-buttons col-xs-12">
                         <a class="button btn-info" ng-click="goBack()">Go Back</a>
-                        <button class="button btn-danger" ng-click="sendReport()" data-loading-text="Sending..." loading-button>Submit</button>
+                        <button class="button btn-danger" ng-click="sendReport()">Submit</button>
                     </div>
                 </form>
             </div>

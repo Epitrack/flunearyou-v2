@@ -1,0 +1,60 @@
+<div class="survey-2-step">
+    <header class="row header-survey">
+        <div class="col-xs-12">
+            <h2 translate="survey_rtr"></h2>
+            <p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">{{ week_of|date:'MM/dd/yyyy' }}</span> - <span id="endDate">{{ week_end|date:'MM/dd/yyyy' }}</span></p>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <form id="vaccine-form" class="survey-form">
+                <div ng-if="selected_ids.indexOf(user.user_id) > -1" ng-init="member=user;vaccine_user_id=user.user_id;k=user_vaccionations;y='user'">
+                    <div ng-include="'views/partials/vaccine_question.html'"></div>
+                </div>
+                <div ng-repeat="household in households">
+                    <div ng-if="selected_ids.indexOf(household.user_household_id) > -1" ng-include="'views/partials/vaccine_question.html'" ng-init="member=household;vaccine_user_id=household.user_household_id;k=household.vaccinations;y='household'"></div>
+                </div>
+                <input class="survey-submit"
+                       id="vaccine-submit"
+                       ng-click="sendVaccine()"
+                       type="submit"
+                       translate="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .complementary h3 {
+        color: #41789a;
+        text-align: center;
+        font-size: 20px;
+        line-height: 24px;
+        margin-top: 30px;
+        font-family: "OpenSansLight";
+        margin-bottom: 30px;
+    }
+    .complementary fieldset {
+        width: 30%;
+        height: 45px;
+        background-color: #fcfcfc;
+        padding: 10px 15px 10px 40px;
+        display: inline-block;
+        margin: 7px;
+        text-align: left;
+        position: relative;
+    }
+    .survey-submit {
+        width: 100%;
+        background-color: #d33041;
+        border: none;
+        outline: none;
+        margin: 20px auto;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 11px 0;
+        border-radius: 4px;
+        font-weight: bold;
+        opacity: 1;
+    }
+</style>

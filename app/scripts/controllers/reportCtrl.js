@@ -17,8 +17,12 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	// Arrays 
 	$scope.page_members = true;
+	$scope.page_vaccionations = false;
+	$scope.page_more_members = false;
+	$scope.vaccinations = [];
 	$scope.members = [];
 	$scope.members_ids = [];
+	$scope.selected_ids = [];
 	$scope.current_id = null;
 	$scope.survey = {symptoms: []};
 	$scope.travel_where = null;
@@ -49,6 +53,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 		reportApi.getUser(function(result){
 			if (result.info){
 				$scope.user = result.info.basic;
+				$scope.user_vaccionations = result.info.vaccinations;
 				$scope.households = result.info.household;
 
 				$scope.members_ids.push($scope.user.user_id);
@@ -80,13 +85,41 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 		});
 	};
 
+	var askForMembersOrGoHome = function(){
+		if ($scope.households.length == 0 && $scope.user.more_members != 'N'){
+			console.log('open more members');
+		}else{
+			openModalThanks();
+			$location.path( "/map" );
+		}
+	}
+
 	var successReport = function(){
-		openModalThanks();
-		$location.path( "/map" );
+		console.log('successReport', 'current_survey', $scope.user.current_survey);
+		console.log('successReport', 'user_vaccionations.is_vaccinated', $scope.user_vaccionations.is_vaccinated);
+		if (!$scope.user.current_survey && $scope.user_vaccionations.is_vaccinated != 'Y'){
+			$scope.page_members = null;
+			$scope.page_vaccionations = true;
+		}else{
+			askForMembersOrGoHome();
+		}
+		
 	};
 
+	// var successVaccine = function(){
+	// 	console.log('successReport', 'current_survey', $scope.user.current_survey);
+	// 	console.log('successReport', 'user_vaccionations.is_vaccinated', $scope.user_vaccionations.is_vaccinated);
+	// 	if (!$scope.user.current_survey && $scope.user_vaccionations.is_vaccinated != 'Y'){
+	// 		$scope.page_members = null;
+	// 		$scope.page_vaccionations = true;
+	// 	}else{
+	// 		askForMembersOrGoHome();
+	// 	}
+		
+	// };
+
 	$scope.goBack = function(){
-		$scope.page_members = true;		
+		$scope.page_members = true;
 	}
 
 	$scope.everyoneHealthy = function(){
@@ -100,6 +133,8 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	$scope.selectMembers = function(){
 		if ($scope.members.length > 0){
+			console.log($scope.members);
+			$scope.selected_ids = $scope.members.slice();
 			$scope.openSymtoms();
 		}else{
 			$scope.error = 'You must select at least one member';
@@ -107,6 +142,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	};
 
 	$scope.openSymtoms = function(){
+		console.log('openSymtoms', $scope.members);
 		if ($scope.members.length <= 0){
 			successReport();
 		}else{
@@ -121,16 +157,41 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	};
 
 	$scope.sendReport = function(){
-		// console.log('$scope.current_id', $scope.current_id);
+		console.log('$scope.current_id', $scope.current_id);
 		var index = $scope.members_ids.indexOf($scope.current_id);
         if (index > -1) {
             $scope.members_ids.splice(index, 1);
         }
 		reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members_ids, $scope.user.current_survey, function(result){
-			console.log(result);
+			console.log('result', result);
+			$scope.openSymtoms();
 		});
-		// $scope.openSymtoms();
-	}
+	};
+
+	$scope.sendVaccine = function(){
+		// console.log('$scope.vaccinations', $scope.vaccinations);
+		if ($scope.vaccinations.user && $scope.vaccinations.user.hasOwnProperty($scope.user.user_id)){
+			var data = {
+				flu_vaccine: $scope.vaccinations.user[$scope.user.user_id],
+				user_id:$scope.user.user_id,
+				user_household_id: null
+			}
+			reportApi.sendVaccine(data, function(){});
+		}
+		if ($scope.vaccinations.user && $scope.vaccinations.user.hasOwnProperty($scope.user.user_id)){
+			for (var id in $scope.vaccinations.household) {
+		        if ($scope.vaccinations.household.hasOwnProperty(id)){
+		        	data = {
+						flu_vaccine: $scope.vaccinations.household[id],
+						user_id:$scope.user.user_id,
+						user_household_id: id
+					}
+					reportApi.sendVaccine(data, function(){});
+		        }
+		    }
+		}
+		console.log('sucesso');
+	};
 
 
 	getUser();
