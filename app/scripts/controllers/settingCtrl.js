@@ -10,6 +10,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 	*	Init
 	*/ 
 	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
 	$scope.showUserUpdate = false;
 
 	/*

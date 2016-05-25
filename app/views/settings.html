@@ -10,14 +10,14 @@
                     
                     <fieldset>
                         <label for="email" translate="email"></label>
-                        <div class="col-md-8 no-padding f-right">
+                        <div class="col-xs-12 col-md-8 no-padding f-right">
                             <input class="form-control" value="{{email}}" type="text" name="email" ng-model="email" ng-blur="validaEmail(email)" required/>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <label for="nickname" translate="nickname"></label>
-                        <div class="col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{nick}}" type="text" name="" ng-model="nick" ng-blur="emptyValidEdit(nick)"/></div>
+                        <div class="col-xs-12 col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{nick}}" type="text" name="" ng-model="nick" ng-blur="emptyValidEdit(nick)"/></div>
                     </fieldset>
 
                      <fieldset>
@@ -60,7 +60,7 @@
 
                     <fieldset>
                         <label for="nickname" translate="zipcode"></label>
-                        <div class="col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{zip}}" type="tel" name="zip" ng-model="zip" ng-blur="emptyValidEdit(zip)"></div>
+                        <div class="col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{zip}}" type="tel" name="zip" ng-model="zip" ng-blur="emptyValidEdit(zip)"></div>
                     </fieldset>
 
                     <fieldset>
@@ -69,7 +69,7 @@
                     </fieldset>
                     
                     <fieldset>
-                        <div class="col-md-8 no-padding f-right">
+                        <div class="col-xs-12 col-md-8 no-padding f-right">
                             <button class="button btn-success f-right m-left" ng-click="userEdit(email,nick,year,zip)"><span translate="save"></span></button>
                             <button class="button btn-danger f-right" ng-click="showUserUpdate=false"><span translate="cancel"></span></button>
                         </div>  

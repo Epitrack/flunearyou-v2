@@ -21,13 +21,33 @@
     </div>
 
      <ul class="nav-mobile navbar-nav no-padding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
-        <li open-menu-mobile> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()" translate="nav.fluMap"></a> </li>
-        <li open-menu-mobile> <a class="nav-link" title="About" ng-href="#/about" translate="nav.about"></a> </li>
-        <li open-menu-mobile> <a class="nav-link" title="News" ng-href="#/flu-news" translate="nav.news"></a> </li>
-        <li open-menu-mobile> <a class="nav-link" title="Press" ng-href="#/press" translate="nav.press"></a> </li>
-        <li open-menu-mobile> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="nav.faq"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu map</a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="About" ng-href="#/about" translate="about2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="Press" ng-href="#/press" translate="press2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="faq2"></a> </li>
         <li open-menu-mobile> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav_login"></a></li>
+        <li>
+            
+            <!-- dropdown when user is logged -->
+            <div class="dropdown col-sm-3 no-padding relative" ng-hide="!userLogged">
+                <button class="btn btn-default dropdown-toggle dropdown-user center" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-click="toggleCustom()">
+                    {{userLoggedEmail}} 
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom">
+                    <li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings"></a></li>
+                    <li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports"></a></li>
+                    <li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout"></a></li>
+                </ul>
+                <a href="#/report" id="btn-report" class="absolute button btn-danger" translate="navbar_survey_now"></a>
+            </div>
+
+        </li>
     </ul>
+
+
 </div>
 
 <!-- desktop -->

@@ -12,7 +12,7 @@ app.directive('openMenuMobile', function(){
 				$('#btn-menu-mobile').toggleClass('ativo');
 				if($('#btn-menu-mobile').hasClass('ativo')){
 					$('.nav-mobile').animate({
-						'height' : '300px'
+						'height' : '360px'
 					},'slow')
 				}else{
 					$('.nav-mobile').animate({
