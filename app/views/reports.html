@@ -9,22 +9,22 @@
               <tbody>
                 <tr>
                   <td>Weeks eligible to report</td>
-                  <td>36</td>
+                  <td>{{reportCard.weeks_eligible}}</td>
                 </tr>
 
                 <tr>
                   <td>Weeks reported</td>
-                  <td>15</td>
+                  <td>{{reportCard.weeks_reported}}</td>
                 </tr>
 
                 <tr>
                   <td>Weeks since last report</td>
-                  <td>1</td>
+                  <td>{{reportCard.weeks_since_last_report}}</td>
                 </tr>
 
                 <tr>
                   <td>Participation rate</td>
-                  <td>41.7%</td>
+                  <td>{{reportCard.participation_rate}}%</td>
                 </tr>
               </tbody>
             </table>
@@ -40,7 +40,7 @@
            -->
 
             <!-- Accordion -->
-            <div class="panel">
+            <div class="panel" ng-repeat="healthReport in healthReports">
               <header class="panel-heading" role="tab" id="firs-panel" data-parent="#accordion" data-toggle="collapse" data-target="#reports-me" aria-expanded="false" aria-controls="reports-me">
                 <h4 class="panel-title">Me</h4>
               </header>

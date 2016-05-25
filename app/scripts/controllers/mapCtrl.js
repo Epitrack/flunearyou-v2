@@ -153,9 +153,9 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 			};
 
 			if(window.innerHeight > window.innerWidth){
-			    MAP.initMap("40.0902", "-98.7129", 3, false);
+			    MAP.initMap("40.0902", "-98.7129", 3, true);
 			}else{
-				MAP.initMap("40.0902", "-110.7129", 4, false);
+				MAP.initMap("40.0902", "-110.7129", 4, true);
 			}
 		},
 

@@ -46,7 +46,7 @@ app.config(function ($routeProvider) {
       })
       .when('/reports', {
         templateUrl: 'views/reports.html',
-        controller: 'homeCtrl'
+        controller: 'healthReportCtrl'
       })
       .when('/settings', {
         templateUrl: 'views/settings.html',
