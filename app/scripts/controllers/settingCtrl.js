@@ -4,12 +4,13 @@
 
 'use strict';
 
-app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$rootScope', function($scope, $http, $urlBase, $timeout, $rootScope){
+app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$rootScope','$route',  function($scope, $http, $urlBase, $timeout, $rootScope, $route){
 	
 	/*
 	*	Init
 	*/ 
 	$rootScope.$emit("IS_LOGGED");
+	$scope.showUserUpdate = false;
 
 	/*
 	*	Get user account
@@ -22,7 +23,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 	}
 
 	$http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data){
-		console.log(data);
+		// console.log(data);
 		// 
 		$scope.email      = data.info.basic.email;
 		$scope.nick       = data.info.basic.nickname;
@@ -81,8 +82,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 	};
 
 
-
-
 	/*
 	*	Validation Edit user accout
 	*/
@@ -132,13 +131,16 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			'zip'        : zip
 		} 
 
+
 		$http.post($urlBase+'/user/update', objUserEdited, {headers: {'token': token}}).success(function(data, status){
-			$scope.$apply();
+			
 			$scope.msgSuccessUserUpdate = true;
 			$timeout(function(){
 				$scope.msgSuccessUserUpdate = false;
 				$scope.showUserUpdate = false;
-			}, 2000)
+			}, 2000);
+			
+			$route.reload();
 		}).error(function(data, status){
 			console.log(data);
 			console.log(status);
@@ -180,9 +182,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 				$scope.addMember = false;
 			}, 2000)
 
-			if(!$scope.$$phase) {
-				$scope.$apply()
-			}
+			$route.reload();
 		}).error(function(data, status){
 			console.log(data);
 			console.log(status);
@@ -214,7 +214,8 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 			$scope.nicknameEdit  = $scope.objHouseholdEdit.nickname;
 			$scope.birthyearEdit = year;
 			$scope.monthEdit     = month;
-			$('#birthdate-household-member').find('option[value="'+ month +'"]').attr('selected', true);	
+			$('#birthdate-household-member').find('option[value="'+ month +'"]').attr('selected', true);
+			$route.reload()	
 	};
 
 	$rootScope.$on('updateHousehold', $scope.updateHousehold);
@@ -225,7 +226,8 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 	*	Send Household Membres Edited
 	*/ 
 	$scope.sendHouseholdEdited = function(nickname, genderEdit, birthyear){
-		var id    = JSON.parse(localStorage.getItem('objHouseholdEdit')).id;
+		
+		var id    = parseInt(JSON.parse(localStorage.getItem('objHouseholdEdit')).id);
 		var month = $('#birthdate-household-member').val();
 
 		if(genderEdit){
@@ -245,13 +247,12 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		};
 
 		$http.post($urlBase+'/user/household/update', $scope.householdEdited, {headers: {'token': token}}).success(function(data, status){
-			
 			$scope.msgSuccessUserHousehold = true;
 			$timeout(function(){
 				$scope.msgSuccessUserHousehold = false;
 				$('.modal').modal('hide');
-			}, 2500);
-
+			}, 500);
+			$route.reload()
 		}).error(function(data, status){
 			console.log(data);
 		})
@@ -266,18 +267,19 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		if (active != 'Y') {
 			$scope.flag = 'activate'
 		};
-		localStorage.setItem('place_id', id);
+		localStorage.setItem('user_household_id', id);
 	};
 
 	$scope.sendDeactivate = function(flag){
 		var user  = JSON.parse(localStorage.getItem('userLogged')),
 			token = user.token;
 
-		var id = localStorage.getItem('place_id');
+		var id = parseInt(localStorage.getItem('user_household_id'));
 
 		 if(flag == 'deactivate'){
 			$http.post($urlBase+'/user/household/deactivate', {user_household_id: id}, {headers: {'token': token}}).success(function(data){
-				$('.modal').modal('hiden');
+				$('.modal').modal('hide');
+				$route.reload()
 			});
 		}else{
 			$http.post($urlBase+'/user/household/activate', {user_household_id: id}, {headers: {'token': token}}).success(function(data){
