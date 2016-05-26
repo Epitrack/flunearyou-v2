@@ -35,39 +35,28 @@
           <h3 class="title-primary">Health Reports</h3>
 
           <div class="panel-group health-reports-accordion" id="accordion" role="tablist" aria-multiselectable="true">
-          <!--
-            Change data-target, aria-controls and id for each accordion.
-           -->
 
             <!-- Accordion -->
-            <div class="panel" ng-repeat="healthReport in healthReports">
+            <div class="panel" ng-repeat="healthReport in healthReports" open-healph>
               <header class="panel-heading" role="tab" id="firs-panel" data-parent="#accordion" data-toggle="collapse" data-target="#reports-me" aria-expanded="false" aria-controls="reports-me">
-                <h4 class="panel-title">Me</h4>
+                <h4 class="panel-title">{{healthReport.nickname}}</h4>
+                <span></span>
               </header>
-
-              <div id="reports-me" class="panel-collapse collapse" role="tabpanel" aria-labelledby="firs-panel">
+              {{healthReport.surveys}}
+              <div id="reports-me" class="panel-collapseπ" role="tabpanel" aria-labelledby="firs-panel">
                 <div class="panel-body">
                   <table class="reports-table">
                     <thead>
                       <tr>
-                        <td>Report Card</td>
+                        <td>Week of</td>
+                        <td>Date of Report</td>
                         <td>Reported symptoms</td>
                       </tr>
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>08/10/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>08/04/2015</td>
-                        <td>Fever, Diarrhea, Cough, Sore throat, Headache</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/27/2015</td>
+                      <tr ng-repeat="healthReportsSurvey in healthReportsSurveys">
+                        <td>{{healthReportsSurvey.week_of}}</td>
                         <td>No Symptoms</td>
                       </tr>
                     </tbody>
@@ -75,152 +64,7 @@
                 </div>
               </div>
             </div>
-
-            <!-- Accordion -->
-            <div class="panel">
-              <header class="panel-heading" role="tab" id="firs-panel" data-parent="#accordion" data-toggle="collapse" data-target="#reports-household" aria-expanded="false" aria-controls="reports-household">
-                <h4 class="panel-title">Household <span>(Female , 25 years)</span></h4>
-                
-              </header>
-
-              <div id="reports-household" class="panel-collapse collapse" role="tabpanel" aria-labelledby="firs-panel">
-                <div class="panel-body">
-                  <table class="reports-table">
-                    <thead>
-                      <tr>
-                        <td>Report Card</td>
-                        <td>Reported symptoms</td>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td>08/20/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>08/19/2015</td>
-                        <td>Fever, Diarrhea, Cough, Sore throat, Headache</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/18/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/17/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/16/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/15/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/14/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/13/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/12/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/11/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <!-- Accordion -->
-            <div class="panel">
-              <header class="panel-heading reports-ok" role="tab" id="firs-panel" data-parent="#accordion" data-toggle="collapse" data-target="#reports-household-two" aria-expanded="false" aria-controls="reports-household-two">
-                <h4 class="panel-title">Household Two <span>(Male , 10 years)</span></h4>
-              </header>
-
-              <div id="reports-household-two" class="panel-collapse collapse" role="tabpanel" aria-labelledby="firs-panel">
-                <div class="panel-body">
-                  <table class="reports-table">
-                    <thead>
-                      <tr>
-                        <td>Report Card</td>
-                        <td>Reported symptoms</td>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-                      <tr>
-                        <td>08/20/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>08/19/2015</td>
-                        <td>Fever, Diarrhea, Cough, Sore throat, Headache</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/18/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/17/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/16/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/15/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/14/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/13/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/12/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-
-                      <tr>
-                        <td>07/11/2015</td>
-                        <td>No Symptoms</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+            
         </section>
     </div>
   </div>

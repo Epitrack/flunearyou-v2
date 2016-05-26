@@ -37,11 +37,11 @@
                 </button>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom">
-                    <li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings"></a></li>
-                    <li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports"></a></li>
-                    <li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout"></a></li>
+                    <li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings" open-menu-mobile></a></li>
+                    <li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports" open-menu-mobile></a></li>
+                    <li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout" open-menu-mobile></a></li>
                 </ul>
-                <a href="#/report" id="btn-report" class="absolute button btn-danger" translate="navbar_survey_now"></a>
+                <a href="#/report" id="btn-report" class="absolute button btn-danger" translate="navbar_survey_now" open-menu-mobile></a>
             </div>
 
         </li>
