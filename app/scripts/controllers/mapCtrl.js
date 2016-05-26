@@ -157,6 +157,8 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 			}else{
 				MAP.initMap("40.0902", "-110.7129", 4, true);
 			}
+
+			$('.info-cdc').removeClass('none');
 		},
 
 		showMarkers : function(){
@@ -170,6 +172,8 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 			}else{
 				MAP.initMap("40.0902", "-110.7129", 4, false);
 			}
+
+			$('.info-cdc').addClass('none');
 		},
 
 		openInfoWin : function(marker, msg){

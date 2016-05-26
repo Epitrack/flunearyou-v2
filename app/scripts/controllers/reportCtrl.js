@@ -77,8 +77,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 				angular.forEach($scope.households, function(value, key){
 					$scope.members_ids.push(value.user_household_id);
 				});
-
-				console.log('RTR:', $scope.user.current_survey);
 			}
 		});
 	};
@@ -96,7 +94,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	var getReportsThisWeek = function(){
 		reportApi.getReportsThisWeek(function(result){
 			if (result){
-				console.log(result);
 				$scope.reports_this_week = result;
 			}
 		});
@@ -116,8 +113,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	}
 
 	var successReport = function(){
-		console.log('successReport', 'current_survey', $scope.user.current_survey);
-		console.log('successReport', 'user_vaccionations.is_vaccinated', $scope.user_vaccionations.is_vaccinated);
 		if (!$scope.user.current_survey && $scope.user_vaccionations.is_vaccinated != 'Y'){
 			openPage('page_vaccionations');
 		}else{
@@ -134,7 +129,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	$scope.everyoneHealthy = function(){
 		reportApi.everyoneHealthy(function(result){
 			if (result){
-				console.log('everyone is healthy');
 				successReport();
 			}
 		});
@@ -150,7 +144,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	};
 
 	$scope.openSymtoms = function(){
-		console.log('openSymtoms', $scope.members);
 		if ($scope.members.length <= 0){
 			successReport();
 		}else{
@@ -165,7 +158,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	};
 
 	$scope.sendReport = function(){
-		console.log('$scope.current_id', $scope.current_id);
 		if ($scope.survey.symptoms.length == 0){
 			$scope.error_symptom = true;
 			return;
@@ -175,13 +167,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
             $scope.members_ids.splice(index, 1);
         }
 		reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members_ids, $scope.user.current_survey, function(result){
-			console.log('result', result);
 			$scope.openSymtoms();
 		});
 	};
 
 	$scope.sendVaccine = function(){
-		// console.log('$scope.vaccinations', $scope.vaccinations);
 		if ($scope.vaccinations.user && $scope.vaccinations.user.hasOwnProperty($scope.user.user_id)){
 			var data = {
 				flu_vaccine: $scope.vaccinations.user[$scope.user.user_id],
@@ -202,12 +192,10 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 		        }
 		    }
 		}
-		console.log('sucesso');
 		askForMembersOrGoHome();
 	};
 
 	$scope.sendReminder = function(remind_me){
-		console.log(remind_me);
 		if (remind_me == 'Y'){
 			$location.path( "/settings" );
 		}else if (remind_me == 'N'){
