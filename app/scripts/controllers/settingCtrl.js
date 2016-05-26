@@ -278,13 +278,14 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$timeout', '$root
 		var id = parseInt(localStorage.getItem('user_household_id'));
 
 		 if(flag == 'deactivate'){
+		 	$('.modal').modal('hide');
 			$http.post($urlBase+'/user/household/deactivate', {user_household_id: id}, {headers: {'token': token}}).success(function(data){
-				$('.modal').modal('hide');
 				$route.reload()
 			});
 		}else{
+			$('.modal').modal('hide');
 			$http.post($urlBase+'/user/household/activate', {user_household_id: id}, {headers: {'token': token}}).success(function(data){
-				console.log(data)
+				$route.reload()
 			})
 		};
 	}
