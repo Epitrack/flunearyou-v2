@@ -42,7 +42,6 @@
                 <h4 class="panel-title">{{healthReport.nickname}}</h4>
                 <span></span>
               </header>
-              {{healthReport.surveys}}
               <div id="reports-me" class="panel-collapseπ" role="tabpanel" aria-labelledby="firs-panel">
                 <div class="panel-body">
                   <table class="reports-table">
@@ -55,9 +54,15 @@
                     </thead>
 
                     <tbody>
-                      <tr ng-repeat="healthReportsSurvey in healthReportsSurveys">
-                        <td>{{healthReportsSurvey.week_of}}</td>
-                        <td>No Symptoms</td>
+                      <tr ng-repeat="report in healthReport.surveys">
+                        <td>{{report.week_of}}</td>
+                        <td>{{report.entry_date|date:'MM/dd/yyyy'}}</td>
+                        <td  symptoms-list>
+                          <span ng-repeat="s in report.symptoms">
+                            <span translate="{{ s }}"></span>{{$last ? '' : ', '}}
+                          </span>
+                          <span ng-if="report.symptoms.length == 0" translate="no_surveys_submitted"></span>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
