@@ -11,22 +11,22 @@
                     <fieldset>
                         <label for="email" translate="email"></label>
                         <div class="col-xs-12 col-md-8 no-padding f-right">
-                            <input class="form-control" value="{{email}}" type="text" name="email" ng-model="email" ng-blur="validaEmail(email)" required/>
+                            <input class="form-control" type="text" name="email" ng-model="user.email" required/>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <label for="nickname" translate="nickname"></label>
-                        <div class="col-xs-12 col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{nick}}" type="text" name="" ng-model="nick" ng-blur="emptyValidEdit(nick)"/></div>
+                        <div class="col-xs-12 col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control"type="text" name="" ng-model="user.nickname"/></div>
                     </fieldset>
 
                      <fieldset>
                         <label for="birthdate" translate="birthdate"></label>
                         <div class="col-md-5 no-padding f-right m-left">
-                            <input class="survey-birthyear form-control" type="tel" name="birthyear" id="birthyear" required="" value="{{year}}" aria-required="true">
+                            <input class="survey-birthyear form-control" type="tel" name="birthyear" id="birthyear" required="" ng-model="user.birthyear" aria-required="true">
                         </div>
                         <div class="col-md-2 no-padding f-right">
-                            <select class="survey-birthmonth form-control" name="birthmonth" id="month" required="" aria-required="true">
+                            <select class="survey-birthmonth form-control" name="birthmonth" id="month" required="" aria-required="true" ng-model="user.birthmonth">
                                 <option value="0">month</option>
                                 <option value="1">Jan</option>
                                 <option value="2">Feb</option>
@@ -47,30 +47,25 @@
                     <fieldset>
                         <label for="sex">Sex</label>
                         <div class="col-md-3 no-padding f-right marginRadio">
-                            <label class="radioLabel marginLabelRadio" translate="female" ng-click="chooseGender('F')"></label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-click="chooseGender('F')" ng-checked="female">
+                            <label class="radioLabel marginLabelRadio" translate="female" for="optionsRadios1"></label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" ng-value="'F'" ng-model="user.gender">
                         </div>
                     
                     
                         <div class="col-md-3 no-padding f-right">
-                            <label class="radioLabel marginLabelRadio" translate="male" ng-click="chooseGender('M')"></label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" ng-click="chooseGender('M')" ng-checked="male">
+                            <label class="radioLabel marginLabelRadio" translate="male"  for="optionsRadios2"></label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" ng-value="'M'" ng-model="user.gender">
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <label for="nickname" translate="zipcode"></label>
-                        <div class="col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" value="{{zip}}" type="tel" name="zip" ng-model="zip" ng-blur="emptyValidEdit(zip)"></div>
+                        <div class="col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control"  type="tel" name="zip" ng-model="user.zip"></div>
                     </fieldset>
 
                     <fieldset>
-                        <div class="alert alert-danger" ng-show="errorEdit">{{errorEdit}}</div>
-                        <div class="alert alert-success" ng-show="msgSuccessUserUpdate">User updated!</div>
-                    </fieldset>
-                    
-                    <fieldset>
                         <div class="col-xs-12 col-md-8 no-padding f-right">
-                            <button class="button btn-success f-right m-left" ng-click="userEdit(email,nick,year,zip)"><span translate="save"></span></button>
+                            <button class="button btn-success f-right m-left" data-loading-text="Sending..." loading-button ng-click="userEdit()"><span translate="save"></span></button>
                             <button class="button btn-danger f-right" ng-click="showUserUpdate=false"><span translate="cancel"></span></button>
                         </div>  
                     </fieldset>
@@ -81,27 +76,27 @@
                         <tbody>
                             <tr>
                                 <td translate="email"></td>
-                                <td class="default">{{email}}</td>
+                                <td class="default">{{user.email}}</td>
                             </tr>
 
                             <tr>
                                 <td translate="nickname"></td>
-                                <td class="default">{{nick}}</td>
+                                <td class="default">{{user.nickname}}</td>
                             </tr>
 
                             <tr>
                                 <td translate="birthdate"></td>
-                                <td class="default">{{birthdate}}</td>
+                                <td class="default">{{user.dob}}</td>
                             </tr>
 
                             <tr>
                                 <td translate="gender"></td>
-                                <td class="default">{{sex}}</td>
+                                <td class="default">{{user.gender}}</td>
                             </tr>
 
                             <tr>
                                 <td translate="zipcode"></td>
-                                <td class="default">{{zip}}</td>
+                                <td class="default">{{user.zip}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -117,25 +112,22 @@
 
                             <fieldset class="form-group">
                                 <label for="current-pass" translate="settings_current_password"></label>
-                                <input id="current-pass" type="password" class="input-primary" ng-model="currentPass" ng-blur="emptyValid(currentPass)">
+                                <input id="current-pass" type="password" class="input-primary" ng-model="old_password" required>
                             </fieldset>
 
                             <fieldset class="form-group">
                                 <label for="new-pass"><span translate="new"></span> <span translate="password"></span></label>
-                                <input id="new-pass" type="password" class="input-primary" ng-model="newPass" ng-blur="emptyValid(newPass)">
+                                <input id="new-pass" type="password" class="input-primary" ng-model="password" required>
                             </fieldset>
 
                             <fieldset class="form-group">
                                 <label for="confirm-pass"><span translate="confirm"></span> <span translate="password"></span></label>
-                                <input id="confirm-pass" type="password" class="input-primary" ng-model="confirmPass" ng-blur="emptyValid(confirmPass)">
+                                <input id="confirm-pass" type="password" class="input-primary" ng-model="confirm_password" required>
                             </fieldset>
                             
-                            <div class="alert alert-danger" ng-show="msgErrorChangePass">{{msgErrorChangePass}}</div>
-                            <div class="alert alert-success" ng-show="msgSuccessChangePass"><p>Password updated!</p></div>
-
                             <div class="col-xs-12 wrapper-buttons">
                                 <button class="button btn-danger" ng-click="changePass=false"><span translate="cancel"></span></button>
-                                <button class="button btn-success"><span translate="save" ng-click="sendPass(currentPass, newPass, confirmPass)"></span></button>
+                                <button class="button btn-success"><span translate="save" data-loading-text="Sending..." loading-button ng-click="sendPassword()"></span></button>
                             </div>
                         </form>
                     </div>
@@ -176,85 +168,19 @@
                             <td>{{ household.gender }}</td>
                             <td>{{ household.dob }}</td>
                             <td>
-                                <a class="nav-link" title="edit" data-toggle="modal" data-dismiss="modal" data-target="#modal-add-household-member" data-nick="{{ household.nickname }}" data-gender="{{ household.gender }}" data-niver="{{ household.dob }}" data-id="{{household.user_household_id}}" edit-household>
-                                    <button type="button" class="button btn-sm btn-info"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                </a>
                                 
-                                 <a class="nav-link" title="edit" data-toggle="modal" data-dismiss="modal" data-target="#deactivate" data-active="{{household.active}}" data-id="{{household.user_household_id}}" >
-                                    <button type="button" class="button btn-sm" ng-class="{'btn-success': household.active == 'Y', 'btn-danger': household.active == 'N'}" ng-click="deactivateFunction(household.active, household.user_household_id)">
-                                        <i class="fa fa-power-off" aria-hidden="true"></i>
-                                    </button>
-                                </a>
+                                <button type="button" class="button btn-sm btn-info" ng-click="openModalEdit(household)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                
+                                <button type="button" class="button btn-sm" ng-class="{'btn-success': household.active == 'N', 'btn-danger': household.active == 'Y'}" ng-click="openModalConfirm(household)">
+                                    <i class="fa fa-power-off" aria-hidden="true"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
-                <!-- Add household member -->
-                <div class="col-xs-12 nopadding" ng-show="addMember">
-                    <div class="info-box">
-                        <form name="form-add-household-member" class="register-form form-change-pass form-add-household-member" id="form-add-household-member">
-                            <h4 translate="header_add_household"></h4>
-
-                            <fieldset class="form-group">
-                                <label class="nickname" for="add-household-nickname" translate="nickname"></label>
-                                <input id="add-household-nickname" type="text" class="input-primary full" ng-model="newHousehold">
-                            </fieldset>
-
-                            <fieldset class="form-group col-sm-6">
-                                <legend class="legend" translate="gender"></legend>
-
-                                <fieldset class="radio-group col-xs-6">
-                                    <input type="radio" value="M" ng-model="genderHousehold" id="add-household-male" class="radio-primary" name="add-household-member">
-                                    <label for="add-household-male" translate="male"></label>
-                                    <div class="check"><div class="inside"></div></div>
-                                </fieldset>
-
-                                <fieldset class="radio-group col-xs-6">
-                                    <input type="radio" value="F" ng-model="genderHousehold" id="add-household-female" class="radio-primary" name="add-household-member">
-                                    <label for="add-household-female" translate="female"></label>
-                                    <div class="check"><div class="inside"></div></div>
-                                </fieldset>
-                            </fieldset>
-
-                            <fieldset class="form-group col-sm-6">
-                                <label class="block" translate="birthdate"></label>
-
-                                <select name="birthdate-household-member" id="birthdate-household-member" class="col-xs-12 col-sm-5 form-group">
-                                    <option value="0" translate="month"></option>
-                                    <option value="1" translate="jan"></option>
-                                    <option value="2" translate="feb"></option>
-                                    <option value="3" translate="mar"></option>
-                                    <option value="4" translate="apr"></option>
-                                    <option value="5" translate="may"></option>
-                                    <option value="6" translate="jun"></option>
-                                    <option value="7" translate="jul"></option>
-                                    <option value="8" translate="aug"></option>
-                                    <option value="9" translate="sep"></option>
-                                    <option value="10" translate="oct"></option>
-                                    <option value="11" translate="nov"></option>
-                                    <option value="12" translate="dec"></option>
-                                </select>
-
-                                <input type="tel" class="col-sm-3 input-primary register-year" ng-model="yearNewHousehold" placeholder="YYYY">
-                            </fieldset>
-                            
-                            <fieldset>
-                                <div class="alert alert-success" ng-show="">Household added!</div>
-                            </fieldset> 
-
-                            <div class="col-xs-12 wrapper-buttons">
-                                <button class="button btn-danger" ng-click="addMember=false">
-                                    <span translate="cancel"></span>
-                                </button>
-
-                                <button class="button btn-success"  ng-click="sendNewHousehold(newHousehold, genderHousehold, yearNewHousehold)">
-                                    <span translate="save"></span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <div ng-show="addMember" ng-include="'views/partials/add-household.html'"></div>
+                
             </section>
         </div>
     </div>

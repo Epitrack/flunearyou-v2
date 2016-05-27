@@ -28,16 +28,6 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         }); 
     }
 
-    obj.getUser = function(callback) {
-        if(token){
-           $http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data) {
-                callback(data);
-            }).error(function(error) {
-                console.log('Error getUser: ', error);
-            }); 
-        }
-    };
-
     obj.everyoneHealthy = function(callback){
         $http.post($urlBase+'/survey/all', {}, {headers: {'token': token}}).success(function(data) {
             callback(true);
