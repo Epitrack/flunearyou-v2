@@ -4,7 +4,7 @@
 
 'use strict';
 
-app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', function($scope, $rootScope, $window, $location, $uibModal, reportApi){
+app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', function($scope, $rootScope, $window, $location, $uibModal, reportApi, userApi){
 	/*
 	*	Init
 	*/ 
@@ -59,7 +59,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 
 	var getUser = function(){
-		reportApi.getUser(function(result){
+		userApi.getUser(function(result){
 			if (result.info){
 				$scope.user = result.info.basic;
 				$scope.user_vaccionations = result.info.vaccinations;
