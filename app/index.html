@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="/bower_components/pickadate/lib/themes/default.date.css" />
     <link rel="stylesheet" href="/bower_components/pickadate/lib/themes/default.time.css" />
     <link rel="stylesheet" href="/bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/bower_components/angular-growl/build/angular-growl.min.css" rel="stylesheet">
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -49,7 +50,7 @@
     <script src="/bower_components/modernizr/modernizr.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- endbuild -->
-
+    <style type="text/css">.growl {top:130px;}</style>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDRHloTNr68meTs9Afgqqm3IEy9E7tSLQc"></script>
 </head>
 <body>
@@ -64,6 +65,7 @@
       <div ng-view class="reveal-animation"></div>
     </main>
 
+    <div growl style="z-index: 9999;"></div>
 
     <!-- Footer -->
     <footer class="footer" ng-include src="'views/footer.html'"></footer>
@@ -109,6 +111,7 @@
     <script src="/bower_components/pickadate/lib/picker.time.js"></script>
     <script src="/bower_components/ng-pickadate/ng-pickadate.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-growl/build/angular-growl.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -129,6 +132,7 @@
         <script src="scripts/config/route.js"></script>
         <script src="scripts/config/value.js"></script>
         <script src="scripts/config/mapConfig.js"></script>
+        <script src="scripts/config/growlConfig.js"></script>
         <script src="scripts/config/loadingBarConfig.js"></script>
         <script src="scripts/config/angularTranslateConfig.js"></script>
 

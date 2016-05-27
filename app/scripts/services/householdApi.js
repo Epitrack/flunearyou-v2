@@ -27,7 +27,7 @@ app.service('householdApi', [ '$http', '$urlBase', '$rootScope', '$window', '$ti
 		var action = household.active == 'Y' ? 'deactivate' : 'activate';
 
 		$http.post($urlBase+'/user/household/'+action, {user_household_id: household.user_household_id}, {headers: {'token': token}}).success(function(data){
-			callback(true);
+			callback(data);
 		}).error(function(error) {
             console.log('Error sendActivate: ', error);
         }); 
@@ -36,7 +36,7 @@ app.service('householdApi', [ '$http', '$urlBase', '$rootScope', '$window', '$ti
     obj.sendHouseholdEdit = function(household, callback){
         var data = {nickname: household.nickname, gender: household.gender, user_household_id: household.user_household_id, birthyear: household.birthyear, birthmonth: household.birthmonth}
         $http.post($urlBase+'/user/household/update', data, {headers: {'token': token}}).success(function(data, status){
-            callback(true);
+            callback(data);
         }).error(function(data, status){
             console.log('Error sendHouseholdEdit: ', error);
         });
@@ -44,7 +44,7 @@ app.service('householdApi', [ '$http', '$urlBase', '$rootScope', '$window', '$ti
 
     obj.sendNewHousehold = function(household, callback){
         $http.post($urlBase+'/user/household', household, {headers: {'token': token}}).success(function(data, status){
-            callback(true);
+            callback(data);
         }).error(function(data, status){
             console.log('Error sendNewHousehold: ', error);
         });

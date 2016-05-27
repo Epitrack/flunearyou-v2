@@ -1,7 +1,15 @@
 'use strict';
 
-app.controller('ModalActivationCtrl', function ($scope, $uibModalInstance, householdApi, household, getHouseholds) {
+app.controller('ModalActivationCtrl', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds) {
 	$scope.household = household;
+
+	var showMessage = function(data){
+		if ($translate.proposedLanguage() == 'es' && data.message_es){
+			growl.addSuccessMessage(data.message_es);
+		}else{
+			growl.addSuccessMessage(data.message);
+		}
+	}
 
 	$scope.ok = function () {
 		$uibModalInstance.close();
@@ -16,6 +24,7 @@ app.controller('ModalActivationCtrl', function ($scope, $uibModalInstance, house
 			if (result){
 				$scope.ok();
 				getHouseholds();
+				showMessage(result);
 			}
 		});
 	}

@@ -4,7 +4,7 @@
 
 'use strict';
 
-app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$timeout', '$rootScope','$route', 'userApi', 'householdApi',  function($scope, $http, $urlBase, $uibModal, $timeout, $rootScope, $route, userApi, householdApi){
+app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$timeout', '$translate', '$rootScope', '$route', 'growl', 'userApi', 'householdApi',  function($scope, $http, $urlBase, $uibModal, $timeout, $translate, $rootScope, $route, growl, userApi, householdApi){
 	
 	/*
 	*	Init
@@ -56,6 +56,14 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 	    });
 	};
 
+	var showMessage = function(data){
+		if ($translate.proposedLanguage() == 'es' && data.message_es){
+			growl.addSuccessMessage(data.message_es);
+		}else{
+			growl.addSuccessMessage(data.message);
+		}
+	}
+
 	var getUser = function(){
 		userApi.getUser(function(data){
 			$scope.user = data.info.basic;
@@ -83,6 +91,8 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 				getHouseholds();
 				$scope.addMember = false;
 				$rootScope.$emit("SCROLL_TOP");
+				showMessage(data);
+				
 			}
 		});
 	}
@@ -92,6 +102,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 			if (data){
 				$scope.showUserUpdate = false;
 				$scope.user.dob = $scope.user.birthmonth + '/' + $scope.user.birthyear;
+				showMessage(data);
 			}
 		});
 	}
@@ -105,6 +116,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		userApi.sendPassword(objPass, function(data){
 			if (data){
 				$scope.changePass = false;
+				showMessage(data);
 			}
 		});
 	};
