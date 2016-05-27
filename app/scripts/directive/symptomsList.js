@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('symptomsList', function($sce) {
+app.directive('symptomsList', ['$sce', function($sce) {
 	return {
 		restrict : 'A',
 		link: function(scope, elem){
@@ -42,4 +42,4 @@ app.directive('symptomsList', function($sce) {
 
 		}
 	};
-});
+}]);

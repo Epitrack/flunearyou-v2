@@ -1,4 +1,4 @@
-app.config(function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -56,7 +56,7 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/unsubscribe.html',
         controller: 'unsubscribeCtrl'
       })
-  }).animation('.reveal-animation', function() {
+  }]).animation('.reveal-animation', function() {
     return {
       enter: function(element, done) {
         element.css('display', 'none');

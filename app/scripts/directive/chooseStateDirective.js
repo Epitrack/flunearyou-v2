@@ -4,7 +4,7 @@
 
 'use strict';
 
-app.directive('chooseStateDirective', function($rootScope){
+app.directive('chooseStateDirective', ['$rootScope', function($rootScope){
 	return {
 		restrict : 'A',
 		link : function(scope, elem){
@@ -68,4 +68,4 @@ app.directive('chooseStateDirective', function($rootScope){
 			});
 		}
 	};
-});
+}]);

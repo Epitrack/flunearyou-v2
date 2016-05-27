@@ -48,6 +48,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 	        	$http.get('scripts/json/cdc.json').success(function(data, status){
 	        		map.data.loadGeoJson('scripts/json/states.geo.json');
 	        		var stylers  = data
+	        		console.log(data);
 	        		$http.get('scripts/json/states.geo.json').success(function(data, status){
 	        			
 	        			var states = data.features,
