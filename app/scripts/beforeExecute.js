@@ -41,6 +41,7 @@ app.factory( 'session', function GetSession($http, $urlBase, $routeParams, $q){
     if ($routeParams.campaign){
         campaignTracings($routeParams.campaign)
     }
+    
 
     console.log('end');
     defer.resolve('done');
