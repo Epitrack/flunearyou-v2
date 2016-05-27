@@ -46,36 +46,24 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 	        	MAP.getMarkers(map);
 	        }else{
 	        	$http.get('scripts/json/cdc.json').success(function(data, status){
-	        		map.data.loadGeoJson('scripts/json/states.geo.json');
-	        		var stylers  = data
-	        		console.log(data);
-	        		$http.get('scripts/json/states.geo.json').success(function(data, status){
-	        			
-	        			var states = data.features,
-	        				state = [];
-
-	        			for (var i = 0; i < states.length; i++){
-	        				var s     = states[i];
-	        				state.push(s.properties.name);
-	        			}
-	        				
-	        			map.data.setStyle(MAP.getStyleCDCOverlays(stylers, state));
-	        		});
 	        		
+	        		var stylers  = data
+	        		map.data.loadGeoJson('scripts/json/states.geo.json');
+	        		map.data.setStyle(function(feature){
+		           	 	var name = feature.getProperty('name'), color;
+
+		           	 	if (stylers[name]) color = stylers[name].fill.color;
+
+		           	 	return {
+		           	 		fillColor: color,
+		                	fillOpacity: 0.75,
+		                	strokeWeight: 1
+		           	 	}
+		           	});
 	        	});
 	        };
 	      	
 			return map;
-		},
-
-		getStyleCDCOverlays : function(stylers, state){
-            var color = stylers.Alabama.fill.color;
-            
-            return {
-                fillColor: color,
-                fillOpacity: 0.85,
-                strokeWeight: 1
-            };
 		},
 
 		getMarkers : function(map){
