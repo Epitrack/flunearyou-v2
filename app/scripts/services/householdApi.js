@@ -12,7 +12,6 @@ app.service('householdApi', [ '$http', '$urlBase', '$rootScope', '$window', '$ti
         token = '';
     }
 
-
     obj.getHuseholds = function(callback) {
         if(token){
            $http.get($urlBase+'/user/household', {headers: {'token': token}}).success(function(data) {
