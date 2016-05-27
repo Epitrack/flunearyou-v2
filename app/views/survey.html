@@ -6,14 +6,18 @@
             <div ng-include="'views/previous-reports.html'" onload="includeContent()"></div>
 
             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                <h3 class="legend">Did {{ user_name || 'you' }} experience any additional symptoms since 05/06/2016?</h3>
+                <h3 class="legend">
+                  <span translate="did"></span> {{ user_name || 'you' }} <span translate="survey_symptoms_report_v2"></span>
+                </h3>
+
+                <!--   experience any additional symptoms since 05/06/2016? -->
 
                 <form class="survey-form second" name="survey-form" id="survey-form">
                     <legend class="legend" ng-if="false">What symptoms are you currently experiencing?</legend>
                     
                     <fieldset class="checkbox-group any-symptoms-below relative">
                         <input type="checkbox" ng-value="true" id="any-symptoms-below" class="checkbox-primary absolute" name="survey-symptom" ng-model="no_symptoms" disabled-survey>
-                        <label for="any-symptoms-below">{{ user_name || 'You' }} did not have any of the symptoms listed below</label>
+                        <label for="any-symptoms-below">{{ user_name || 'You' }} <span translate="survey_no_symptoms"></span></label>
                         <div class="check"><div class="inside"></div></div>
                     </fieldset>
 
@@ -125,7 +129,7 @@
 
                     <aside id="datepicker"
                            class="datepicker" ng-show="survey.symptoms.length > 0">
-                        <h3>What day did {{user_name}} start feeling ill?</h3>
+                        <h3 translate="survey_calendar"></h3>
                         <input class="login-input" id="date_input" type="text" ng-model="survey.ill_date" name="date"
                                placeholder="{{ site.content.click_to_pick_a_date }}" ng-value="week_of|date:'EEEE, MMMM d yyyy'"
                                style="margin-bottom: 5px;margin-left: 5%;width: 675px;height: 36px;margin-right: 30px;font-size: 16px;text-align: center;"
@@ -136,7 +140,7 @@
                     <aside id="medical_attention"
                            class="medical_attention" ng-show="survey.symptoms.length > 0 && !user.current_survey">
                             <h3 id="medical_attention_header"
-                                style="margin-top: 5px">Did {{ user_name }} see a doctor, nurse or other health professional for this illness? Please check all that apply.</h3>
+                                style="margin-top: 5px"><span translate="survey_medical_attention"></span></h3>
                         <fieldset class="large full">
                             <input id="survey_medical_attention_option_1"
                                    ng-model="survey.medical.medical_attention_no"
@@ -204,8 +208,8 @@
                                    class="checkbox-primary"
                                    type="checkbox"
                                    value="Y">
-                            <label for="survey_medical_attention_option_7" translate="survey_medical_attention_option_7">
-                            </label>
+                            <label for="survey_medical_attention_option_7" 
+                                   class="full" translate="survey_medical_attention_option_7"></label>
                             <span class="check"><span class="inside"></span></span>
                         </fieldset>
                     </aside>
@@ -227,8 +231,8 @@
                       </div>
                     </div>
                     <div class="form-buttons col-xs-12">
-                        <a class="button btn-info" ng-click="goBack()">Go Back</a>
-                        <button class="button btn-danger" ng-click="sendReport()">Submit</button>
+                        <a class="button btn-info" ng-click="goBack()" translate="go_back"></a>
+                        <button class="button btn-danger" ng-click="sendReport()" translate="submit"></button>
                     </div>
                 </form>
             </div>

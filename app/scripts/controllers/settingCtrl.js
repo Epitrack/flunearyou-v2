@@ -56,7 +56,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 	    });
 	};
 
-
 	var getUser = function(){
 		userApi.getUser(function(data){
 			$scope.user = data.info.basic;
@@ -96,7 +95,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 			}
 		});
 	}
-	
 
 	$scope.sendPassword = function(){
 		var objPass = {
@@ -111,25 +109,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		});
 	};
 
-
-	/*
-	*	Validation Edit user accout
-	*/
-	$scope.validaEmail = function(email) {
-        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        $scope.isEmailValid = re.test(email);
-    
-        if ($scope.isEmailValid){
-        	$scope.errorEdit = '';
-        }else{
-        	$scope.errorEdit = 'Email invalid';
-        }
-
-        return $scope.isEmailValid;
-    }
-
-
 	getUser();
 	getHouseholds();
-
 }]);
