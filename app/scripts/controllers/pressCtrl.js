@@ -4,7 +4,8 @@
 
 'use strict';
 
-app.controller('pressCtrl', ['$scope','$http','$urlBase', function($scope, $http, $urlBase){
+app.controller('pressCtrl', ['$scope','$http','$urlBase', 'session', function($scope, $http, $urlBase, session){
+	session.then( function() {
 
 	$http.get($urlBase+'/press.json').success(function(data, status){
 		var press2015 = [],
@@ -25,4 +26,6 @@ app.controller('pressCtrl', ['$scope','$http','$urlBase', function($scope, $http
 	}).error(function(data, status){
 		console.log(data)
 	})
+
+	});
 }]);

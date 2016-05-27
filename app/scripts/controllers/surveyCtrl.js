@@ -4,8 +4,8 @@
 
 'use strict';
 
-app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', function($scope, $rootScope, $window){
-	
+app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', 'session', function($scope, $rootScope, $window, session){
+	session.then( function() {
 	/*
 	*	Init
 	*/ 
@@ -38,4 +38,6 @@ app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', function($scope
 	$scope.sendSurvey = function(){
 		$window.location.href = '#/map';
 	}
+
+	});
 }]); 

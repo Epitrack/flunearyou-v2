@@ -8,4 +8,5 @@
  * Controller of the flunearyouV2App
  // */
 app.controller('MainCtrl', ['$scope', 'cdcstates', function ($scope, cdcstates) {
+
 }]);

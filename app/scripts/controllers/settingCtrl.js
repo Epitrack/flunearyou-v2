@@ -4,9 +4,10 @@
 
 'use strict';
 
-app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$timeout', '$translate', '$rootScope', '$route', 'growl', 'userApi', 'householdApi',  
-	function($scope, $http, $urlBase, $uibModal, $timeout, $translate, $rootScope, $route, growl, userApi, householdApi){
-	
+app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$timeout', '$translate', '$rootScope', '$route', 'growl', 'userApi', 'householdApi', 'session', 
+	function($scope, $http, $urlBase, $uibModal, $timeout, $translate, $rootScope, $route, growl, userApi, householdApi, session){
+	session.then( function() {
+
 	/*
 	*	Init
 	*/ 
@@ -124,4 +125,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 
 	getUser();
 	getHouseholds();
+
+	});
 }]);

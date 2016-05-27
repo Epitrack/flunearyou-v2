@@ -4,8 +4,8 @@
 
 'use strict';
 
-app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
-	
+app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session', function($scope, $rootScope, $http, $urlBase, session){
+	session.then( function() {
 	/*
 	*	Init
 	*/ 
@@ -251,5 +251,5 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', function(
 			$scope.tab2 = true;
 		};
 	};
-
+	});
 }]);

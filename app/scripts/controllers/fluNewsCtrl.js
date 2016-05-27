@@ -4,7 +4,8 @@
 
 'use strict';
 
-app.controller('fluNewsCtrl', ['$scope','$http', '$urlBase', '$window', '$rootScope', function($scope, $http, $urlBase, $window, $rootScope){
+app.controller('fluNewsCtrl', ['$scope','$http', '$urlBase', '$window', '$rootScope', 'session', function($scope, $http, $urlBase, $window, $rootScope, session){
+	session.then( function() {
 	/*
 	*	Init
 	*/
@@ -24,4 +25,5 @@ app.controller('fluNewsCtrl', ['$scope','$http', '$urlBase', '$window', '$rootSc
 
 	$rootScope.$on("NEWS", $scope.news);
 	$rootScope.$emit("NEWS");
+	});
 }]);
