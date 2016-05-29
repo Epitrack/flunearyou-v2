@@ -1,7 +1,6 @@
 /*
 *	Report Controller
 */
-
 'use strict';
 
 app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', 'session', function($scope, $rootScope, $window, $location, $uibModal, reportApi, userApi, session){
