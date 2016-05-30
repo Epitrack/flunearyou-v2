@@ -4,7 +4,9 @@
 
 'use strict';
 
-app.controller('unsubscribeCtrl', ['$scope','$http','$urlBase', '$window','$timeout','$rootScope', function($scope, $http, $urlBase, $window, $timeout, $rootScope){
+app.controller('unsubscribeCtrl', ['$scope','$http','$urlBase', '$window','$timeout','$rootScope', 'session', function($scope, $http, $urlBase, $window, $timeout, $rootScope, session){
+	session.then( function() {
+		
 	/*
 	*	Get user account
 	*/ 
@@ -29,5 +31,5 @@ app.controller('unsubscribeCtrl', ['$scope','$http','$urlBase', '$window','$time
 		});	
 	}
 	
-
+	});
 }]);

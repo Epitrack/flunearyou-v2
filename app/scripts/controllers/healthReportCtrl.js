@@ -4,8 +4,8 @@
 
 'use strict';
 
-app.controller('healthReportCtrl', ['$scope', '$rootScope','$http', '$urlBase', function($scope, $rootScope, $http, $urlBase){
-	
+app.controller('healthReportCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session', function($scope, $rootScope, $http, $urlBase, session){
+	session.then( function() {
 	/*
 	*	Init
 	*/ 
@@ -38,4 +38,6 @@ app.controller('healthReportCtrl', ['$scope', '$rootScope','$http', '$urlBase', 
 		$scope.healthReports = data;
 		$scope.healthReportsSurveys = data.surveys;
 	}); 
+
+	});
 }]);

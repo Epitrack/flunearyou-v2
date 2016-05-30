@@ -1,13 +1,14 @@
 /*
 *	Report Controller
 */
-
 'use strict';
 
-app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', function($scope, $rootScope, $window, $location, $uibModal, reportApi, userApi){
+app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', 'session', function($scope, $rootScope, $window, $location, $uibModal, reportApi, userApi, session){
+	session.then( function() {
 	/*
 	*	Init
 	*/ 
+	console.log('init controller');
 	$('#modal-join-us, #modal-login').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
@@ -211,5 +212,5 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	getUser();
 	getChecks();
 	getReportsThisWeek();
-	
+	});
 }]) 

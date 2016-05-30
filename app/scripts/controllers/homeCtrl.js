@@ -4,8 +4,8 @@
 
 'use strict';
 
-app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', function($scope, $rootScope, $http, $urlBase, $window){
-
+app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', 'session', function($scope, $rootScope, $http, $urlBase, $window, session){
+	session.then( function() {
 	/*
 	*	Init
 	*/ 
@@ -88,4 +88,6 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 			$scope.tab2 = true;
 		};
 	};
+	
+	});
 }]);
