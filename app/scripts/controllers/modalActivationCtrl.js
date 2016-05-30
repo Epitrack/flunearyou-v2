@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ModalActivationCtrl', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds) {
+app.controller('ModalActivationCtrl', [ '$scope', '$uibModalInstance', '$translate', 'growl', 'householdApi', 'household', 'getHouseholds', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds) {
 	$scope.household = household;
 
 	var showMessage = function(data){
@@ -28,4 +28,4 @@ app.controller('ModalActivationCtrl', function ($scope, $uibModalInstance, $tran
 			}
 		});
 	}
-});
+}]);

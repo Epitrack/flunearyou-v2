@@ -7,7 +7,8 @@
  * # cdcstates
  * Service in the flunearyouV2App.
  */
-app.service('cdcstates', function ($http) {
+app.service('cdcstates', ['$http', 
+    function ($http) {
 
     var obj = {};
     var states = [];
@@ -33,4 +34,4 @@ app.service('cdcstates', function ($http) {
     };
 
     return obj;
-  });
+  }]);

@@ -1,4 +1,4 @@
-app.factory( 'session', function GetSession($http, $urlBase, $routeParams, $q){
+app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', function GetSession($http, $urlBase, $routeParams, $q){
     var defer = $q.defer();
 
     var tokenTracings = function(token){
@@ -41,9 +41,7 @@ app.factory( 'session', function GetSession($http, $urlBase, $routeParams, $q){
     if ($routeParams.campaign){
         campaignTracings($routeParams.campaign)
     }
-    
-
-    console.log('end');
+   
     defer.resolve('done');
     return defer.promise;
-} );
+}]);

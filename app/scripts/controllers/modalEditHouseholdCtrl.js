@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ModalEditHouseholdCtrl', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds) {
+app.controller('ModalEditHouseholdCtrl', [ '$scope', '$uibModalInstance', '$translate', 'growl', 'householdApi', 'household', 'getHouseholds', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds) {
 	$scope.household = household;
 
 	var index = $scope.household.dob.indexOf('/');
@@ -32,4 +32,4 @@ app.controller('ModalEditHouseholdCtrl', function ($scope, $uibModalInstance, $t
 			}
 		});
 	}
-});
+}]);
