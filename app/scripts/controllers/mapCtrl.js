@@ -62,6 +62,10 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 		           	});
 	        	});
 	        };
+
+	        // Map by city or zipCode
+	    //     var autocomplete = new google.maps.places.Autocomplete(input);
+  			// autocomplete.bindTo('bounds', map);
 	      	
 			return map;
 		},
@@ -81,15 +85,15 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 					// Type icon
 					switch(markerIcon){
 						case '1' :
-							image = '../images/icon-azul.svg';
+							image = '/images/icon-azul.svg';
 						break;
 
 						case '3' : 
-							image = '../images/icon-amarelo.svg';
+							image = '/images/icon-amarelo.svg';
 						break;
 
 						case '5' : 
-							image = '../images/icon-vermelho.svg';
+							image = '/images/icon-vermelho.svg';
 						break;
 					}
 
@@ -224,16 +228,20 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	$scope.codeAddress = function() {
 		var zipCode = sessionStorage.getItem('zip');
 		var geocoder = new google.maps.Geocoder();
-		alert(123);
 		geocoder.geocode( { 'address': zipCode}, function(results, status) {
 			console.log(results);
-			console.log(status);
-			console.log(google.maps.GeocoderStatus.OK);
-			// if (status == google.maps.GeocoderStatus.OK) {
-			// 	MAP.initMap(lat, lon, 4);
-			// } else {
-			// 	alert("Geocode was not successful for the following reason: " + status);
-			// }
+			
+			if (status == google.maps.GeocoderStatus.OK) {
+				
+				var lat = results[0].geometry.location.lat,
+					lng = results[0].geometry.location.lng;
+
+				console.log(lat);
+				console.log(lng);
+				
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			}
 		});
 	};
 
