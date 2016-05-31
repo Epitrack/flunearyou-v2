@@ -4,8 +4,9 @@
 			<h2 translate="survey_rtr"></h2>
 			<p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">{{ week_of|date:'MM/dd/yyyy' }}</span> - <span id="endDate">{{ week_end|date:'MM/dd/yyyy' }}</span></p>
 			<h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == true" translate="survey_select_household"></h3>
-            <h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == false">Select household members who had any of the following symptoms</h3>
+            <h3 style="margin-top: 5px;margin-bottom: 5px" ng-if="user.current_survey == false" translate="survey_select_household"></h3>
         </div>
+        
         <table class="symptoms_table">
             <tr>
                 <td translate="fever"></td>

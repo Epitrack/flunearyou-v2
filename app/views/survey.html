@@ -1,27 +1,25 @@
 <section class="wrapper-inside bg wrapper-survey">
     <div class="container">
         <div class="header-survey  row">
-            <h2 class="title-primary" translate="survey_wk_of"></h2>
+            <h2 translate="survey_wk_of"></h2>
+            <p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">{{ week_of|date:'MM/dd/yyyy' }}</span> - <span id="endDate">{{ week_end|date:'MM/dd/yyyy' }}</span></p>
 
             <div ng-include="'views/previous-reports.html'" onload="includeContent()"></div>
 
             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                <h3 class="legend">
-                  <span translate="did"></span> {{ user_name || 'you' }} <span translate="survey_symptoms_report_v2"></span>
-                </h3>
-
-                <!--   experience any additional symptoms since 05/06/2016? -->
+                <h3 class="legend" translate="survey_symptoms_report_v2" translate-value-user="{{user_name || 'You'}}" ng-if="user.current_survey == false"></h3>
+                
+                <h3 class="legend" translate="survey_symptoms_current_v2" translate-value-user="{{user_name || 'You'}}" translate-value-date="{{reports_this_week[current_id][reports_this_week[current_id].length - 1]['ill_date'] || next_week |date:'MM/dd/yyyy'}}" ng-if="user.current_survey == true"></h3>
 
                 <form class="survey-form second" name="survey-form" id="survey-form">
-                    <legend class="legend" ng-if="false">What symptoms are you currently experiencing?</legend>
                     
                     <fieldset class="checkbox-group any-symptoms-below relative">
                         <input type="checkbox" ng-value="true" id="any-symptoms-below" class="checkbox-primary absolute" name="survey-symptom" ng-model="no_symptoms" disabled-survey>
-                        <label for="any-symptoms-below">{{ user_name || 'You' }} <span translate="survey_no_symptoms"></span></label>
+                        <label for="any-symptoms-below"> <span translate="survey_no_symptoms_v2" translate-value-user="{{ user_name || 'You' }}"></span></label>
                         <div class="check"><div class="inside"></div></div>
                     </fieldset>
 
-                    <p id="survey_symptoms_or" class="or">or</p>
+                    <p id="survey_symptoms_or" class="or" translate="sp_survey_or"></p>
 
                     <div id="conditional" ng-class="{'disabled' : no_symptoms == true}" show-traveling>
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6" >
@@ -217,17 +215,17 @@
 
                     <fieldset class="checkbox-group fieldset-traveling" ng-show="survey.symptoms.length > 0" style="margin-top: 20px;margin-bottom: 20px;">
                         <input type="checkbox" ng-value="'Y'" value="Y" id="traveling" ng-model="survey.was_traveling" class="checkbox-primary" name="survey-symptom">
-                        <label for="traveling">I was traveling while experiencing these symptoms</label>
+                        <label for="traveling" translate="survey_travel_question_v2" translate-value-user="{{user_name || 'I'}}"></label>
                         <div class="check"><div class="inside"></div></div>
                     </fieldset>
                     <aside class="datepicker travel-where" ng-show="survey.was_traveling == true">
-                        <h3 id="survey_travel_where">Where did You travel?</h3>
-                        <input type="text" name="travel_where" ng-model="survey.travel_where" placeholder="Type a city or a zip code">
+                        <h3 id="survey_travel_where" translate="survey_travel_where_v2" translate-value-user="{{user_name || 'you'}}"></h3>
+                        <input type="text" name="travel_where" ng-model="survey.travel_where">
                     </aside>
 
                     <div class="col-xs-12">
                       <div id="household-error" class="alert alert-danger" ng-show="survey.symptoms.length == 0 && error_symptom" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
-                          <span id="household-error-message">You must select at least one symptom or no symptom</span>
+                          <span id="household-error-message" translate="error_symptoms"></span>
                       </div>
                     </div>
                     <div class="form-buttons col-xs-12">
