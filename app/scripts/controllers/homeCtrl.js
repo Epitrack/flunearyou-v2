@@ -51,6 +51,10 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 		};
 	});
 
+	$scope.teste = function(){
+		alert(123);
+	}
+
 
 	/*
 	*	Get info's data box

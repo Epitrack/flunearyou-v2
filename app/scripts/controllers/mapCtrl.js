@@ -208,7 +208,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	*	Get info's data box
 	*/
 	$scope.updateInfoDataBox = function(){
-
+		
 		var center  = JSON.parse(sessionStorage.getItem('centerMap')),
 			zoom    = Number(sessionStorage.getItem('zoomMap')),
 			lat     = center.latitude,

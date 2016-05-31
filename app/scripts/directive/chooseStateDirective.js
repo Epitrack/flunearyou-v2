@@ -4,11 +4,12 @@
 
 'use strict';
 
-app.directive('chooseStateDirective', ['$rootScope', function($rootScope){
+app.directive('chooseStateDirective', ['$rootScope', '$window', function($rootScope, $window){
 	return {
 		restrict : 'A',
 		link : function(scope, elem){
 			elem.on('change', function(){
+				$window.location.href = '#/map';
 				var stateSelected     =  elem.find(':selected'),
 					surveys           =  Number(stateSelected.attr('data-surveys')),
 					nosymptoms        =  Number(stateSelected.attr('data-nosymptoms')),
@@ -64,7 +65,6 @@ app.directive('chooseStateDirective', ['$rootScope', function($rootScope){
 				sessionStorage.setItem('centerMap', JSON.stringify(centerMap));
 				sessionStorage.setItem('zoomMap', zoomMap);
 				$rootScope.$emit('updateInfoDataBox');
-
 			});
 		}
 	};
