@@ -39,7 +39,7 @@
             <!-- Accordion -->
             <div class="panel" ng-repeat="healthReport in healthReports" open-healph>
               <header class="panel-heading" role="tab" id="firs-panel" data-parent="#accordion" data-toggle="collapse" data-target="#reports-me" aria-expanded="false" aria-controls="reports-me">
-                <h4 class="panel-title">{{healthReport.nickname}}</h4>
+                <h4 class="panel-title">{{healthReport.nickname || 'Me'}}</h4>
                 <span></span>
               </header>
               <div id="reports-me" class="panel-collapseπ" role="tabpanel" aria-labelledby="firs-panel">
