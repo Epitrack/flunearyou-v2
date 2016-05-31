@@ -57,25 +57,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 			'flulike':           data[0].data.ili,
 			'flulikepercent':    data[0].data.ili_percentage
 		};
-	});
-
-	$scope.teste = function(){
-		alert(123);
-	}
-
-
-	/*
-	*	Get info's data box
-	*/
-	$scope.updateInfoDataBox = function(){
-		if(window.location.href.indexOf('map') != -1 ){
-			$window.location.href = '#/map'
-		};
-	};
-
-	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
-
-	
+	});	
 
 	/*
 	*	Flu News
