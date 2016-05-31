@@ -36,6 +36,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	var day = d.getDay(), diff = d.getDate() - 7 - day + (day == 0 ? -6:1);
 	$scope.week_of = new Date(d.setDate(diff));
 	$scope.week_end = new Date(d.setDate(diff + 6));
+	$scope.next_week = new Date(d.setDate(diff + 7));
 
 	var openModalThanks = function(){
 		var modalInstance = $uibModal.open({
@@ -65,6 +66,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 				$scope.user = result.info.basic;
 				$scope.user_vaccionations = result.info.vaccinations;
 				$scope.households = result.info.household;
+				console.log('RTR', $scope.user.current_survey);
 
 				if ($scope.households.length >= 1){
 					openPage('page_members');
