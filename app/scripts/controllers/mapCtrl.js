@@ -85,15 +85,15 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 					// Type icon
 					switch(markerIcon){
 						case '1' :
-							image = '/images/icon-azul.svg';
+							image = 'images/icon-azul.svg';
 						break;
 
 						case '3' : 
-							image = '/images/icon-amarelo.svg';
+							image = 'images/icon-amarelo.svg';
 						break;
 
 						case '5' : 
-							image = '/images/icon-vermelho.svg';
+							image = 'images/icon-vermelho.svg';
 						break;
 					}
 
