@@ -67,11 +67,11 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         console.log('sendReport', data);
         callback(true);
 
-        // $http.post(url, data, {headers: {'token': token}}).success(function(data) {
-        //     callback(true);
-        // }).error(function(error) {
-        //     console.log('Error sendReport: ', error);
-        // });
+        $http.post(url, data, {headers: {'token': token}}).success(function(data) {
+            callback(true);
+        }).error(function(error) {
+            console.log('Error sendReport: ', error);
+        });
     };
 
     obj.sendVaccine = function(data, callback){
@@ -79,11 +79,11 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         console.log('sendVaccine', data);
         callback(true);
 
-        // $http.post($urlBase+'/survey/vaccine', data, {headers: {'token': token}}).success(function(data) {
-        //     callback(true);
-        // }).error(function(error) {
-        //     console.log('Error sendVaccine: ', error);
-        // });
+        $http.post($urlBase+'/survey/vaccine', data, {headers: {'token': token}}).success(function(data) {
+            callback(true);
+        }).error(function(error) {
+            console.log('Error sendVaccine: ', error);
+        });
     };
 
     obj.sendReminder = function(callback){
