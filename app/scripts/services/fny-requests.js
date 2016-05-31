@@ -27,6 +27,10 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 	    },
 
 	    registerNewUser : function(objNewUser){
+	    	var campaign = localStorage.getItem('campaign');
+	    	if (campaign){
+	    		objNewUser.apha_num = campaign;
+	    	}
 	        $http.post($urlBase+'/user', objNewUser).success(function(data, status){
 	            var loginObj = {
 	                	"email"     : objNewUser.email,

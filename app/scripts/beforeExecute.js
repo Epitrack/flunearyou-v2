@@ -34,7 +34,7 @@ app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope'
 
     var campaignTracings = function(campaign){
         console.log('campaign', campaign);
-        // TO DO: implement function
+        localStorage.setItem('campaign', campaign);
         return true;
     }
 
