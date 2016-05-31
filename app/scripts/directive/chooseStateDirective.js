@@ -65,7 +65,7 @@ app.directive('chooseStateDirective', ['$rootScope', '$window', '$timeout', func
 				sessionStorage.setItem('zoomMap', zoomMap);
 				$timeout(function(){
 					$('.wrapper-databox-image').css({
-						'background' : ''+colorImage.color+' url(../images/states/'+colorImage.image+'.png) no-repeat center center' 
+						'background' : ''+colorImage.color+' url(images/states/'+colorImage.image+'.png) no-repeat center center' 
 					});
 					$rootScope.$emit('updateInfoDataBox');	
 				},500)
