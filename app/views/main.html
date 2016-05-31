@@ -14,9 +14,9 @@
                 <aside id="call-info" class="call-info col-xs-12 col-sm-5 col-sm-offset-6 col-md-7 col-md-offset-1 col-lg-6">
                     <h2 translate="main_header2"><span translate="raw"></span></h2>
 
-                    <form action="#" id="form-call-info" class="form-call-info col-xs-12" name="form-call-info">
-                        <input type="tel" class="input-secondary large" placeholder="Enter your City or Zipcode">
-                        <button type="submit" class="button btn-danger" translate="view_btn2"></button>
+                    <form id="form-call-info" class="form-call-info col-xs-12" name="form-call-info">
+                        <input type="tel" class="input-secondary large" placeholder="Enter your City or Zipcode" ng-model="zip">
+                        <button type="submit" class="button btn-danger" translate="view_btn2" ng-click="mapZipCode(zip)"></button>
                     </form>
 
                     <ul class="col-xs-12">

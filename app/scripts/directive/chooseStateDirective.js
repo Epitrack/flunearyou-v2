@@ -4,11 +4,13 @@
 
 'use strict';
 
-app.directive('chooseStateDirective', ['$rootScope', function($rootScope){
+app.directive('chooseStateDirective', ['$rootScope', '$window', '$timeout', function($rootScope, $window, $timeout){
 	return {
 		restrict : 'A',
 		link : function(scope, elem){
 			elem.on('change', function(){
+				$window.location.href = '#/map';
+
 				var stateSelected     =  elem.find(':selected'),
 					surveys           =  Number(stateSelected.attr('data-surveys')),
 					nosymptoms        =  Number(stateSelected.attr('data-nosymptoms')),
@@ -48,9 +50,7 @@ app.directive('chooseStateDirective', ['$rootScope', function($rootScope){
 					image : image
 				};
 
-				$('.wrapper-databox-image').css({
-					'background' : ''+colorImage.color+' url(../images/states/'+colorImage.image+'.png) no-repeat center center' 
-				})
+				
 
 				var zoomMap   = (value == 'United States') ? zoomMap = 4 : zoomMap = 6;
 				var	centerMap = (value == 'United States') ? centerMap = centerDefault : centerMap = centerState;
@@ -63,8 +63,13 @@ app.directive('chooseStateDirective', ['$rootScope', function($rootScope){
 				sessionStorage.setItem('objDataSurvey', JSON.stringify(objDataSurvey));
 				sessionStorage.setItem('centerMap', JSON.stringify(centerMap));
 				sessionStorage.setItem('zoomMap', zoomMap);
-				$rootScope.$emit('updateInfoDataBox');
-
+				$timeout(function(){
+					$('.wrapper-databox-image').css({
+						'background' : ''+colorImage.color+' url(../images/states/'+colorImage.image+'.png) no-repeat center center' 
+					});
+					$rootScope.$emit('updateInfoDataBox');	
+				},500)
+				
 			});
 		}
 	};

@@ -208,7 +208,6 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	*	Get info's data box
 	*/
 	$scope.updateInfoDataBox = function(){
-
 		var center  = JSON.parse(sessionStorage.getItem('centerMap')),
 			zoom    = Number(sessionStorage.getItem('zoomMap')),
 			lat     = center.latitude,
@@ -220,6 +219,25 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	};
 
 	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
+
+	//Call this wherever needed to actually handle the display
+	$scope.codeAddress = function() {
+		var zipCode = sessionStorage.getItem('zip');
+		var geocoder = new google.maps.Geocoder();
+		alert(123);
+		geocoder.geocode( { 'address': zipCode}, function(results, status) {
+			console.log(results);
+			console.log(status);
+			console.log(google.maps.GeocoderStatus.OK);
+			// if (status == google.maps.GeocoderStatus.OK) {
+			// 	MAP.initMap(lat, lon, 4);
+			// } else {
+			// 	alert("Geocode was not successful for the following reason: " + status);
+			// }
+		});
+	};
+
+	$rootScope.$on('codeAddress', $scope.codeAddress);
 
 	
 	/*

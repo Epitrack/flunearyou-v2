@@ -32,6 +32,14 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	$rootScope.$emit("NEWS");
 	$rootScope.$emit("SCROLL_TOP");
 	
+	/*
+	*	Redirect for the map
+	*/ 
+	$scope.mapZipCode = function(zip){
+		sessionStorage.setItem('zip', zip);
+		$rootScope.$emit('codeAddress');
+		$window.location.href = '#/map';
+	};
 
 	/*
 	*	Get states databox
@@ -49,21 +57,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 			'flulike':           data[0].data.ili,
 			'flulikepercent':    data[0].data.ili_percentage
 		};
-	});
-
-
-	/*
-	*	Get info's data box
-	*/
-	$scope.updateInfoDataBox = function(){
-		if(window.location.href.indexOf('map') != -1 ){
-			$window.location.href = '#/map'
-		};
-	};
-
-	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
-
-	
+	});	
 
 	/*
 	*	Flu News
