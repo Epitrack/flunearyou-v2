@@ -9,14 +9,25 @@ app.directive('loginFacebook', function(){
     restrict : 'A',
         link: function(scope, elem){
             elem.on('click', function(){
+
+                var fbAppId = "199700630106025";
+                // Facebook Login/Signup JS:
+                window.fbAsyncInit = function () {
+                    FB.init({
+                        appId: fbAppId,
+                        xfbml: true,
+                        status : true,
+                        version: 'v2.1'
+                    });
+                };
+
+
                 if (typeof FB != 'undefined') {
                 $("#facebook-login").prop("disabled", true);
                     FB.login(function (response) {
-                        console.log(response);
                         if (response.status === 'connected') {
                             // Logged into your app and Facebook.
                             var token = response.authResponse.accessToken;
-                            blockUI(i18nJS_processing);
                             $.ajax({
                                 url: "user/login/facebook",
                                 headers: {
@@ -31,11 +42,9 @@ app.directive('loginFacebook', function(){
                                         $('#login-error').hide();
                                         console.log("result", result);
                                         toastr.success(result.message + "Redirecting...");
-                                        close_modal();
                                         redirectUser(result.info.basic.current_survey, result.info.basic.token, 'login');
                                     } else {
-                                        ////console.log("fb login status", result);
-                                        toastr['warning'](result.message);
+                                        console.log("fb login status", result);
                                     }
                                 },
                                 error: function (data, XMLHttpRequest, textStatus, errorThrown) {
