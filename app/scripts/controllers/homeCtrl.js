@@ -32,6 +32,14 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	$rootScope.$emit("NEWS");
 	$rootScope.$emit("SCROLL_TOP");
 	
+	/*
+	*	Redirect for the map
+	*/ 
+	$scope.mapZipCode = function(zip){
+		sessionStorage.setItem('zip', zip);
+		$rootScope.$emit('codeAddress');
+		$window.location.href = '#/map';
+	};
 
 	/*
 	*	Get states databox
