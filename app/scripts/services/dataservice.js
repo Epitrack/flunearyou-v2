@@ -7,7 +7,7 @@
  * # dataService
  * Service in the flunearyouV2App.
  */
-app.service('dataService', [function ($scope, socket) {
+app.service('dataService', [ '$scope', 'socket', function ($scope, socket) {
 
     var socket = io.connect();
     var obj = {};

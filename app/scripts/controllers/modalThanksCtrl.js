@@ -1,12 +1,13 @@
 'use strict';
 
-app.controller('ModalThanksCtrl', function ($scope, $uibModalInstance, items) {
+app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', 
+	function ($scope, $uibModalInstance, items) {
 
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
-  };
+		$scope.ok = function () {
+			$uibModalInstance.close($scope.selected.item);
+		};
 
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-});
+		$scope.cancel = function () {
+			$uibModalInstance.dismiss('cancel');
+		};
+}]);
