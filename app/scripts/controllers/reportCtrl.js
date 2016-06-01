@@ -8,7 +8,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	/*
 	*	Init
 	*/ 
-	console.log('init controller');
+	
 	$('#modal-join-us, #modal-login').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
@@ -66,7 +66,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 				$scope.user = result.info.basic;
 				$scope.user_vaccionations = result.info.vaccinations;
 				$scope.households = result.info.household;
-				console.log('RTR', $scope.user.current_survey);
 
 				if ($scope.households.length >= 1){
 					openPage('page_members');

@@ -13,6 +13,13 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 			return false;
 		}
 
+		/*
+		*	Get infos report card
+		*/
+		$http.get($urlBase+'/stats.json', {headers: {'token': token}}).success(function(data){
+			$scope.reportCard = data;
+		}); 
+
 		$scope.ok = function () {
 			$uibModalInstance.close($scope.selected.item);
 		};
@@ -22,10 +29,5 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 		};
 
 
-		/*
-		*	Get infos report card
-		*/
-		$http.get($urlBase+'/stats.json', {headers: {'token': token}}).success(function(data){
-			$scope.reportCard = data;
-		}); 
+		
 }]);
