@@ -9,7 +9,9 @@
 
 :-ms-input-placeholder
   color: $text-other
-
+.close
+  position: relative
+  z-index: 9999
 textarea
   resize: vertical
   width: 100%
@@ -221,7 +223,6 @@ select
   background-repeat: no-repeat
   background-size: 50%
   background-position: center center
-  @include path('icon-btn-submit.svg')
   @include transition(background, .2s, ease-in, 0s)
 
   &:hover, &:focus, &:active

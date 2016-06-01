@@ -83,6 +83,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 		});
 	};
 
+	$scope.termometro = true
+	$scope.teste = function(){
+		$scope.termometro = $scope.termometro === false ? true: false;
+	}
+
 	var getChecks = function(){
 		reportApi.getChecks(function(result){
 			if (result){
