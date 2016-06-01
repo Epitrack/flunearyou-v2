@@ -37,16 +37,16 @@
               <input type="submit" class="btn-submit" value="">
             </form>
 
-            <a href="#">No thanks, continue</a>
+            <a href="#" ng-click="cancel()">No thanks, continue</a>
           </div>
         </div>
 
         <div class="col-xs-12 col-sm-4">
           <ul class="modal-list">
-            <li class="modal-item featured">Participation Rate: <span>35.9%</span></li>
-            <li class="modal-item">Weeks eligible to report <span>39</span></li>
-            <li class="modal-item">Weeks reported <span>14</span></li>
-            <li class="modal-item">Weeks since last report <span>0</span></li>
+            <li class="modal-item featured">Participation Rate: <span>{{reportCard.participation_rate}}%</span></li>
+            <li class="modal-item">Weeks eligible to report <span>{{reportCard.weeks_eligible}}</span></li>
+            <li class="modal-item">Weeks reported <span>{{reportCard.weeks_reported}}</span></li>
+            <li class="modal-item">Weeks since last report <span>{{reportCard.weeks_since_last_report}}</span></li>
           </ul>
         </div>
       </div>

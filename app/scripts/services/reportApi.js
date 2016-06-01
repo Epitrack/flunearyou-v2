@@ -1,7 +1,7 @@
 'use strict';
 
-app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout', 
-    function ($http, $urlBase, $rootScope, $window, $timeout) {
+app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout', '$uibModal',
+    function ($http, $urlBase, $rootScope, $window, $timeout, $uibModal) {
 
     var obj = {};
     var token = JSON.parse(localStorage.getItem('userLogged'));
@@ -64,7 +64,6 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
             data[value] = 1;
         });
 
-        console.log('sendReport', data);
         callback(true);
 
         $http.post(url, data, {headers: {'token': token}}).success(function(data) {
