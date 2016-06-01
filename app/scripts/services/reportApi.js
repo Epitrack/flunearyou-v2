@@ -64,8 +64,6 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
             data[value] = 1;
         });
 
-        callback(true);
-
         $http.post(url, data, {headers: {'token': token}}).success(function(data) {
             callback(true);
         }).error(function(error) {

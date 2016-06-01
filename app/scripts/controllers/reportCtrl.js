@@ -40,7 +40,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	var openModalThanks = function(){
 		var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'views/partials/modal-thanks.html',
 	      controller: 'ModalThanksCtrl',
 	      size: 'lg',
@@ -207,9 +206,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 			$location.path( "/settings" );
 		}else if (remind_me == 'N'){
 			reportApi.sendReminder(function(result){
+				
 				redirectToSuccess();
 			});
 		}else{
+			
 			redirectToSuccess();
 		}
 	};
