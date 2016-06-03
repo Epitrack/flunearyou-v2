@@ -5,11 +5,13 @@
 'use strict';
 
 app.config(['FacebookProvider',function(FacebookProvider) {
-	FacebookProvider.init('362068090500998');
+	var url = window.location.href;
 
-	// FBId local
-	// 362068090500998
+	if (url.indexOf('localhost') != -1){
+		var FBid = '362068090500998';
+	}else{
+		var FBid = '199700630106025';
+	}
 
-	// FBId Prod
-	// 199700630106025
+	FacebookProvider.init(FBid);
 }]); 
