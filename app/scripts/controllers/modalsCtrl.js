@@ -4,9 +4,9 @@
 
 'use strict';
 
-app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny', 'Facebook',
-	function($scope, $rootScope, $http, $urlBase, $window, $fny, Facebook){
-	
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny', 'Facebook', 'GooglePlus',
+	function($scope, $rootScope, $http, $urlBase, $window, $fny, Facebook, GooglePlus){
+
 	/*
 	*	Init
 	*/
@@ -18,7 +18,6 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 				$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
 			}
 		});
-		
 	}
 
 	/*
@@ -32,6 +31,12 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		
 		$fny.login(loginObj);
 	};
+
+	$scope.checkIfEnterKeyWasPressed = function(email, pass, event){
+		if (event.keyCode == 13) {
+			$scope.login(email, pass, event);
+		}
+	}
 
 	/*
 	*	Login by Facebook
@@ -59,8 +64,45 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
                 	
                 });
             }
+
+
 		});
 	} 
+
+	/*
+	*	Login by Google Plus
+	*/
+	 $scope.loginGooglePlus = function () {
+        GooglePlus.login().then(function (authResult) {
+            if (authResult.status.google_logged_in == true) {
+            	var token = authResult.access_token;
+
+            	$http.post($urlBase+'/user/googleplus', {"access_token": token}).success(function(data, status, result){
+            		console.log(data);
+                	if (status == 200){
+                		var userToken = data.info.token,
+			                userEmail = data.info.email,
+			                userLoggedObj = {
+			                    'email' : userEmail,
+			                    'token' : userToken
+			                };
+
+                		localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                		$rootScope.$emit("IS_LOGGED");
+                		$('.modal').modal('hide');
+                	}
+                }).error(function(data, status, result){
+                	
+                });
+            }
+
+            GooglePlus.getUser().then(function (user) {
+                console.log(user);
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    }; 
 
 	
 	/*
@@ -83,34 +125,11 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	*/ 
 	$scope.registerFacebook = function(zip){
 		var zipCode = zip;
+
 		Facebook.api('/me', function(response) {
 			console.log(response);
-			var genderFB = response.gender,
-                email    = response.email;
-
-            if (genderFB == 'male'){
-            	var gender = 'M'
-            }else{
-            	var gender = 'F'
-            }
-
-            var objNewUserFB = {
-            	'birthmonth' : '',
-				'birthyear'  : '',
-				'email'      : email,   
-				'gender'     : gender,
-				'password'   : '',
-				'zip'        : zipCode
-            }
-
-            if (zipCode) {
-            	$http.post($urlBase+'/user', objNewUserFB).success(function(data, status){
-	            	console.log(data);
-	            	$('.modal').modal('hide');
-	            }).error(function(data, status){ console.log(data); console.log(status); });
-            }
-
-            console.log(objNewUserFB);
+			var token = response.authResponse.accessToken;
+			
 		});
 	} 
 

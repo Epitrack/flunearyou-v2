@@ -31,15 +31,9 @@ app.directive('symptomsList', ['$sce', function($sce) {
 			if (scope.report.breath == 1) symptoms.push('breath');
 
 
-
-
-
-
 			scope.report.symptoms = symptoms;
 			// elem.text(symptoms).html();
 			// elem.attr('translate', 'fever');
-			console.log(elem);
-
 		}
 	};
 }]);

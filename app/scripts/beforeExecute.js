@@ -1,5 +1,5 @@
-app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window',
-    function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window){
+app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window', '$translate',
+    function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window, $translate){
     var defer = $q.defer();
 
     var tokenTracings = function(token){
@@ -21,8 +21,7 @@ app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope'
     }
 
     var languageTracings = function(language){
-        console.log('language', language);
-        // TO DO: implement function
+        $translate.use(language);
         return true;
     }
 
