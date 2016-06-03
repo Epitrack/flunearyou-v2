@@ -10,7 +10,7 @@ app.config(['FacebookProvider',function(FacebookProvider) {
 	if (url.indexOf('localhost') != -1){
 		var FBid = '362068090500998';
 	}else{
-		var FBid = '199700630106025';
+		var FBid = '463215990541721';
 	}
 
 	FacebookProvider.init(FBid);
