@@ -4,8 +4,8 @@
 
 'use strict';
 
-app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny',
-	function($scope, $rootScope, $http, $urlBase, $window, $fny){
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny', 'Facebook',
+	function($scope, $rootScope, $http, $urlBase, $window, $fny, Facebook){
 	
 	/*
 	*	Init
@@ -13,7 +13,12 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(){
-		$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
+		Facebook.login(function(response) {
+			if (response.status == 'connected') {
+				$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
+			}
+		});
+		
 	}
 
 	/*
@@ -27,6 +32,35 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		
 		$fny.login(loginObj);
 	};
+
+	/*
+	*	Login by Facebook
+	*/ 
+	$scope.loginFacebook = function(){
+		Facebook.login(function(response) {
+			if (response.status == 'connected') {
+				var token = response.authResponse.accessToken;
+                $http.post($urlBase+'/user/login/facebook', {"access_token": token}).success(function(data, status, result){
+                	if (status == 200){
+                		var nickname  = data.info.basic.nickname,
+			                userToken = data.info.basic.token,
+			                userEmail = data.info.basic.email,
+			                userLoggedObj = {
+			                    'name'  : nickname,
+			                    'email' : userEmail,
+			                    'token' : userToken
+			                };
+
+                		localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                		$rootScope.$emit("IS_LOGGED");
+                		$('.modal').modal('hide');
+                	}
+                }).error(function(data, status, result){
+                	
+                });
+            }
+		});
+	} 
 
 	
 	/*
@@ -43,6 +77,42 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		}
 		return false;
 	};
+
+	/*
+	*	Register by FB
+	*/ 
+	$scope.registerFacebook = function(zip){
+		var zipCode = zip;
+		Facebook.api('/me', function(response) {
+			console.log(response);
+			var genderFB = response.gender,
+                email    = response.email;
+
+            if (genderFB == 'male'){
+            	var gender = 'M'
+            }else{
+            	var gender = 'F'
+            }
+
+            var objNewUserFB = {
+            	'birthmonth' : '',
+				'birthyear'  : '',
+				'email'      : email,   
+				'gender'     : gender,
+				'password'   : '',
+				'zip'        : zipCode
+            }
+
+            if (zipCode) {
+            	$http.post($urlBase+'/user', objNewUserFB).success(function(data, status){
+	            	console.log(data);
+	            	$('.modal').modal('hide');
+	            }).error(function(data, status){ console.log(data); console.log(status); });
+            }
+
+            console.log(objNewUserFB);
+		});
+	} 
 
 	
 	/*

@@ -23,7 +23,7 @@
 
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 btn-wrapper">
-                                <button class="btn-facebook" ng-click="toggleResgisterSocial()" sign-up-facebook>Facebook</button>
+                                <button class="btn-facebook" ng-click="toggleResgisterSocial()">Facebook</button>
                             </div>
 
                             <div class="col-xs-12 col-sm-6 btn-wrapper">
@@ -112,8 +112,8 @@
 
                                     <form id="registration-form-zip" name="registration-form-zip" novalidate="novalidate" class="relative">
                                         <input name="zip" id="input-modal-zip" type="hidden">
-                                        <input id="input-modal-zip-label" class="bootbox-input bootbox-input-text form-control" autocomplete="off" name="zip" type="text" required="" aria-required="true">
-                                        <button type="submit" id="bt-zip" class="button btn-danger">Create User</button>
+                                        <input id="input-modal-zip-label" class="bootbox-input bootbox-input-text form-control" autocomplete="off" name="zip" type="text" required="" aria-required="true" ng-model="zip">
+                                        <button type="submit" id="bt-zip" class="button btn-danger" ng-click="registerFacebook(zip)">Create User</button>
                                         <button type="button" id="bt-zip-cancel" class="button btn-info absolute" ng-click="toggleResgisterSocial()">Go back</button>
                                     </form>
                                 </div>

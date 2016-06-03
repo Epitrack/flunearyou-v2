@@ -73,8 +73,6 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
 
     obj.sendVaccine = function(data, callback){
         data.token = token;
-        console.log('sendVaccine', data);
-        callback(true);
 
         $http.post($urlBase+'/survey/vaccine', data, {headers: {'token': token}}).success(function(data) {
             callback(true);
