@@ -56,7 +56,9 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			if (response.status == 'connected') {
 				var token = response.authResponse.accessToken;
                 $http.post($urlBase+'/user/login/facebook', {"access_token": token}).success(function(data, status, result){
+                	console.log('loginFacebook');
                 	console.log(data);
+
                 	if (status == 200){
                 		var nickname  = data.info.basic.nickname,
 			                userToken = data.info.basic.token,
