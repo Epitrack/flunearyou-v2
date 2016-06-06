@@ -10,14 +10,24 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	/*
 	*	Init
 	*/
-
+	$scope.newUser = {};
 	$scope.resgisterSocial = true;
-	$scope.toggleResgisterSocial = function(){
-		Facebook.login(function(response) {
-			if (response.status == 'connected') {
-				$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
+	$scope.toggleResgisterSocial = function(redeSocial){
+		if (redeSocial = 'FB') {
+			Facebook.login(function(response) {
+				if (response.status == 'connected') {
+					$scope.showRegisterForm = true;
+					$scope.registerFacebook();
+				}
+			});
+		}else{
+			GooglePlus.login().then(function (authResult) {
+				if (authResult.status.google_logged_in == true) {
+						$scope.showRegisterForm = true;
+						$scope.registerGooglePlus(authResult);
+				};
 			}
-		});
+		}
 	}
 
 	/*
@@ -46,7 +56,6 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			if (response.status == 'connected') {
 				var token = response.authResponse.accessToken;
                 $http.post($urlBase+'/user/login/facebook', {"access_token": token}).success(function(data, status, result){
-                	console.log(data);
                 	if (status == 200){
                 		var nickname  = data.info.basic.nickname,
 			                userToken = data.info.basic.token,
@@ -74,6 +83,13 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	*	Login by Google Plus
 	*/
 	 $scope.loginGooglePlus = function () {
+	 	var additionalParams = {
+	        'callback': signinCallback,
+	        'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read',
+	        'response_type': 'code'
+	    };
+
+
         GooglePlus.login().then(function (authResult) {
             if (authResult.status.google_logged_in == true) {
             	var token = authResult.access_token;
@@ -128,11 +144,24 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		var zipCode = zip;
 
 		Facebook.api('/me', function(response) {
-			console.log(response);
-			var token = response.authResponse.accessToken;
-			
+			$scope.newUser.email = response.email;
+			if (response.gender == 'male') {
+				$scope.newUser.gender = 'M'
+			}else{
+				$scope.newUser.gender = 'F'
+			}
 		});
-	} 
+	}
+
+// https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'
+	/*
+	*	Register by FB
+	*/ 
+	$scope.registerGooglePlus = function(){
+		GooglePlus.getUser().then(function (user) {
+			console.log(user);
+		});
+	}  
 
 	
 	/*
