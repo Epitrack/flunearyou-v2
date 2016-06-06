@@ -13,7 +13,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	$scope.newUser = {};
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(redeSocial){
-		if (redeSocial = 'FB') {
+		if (redeSocial == 'FB') {
 			Facebook.login(function(response) {
 				if (response.status == 'connected') {
 					$scope.showRegisterForm = true;
@@ -26,9 +26,9 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 						$scope.showRegisterForm = true;
 						$scope.registerGooglePlus(authResult);
 				};
-			}
-		}
-	}
+			});
+		};
+	};
 
 	/*
 	*	Login
@@ -74,8 +74,6 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
                 	
                 });
             }
-
-
 		});
 	} 
 
@@ -83,39 +81,20 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	*	Login by Google Plus
 	*/
 	 $scope.loginGooglePlus = function () {
-	 	var additionalParams = {
-	        'callback': signinCallback,
-	        'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read',
-	        'response_type': 'code'
-	    };
-
 
         GooglePlus.login().then(function (authResult) {
             if (authResult.status.google_logged_in == true) {
             	var token = authResult.access_token;
 
-            	$http.post($urlBase+'/user/googleplus', {"access_token": token}).success(function(data, status, result){
-            		console.log(data);
+            	$http.post($urlBase+'/user/login/googleplus', {"access_token": token}).success(function(data, status, result){
                 	if (status == 200){
-                		var userToken = data.info.token,
-			                userEmail = data.info.email,
-			                userLoggedObj = {
-			                    'email' : userEmail,
-			                    'token' : userToken
-			                };
-
-                		localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-                		$rootScope.$emit("IS_LOGGED");
-                		$('.modal').modal('hide');
+                		var tokenUser = data.info.basic.token;
+                		$fny.loginByToken(tokenUser);
                 	}
                 }).error(function(data, status, result){
                 	
                 });
             }
-
-            GooglePlus.getUser().then(function (user) {
-                console.log(user);
-            });
         }, function (err) {
             console.log(err);
         });
@@ -153,14 +132,23 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		});
 	}
 
-// https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'
+
+
 	/*
 	*	Register by FB
 	*/ 
-	$scope.registerGooglePlus = function(){
-		GooglePlus.getUser().then(function (user) {
-			console.log(user);
-		});
+	$scope.registerGooglePlus = function(authResult){
+    	var token = authResult.access_token;
+
+    	$http.post($urlBase+'/user/login/googleplus', {"access_token": token}).success(function(data, status, result){
+        	if (status == 200){
+        		console.log(data);
+        		$scope.newUser.email  = data.info.basic.email;
+        		$scope.newUser.gender = data.info.basic.gender
+        	}
+        }).error(function(data, status, result){
+        	
+        });
 	}  
 
 	

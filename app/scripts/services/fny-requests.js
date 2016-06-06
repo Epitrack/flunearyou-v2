@@ -26,6 +26,23 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 	        }).error(function(data, status){ console.log(status) });
 	    },
 
+	    loginByToken : function(token){
+	    	$http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data, status){
+	            var nickname  = data.info.basic.nickname,
+	                userToken = data.info.basic.token,
+	                userEmail = data.info.basic.email,
+	                userLoggedObj = {
+	                    'name'  : nickname,
+	                    'email' : userEmail,
+	                    'token' : userToken
+	                };
+	                
+	                localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+	                $rootScope.$emit("IS_LOGGED");
+	                $window.location.href = '#/report?token='+userToken;
+	        }).error(function(data, status){ console.log(status) });
+	    },
+
 	    registerNewUser : function(objNewUser){
 	    	var campaign = localStorage.getItem('campaign');
 	    	if (campaign){
