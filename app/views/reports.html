@@ -61,7 +61,7 @@
                           <span ng-repeat="s in report.symptoms">
                             <span translate="{{ s }}"></span>{{$last ? '' : ', '}}
                           </span>
-                          <span ng-if="report.symptoms.length == 0" translate="no_surveys_submitted"></span>
+                          <span ng-if="report.symptoms.length == 0" translate="reported_no_symptoms"></span>
                         </td>
                       </tr>
                     </tbody>

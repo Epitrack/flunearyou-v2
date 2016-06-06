@@ -34,7 +34,6 @@ app.controller('healthReportCtrl', ['$scope', '$rootScope','$http', '$urlBase', 
 	*	Get infos health report
 	*/
 	 $http.get($urlBase+'/reports.json', {headers: {'token': token}}).success(function(data){
-	 	console.log(data);
 		$scope.healthReports = data;
 		$scope.healthReportsSurveys = data.surveys;
 	}); 

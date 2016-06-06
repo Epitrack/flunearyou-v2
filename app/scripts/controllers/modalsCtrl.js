@@ -61,20 +61,20 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
                 	console.log(status);
                 	console.log(result);
 
-                	// if (status == 200){
-                	// 	var nickname  = data.info.basic.nickname,
-			              //   userToken = data.info.basic.token,
-			              //   userEmail = data.info.basic.email,
-			              //   userLoggedObj = {
-			              //       'name'  : nickname,
-			              //       'email' : userEmail,
-			              //       'token' : userToken
-			              //   };
+                	if (status == 200){
+                		var nickname  = data.info.basic.nickname,
+			                userToken = data.info.basic.token,
+			                userEmail = data.info.basic.email,
+			                userLoggedObj = {
+			                    'name'  : nickname,
+			                    'email' : userEmail,
+			                    'token' : userToken
+			                };
 
-                	// 	localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-                	// 	$rootScope.$emit("IS_LOGGED");
-                	// 	$('.modal').modal('hide');
-                	// }
+                		localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                		$rootScope.$emit("IS_LOGGED");
+                		$('.modal').modal('hide');
+                	}
                 }).error(function(data, status, result){
                 	
                 });
