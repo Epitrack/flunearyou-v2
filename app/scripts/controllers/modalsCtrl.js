@@ -79,7 +79,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
                 	
                 });
             }
-		});
+		}, {scope: 'email'});
 	} 
 
 	/*
