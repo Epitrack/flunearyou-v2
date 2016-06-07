@@ -20,7 +20,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 			return new google.maps.LatLng(lat, lng);
 		},
 
-		initMap : function(lat, lon, zoom, cdc){
+		initMap : function(lat, lon, zoom, cdc, zip){
 			var style     = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"on"},{"color":"#000000"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":"0.01"},{"visibility":"off"},{"hue":"#ff8f00"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f2f2f2"},{"weight":"2.32"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffce00"},{"weight":"0.01"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d4ebf5"},{"visibility":"on"}]}]
 	        var lat_lng   = MAP.LatLng(lat, lon);
 	        var styledMap = new google.maps.StyledMapType(style, {name: "Styled Map"});
@@ -39,6 +39,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 
 	        // Map
 	        var map = new google.maps.Map(document.getElementById('map'), mapCustom);
+	        var geocoder = new google.maps.Geocoder();
 	        map.mapTypes.set('map_style', styledMap);
 	        map.setMapTypeId('map_style');
 	       	
@@ -62,8 +63,30 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 		           	});
 	        	});
 	        };
-	      	
+
+	    
+	        if (zip) MAP.mapForZipCpde(map, geocoder);
+
 			return map;
+		},
+
+		mapForZipCpde : function(map, geocoder){
+			var zipCode = sessionStorage.getItem('zip');
+
+			geocoder.geocode( { 'address': zipCode}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					map.setCenter(results[0].geometry.location);
+					map.setZoom(9);
+					var marker = new google.maps.Marker({
+						map: map,
+						position: results[0].geometry.location,
+						icon     : 'images/marker.png',
+						zIndex   : 9999
+					});
+				} else {
+					alert('Geocode was not successful for the following reason: ' + status);
+				}
+			});
 		},
 
 		getMarkers : function(map){
@@ -81,15 +104,15 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 					// Type icon
 					switch(markerIcon){
 						case '1' :
-							image = '../images/icon-azul.svg';
+							image = 'images/icon-azul.png';
 						break;
 
 						case '3' : 
-							image = '../images/icon-amarelo.svg';
+							image = 'images/icon-amarelo.png';
 						break;
 
 						case '5' : 
-							image = '../images/icon-vermelho.svg';
+							image = 'images/icon-vermelho.png';
 						break;
 					}
 
@@ -104,7 +127,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 
 			        // Set zIndex of the marker
 			        if (marker.icon == 5) {
-                        m.zIndex = 9999;
+                        m.zIndex = 9998;
                     } else if (marker.icon == 3) {
                         m.zIndex = 700;
                     }else{
@@ -142,9 +165,9 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 			};
 
 			if(window.innerHeight > window.innerWidth){
-			    MAP.initMap("40.0902", "-98.7129", 3, true);
+			    MAP.initMap("40.0902", "-98.7129", 3, true, false);
 			}else{
-				MAP.initMap("40.0902", "-110.7129", 4, true);
+				MAP.initMap("40.0902", "-110.7129", 4, true, false);
 			}
 
 			$('.info-cdc').removeClass('none');
@@ -176,11 +199,23 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 		}
 	};
 
+	
+	/*
+	*	If zipCode
+	*/ 
+	var zipCode = sessionStorage.getItem('zip')
+	
+	if (zipCode){
+		var zip = true;
+	}else{
+		var zip = false;
+	}
+ 	
  	// Init Maps
     if(window.innerHeight > window.innerWidth){
-	    MAP.initMap("40.0902", "-98.7129", 3, false);
+	    MAP.initMap("40.0902", "-98.7129", 3, false, zip);
 	}else{
-		MAP.initMap("40.0902", "-110.7129", 4, false);
+		MAP.initMap("40.0902", "-110.7129", 4, false, zip);
 	}
 
 
@@ -219,26 +254,6 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	};
 
 	$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
-
-	//Call this wherever needed to actually handle the display
-	$scope.codeAddress = function() {
-		var zipCode = sessionStorage.getItem('zip');
-		var geocoder = new google.maps.Geocoder();
-		alert(123);
-		geocoder.geocode( { 'address': zipCode}, function(results, status) {
-			console.log(results);
-			console.log(status);
-			console.log(google.maps.GeocoderStatus.OK);
-			// if (status == google.maps.GeocoderStatus.OK) {
-			// 	MAP.initMap(lat, lon, 4);
-			// } else {
-			// 	alert("Geocode was not successful for the following reason: " + status);
-			// }
-		});
-	};
-
-	$rootScope.$on('codeAddress', $scope.codeAddress);
-
 	
 	/*
 	*	Hide/Show markers

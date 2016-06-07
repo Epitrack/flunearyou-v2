@@ -4,19 +4,19 @@
 'use strict';
 
 app.config(['$translateProvider', function($translateProvider) {
-	if (sessionStorage.getItem('translations_en') && sessionStorage.getItem('translations_es')){
+	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')){
 		
 		$translateProvider
-			.translations('en', JSON.parse(sessionStorage.getItem('translations_en')))
-			.translations('es', JSON.parse(sessionStorage.getItem('translations_es')))
+			.translations('en', JSON.parse(localStorage.getItem('translations_en')))
+			.translations('es', JSON.parse(localStorage.getItem('translations_es')))
 			.preferredLanguage('en')
 			.useSanitizeValueStrategy(null);
 
 	}else{
 		
 		$.get('http://dev.flunearyou.org/translations').success(function(data, status){
-			sessionStorage.setItem('translations_en', JSON.stringify(data.translations.en));
-			sessionStorage.setItem('translations_es', JSON.stringify(data.translations.es));
+			localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
+			localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
 			
 			$translateProvider
 				.translations('en', JSON.stringify(data.translations.en))

@@ -28,7 +28,6 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-    
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
@@ -43,14 +42,16 @@
 
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    
     <!-- endbuild -->
 
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="/bower_components/modernizr/modernizr.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- endbuild -->
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
     <style type="text/css">.growl {top:130px;}</style>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDRHloTNr68meTs9Afgqqm3IEy9E7tSLQc"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAXLFk5RjQPOcZ9cogb-PU8ncb5yZfBlQE&sensor=FALSE&libraries=places"></script>
 </head>
 <body>
     <!-- Header -->
@@ -111,17 +112,15 @@
     <script src="/bower_components/ng-pickadate/ng-pickadate.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="/bower_components/angular-growl/build/angular-growl.js"></script>
+    <script src="/bower_components/angular-facebook/lib/angular-facebook.js"></script>
+    <script src="/bower_components/angular-google-plus/dist/angular-google-plus.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-
-
-    <!-- Get Tranlation -->
-    <!-- <script src="scripts/getTranslations.js"></script> -->
+    
+    <!-- <script src="scripts/facebook.js"></script>
+    <script src="scripts/google-plus.js" async defer></script> -->
 
     <!-- build:js scripts/plugins.js -->
-    <script src="scripts/facebook.js"></script>
-    <script src="scripts/google-plus.js" async defer></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
     <!-- endbuild -->
@@ -137,6 +136,8 @@
     <script src="scripts/config/mapConfig.js"></script>
     <script src="scripts/config/loadingBarConfig.js"></script>
     <script src="scripts/config/angularTranslateConfig.js"></script>
+    <script src="scripts/config/facebookConfig.js"></script>
+    <script src="scripts/config/googlePlusConfig.js"></script>
 
     <!-- Controller -->
     <script src="scripts/controllers/mainCtrl.js"></script>
@@ -162,10 +163,6 @@
     <script src="scripts/directive/temperatureDirective.js"></script>
     <script src="scripts/directive/disabledSurveyDirective.js"></script>
     <script src="scripts/directive/showTraveling.js"></script>
-    <script src="scripts/directive/loginFacebookDirective.js"></script>
-    <script src="scripts/directive/signUpFacebookDirective.js"></script>
-    <script src="scripts/directive/loginGooglePlusDirective.js"></script>
-    <script src="scripts/directive/signUpGooglePlusDirective.js"></script>
     <script src="scripts/directive/removeOption.js"></script>
     <script src="scripts/directive/selectLanguage.js"></script>
     <script src="scripts/directive/loadingButtonDirective.js"></script>

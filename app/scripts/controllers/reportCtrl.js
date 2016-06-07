@@ -8,7 +8,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	/*
 	*	Init
 	*/ 
-	console.log('init controller');
+	
 	$('#modal-join-us, #modal-login').modal('hide');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
@@ -40,7 +40,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 	var openModalThanks = function(){
 		var modalInstance = $uibModal.open({
-	      animation: $scope.animationsEnabled,
 	      templateUrl: 'views/partials/modal-thanks.html',
 	      controller: 'ModalThanksCtrl',
 	      size: 'lg',
@@ -66,7 +65,6 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 				$scope.user = result.info.basic;
 				$scope.user_vaccionations = result.info.vaccinations;
 				$scope.households = result.info.household;
-				console.log('RTR', $scope.user.current_survey);
 
 				if ($scope.households.length >= 1){
 					openPage('page_members');
@@ -83,6 +81,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 			}
 		});
 	};
+
+	$scope.termometro = true
+	$scope.teste = function(){
+		$scope.termometro = $scope.termometro === false ? true: false;
+	}
 
 	var getChecks = function(){
 		reportApi.getChecks(function(result){
@@ -203,9 +206,11 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 			$location.path( "/settings" );
 		}else if (remind_me == 'N'){
 			reportApi.sendReminder(function(result){
+				
 				redirectToSuccess();
 			});
 		}else{
+			
 			redirectToSuccess();
 		}
 	};

@@ -4,17 +4,31 @@
 
 'use strict';
 
-app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny',
-	function($scope, $rootScope, $http, $urlBase, $window, $fny){
-	
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny', 'Facebook', 'GooglePlus',
+	function($scope, $rootScope, $http, $urlBase, $window, $fny, Facebook, GooglePlus){
+
 	/*
 	*	Init
 	*/
-
+	$scope.newUser = {};
 	$scope.resgisterSocial = true;
-	$scope.toggleResgisterSocial = function(){
-		$scope.resgisterSocial = $scope.resgisterSocial === false ? true: false;
-	}
+	$scope.toggleResgisterSocial = function(redeSocial){
+		if (redeSocial == 'FB') {
+			Facebook.login(function(response) {
+				if (response.status == 'connected') {
+					$scope.showRegisterForm = true;
+					$scope.registerFacebook();
+				}
+			});
+		}else{
+			GooglePlus.login().then(function (authResult) {
+				if (authResult.status.google_logged_in == true) {
+						$scope.showRegisterForm = true;
+						$scope.registerGooglePlus(authResult);
+				};
+			});
+		};
+	};
 
 	/*
 	*	Login
@@ -27,6 +41,69 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		
 		$fny.login(loginObj);
 	};
+
+	$scope.checkIfEnterKeyWasPressed = function(email, pass, event){
+		if (event.keyCode == 13) {
+			$scope.login(email, pass, event);
+		}
+	}
+
+	/*
+	*	Login by Facebook
+	*/ 
+	$scope.loginFacebook = function(){
+		Facebook.login(function(response) {
+			if (response.status == 'connected') {
+				var token = response.authResponse.accessToken;
+                $http.post($urlBase+'/user/login/facebook', {"access_token": token}).success(function(data, status, result){
+                	console.log('loginFacebook');
+                	console.log(data);
+                	console.log(status);
+                	console.log(result);
+
+                	if (status == 200){
+                		var nickname  = data.info.basic.nickname,
+			                userToken = data.info.basic.token,
+			                userEmail = data.info.basic.email,
+			                userLoggedObj = {
+			                    'name'  : nickname,
+			                    'email' : userEmail,
+			                    'token' : userToken
+			                };
+
+                		localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                		$rootScope.$emit("IS_LOGGED");
+                		$('.modal').modal('hide');
+                	}
+                }).error(function(data, status, result){
+                	
+                });
+            }
+		});
+	} 
+
+	/*
+	*	Login by Google Plus
+	*/
+	 $scope.loginGooglePlus = function () {
+
+        GooglePlus.login().then(function (authResult) {
+            if (authResult.status.google_logged_in == true) {
+            	var token = authResult.access_token;
+
+            	$http.post($urlBase+'/user/login/googleplus', {"access_token": token}).success(function(data, status, result){
+                	if (status == 200){
+                		var tokenUser = data.info.basic.token;
+                		$fny.loginByToken(tokenUser);
+                	}
+                }).error(function(data, status, result){
+                	
+                });
+            }
+        }, function (err) {
+            console.log(err);
+        });
+    }; 
 
 	
 	/*
@@ -43,6 +120,41 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		}
 		return false;
 	};
+
+	/*
+	*	Register by FB
+	*/ 
+	$scope.registerFacebook = function(zip){
+		var zipCode = zip;
+
+		Facebook.api('/me', function(response) {
+			$scope.newUser.email = response.email;
+			if (response.gender == 'male') {
+				$scope.newUser.gender = 'M'
+			}else{
+				$scope.newUser.gender = 'F'
+			}
+		});
+	}
+
+
+
+	/*
+	*	Register by FB
+	*/ 
+	$scope.registerGooglePlus = function(authResult){
+    	var token = authResult.access_token;
+
+    	$http.post($urlBase+'/user/login/googleplus', {"access_token": token}).success(function(data, status, result){
+        	if (status == 200){
+        		console.log(data);
+        		$scope.newUser.email  = data.info.basic.email;
+        		$scope.newUser.gender = data.info.basic.gender
+        	}
+        }).error(function(data, status, result){
+        	
+        });
+	}  
 
 	
 	/*

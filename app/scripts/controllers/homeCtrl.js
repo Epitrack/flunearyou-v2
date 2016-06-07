@@ -37,7 +37,6 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	*/ 
 	$scope.mapZipCode = function(zip){
 		sessionStorage.setItem('zip', zip);
-		$rootScope.$emit('codeAddress');
 		$window.location.href = '#/map';
 	};
 
