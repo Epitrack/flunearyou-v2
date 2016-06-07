@@ -25,14 +25,29 @@ app.directive('uiCalender', function(){
 		        }
 		        scope.date_default = date_default;
 
-		        console.log('min', min);
-		        console.log('max', max);
-		        console.log('date_default', date_default);
+		        // Min Date
+		        var minDay   = min.getDate(),
+		        	minMonth = min.getMonth(),
+		        	minYear  = min.getFullYear();
+
+		        console.log(min);
+		        console.log(minDay);
+		        console.log(minMonth);
+		        console.log(minYear);
+
+		        // Max Date
+		        var maxDay   = max.getDate(),
+		        	maxMonth = max.getMonth(),
+		        	maxYear  = max.getFullYear();
+
+		        console.log(max);
+		        console.log(maxDay);
+		        console.log(maxMonth);
+		        console.log(maxYear);
 
 		        $('#date_input').pickadate({
-		            min: min,
-		            max: max,
-		            format: 'dddd, mmmm d yyyy'
+		        	min: new Date(minYear, minMonth, minDay),
+  					max: new Date(maxYear, maxMonth+1, maxDay)
 		        });
 
 		        var picker = $('#date_input').pickadate('picker');

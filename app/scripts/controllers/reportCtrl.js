@@ -32,11 +32,17 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	$scope.checks_perm = [];
 
 	// Week of
-	var d = new Date();
-	var day = d.getDay(), diff = d.getDate() - 7 - day + (day == 0 ? -6:1);
-	$scope.week_of = new Date(d.setDate(diff));
-	$scope.week_end = new Date(d.setDate(diff + 6));
+	var d    = new Date();
+	var day  = d.getDay(), 
+		diff = d.getDate() - 7 - day + (day == 0 ? -6:1);
+
+	$scope.week_of   = new Date(d.setDate(diff));
+	$scope.week_end  = new Date(d.setDate(diff + 6));
 	$scope.next_week = new Date(d.setDate(diff + 7));
+
+	console.log($scope.week_of  );
+	console.log($scope.week_end );
+	console.log($scope.next_week);
 
 	var openModalThanks = function(){
 		var modalInstance = $uibModal.open({
@@ -52,10 +58,10 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 	};
 
 	var openPage = function(page){
-		$scope.page_members = page == 'page_members' ? true : false;
-		$scope.page_symptoms = page == 'page_symptoms' ? true : false;
+		$scope.page_members       = page == 'page_members' ? true : false;
+		$scope.page_symptoms      = page == 'page_symptoms' ? true : false;
 		$scope.page_vaccionations = page == 'page_vaccionations' ? true : false;
-		$scope.page_more_members = page == 'page_more_members' ? true : false;
+		$scope.page_more_members  = page == 'page_more_members' ? true : false;
 	};
 
 
