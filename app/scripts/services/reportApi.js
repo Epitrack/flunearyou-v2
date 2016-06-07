@@ -45,7 +45,6 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
             'user_id': user_id,
             'current_member': current_user_id,
             'healthy_members': members.join(),
-            'no_symptoms': no_symptoms
         }
         if (survey.ill_date){
             data.ill_date = new Date(survey.ill_date).toISOString().substring(0, 10);

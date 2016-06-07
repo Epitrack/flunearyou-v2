@@ -73,7 +73,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 					$scope.selected_ids = [$scope.user.user_id];
 					$scope.current_id = $scope.user.user_id;
 				}
-
+				console.log('RTR', $scope.user.current_survey);
 				$scope.members_ids.push($scope.user.user_id);
 				angular.forEach($scope.households, function(value, key){
 					$scope.members_ids.push(value.user_household_id);
