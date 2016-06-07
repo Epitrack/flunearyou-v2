@@ -125,8 +125,7 @@
                     </div>
 
 
-                    <aside id="datepicker"
-                           class="datepicker" ng-show="survey.symptoms.length > 0">
+                    <aside id="datepicker" class="datepicker" ng-show="survey.symptoms.length > 0 && user.current_survey == false">
                         <h3 translate="survey_calendar"></h3>
                         <input class="login-input" id="date_input" type="text" ng-model="survey.ill_date" name="date"
                                placeholder="{{ site.content.click_to_pick_a_date }}" ng-value="week_of|date:'EEEE, MMMM d yyyy'"
