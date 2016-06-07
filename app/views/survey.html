@@ -125,7 +125,8 @@
                     </div>
 
 
-                    <aside id="datepicker" class="datepicker" ng-show="survey.symptoms.length > 0">
+
+                    <aside id="datepicker" class="datepicker" ng-show="survey.symptoms.length > 0 && user.current_survey == false">
                         <h3 translate="survey_calendar"></h3>
                         <input class="login-input" id="date_input" type="text" name="date"
                          ng-model="survey.ill_date"  

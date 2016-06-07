@@ -19,7 +19,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 					$scope.showRegisterForm = true;
 					$scope.registerFacebook();
 				}
-			});
+			}, {scope: 'email'});
 		}else{
 			GooglePlus.login().then(function (authResult) {
 				if (authResult.status.google_logged_in == true) {
@@ -79,7 +79,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
                 	
                 });
             }
-		});
+		}, {scope: 'email'});
 	} 
 
 	/*
