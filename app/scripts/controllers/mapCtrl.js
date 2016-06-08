@@ -4,7 +4,8 @@
 
 'use strict';
 
-app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session', function($scope, $rootScope, $http, $urlBase, session){
+app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session', 
+	function($scope, $rootScope, $http, $urlBase, session){
 	session.then( function() {
 	/*
 	*	Init
