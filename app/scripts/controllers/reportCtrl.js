@@ -6,84 +6,101 @@
 app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', 'session', 
 	function($scope, $rootScope, $window, $location, $uibModal, reportApi, userApi, session){
 	session.then( function() {
-		/*
-		*	Init
-		*/ 
-		
-		$('#modal-join-us, #modal-login').modal('hide');
-		$rootScope.$emit("IS_LOGGED");
-		$rootScope.$emit("SCROLL_TOP");
 
-		$scope.optionsDate = new Date();
-		$scope.options = { format: 'dd/mm/yy', selectYears: true };
+	/*
+	*	Init
+	*/ 
+	
+	$('#modal-join-us, #modal-login').modal('hide');
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
 
-		// Arrays 
-		$scope.page_members = false;
-		$scope.page_symptoms = false;
-		$scope.page_vaccionations = false;
-		$scope.page_more_members = false;
-		$scope.vaccinations = [];
-		$scope.members = [];
-		$scope.members_ids = [];
-		$scope.selected_ids = [];
-		$scope.current_id = null;
-		$scope.survey = {symptoms: []};
-		$scope.travel_where = null;
-		$scope.checks = [];
-		$scope.checks_perm = [];
+	$scope.optionsDate = new Date();
+	$scope.options = { format: 'dd/mm/yy', selectYears: true };
 
-		// Week of
-		var d    = new Date();
-		var day  = d.getDay(), 
-			diff = d.getDate() - 7 - day + (day == 0 ? -6:1);
+	// Arrays 
+	$scope.page_members = false;
+	$scope.page_symptoms = false;
+	$scope.page_vaccionations = false;
+	$scope.page_more_members = false;
+	$scope.vaccinations = [];
+	$scope.members = [];
+	$scope.members_ids = [];
+	$scope.selected_ids = [];
+	$scope.current_id = null;
+	$scope.survey = {symptoms: []};
+	$scope.travel_where = null;
+	$scope.checks = [];
+	$scope.checks_perm = [];
 
-		$scope.week_of   = new Date(d.setDate(diff));
-		$scope.week_end  = new Date(d.setDate(diff + 6));
-		$scope.next_week = new Date(d.setDate(diff + 7));
+	// Week of
+	var d    = new Date();
+	var day  = d.getDay(), 
+		diff = d.getDate() - 7 - day + (day == 0 ? -6:1);
 
-		var openModalThanks = function(){
-			var modalInstance = $uibModal.open({
-		      templateUrl: 'views/partials/modal-thanks.html',
-		      controller: 'ModalThanksCtrl',
-		      size: 'lg',
-		      resolve: {
-		        items: function () {
-		        	return $scope.items;
-		        }
-		      }
-		    });
-		};
+	$scope.week_of   = new Date(d.setDate(diff));
+	$scope.week_end  = new Date(d.setDate(diff + 6));
+	$scope.next_week = new Date(d.setDate(diff + 7));
 
-		var openPage = function(page){
-			$scope.page_members       = page == 'page_members' ? true : false;
-			$scope.page_symptoms      = page == 'page_symptoms' ? true : false;
-			$scope.page_vaccionations = page == 'page_vaccionations' ? true : false;
-			$scope.page_more_members  = page == 'page_more_members' ? true : false;
-		};
+	var openModalThanks = function(){
+		var modalInstance = $uibModal.open({
+	      templateUrl: 'views/partials/modal-thanks.html',
+	      controller: 'ModalThanksCtrl',
+	      size: 'lg',
+	      resolve: {
+	        items: function () {
+	        	return $scope.items;
+	        }
+	      }
+	    });
+	};
+
+	var openPage = function(page){
+		$scope.page_members       = page == 'page_members' ? true : false;
+		$scope.page_symptoms      = page == 'page_symptoms' ? true : false;
+		$scope.page_vaccionations = page == 'page_vaccionations' ? true : false;
+		$scope.page_more_members  = page == 'page_more_members' ? true : false;
+	};
 
 
-		var getUser = function(){
-			userApi.getUser(function(result){
-				if (result.info){
-					$scope.user = result.info.basic;
-					$scope.user_vaccionations = result.info.vaccinations;
-					$scope.households = result.info.household;
+	var getUser = function(){
+		userApi.getUser(function(result){
+			if (result.info){
+				$scope.user = result.info.basic;
+				$scope.user_vaccionations = result.info.vaccinations;
+				$scope.households = result.info.household;
 
-					if ($scope.households.length >= 1){
-						openPage('page_members');
-					}else{
-						openPage('page_symptoms');
-						$scope.selected_ids = [$scope.user.user_id];
-						$scope.current_id = $scope.user.user_id;
-					}
-
-					$scope.members_ids.push($scope.user.user_id);
-					angular.forEach($scope.households, function(value, key){
-						$scope.members_ids.push(value.user_household_id);
-					});
+				if ($scope.households.length >= 1){
+					openPage('page_members');
+				}else{
+					openPage('page_symptoms');
+					$scope.selected_ids = [$scope.user.user_id];
+					$scope.current_id = $scope.user.user_id;
 				}
-			});
-		};
+				// console.log('RTR', $scope.user.current_survey);
+				$scope.members_ids.push($scope.user.user_id);
+				angular.forEach($scope.households, function(value, key){
+					$scope.members_ids.push(value.user_household_id);
+				});
+			}
+		});
+	};
+
+	$scope.termometro = true
+	$scope.teste = function(){
+		$scope.termometro = $scope.termometro === false ? true: false;
+	}
+
+	var getChecks = function(){
+		reportApi.getChecks(function(result){
+			if (result){
+				$scope.checks = result.checks;
+				$scope.members = result.checks;
+				$scope.checks_perm = result.checks_perm;
+			}
+		});
+	};
+
 
 		$scope.termometro = true
 		$scope.teste = function(){
