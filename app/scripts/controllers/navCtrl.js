@@ -26,6 +26,8 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', function($scope
 	$scope.logout = function(){
 		$scope.custom = false
 		localStorage.removeItem('userLogged');
+		localStorage.removeItem('user_household_id');
+		localStorage.removeItem('objHouseholdEdit');
 		$rootScope.$emit("IS_LOGGED");
 	}
 

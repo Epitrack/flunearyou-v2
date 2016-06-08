@@ -14,7 +14,7 @@ app.directive('uiCalender', function(){
 		            if (scope.user.first_survey) {
 		                var min = k;
 		            } else {
-		                var min = k.setDate(k.getDate() + 7);
+		                var min = new Date(k.setDate(k.getDate() + 7));
 		            }
 		            var max = new Date();
 		            var date_default = new Date();
@@ -35,6 +35,7 @@ app.directive('uiCalender', function(){
 		        console.log(minMonth);
 		        console.log(minYear);
 
+
 		        // Max Date
 		        var maxDay   = max.getDate(),
 		        	maxMonth = max.getMonth(),
@@ -45,10 +46,14 @@ app.directive('uiCalender', function(){
 		        console.log(maxMonth);
 		        console.log(maxYear);
 
+		        
+
 		        $('#date_input').pickadate({
 		        	min: new Date(minYear, minMonth, minDay),
-  					max: new Date(maxYear, maxMonth+1, maxDay)
+  					max: new Date(maxYear, maxMonth, maxDay)
 		        });
+
+		     	// $('#date_input').pickadate();
 
 		        var picker = $('#date_input').pickadate('picker');
 		        if (picker != null) {

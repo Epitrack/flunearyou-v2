@@ -3,8 +3,8 @@
 */
 'use strict';
 
-app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', 'session', 
-	function($scope, $rootScope, $window, $location, $uibModal, reportApi, userApi, session){
+app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', 'session', '$timeout',
+	function($scope, $route, $rootScope, $window, $location, $uibModal, reportApi, userApi, session, $timeout){
 	session.then( function() {
 
 	/*
@@ -64,6 +64,7 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 
 
 	var getUser = function(){
+		
 		userApi.getUser(function(result){
 			if (result.info){
 				$scope.user = result.info.basic;
@@ -77,14 +78,55 @@ app.controller('reportCtrl', ['$scope', '$rootScope', '$window', '$location', '$
 					$scope.selected_ids = [$scope.user.user_id];
 					$scope.current_id = $scope.user.user_id;
 				}
-				// console.log('RTR', $scope.user.current_survey);
+
+				console.log('User: ', $scope.user);
+				console.log('RTR: ', $scope.user.current_survey);
+
+				var current_survey = $scope.user.current_survey,
+					first_survey   = $scope.user.first_survey,
+					has_symptoms   = $scope.user.has_symptoms;
+				
+				calender(result.info, current_survey, first_survey, has_symptoms);
+
 				$scope.members_ids.push($scope.user.user_id);
 				angular.forEach($scope.households, function(value, key){
 					$scope.members_ids.push(value.user_household_id);
 				});
+
+
 			}
 		});
 	};
+
+	var calender = function(info, current_survey, first_survey, has_symptoms){
+		$scope.showUiCalender = false;
+		console.log('current_survey:', current_survey, ' first_survey:',first_survey, ' has_symptoms:',has_symptoms);
+		console.log(info);
+
+		var userCurrentSurvey = current_survey,
+			userFirstSurvey   = first_survey,
+			userHasSurvey     = has_symptoms;
+		// survey.symptoms.length > 0 && user.current_survey !== false
+
+		// Condition: If a new user (the first survey)
+		if (userFirstSurvey) {
+			$scope.showUiCalender = true;
+		}
+
+		// Condition: The firt survey of the wekle
+		if (userCurrentSurvey) {
+			$scope.showUiCalender = true;
+		}
+
+		// Condition: If the user reported 'no symptoms' and then report any symtoms
+		if (true) {}
+
+		// Condition: If the second respor in the same weekle
+		if (has_symptoms) {
+			$scope.showUiCalender = false;
+		}
+		
+	}
 
 	$scope.termometro = true
 	$scope.teste = function(){

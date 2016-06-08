@@ -13,6 +13,5 @@ app.config(['FacebookProvider',function(FacebookProvider) {
 		// var FBid = '463215990541721';
 		var FBid = '362068090500998';
 	}
-	console.log(FBid);
 	FacebookProvider.init(FBid);
 }]); 

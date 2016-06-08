@@ -7,15 +7,14 @@ app.service('userApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout
     var token = JSON.parse(localStorage.getItem('userLogged'));
 
     if (token) {
-        token = JSON.parse(localStorage.getItem('userLogged')).token        
+        token = JSON.parse(localStorage.getItem('userLogged')).token     
     }else{
         token = '';
     }
 
-
     obj.getUser = function(callback) {
-        if(token){
-           $http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data) {
+        if(JSON.parse(localStorage.getItem('userLogged')).token){
+           $http.get($urlBase+'/user', {headers: {'token': JSON.parse(localStorage.getItem('userLogged')).token}}).success(function(data) {
                 callback(data);
             }).error(function(error) {
                 console.log('Error getUser: ', error);
