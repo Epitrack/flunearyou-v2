@@ -35,7 +35,7 @@ app.directive('uiCalender', function(){
 		        	maxMonth = max.getMonth(),
 		        	maxYear  = max.getFullYear();
 
-		        if (minDay > maxDay) {
+		        if (minDay > maxDay && minMonth == maxMonth) {
 		        	var dateMonth = maxMonth + 1;
 		        }else{
 		        	var dateMonth = maxMonth;
@@ -44,6 +44,7 @@ app.directive('uiCalender', function(){
 		        // console.log(min);
 		        // console.log(minYear, minMonth, minDay);
 		        // console.log(max);
+		        // console.log('maxMonth: ', maxMonth);
 		       	// console.log(maxYear, dateMonth, maxDay);
 		        $('#date_input').pickadate({
 		        	min: new Date(minYear, minMonth, minDay),
