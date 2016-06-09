@@ -124,7 +124,7 @@
                         </aside>
                     </div>
 
-                    <aside id="datepicker" class="datepicker" ng-show="showUiCalender">
+                    <aside id="datepicker" class="datepicker" ng-show="showUiCalender && survey.symptoms.length > 0">
                         <h3 translate="survey_calendar"></h3>
                         <input class="login-input" id="date_input" type="text" name="date"
                          ng-model="survey.ill_date"  

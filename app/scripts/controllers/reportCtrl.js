@@ -106,25 +106,28 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		var userCurrentSurvey = current_survey,
 			userFirstSurvey   = first_survey,
 			userHasSurvey     = has_symptoms;
-		// survey.symptoms.length > 0 && user.current_survey !== false
 
 		// Condition: If a new user (the first survey)
 		if (userFirstSurvey) {
 			$scope.showUiCalender = true;
 		}
 
-		// Condition: The firt survey of the wekle
-		if (userCurrentSurvey) {
+		// Condition: The firt survey of the weekly
+		if (!userCurrentSurvey) {
 			$scope.showUiCalender = true;
 		}
 
 		// Condition: If the user reported 'no symptoms' and then report any symtoms
-		if (true) {}
+		if (!has_symptoms && userCurrentSurvey) {
+			$scope.showUiCalender = true;
+		}
 
 		// Condition: If the second respor in the same weekle
-		if (has_symptoms) {
+		if (has_symptoms && userCurrentSurvey) {
 			$scope.showUiCalender = false;
 		}
+
+		
 		
 	}
 

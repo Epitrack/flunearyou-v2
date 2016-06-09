@@ -30,27 +30,24 @@ app.directive('uiCalender', function(){
 		        	minMonth = min.getMonth(),
 		        	minYear  = min.getFullYear();
 
-		        console.log(min);
-		        console.log(minDay);
-		        console.log(minMonth);
-		        console.log(minYear);
-
-
 		        // Max Date
 		        var maxDay   = max.getDate(),
 		        	maxMonth = max.getMonth(),
 		        	maxYear  = max.getFullYear();
 
-		        console.log(max);
-		        console.log(maxDay);
-		        console.log(maxMonth);
-		        console.log(maxYear);
+		        if (minDay > maxDay) {
+		        	var dateMonth = maxMonth + 1;
+		        }else{
+		        	var dateMonth = maxMonth;
+		        }
 
-		        
-
+		        // console.log(min);
+		        // console.log(minYear, minMonth, minDay);
+		        // console.log(max);
+		       	// console.log(maxYear, dateMonth, maxDay);
 		        $('#date_input').pickadate({
 		        	min: new Date(minYear, minMonth, minDay),
-  					max: new Date(maxYear, maxMonth, maxDay)
+  					max: new Date(maxYear, dateMonth, maxDay)
 		        });
 
 		     	// $('#date_input').pickadate();
