@@ -10,7 +10,7 @@
                 <div ng-include="'views/previous-reports.html'" onload="includeContent()"></div>
                 <h3 class="legend col-md-12" translate="survey_symptoms_report_v2" translate-value-user="{{user_name || 'You'}}" ng-if="user.current_survey == false"></h3>
 
-                <h3 class="legend" translate="survey_symptoms_current_v2" translate-value-user="{{user_name || 'You'}}" translate-value-date="{{reports_this_week[current_id][reports_this_week[current_id].length - 1]['ill_date'] || next_week |date:'MM/dd/yyyy'}}" ng-if="user.current_survey == true"></h3>
+                <h3 class="legend col-md-12" translate="survey_symptoms_current_v2" translate-value-user="{{user_name || 'You'}}" translate-value-date="{{reports_this_week[current_id][reports_this_week[current_id].length - 1]['ill_date'] || next_week |date:'MM/dd/yyyy'}}" ng-if="user.current_survey == true"></h3>
 
                 <form class="survey-form second" name="survey-form" id="survey-form">
                     
@@ -20,7 +20,7 @@
                         <label for="any-symptoms-below"> <span translate="survey_no_symptoms_v2" translate-value-user="{{ user_name || 'You' }}"></span></label>
                         <div class="check"><div class="inside"></div></div>
                     </fieldset>
-                    {{$parent.$parent.no_symptoms}}
+                    
                     <p id="survey_symptoms_or" class="or" translate="sp_survey_or"></p>
                     
 
