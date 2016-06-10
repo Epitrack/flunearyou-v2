@@ -1,7 +1,15 @@
 'use strict';
 
-app.controller('ModalEditHouseholdCtrl', [ '$scope', '$uibModalInstance', '$translate', 'growl', 'householdApi', 'household', 'getHouseholds', 
-	function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds) {
+app.controller('ModalEditHouseholdCtrl', [ '$scope', '$uibModalInstance', '$translate', 'growl', 'householdApi', 'household', 'getHouseholds', '$rootScope', 
+	function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds, $rootScope) {
+	
+	/*
+	*	Init
+	*/ 
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+
 	$scope.household = household;
 
 	var index = $scope.household.dob.indexOf('/');

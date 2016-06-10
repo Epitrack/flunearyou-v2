@@ -9,7 +9,10 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
 	/*
 	*	Init
-	*/
+	*/ 
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
 	$scope.newUser = {};
 	$scope.resgisterSocial = true;
 	$scope.toggleResgisterSocial = function(redeSocial){

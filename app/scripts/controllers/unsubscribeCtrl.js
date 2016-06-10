@@ -4,8 +4,15 @@
 
 'use strict';
 
-app.controller('unsubscribeCtrl', ['$scope','$http','$urlBase', '$window','$timeout','$rootScope', 'session', function($scope, $http, $urlBase, $window, $timeout, $rootScope, session){
+app.controller('unsubscribeCtrl', ['$scope','$http','$urlBase', '$window','$timeout','$rootScope', 'session', 
+	function($scope, $http, $urlBase, $window, $timeout, $rootScope, session){
 	session.then( function() {
+
+	/*
+	*	Init
+	*/ 
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
 		
 	/*
 	*	Get user account

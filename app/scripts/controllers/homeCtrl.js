@@ -28,8 +28,8 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	/*
 	*	Calls
 	*/ 
-	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("NEWS");
+	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 	
 	/*

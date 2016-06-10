@@ -213,7 +213,6 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		};
 
 		$scope.sendReport = function(){
-			console.log($scope.no_symptoms);
 			
 			if ($scope.survey.symptoms.length == 0 && $scope.no_symptoms == false){
 				$scope.error_symptom = true;

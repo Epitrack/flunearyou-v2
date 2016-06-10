@@ -4,8 +4,15 @@
 
 'use strict';
 
-app.controller('pressCtrl', ['$scope','$http','$urlBase', 'session', function($scope, $http, $urlBase, session){
+app.controller('pressCtrl', ['$scope','$http','$urlBase', 'session', '$rootScope', function($scope, $http, $urlBase, session, $rootScope){
 	session.then( function() {
+
+	/*
+	*	Init
+	*/ 
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
 
 	$http.get($urlBase+'/press.json').success(function(data, status){
 		var press2015 = [],

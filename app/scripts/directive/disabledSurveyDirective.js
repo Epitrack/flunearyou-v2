@@ -14,7 +14,7 @@ app.directive('disabledSurvey', function(){
 					$('.disabled').find('input').attr('disabled', true).attr('checked', false);
 				}else{
 					$('.disabled').find('input').attr('disabled', false);
-				}
+				};
 			});
 		}
 	}
