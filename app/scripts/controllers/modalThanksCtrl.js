@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope',
-	function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope) {
+app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window',
+	function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window) {
 
 		/*
 		*	Init
@@ -31,6 +31,7 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 			$uibModalInstance.dismiss('cancel');
 		};
 
-
-		
+		$scope.winReload = function () {
+			$window.location.reload()
+		};
 }]);

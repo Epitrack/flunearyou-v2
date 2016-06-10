@@ -1,5 +1,5 @@
 <header class="modal-header bg">
-    <button class="close" data-dismiss="modal" ng-click="cancel()" aria-label="Close">
+    <button class="close" data-dismiss="modal" ng-click="cancel();winReload()" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
     <h4 class="modal-title">Thank you for submitting your report!</h4>
@@ -37,7 +37,7 @@
               <input type="submit" class="btn-submit" value="">
             </form>
 
-            <a href="#" ng-click="cancel()">No thanks, continue</a>
+            <a href="#" ng-click="cancel();winReload()">No thanks, continue</a>
           </div>
         </div>
 

@@ -16,7 +16,6 @@ app.directive('removeChecked', function(){
 						$('.item-symptoms').attr('checked', false)
 					},2500)
 				}
-				
 			});
 		}
 	}
