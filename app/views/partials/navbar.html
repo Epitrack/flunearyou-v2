@@ -16,8 +16,9 @@
 
     <div class="select-language select-language-mobile" select-language>
         <span class="arrow-down"></span>
-        <span data-lng="en" class="lng eng ativo" ng-click="changeLanguage('en')">ENG</span>
-        <span data-lng="es" class="lng spa" ng-click="changeLanguage('es')">SPA</span>
+        <span data-lng="en" class="lng eng" ng-class="{'ativo' : lang == 'en' }" ng-click="changeLanguage('en')">ENG</span>
+        <span data-lng="es" class="lng spa" ng-class="{'ativo' : lang == 'es' }" ng-click="changeLanguage('es')">SPA</span>
+        {{lang}}
     </div>
 
      <ul class="nav-mobile navbar-nav no-padding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
@@ -69,8 +70,8 @@
                 <li class="relative">
                     <div class="select-language" select-language>
                         <span class="arrow-down"></span>
-                        <span data-lng="en" class="lng eng ativo" ng-click="changeLanguage('en')">ENG</span>
-                        <span data-lng="es" class="lng spa" ng-click="changeLanguage('es')">SPA</span>
+                        <span data-lng="en" class="lng eng" ng-class="{'ativo' : lang == 'en' }" ng-click="changeLanguage('en')">ENG</span>
+                        <span data-lng="es" class="lng spa" ng-class="{'ativo' : lang == 'es' }" ng-click="changeLanguage('es')">SPA</span>
                     </div>
                 </li>
                 <li> <a class="nav-link lets-go hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#modal-join-us">Let's go!</a> </li>

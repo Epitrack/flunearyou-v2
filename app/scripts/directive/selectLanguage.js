@@ -8,6 +8,7 @@ app.directive('selectLanguage', function(){
 	return {
 		restrict : 'A',
 		link: function(scope, elem){
+
 			elem.on('click', function(){
 				elem.toggleClass('opened');
 			});

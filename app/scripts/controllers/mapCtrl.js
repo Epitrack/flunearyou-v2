@@ -6,12 +6,12 @@
 
 app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session', 
 	function($scope, $rootScope, $http, $urlBase, session){
-	session.then( function() {
 	/*
 	*	Init
 	*/ 
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
+	session.then( function() {
 	
 	var MAP = {
 		

@@ -4,7 +4,8 @@
 
 'use strict';
 
-app.controller('navCtrl', ['$scope', '$rootScope', '$translate', function($scope, $rootScope, $translate){	
+app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage', 
+	function($scope, $rootScope, $translate, $localStorage){	
 
 	/*
 	*	Init
@@ -41,12 +42,11 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', function($scope
 	$scope.changeLanguage = function(lng){
 		$translate.use(lng);
 	} 
-
-
-
-
-
-
-
+	
+	$scope.$watch(function(){
+		return $localStorage.language
+	}, function(){
+		$scope.lang = $localStorage.language;
+	});
 
 }]);

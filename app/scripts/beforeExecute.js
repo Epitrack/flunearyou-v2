@@ -1,5 +1,5 @@
-app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window', '$translate',
-    function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window, $translate){
+app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window', '$translate', '$localStorage',
+    function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window, $translate, $localStorage){
     var defer = $q.defer();
 
     var tokenTracings = function(token){
@@ -22,6 +22,7 @@ app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope'
 
     var languageTracings = function(language){
         $translate.use(language);
+        $localStorage.language = language;
         return true;
     }
 

@@ -4,6 +4,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'views/main.html',
         controller: 'homeCtrl'
       }).
+      when('/home', {
+        templateUrl: 'views/main.html',
+        controller: 'homeCtrl'
+      }).
       when('/landing', {
         templateUrl: 'views/landing.html',
         controller: 'homeCtrl'
