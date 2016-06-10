@@ -1,4 +1,13 @@
 app.config(['$routeProvider', function ($routeProvider) {
+    
+    var teste = {
+      check : function($window){
+        if (!localStorage.getItem('userLogged')){
+          $window.location.href = '#/'
+        }
+      }
+    };
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -10,7 +19,8 @@ app.config(['$routeProvider', function ($routeProvider) {
       }).
       when('/landing', {
         templateUrl: 'views/landing.html',
-        controller: 'homeCtrl'
+        controller: 'homeCtrl',
+        resolve : teste
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -42,23 +52,28 @@ app.config(['$routeProvider', function ($routeProvider) {
       })
       .when('/survey', {
         templateUrl: 'views/survey.html',
-        controller: 'surveyCtrl'
+        controller: 'surveyCtrl',
+        resolve : teste
       })
       .when('/report', {
         templateUrl: 'views/report.html',
-        controller: 'reportCtrl'
+        controller: 'reportCtrl',
+        resolve : teste
       })
       .when('/reports', {
         templateUrl: 'views/reports.html',
-        controller: 'healthReportCtrl'
+        controller: 'healthReportCtrl',
+        resolve : teste
       })
       .when('/settings', {
         templateUrl: 'views/settings.html',
-        controller: 'settingCtrl'
+        controller: 'settingCtrl',
+        resolve : teste
       })
       .when('/unsubscribe', {
         templateUrl: 'views/unsubscribe.html',
-        controller: 'unsubscribeCtrl'
+        controller: 'unsubscribeCtrl',
+        resolve : teste
       })
   }]).animation('.reveal-animation', function() {
     return {
