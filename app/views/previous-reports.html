@@ -1,7 +1,7 @@
-<div class="col-xs-9 report-list-all report-list-{{ id }} col-md-offset-1" ng-repeat="(id, reports) in reports_this_week" ng-show="id == current_id">
+<div class="report-list-all report-list-{{ id }}" ng-repeat="(id, reports) in reports_this_week" ng-show="id == current_id">
     <h3 class="previously_reported" translate="previous_reports2" translate-value-user="{{user_name || 'You'}}"></h3>
 
-    <ul class="report-list col-md-offset-2" ng-repeat="report in reports">
+    <ul class="" ng-repeat="report in reports">
         <li ng-if="report.no_symptoms != 1">
             <span class="report-item col-xs-2"><label
             class="report-item-label report-item-date">{{ report.ill_date|date:'MM/dd/yyyy' }}</label></span>

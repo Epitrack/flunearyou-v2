@@ -40,13 +40,13 @@
             <fieldset class="checkbox-group relative large full" ng-if="user">
                 <input id="user_you" name="members" checklist-model="members" class="checkbox-primary absolute users" type="checkbox" checklist-value="user.user_id" ng-disabled="checks_perm.indexOf(user.user_id) > -1">
                 <label for="user_you" translate="you"></label>
-
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
 
             <fieldset class="checkbox-group relative large full" ng-repeat="household in households" ng-if="household.active == 'Y'">
-                <input id="user_{{household.user_household_id}}" name="members" class="checkbox-primary absolute users" type="checkbox" checklist-model="members" checklist-value="household.user_household_id"ng-disabled="checks_perm.indexOf(household.user_household_id) > -1">
+                <input id="user_{{household.user_household_id}}" name="members" class="checkbox-primary absolute users" type="checkbox" checklist-model="members" checklist-value="household.user_household_id" ng-disabled="checks_perm.indexOf(household.user_household_id) > -1">
                 <label for="user_{{household.user_household_id}}" class="full">{{ household.nickname }}</label>
+
                 <span class="check"><span class="inside"></span></span>
             </fieldset>
             <div id="household-error" class="alert alert-danger" ng-show="members.length == 0 && error" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">

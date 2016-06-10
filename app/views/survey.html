@@ -4,114 +4,134 @@
             <h2 translate="survey_wk_of"></h2>
             <p style="margin-bottom: 0" ng-if="user.current_survey == false"><span id="startDate">{{ week_of|date:'MM/dd/yyyy' }}</span> - <span id="endDate">{{ week_end|date:'MM/dd/yyyy' }}</span></p>
 
-            <div ng-include="'views/previous-reports.html'" onload="includeContent()"></div>
+            
 
             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                <h3 class="legend" translate="survey_symptoms_report_v2" translate-value-user="{{user_name || 'You'}}" ng-if="user.current_survey == false"></h3>
+                <div ng-include="'views/previous-reports.html'" onload="includeContent()"></div>
+                <h3 class="legend col-md-12" translate="survey_symptoms_report_v2" translate-value-user="{{user_name || 'You'}}" ng-if="user.current_survey == false"></h3>
 
                 <h3 class="legend" translate="survey_symptoms_current_v2" translate-value-user="{{user_name || 'You'}}" translate-value-date="{{reports_this_week[current_id][reports_this_week[current_id].length - 1]['ill_date'] || next_week |date:'MM/dd/yyyy'}}" ng-if="user.current_survey == true"></h3>
 
                 <form class="survey-form second" name="survey-form" id="survey-form">
-
+                    
+                    <!-- No Symtoms -->
                     <fieldset class="checkbox-group any-symptoms-below relative">
-                        <input type="checkbox" ng-value="true" id="any-symptoms-below" class="checkbox-primary absolute" name="survey-symptom" ng-model="no_symptoms" disabled-survey>
+                        <input type="checkbox" ng-value="true" id="any-symptoms-below" class="checkbox-primary absolute" name="survey-symptom" ng-model="$parent.$parent.no_symptoms" disabled-survey>
                         <label for="any-symptoms-below"> <span translate="survey_no_symptoms_v2" translate-value-user="{{ user_name || 'You' }}"></span></label>
                         <div class="check"><div class="inside"></div></div>
                     </fieldset>
-
+                    {{$parent.$parent.no_symptoms}}
                     <p id="survey_symptoms_or" class="or" translate="sp_survey_or"></p>
+                    
 
                     <div id="conditional" ng-class="{'disabled' : no_symptoms == true}" show-traveling>
+                        
+                        <!-- Fever -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6" >
                             <input type="checkbox" checklist-value="'fever'" id="survey-symptom-fever" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-fever" translate="fever"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Cough -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'cough'" id="survey-symptom-cough" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-cough" translate="cough"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Headache -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'headache'" id="survey-symptom-headache" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-headache" translate="headache"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Sore Throat -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'sore-throat'" id="survey-symptom-sore-throat" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-sore-throat" translate="sore_throat"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Diarrhea -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'diarrhea'" id="survey-symptom-diarrhea" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-diarrhea" translate="diarrhea"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Bodyache -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'body-aches'" id="survey-symptom-body-aches" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-body-aches" translate="bodyache"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Fatigue -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'fatigue'" id="survey-symptom-fatigue" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-fatigue" translate="fatigue"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Chills -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'chills'" id="survey-symptom-chills" checklist-model="survey.symptoms" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-chills" translate="chills"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Nausea -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'nausea-or-vomiting'" checklist-model="survey.symptoms" id="survey-symptom-nausea-or-vomiting" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-nausea-or-vomiting" translate="nausea"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Shortness of breath -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'shortness-of-breath'" checklist-model="survey.symptoms" id="survey-symptom-shortness-of-breath" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-shortness-of-breath" translate="breath"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Rash -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'rash'" checklist-model="survey.symptoms" id="survey-symptom-rash" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-rash" translate="rash"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Eye pain -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'eye_pain'" checklist-model="survey.symptoms" id="survey-symptom-eye-pain" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-eye-pain" translate="eye_pain"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Yellow eyes -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'yellow_eyes'" checklist-model="survey.symptoms" id="survey-symptom-yellow-skin-eyes" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-yellow-skin-eyes" translate="yellow_eyes"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Join pain -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'joint_pain'" checklist-model="survey.symptoms" id="survey-symptom-joint-bone-pain" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-joint-bone-pain" translate="joint_pain"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Red Eyes -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'red_eyes'" checklist-model="survey.symptoms" id="survey-symptom-red-eyes" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-red-eyes" translate="red_eyes"></label>
                             <div class="check"><div class="inside"></div></div>
                         </fieldset>
-
+                        
+                        <!-- Dark urine -->
                         <fieldset class="checkbox-group col-xs-12 col-sm-6 col-md-6">
                             <input type="checkbox" checklist-value="'dark_urine'" checklist-model="survey.symptoms" id="survey-symptom-dark-urine" class="checkbox-primary" name="survey-symptom">
                             <label for="survey-symptom-dark-urine" translate="dark_urine"></label>
@@ -227,7 +247,7 @@
             </aside>
 
             <div class="col-xs-12">
-                <div id="household-error" class="alert alert-danger" ng-show="survey.symptoms.length == 0 && error_symptom" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
+                <div id="household-error" class="alert alert-danger" ng-show="error_symptom" style="font-size: 14px;margin-top: 20px;margin-bottom: 20px">
                     <span id="household-error-message" translate="error_symptoms"></span>
                 </div>
             </div>
