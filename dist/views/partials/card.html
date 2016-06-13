@@ -1,1 +1,20 @@
-<div ng-repeat="notice in news | limitTo: 4" class="col-xs-12 col-sm-6 col-md-3"><article class="news-item"><figure class="news-image"><img ng-src="{{notice.imageUrl}}" alt=""></figure><time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time><div class="news-text"><h3 class="news-title"><a href="#" title="Title Here">{{notice.title}}</a></h3><p class="news-description">{{notice.content}}</p></div><a href="{{notice.url}}" title="Read More" target="_blank" class="read-more">Read More</a></article></div>
+<div ng-repeat="notice in news | limitTo: 4" class="col-xs-12 col-sm-6 col-md-3">
+  <article class="news-item">
+    
+      <figure class="news-image">
+        <img ng-src="{{notice.imageUrl}}" alt="">
+      </figure>
+
+    <time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time>
+
+    <div class="news-text">
+      <h3 class="news-title">
+        <a href="#" title="Title Here">{{notice.title}}</a>
+      </h3>
+
+      <p class="news-description">{{notice.content}}</p>
+    </div>
+
+    <a href="{{notice.url}}" title="Read More" target="_blank" class="read-more">Read More</a>
+  </article>
+</div>

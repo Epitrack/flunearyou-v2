@@ -1,1 +1,104 @@
-<!-- mobile --><div class="navbar-header hidden-md hidden-lg relative" ng-controller="navCtrl"><a class="col-xs-5" ng-href="#/" title="Go home"><figure class="logo-secondary"><img src="images/logo.svg" class="img-responsive" alt="Flu Near You"></figure></a><button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"><button id="btn-menu-mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse" open-menu-mobile><span class="sr-only">Toggle Navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button><div class="select-language select-language-mobile" select-language><span class="arrow-down"></span> <span data-lng="en" class="lng eng" ng-class="{'ativo' : lang == 'en' }" ng-click="changeLanguage('en')">ENG</span> <span data-lng="es" class="lng spa" ng-class="{'ativo' : lang == 'es' }" ng-click="changeLanguage('es')">SPA</span> {{lang}}</div><ul class="nav-mobile navbar-nav no-padding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}"><li open-menu-mobile><a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu Map</a></li><li open-menu-mobile><a class="nav-link" title="About" ng-href="#/about" translate="about2"></a></li><li open-menu-mobile><a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a></li><li open-menu-mobile><a class="nav-link" title="Press" ng-href="#/press" translate="press2"></a></li><li open-menu-mobile><a class="nav-link" title="FAQ" ng-href="#/faq" translate="faq2"></a></li><li open-menu-mobile><a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav_login"></a></li><li><!-- dropdown when user is logged --><div class="dropdown col-sm-3 no-padding relative" ng-hide="!userLogged"><button class="btn btn-default dropdown-toggle dropdown-user center" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-click="toggleCustom()">{{userLoggedEmail}} <span class="caret"></span></button><ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom"><li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings" open-menu-mobile></a></li><li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports" open-menu-mobile></a></li><li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout" open-menu-mobile></a></li></ul><a href="#/report" id="btn-report" class="absolute button btn-danger" translate="navbar_survey_now" open-menu-mobile></a></div></li></ul></button></div><!-- desktop --><div class="container hidden-sm" ng-controller="navCtrl"><div class="row"><div class="collapse navbar-collapse" id="js-navbar-collapse"><h1 class="hidden-sm col-sm-3 logo-primary"><a ng-href="#/" title="Flu Near You">Flu Near You</a></h1><ul class="nav navbar-nav nopadding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}"><li><a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu Map</a></li><li><a class="nav-link" title="About" ng-href="#/about" translate="about2"></a></li><li><a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a></li><li><a class="nav-link" title="Press" ng-href="#/press" translate="press2"></a></li><li><a class="nav-link" title="FAQ" ng-href="#/faq" translate="faq2"></a></li><li><a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav_login"></a></li><li class="relative"><div class="select-language" select-language><span class="arrow-down"></span> <span data-lng="en" class="lng eng" ng-class="{'ativo' : lang == 'en' }" ng-click="changeLanguage('en')">ENG</span> <span data-lng="es" class="lng spa" ng-class="{'ativo' : lang == 'es' }" ng-click="changeLanguage('es')">SPA</span></div></li><li><a class="nav-link lets-go hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#modal-join-us">Let's go!</a></li></ul><!-- dropdown when user is logged --><div class="dropdown hidden-xs col-sm-3 no-padding relative"><button class="btn btn-default dropdown-toggle dropdown-user" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-click="toggleCustom()">{{userLoggedEmail}} <span class="caret"></span></button><ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom"><li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings"></a></li><li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports"></a></li><li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout"></a></li></ul><a href="#/report" id="btn-report" class="absolute button btn-danger" ng-hide="!userLogged" translate="navbar_survey_now"></a></div><!-- button | call to action --> <button class="hidden-sm col-sm-3 btn-cta" title="Join us" data-toggle="modal" data-target="#modal-join-us" ng-hide="userLogged"><span class="btn-title" translate="cta"></span> <span class="btn-subtitle" translate="join_now_join_us"></span></button></div></div></div>
+<!-- mobile -->
+<div class="navbar-header hidden-md hidden-lg relative" ng-controller="navCtrl">
+    <a class="col-xs-5" ng-href="#/" title="Go home">
+        <figure class="logo-secondary">
+            <img src="images/logo.svg" class="img-responsive" alt="Flu Near You">
+        </figure>
+    </a>
+
+    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+    <button id="btn-menu-mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse" open-menu-mobile>
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+
+    <div class="select-language select-language-mobile" select-language>
+        <span class="arrow-down"></span>
+        <span data-lng="en" class="lng eng" ng-class="{'ativo' : lang == 'en' }" ng-click="changeLanguage('en')">ENG</span>
+        <span data-lng="es" class="lng spa" ng-class="{'ativo' : lang == 'es' }" ng-click="changeLanguage('es')">SPA</span>
+    </div>
+
+     <ul class="nav-mobile navbar-nav no-padding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
+        <li open-menu-mobile> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu Map</a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="About" ng-href="#/about" translate="about2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="Press" ng-href="#/press" translate="press2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="faq2"></a> </li>
+        <li open-menu-mobile> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav_login"></a></li>
+        <li>
+            
+            <!-- dropdown when user is logged -->
+            <div class="dropdown col-sm-3 no-padding relative" ng-hide="!userLogged">
+                <button class="btn btn-default dropdown-toggle dropdown-user center" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-click="toggleCustom()">
+                    {{userLoggedEmail}} 
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom">
+                    <li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings" open-menu-mobile></a></li>
+                    <li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports" open-menu-mobile></a></li>
+                    <li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout" open-menu-mobile></a></li>
+                </ul>
+                <a href="#/report" id="btn-report" class="absolute button btn-danger" translate="navbar_survey_now" open-menu-mobile></a>
+            </div>
+
+        </li>
+    </ul>
+
+
+</div>
+
+<!-- desktop -->
+<div class="container hidden-sm" ng-controller="navCtrl">
+    
+    <div class="row">
+        <div class="collapse navbar-collapse" id="js-navbar-collapse">
+            <h1 class="hidden-sm col-sm-3 logo-primary">
+                <a ng-href="#/" title="Flu Near You">Flu Near You</a>
+            </h1>
+
+            <ul class="nav navbar-nav nopadding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
+                <li> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu Map</a> </li>
+                <li> <a class="nav-link" title="About" ng-href="#/about" translate="about2"></a> </li>
+                <li> <a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a> </li>
+                <li> <a class="nav-link" title="Press" ng-href="#/press" translate="press2"></a> </li>
+                <li> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="faq2"></a> </li>
+                <li> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav_login"></a> </li>
+                <li class="relative">
+                    <div class="select-language" select-language>
+                        <span class="arrow-down"></span>
+                        <span data-lng="en" class="lng eng" ng-class="{'ativo' : lang == 'en' }" ng-click="changeLanguage('en')">ENG</span>
+                        <span data-lng="es" class="lng spa" ng-class="{'ativo' : lang == 'es' }" ng-click="changeLanguage('es')">SPA</span>
+                    </div>
+                </li>
+                <li> <a class="nav-link lets-go hidden-sm hidden-md hidden-lg" data-toggle="modal" data-target="#modal-join-us">Let's go!</a> </li>
+            </ul>
+
+            <!-- dropdown when user is logged -->
+            <div class="dropdown hidden-xs col-sm-3 no-padding relative">
+                <button class="btn btn-default dropdown-toggle dropdown-user" type="button" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-click="toggleCustom()">
+                    {{userLoggedEmail}} 
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdown-user" ng-show="custom">
+                    <li><a ng-href="#/settings" ng-click="toggleCustom()" title="Settings" translate="settings"></a></li>
+                    <li><a ng-href="#/reports" ng-click="toggleCustom()" title="Health Reports" translate="reports"></a></li>
+                    <li><a ng-href="#/" title="Log out" ng-click="logout();custom = false" translate="logout"></a></li>
+                </ul>
+                <a href="#/report" id="btn-report" class="absolute button btn-danger" ng-hide="!userLogged" translate="navbar_survey_now"></a>
+            </div>
+
+
+
+            <!-- button | call to action -->
+            <button class="hidden-sm col-sm-3 btn-cta" title="Join us" data-toggle="modal" data-target="#modal-join-us" ng-hide="userLogged">
+                <span class="btn-title" translate="cta"></span>
+                <span class="btn-subtitle" translate="join_now_join_us"></span>
+            </button>
+
+        </div>
+    </div>
+</div>

@@ -1,7 +1,9 @@
 app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window', '$translate', '$localStorage',
     function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window, $translate, $localStorage){
+    
+    $localStorage.language = 'en';
+    
     var defer = $q.defer();
-
     var tokenTracings = function(token){
         $http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data, status){
             var nickname  = data.info.basic.nickname,

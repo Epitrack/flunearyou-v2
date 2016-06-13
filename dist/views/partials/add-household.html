@@ -1,1 +1,61 @@
-<!-- Add household member --><div class="col-xs-12 nopadding" ng-show="addMember"><div class="info-box"><form name="formAddHousehold" class="register-form form-change-pass form-add-household-member" id="form-add-household-member"><h4 translate="header_add_household"></h4><fieldset class="form-group"><label class="nickname" for="add-household-nickname" translate="nickname"></label><input id="add-household-nickname" type="text" class="input-primary full" ng-model="$parent.newHousehold.nickname" required></fieldset><fieldset class="form-group col-sm-6"><legend class="legend" translate="gender"></legend><fieldset class="radio-group col-xs-6"><input type="radio" ng-value="'M'" ng-model="$parent.newHousehold.gender" id="add-household-male" class="radio-primary" name="add-household-member"><label for="add-household-male" translate="male"></label><div class="check"><div class="inside"></div></div></fieldset><fieldset class="radio-group col-xs-6"><input type="radio" ng-value="'F'" ng-model="$parent.newHousehold.gender" id="add-household-female" class="radio-primary" name="add-household-member"><label for="add-household-female" translate="female"></label><div class="check"><div class="inside"></div></div></fieldset></fieldset><fieldset class="form-group col-sm-6"><label class="block" translate="birthdate"></label><select name="birthdate-household-member" id="birthdate-household-member" ng-model="$parent.newHousehold.birthmonth" class="col-xs-12 col-sm-5 form-group" required><option value="0" translate="month"></option><option value="1" translate="jan"></option><option value="2" translate="feb"></option><option value="3" translate="mar"></option><option value="4" translate="apr"></option><option value="5" translate="may"></option><option value="6" translate="jun"></option><option value="7" translate="jul"></option><option value="8" translate="aug"></option><option value="9" translate="sep"></option><option value="10" translate="oct"></option><option value="11" translate="nov"></option><option value="12" translate="dec"></option></select><input type="tel" class="col-sm-3 input-primary register-year" ng-model="$parent.newHousehold.birthyear" placeholder="YYYY" required></fieldset><div class="col-xs-12 wrapper-buttons"><button class="button btn-danger" ng-click="$parent.addMember=false"><span translate="cancel"></span></button> <button class="button btn-success" ng-click="$parent.sendNewHousehold()" data-loading-text="Sending..." loading-button><span translate="save"></span></button></div></form></div></div>
+<!-- Add household member -->
+<div class="col-xs-12 nopadding" ng-show="addMember">
+    <div class="info-box">
+        <form name="formAddHousehold" class="register-form form-change-pass form-add-household-member" id="form-add-household-member">
+            <h4 translate="header_add_household"></h4>
+
+            <fieldset class="form-group">
+                <label class="nickname" for="add-household-nickname" translate="nickname"></label>
+                <input id="add-household-nickname" type="text" class="input-primary full" ng-model="$parent.newHousehold.nickname" required>
+            </fieldset>
+
+            <fieldset class="form-group col-sm-6">
+                <legend class="legend" translate="gender"></legend>
+
+                <fieldset class="radio-group col-xs-6">
+                    <input type="radio" ng-value="'M'" ng-model="$parent.newHousehold.gender" id="add-household-male" class="radio-primary" name="add-household-member">
+                    <label for="add-household-male" translate="male"></label>
+                    <div class="check"><div class="inside"></div></div>
+                </fieldset>
+
+                <fieldset class="radio-group col-xs-6">
+                    <input type="radio" ng-value="'F'" ng-model="$parent.newHousehold.gender" id="add-household-female" class="radio-primary" name="add-household-member">
+                    <label for="add-household-female" translate="female"></label>
+                    <div class="check"><div class="inside"></div></div>
+                </fieldset>
+            </fieldset>
+
+            <fieldset class="form-group col-sm-6">
+                <label class="block" translate="birthdate"></label>
+
+                <select name="birthdate-household-member" id="birthdate-household-member" ng-model="$parent.newHousehold.birthmonth" class="col-xs-12 col-sm-5 form-group" required>
+                    <option value="0" translate="month"></option>
+                    <option value="1" translate="jan"></option>
+                    <option value="2" translate="feb"></option>
+                    <option value="3" translate="mar"></option>
+                    <option value="4" translate="apr"></option>
+                    <option value="5" translate="may"></option>
+                    <option value="6" translate="jun"></option>
+                    <option value="7" translate="jul"></option>
+                    <option value="8" translate="aug"></option>
+                    <option value="9" translate="sep"></option>
+                    <option value="10" translate="oct"></option>
+                    <option value="11" translate="nov"></option>
+                    <option value="12" translate="dec"></option>
+                </select>
+
+                <input type="tel" class="col-sm-3 input-primary register-year" ng-model="$parent.newHousehold.birthyear" placeholder="YYYY" required>
+            </fieldset>
+
+            <div class="col-xs-12 wrapper-buttons">
+                <button class="button btn-danger" ng-click="$parent.addMember=false">
+                    <span translate="cancel"></span>
+                </button>
+
+                <button class="button btn-success"  ng-click="$parent.sendNewHousehold()" data-loading-text="Sending..." loading-button>
+                    <span translate="save"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,1 +1,16 @@
-<div class="modal-content deactivate"><header class="modal-header bg relative"><button class="close" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">User Activation</h4></header><div class="modal-body"><div class="container-fluid"><p ng-if="household.active == 'N'">Do you want to activate the user?</p><p ng-if="household.active == 'Y'">Do you want to deactivate the user?</p><button class="button btn-danger center" data-loading-text="Sending..." loading-button ng-click="sendActivation()">Ok</button></div></div></div>
+<div class="modal-content deactivate">
+   <header class="modal-header bg relative">
+    <button class="close" aria-label="Close" ng-click="cancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <h4 class="modal-title">User Activation</h4>
+  </header>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <p ng-if="household.active == 'N'">Do you want to activate the user?</p>
+      <p ng-if="household.active == 'Y'">Do you want to deactivate the user?</p>
+      <button class="button btn-danger center" data-loading-text="Sending..." loading-button ng-click="sendActivation()">Ok</button>
+    </div>
+  </div>
+</div>
