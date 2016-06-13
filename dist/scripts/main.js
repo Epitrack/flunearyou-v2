@@ -1,2 +1,2528 @@
-"use strict";var app=angular.module("flunearyouV2App",["ngRoute","ngAnimate","ngSanitize","ui.bootstrap","angular-loading-bar","checklist-model","pascalprecht.translate","angular-growl","facebook","googleplus","ngStorage"]);app.factory("session",["$http","$urlBase","$routeParams","$q","$rootScope","$window","$translate","$localStorage",function(e,t,o,n,s,r,i,a){a.language="en";var l=n.defer(),c=function(o){return e.get(t+"/user",{headers:{token:o}}).success(function(e,t){var o=e.info.basic.nickname,n=e.info.basic.token,i=e.info.basic.email,a={name:o,email:i,token:n};localStorage.setItem("userLogged",JSON.stringify(a)),s.$emit("IS_LOGGED"),r.location.href="#/report?token="+n}).error(function(e,t){console.log(t)}),!0},u=function(e){return i.use(e),a.language=e,!0},p=function(e){return console.log("track_id",e),!0},d=function(e){return console.log("campaign",e),localStorage.setItem("campaign",e),!0};return o.token&&c(o.token),o.language&&u(o.language),o.track_id&&p(o.track_id),o.campaign&&d(o.campaign),l.resolve("done"),l.promise}]),app.config(["$routeProvider",function(e){var t={check:function(e){localStorage.getItem("userLogged")||(e.location.href="#/")}};e.when("/",{templateUrl:"views/main.html",controller:"homeCtrl"}).when("/home",{templateUrl:"views/main.html",controller:"homeCtrl"}).when("/landing",{templateUrl:"views/landing.html",controller:"homeCtrl",resolve:t}).when("/about",{templateUrl:"views/about.html",controller:"homeCtrl"}).when("/map",{templateUrl:"views/map.html",controller:"mapCtrl"}).when("/flu-news",{templateUrl:"views/flu-news.html",controller:"fluNewsCtrl"}).when("/press",{templateUrl:"views/press.html",controller:"pressCtrl"}).when("/faq",{templateUrl:"views/faq.html",controller:"homeCtrl"}).when("/privacy",{templateUrl:"views/privacy.html",controller:"homeCtrl"}).when("/terms",{templateUrl:"views/terms.html",controller:"homeCtrl"}).when("/survey",{templateUrl:"views/survey.html",controller:"surveyCtrl",resolve:t}).when("/report",{templateUrl:"views/report.html",controller:"reportCtrl",resolve:t}).when("/reports",{templateUrl:"views/reports.html",controller:"healthReportCtrl",resolve:t}).when("/settings",{templateUrl:"views/settings.html",controller:"settingCtrl",resolve:t}).when("/unsubscribe",{templateUrl:"views/unsubscribe.html",controller:"unsubscribeCtrl",resolve:t})}]).animation(".reveal-animation",function(){return{enter:function(e,t){return e.css("display","none"),e.fadeIn(600),function(){e.stop()}},leave:function(e,t){return e.fadeOut(100),function(){e.stop()}}}}),app.value("$urlBase","http://dev.flunearyou.org"),app.config(["cfpLoadingBarProvider",function(e){e.includeSpinner=!1,e.includeBar=!0,e.parentSelector="#loading-bar-container",e.spinnerTemplate='<div><span class="fa fa-spinner">Custom Loading Message...</div>'}]),app.config(["$translateProvider",function(e){localStorage.getItem("translations_en")&&localStorage.getItem("translations_es")?e.translations("en",JSON.parse(localStorage.getItem("translations_en"))).translations("es",JSON.parse(localStorage.getItem("translations_es"))).preferredLanguage("en").useSanitizeValueStrategy(null):$.get("http://dev.flunearyou.org/translations").success(function(t,o){localStorage.setItem("translations_en",JSON.stringify(t.translations.en)),localStorage.setItem("translations_es",JSON.stringify(t.translations.es)),e.translations("en",JSON.stringify(t.translations.en)).translations("es",JSON.stringify(t.translations.es)).preferredLanguage("en").useSanitizeValueStrategy(null),window.location.reload()}).error(function(e,t){console.log("Error in angularTranslateConfig.js"),console.log(e,t)})}]),app.config(["FacebookProvider",function(e){var t=window.location.href;if(-1!=t.indexOf("localhost"))var o="362068090500998";else var o="362068090500998";e.init(o)}]),app.config(["GooglePlusProvider",function(e){e.init({clientId:"736037612174-lpmdhpfcfane9p9cvqb9d6lkc5fc15mr.apps.googleusercontent.com",apiKey:"Tpwrqg_jpW-qIZJPBDNeJu14",scopes:"https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"})}]),app.controller("MainCtrl",["$scope","cdcstates",function(e,t){}]),app.controller("mapCtrl",["$scope","$rootScope","$http","$urlBase","session",function(e,t,o,n,s){t.$emit("IS_LOGGED"),t.$emit("SCROLL_TOP"),s.then(function(){var s={_markers:[],LatLng:function(e,t){return new google.maps.LatLng(e,t)},initMap:function(e,t,n,r,i){var a=[{featureType:"administrative",elementType:"labels.text.fill",stylers:[{color:"#444444"}]},{featureType:"landscape",elementType:"all",stylers:[{color:"#f2f2f2"}]},{featureType:"poi",elementType:"all",stylers:[{visibility:"off"}]},{featureType:"road",elementType:"all",stylers:[{saturation:-100},{lightness:45}]},{featureType:"road",elementType:"labels.text",stylers:[{visibility:"on"},{color:"#000000"}]},{featureType:"road",elementType:"labels.icon",stylers:[{weight:"0.01"},{visibility:"off"},{hue:"#ff8f00"}]},{featureType:"road.highway",elementType:"all",stylers:[{visibility:"simplified"}]},{featureType:"road.highway",elementType:"geometry.fill",stylers:[{visibility:"on"},{color:"#f2f2f2"},{weight:"2.32"}]},{featureType:"road.arterial",elementType:"labels.icon",stylers:[{visibility:"off"}]},{featureType:"transit",elementType:"all",stylers:[{visibility:"off"}]},{featureType:"transit.station.airport",elementType:"geometry.fill",stylers:[{visibility:"on"},{color:"#ffce00"},{weight:"0.01"}]},{featureType:"water",elementType:"all",stylers:[{color:"#d4ebf5"},{visibility:"on"}]}],l=s.LatLng(e,t),c=new google.maps.StyledMapType(a,{name:"Styled Map"}),u={center:l,zoom:n,mapTypeControl:!1,panControl:!1,streetViewControl:!1,zoomControl:!0,scrollwheel:!1,zoomControlOptions:{style:google.maps.ZoomControlStyle.SMALL}},p=new google.maps.Map(document.getElementById("map"),u),d=new google.maps.Geocoder;return p.mapTypes.set("map_style",c),p.setMapTypeId("map_style"),r?o.get("scripts/json/cdc.json").success(function(e,t){var o=e;p.data.loadGeoJson("scripts/json/states.geo.json"),p.data.setStyle(function(e){var t,n=e.getProperty("name");return o[n]&&(t=o[n].fill.color),{fillColor:t,fillOpacity:.75,strokeWeight:1}})}):s.getMarkers(p),i&&s.mapForZipCpde(p,d),p},mapForZipCpde:function(e,t){var o=sessionStorage.getItem("zip");t.geocode({address:o},function(t,o){if(o==google.maps.GeocoderStatus.OK){e.setCenter(t[0].geometry.location),e.setZoom(9);new google.maps.Marker({map:e,position:t[0].geometry.location,icon:"images/marker.png",zIndex:9999})}else alert("Geocode was not successful for the following reason: "+o)})},getMarkers:function(e){o.get(n+"/map/markers").success(function(t,o,n,r){for(var i=t,a=[],l=0;l<i.length;l++){var c=i[l],u=c.icon,p="";switch(u){case"1":p="images/icon-azul.png";break;case"3":p="images/icon-amarelo.png";break;case"5":p="images/icon-vermelho.png"}var d={id:l,image:p,latitude:c.latitude,longitude:c.longitude,zIndex:null,msg:'<div class="infowindow"><header><h3>'+c.city+'</h3></header><div class="infos"><p class="qtdSym">'+c.flu+'</p><p>FLU<br/> SYMPTOMS</p></div><div class="infos border"><p class="qtdSym">'+c.symptoms+'</p><p>ANY<br/> SYMPTOMS</p></div><div class="infos"><p class="qtdSym">'+c.none+"</p><p>NO<br/> SYMPTOMS</p></div></div>"};5==c.icon?d.zIndex=9998:3==c.icon?d.zIndex=700:d.zIndex=100,a.push(d)}s.putMarkersInMap(e,a)})},putMarkersInMap:function(e,t){for(var o=0;o<t.length;o++){var n=t[o],r=new google.maps.LatLng(n.latitude,n.longitude),i=new google.maps.Marker({position:r,map:e,icon:n.image,zIndex:n.zIndex});s._markers.push(i),s.openInfoWin(i,n.msg)}},hideMarkers:function(){for(var e=s._markers,t=0;t<e.length;++t)e[t].setVisible(!1);window.innerHeight>window.innerWidth?s.initMap("40.0902","-98.7129",3,!0,!1):s.initMap("40.0902","-110.7129",4,!0,!1),$(".info-cdc").removeClass("none")},showMarkers:function(){for(var e=s._markers,t=0;t<e.length;++t)e[t].setVisible(!0);window.innerHeight>window.innerWidth?s.initMap("40.0902","-98.7129",3,!1):s.initMap("40.0902","-110.7129",4,!1),$(".info-cdc").addClass("none")},openInfoWin:function(e,t){google.maps.event.addListener(e,"click",function(){var o=new google.maps.InfoWindow({content:t});o.open(e.get("map"),e)})}},r=sessionStorage.getItem("zip");if(r)var i=!0;else var i=!1;window.innerHeight>window.innerWidth?s.initMap("40.0902","-98.7129",3,!1,i):s.initMap("40.0902","-110.7129",4,!1,i),o.get(n+"/states").success(function(t,o,n,s){e.stateList=t,e.infoDataBox={surveys:t[0].data.total_surveys,nosymptoms:t[0].data.no_symptoms,nosymptomspercent:t[0].data.none_percentage,symptoms:t[0].data.symptoms,symptomspercent:t[0].data.symptoms_percentage,flulike:t[0].data.ili,flulikepercent:t[0].data.ili_percentage}}),e.updateInfoDataBox=function(){var t=JSON.parse(sessionStorage.getItem("centerMap")),o=Number(sessionStorage.getItem("zoomMap")),n=t.latitude,r=t.longitude;e.infoDataBox=JSON.parse(sessionStorage.getItem("objDataSurvey")),s.initMap(n,r,o),e.$apply()},t.$on("updateInfoDataBox",e.updateInfoDataBox),e.hideMarkers=function(){s.hideMarkers()},e.showMarkers=function(){s.showMarkers()},o.get(n+"/flu-news.json?FNY_Site=flunearyou.org").success(function(t,o){e.news=t}),e.showReadMore=!0,e.tab1=!0,e.tab2=!1,e.changeTab=function(t){"tab1"==t?(e.tab1=!0,e.tab2=!1):(e.tab1=!1,e.tab2=!0)}})}]),app.controller("navCtrl",["$scope","$rootScope","$translate","$localStorage",function(e,t,o,n){e.isLogged=function(){if(localStorage.getItem("userLogged")){var t=JSON.parse(localStorage.getItem("userLogged"));e.userLogged=!0,e.userLoggedEmail=t.email}else e.userLogged=!1,e.userLoggedEmail=""},t.$on("IS_LOGGED",e.isLogged),e.logout=function(){e.custom=!1,localStorage.removeItem("userLogged"),localStorage.removeItem("user_household_id"),localStorage.removeItem("objHouseholdEdit"),t.$emit("IS_LOGGED")},e.custom=!1,e.toggleCustom=function(){e.custom=e.custom===!1},e.changeLanguage=function(e){o.use(e)},e.$watch(function(){return n.language},function(){e.lang=n.language})}]),app.controller("homeCtrl",["$scope","$rootScope","$http","$urlBase","$window","session",function(e,t,o,n,s,r){r.then(function(){e.isLogged=function(){var e=localStorage.getItem("userLogged");e?$(".btn-cta").addClass("none"):$(".btn-cta").removeClass("none")},t.$on("IS_LOGGED",e.isLogged),e.scrolltop=function(){document.body.scrollTop=document.documentElement.scrollTop=0},t.$on("SCROLL_TOP",e.scrolltop),t.$emit("NEWS"),t.$emit("IS_LOGGED"),t.$emit("SCROLL_TOP"),e.mapZipCode=function(e){sessionStorage.setItem("zip",e),s.location.href="#/map"},o.get(n+"/states").success(function(t,o,n,s){e.stateList=t,e.infoDataBox={surveys:t[0].data.total_surveys,nosymptoms:t[0].data.no_symptoms,nosymptomspercent:t[0].data.none_percentage,symptoms:t[0].data.symptoms,symptomspercent:t[0].data.symptoms_percentage,flulike:t[0].data.ili,flulikepercent:t[0].data.ili_percentage}}),o.get(n+"/flu-news.json?FNY_Site=flunearyou.org").success(function(t,o){e.news=t}),e.showReadMore=!0,e.tab1=!0,e.tab2=!1,e.changeTab=function(t){"tab1"==t?(e.tab1=!0,e.tab2=!1):(e.tab1=!1,e.tab2=!0)}})}]),app.controller("aboutCtrl",["$scope","session",function(e,t){t.then(function(){$rootScope.$emit("SCROLL_TOP")})}]),app.controller("fluNewsCtrl",["$scope","$http","$urlBase","$window","$rootScope","session",function(e,t,o,n,s,r){r.then(function(){s.$emit("IS_LOGGED"),s.$emit("SCROLL_TOP"),e.news=function(){t.get(o+"/flu-news.json?FNY_Site=flunearyou.org").success(function(t,o){e.news=t}),e.showReadMore=!0,-1!=n.location.href.indexOf("flu-news")&&(e.showReadMore=!1)},s.$on("NEWS",e.news),s.$emit("NEWS")})}]),app.controller("pressCtrl",["$scope","$http","$urlBase","session","$rootScope",function(e,t,o,n,s){n.then(function(){s.$emit("IS_LOGGED"),s.$emit("SCROLL_TOP"),t.get(o+"/press.json").success(function(t,o){for(var n=[],s=[],r=0;r<t.length;r++){var i=t[r];"2015"==i.publicationDateYear?n.push(i):s.push(i)}e.press2015=n,e.press2014=s}).error(function(e,t){console.log(e)})})}]),app.controller("modalsCtrl",["$scope","$rootScope","$http","$urlBase","$window","$fny","Facebook","GooglePlus",function(e,t,o,n,s,r,i,a){t.$emit("IS_LOGGED"),t.$emit("SCROLL_TOP"),e.newUser={},e.resgisterSocial=!0,e.toggleResgisterSocial=function(t){"FB"==t?i.login(function(t){"connected"==t.status&&(e.showRegisterForm=!0,e.registerFacebook())},{scope:"email"}):a.login().then(function(t){1==t.status.google_logged_in&&(e.showRegisterForm=!0,e.registerGooglePlus(t))})},e.login=function(e,t,o){var n={email:e,password:t};r.login(n)},e.checkIfEnterKeyWasPressed=function(t,o,n){13==n.keyCode&&e.login(t,o,n)},e.loginFacebook=function(){i.login(function(e){if("connected"==e.status){var s=e.authResponse.accessToken;o.post(n+"/user/login/facebook",{access_token:s}).success(function(e,o,n){if(console.log("loginFacebook"),console.log(e),console.log(o),console.log(n),200==o){var s=e.info.basic.nickname,r=e.info.basic.token,i=e.info.basic.email,a={name:s,email:i,token:r};localStorage.setItem("userLogged",JSON.stringify(a)),t.$emit("IS_LOGGED"),$(".modal").modal("hide")}}).error(function(e,t,o){})}},{scope:"email"})},e.loginGooglePlus=function(){a.login().then(function(e){if(1==e.status.google_logged_in){var t=e.access_token;o.post(n+"/user/login/googleplus",{access_token:t}).success(function(e,t,o){if(200==t){var n=e.info.basic.token;r.loginByToken(n)}}).error(function(e,t,o){})}},function(e){console.log(e)})},e.sendNewUser=function(){var t=e.newUser;return void 0==t.gender?(e.isGenderValid=!1,e.errorMsg="Gender is empty"):r.registerNewUser(t),!1},e.registerFacebook=function(t){i.api("/me",function(t){e.newUser.email=t.email,"male"==t.gender?e.newUser.gender="M":e.newUser.gender="F"})},e.registerGooglePlus=function(t){var s=t.access_token;o.post(n+"/user/login/googleplus",{access_token:s}).success(function(t,o,n){200==o&&(console.log(t),e.newUser.email=t.info.basic.email,e.newUser.gender=t.info.basic.gender)}).error(function(e,t,o){})},e.isEmailValid=!0,e.isZipEmpty=!0,e.isPassEmpty=!0,e.isYearEmpty=!0,e.isGenderValid=!0,e.validaEmail=function(t){var o=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;return e.isEmailValid=o.test(t),e.errorMsg="Email invalid",e.isEmailValid},e.passEmpty=function(t){""==t||void 0==t||null==t||t.length<3||t.length>12?(e.isPassEmpty=!1,e.errorMsg="Password must have bettwen 3 and 12 caracters"):e.isPassEmpty=!0},e.zipEmpty=function(t){var o=String(t);""==o||void 0==o||null==o||o.length<5||o.length>5?(e.errorMsg="Zip code must have 5 characters",e.isZipEmpty=!1):e.isZipEmpty=!0},e.yearEmpty=function(t){var o=String(t);""==o||void 0==o||null==o||o.length<4||o.length>4?(e.errorMsg="Year must have 4 characters",e.isYearEmpty=!1):e.isYearEmpty=!0}}]),app.controller("reportCtrl",["$scope","$route","$rootScope","$window","$location","$uibModal","reportApi","userApi","session","$timeout",function(e,t,o,n,s,r,i,a,l,c){l.then(function(){$("#modal-join-us, #modal-login").modal("hide"),o.$emit("IS_LOGGED"),o.$emit("SCROLL_TOP"),e.optionsDate=new Date,e.options={format:"dd/mm/yy",selectYears:!0},e.no_symptoms=!1,e.page_members=!1,e.page_symptoms=!1,e.page_vaccionations=!1,e.page_more_members=!1,e.vaccinations=[],e.members=[],e.members_ids=[],e.selected_ids=[],e.current_id=null,e.survey={symptoms:[]},e.travel_where=null,e.checks=[],e.checks_perm=[];var t=new Date,n=t.getDay(),l=t.getDate()-7-n+(0==n?-6:1);e.week_of=new Date(t.setDate(l)),e.week_end=new Date(t.setDate(l+6)),e.next_week=new Date(t.setDate(l+7));var c=function(){r.open({templateUrl:"views/partials/modal-thanks.html",controller:"ModalThanksCtrl",size:"lg",resolve:{items:function(){return e.items}}})},u=function(t){e.page_members="page_members"==t,e.page_symptoms="page_symptoms"==t,e.page_vaccionations="page_vaccionations"==t,e.page_more_members="page_more_members"==t},p=function(){a.getUser(function(t){if(console.log(t),t.info){e.user=t.info.basic,e.user_vaccionations=t.info.vaccinations,e.households=t.info.household,e.households.length>=1?u("page_members"):(u("page_symptoms"),e.selected_ids=[e.user.user_id],e.current_id=e.user.user_id),console.log("User: ",e.user),console.log("RTR: ",e.user.current_survey);var o=e.user.current_survey,n=e.user.first_survey,s=e.user.has_symptoms;d(t.info,o,n,s),e.members_ids.push(e.user.user_id),angular.forEach(e.households,function(t,o){e.members_ids.push(t.user_household_id)})}})},d=function(t,o,n,s){e.showUiCalender=!1;var r=o,i=n;i&&(e.showUiCalender=!0),r||(e.showUiCalender=!0),!s&&r&&(e.showUiCalender=!0),s&&r&&(e.showUiCalender=!1)};e.termometro=!0,e.teste=function(){e.termometro=e.termometro===!1};var m=function(){i.getChecks(function(t){console.log(t),t&&(e.checks=t.checks,e.members=t.checks,e.checks_perm=t.checks_perm)})},g=function(){i.getReportsThisWeek(function(t){t&&(e.reports_this_week=t)})},f=function(){c(),s.path("/map")},h=function(){0==e.households.length&&"N"!=e.user.more_members?u("page_more_members"):f()},v=function(){e.user.current_survey||"Y"==e.user_vaccionations.is_vaccinated?h():u("page_vaccionations")};e.goBack=function(){u("page_members"),m()},e.everyoneHealthy=function(){i.everyoneHealthy(function(e){e&&v()})},e.selectMembers=function(){e.members.length>0?(e.selected_ids=e.members.slice(),e.openSymtoms()):e.error="You must select at least one member"},e.openSymtoms=function(){e.members.length<=0?v():(u("page_symptoms"),e.current_id=e.members.shift(),angular.forEach(e.households,function(t,o){t.user_household_id==e.current_id&&(e.user_name=t.nickname)}))},e.sendReport=function(){if(0==e.survey.symptoms.length&&0==e.no_symptoms)return void(e.error_symptom=!0);var t=e.members_ids.indexOf(e.current_id);t>-1&&e.members_ids.splice(t,1),i.sendReport(e.survey,e.user.user_id,e.current_id,e.members_ids,e.user.current_survey,function(t){e.openSymtoms()})},e.sendVaccine=function(){if(e.vaccinations.user&&e.vaccinations.user.hasOwnProperty(e.user.user_id)){var t={flu_vaccine:e.vaccinations.user[e.user.user_id],user_id:e.user.user_id,user_household_id:null};i.sendVaccine(t,function(){})}if(e.vaccinations.user&&e.vaccinations.user.hasOwnProperty(e.user.user_id))for(var o in e.vaccinations.household)e.vaccinations.household.hasOwnProperty(o)&&(t={flu_vaccine:e.vaccinations.household[o],user_id:e.user.user_id,user_household_id:o},i.sendVaccine(t,function(){}));h()},e.sendReminder=function(e){"Y"==e?s.path("/settings"):"N"==e?i.sendReminder(function(e){f()}):f()},p(),m(),g()})}]),app.controller("surveyCtrl",["$scope","$rootScope","$window","session","$uibModal",function(e,t,o,n,s){n.then(function(){t.$emit("IS_LOGGED"),t.$emit("SCROLL_TOP"),e.optionsDate=new Date,e.options={format:"dd/mm/yy",selectYears:!0},e.disabledSymptoms=!1,e.toggleDisabledSymptoms=function(){e.temperature=!1,e.disabledSymptoms=e.disabledSymptoms===!1},e.temperature=!1,e.toggleTemperature=function(){e.temperature=e.temperature===!1},e.treveling=!1,e.toggleTreveling=function(){e.treveling=e.treveling===!1},e.sendSurvey=function(){o.location.href="#/map"}})}]),app.controller("settingCtrl",["$scope","$http","$urlBase","$uibModal","$timeout","$translate","$rootScope","$route","growl","userApi","householdApi","session",function(e,t,o,n,s,r,i,a,l,c,u,p){p.then(function(){if(i.$emit("IS_LOGGED"),i.$emit("SCROLL_TOP"),e.showUserUpdate=!1,e.households=[],!localStorage.getItem("userLogged"))return!1;var t=JSON.parse(localStorage.getItem("userLogged"));t.token;e.openModalConfirm=function(t){n.open({animation:e.animationsEnabled,templateUrl:"views/partials/modal-confirm-activation.html",controller:"ModalActivationCtrl",resolve:{household:function(){return t},getHouseholds:function(){return a}}})},e.openModalEdit=function(t){n.open({animation:e.animationsEnabled,templateUrl:"views/partials/modal-edit-household.html",controller:"ModalEditHouseholdCtrl",resolve:{household:function(){return t},getHouseholds:function(){return a}}})};var o=function(e){"es"==r.proposedLanguage()&&e.message_es?l.addSuccessMessage(e.message_es):l.addSuccessMessage(e.message)},s=function(){c.getUser(function(t){e.user=t.info.basic,e.user.zip=t.info.place.zip;var o=e.user.dob.indexOf("/");e.user.birthyear=e.user.dob.slice(o+1),e.user.birthmonth=e.user.dob.slice(0,o)})},a=function(){u.getHuseholds(function(t){t.household&&(e.households=t.household)})};e.sendNewHousehold=function(){console.log(e.newHousehold),u.sendNewHousehold(e.newHousehold,function(t){t&&(a(),e.addMember=!1,i.$emit("SCROLL_TOP"),o(t))})},e.userEdit=function(){c.userEdit(e.user,function(t){t&&(e.showUserUpdate=!1,e.user.dob=e.user.birthmonth+"/"+e.user.birthyear,o(t))})},e.sendPassword=function(){var t={old_password:e.old_password,password:e.password,confirm_password:e.confirm_password};c.sendPassword(t,function(t){t&&(e.changePass=!1,o(t))})},s(),a()})}]),app.controller("unsubscribeCtrl",["$scope","$http","$urlBase","$window","$timeout","$rootScope","session",function(e,t,o,n,s,r,i){i.then(function(){r.$emit("IS_LOGGED"),r.$emit("SCROLL_TOP");var i=JSON.parse(localStorage.getItem("userLogged")),a=i.token;e.sendUnsubscribe=function(i,l){var c={token:a,pauseoption:i,reason:l};t.post(o+"/user/unsubscribe?t="+a,c).success(function(t,o){e.unsubscribeSuccess=!0,s(function(){e.unsubscribeSuccess=!1,n.location.href="/#",localStorage.removeItem("userLogged"),r.$emit("IS_LOGGED")},1e3)})}})}]),app.controller("ModalThanksCtrl",["$scope","$uibModalInstance","items","$http","$urlBase","$rootScope","$window",function(e,t,o,n,s,r,i){if(r.$emit("IS_LOGGED"),r.$emit("SCROLL_TOP"),!localStorage.getItem("userLogged"))return!1;var a=JSON.parse(localStorage.getItem("userLogged")),l=a.token;n.get(s+"/stats.json",{headers:{token:l}}).success(function(t){e.reportCard=t}),e.ok=function(){t.close(e.selected.item)},e.cancel=function(){t.dismiss("cancel")},e.winReload=function(){i.location.reload()}}]),app.controller("ModalActivationCtrl",["$scope","$uibModalInstance","$translate","growl","householdApi","household","getHouseholds","$rootScope",function(e,t,o,n,s,r,i,a){a.$emit("IS_LOGGED"),a.$emit("SCROLL_TOP"),e.household=r;var l=function(e){"es"==o.proposedLanguage()&&e.message_es?n.addSuccessMessage(e.message_es):n.addSuccessMessage(e.message)};e.ok=function(){t.close()},e.cancel=function(){t.dismiss("cancel")},e.sendActivation=function(){s.sendActivation(e.household,function(t){t&&(e.ok(),i(),l(t))})}}]),app.controller("ModalEditHouseholdCtrl",["$scope","$uibModalInstance","$translate","growl","householdApi","household","getHouseholds","$rootScope",function(e,t,o,n,s,r,i,a){a.$emit("IS_LOGGED"),a.$emit("SCROLL_TOP"),e.household=r;var l=e.household.dob.indexOf("/");e.household.birthyear=e.household.dob.slice(l+1),e.household.birthmonth=e.household.dob.slice(0,l);var c=function(e){"es"==o.proposedLanguage()&&e.message_es?n.addSuccessMessage(e.message_es):n.addSuccessMessage(e.message)};e.ok=function(){t.close()},e.cancel=function(){t.dismiss("cancel")},e.sendHouseholdEdit=function(){s.sendHouseholdEdit(e.household,function(t){t&&(e.ok(),i(),c(t))})}}]),app.controller("healthReportCtrl",["$scope","$rootScope","$http","$urlBase","session",function(e,t,o,n,s){s.then(function(){if(!localStorage.getItem("userLogged"))return!1;var s=JSON.parse(localStorage.getItem("userLogged")),r=s.token;t.$emit("IS_LOGGED"),t.$emit("SCROLL_TOP"),o.get(n+"/stats.json",{headers:{token:r}}).success(function(t){e.reportCard=t}),o.get(n+"/reports.json",{headers:{token:r}}).success(function(t){e.healthReports=t,e.healthReportsSurveys=t.surveys})})}]),app.directive("chooseStateDirective",["$rootScope","$window","$timeout",function(e,t,o){return{restrict:"A",link:function(n,s){s.on("change",function(){t.location.href="#/map";var n=s.find(":selected"),r=Number(n.attr("data-surveys")),i=Number(n.attr("data-nosymptoms")),a=Number(n.attr("data-nosymptomspercent")),l=Number(n.attr("data-symptoms")),c=Number(n.attr("data-symptomspercent")),u=Number(n.attr("data-flulike")),p=Number(n.attr("data-flulikepercent")),d=Number(n.attr("data-lat")),m=Number(n.attr("data-lon")),g=n.attr("value"),f=n.attr("data-color"),h=n.attr("value").replace(" ","-"),v={surveys:r,nosymptoms:i,nosymptomspercent:a,symptoms:l,symptomspercent:c,flulike:u,flulikepercent:p},y={latitude:d,longitude:m},w={latitude:40.0902,longitude:-110.7129},b={color:f,image:h},_=_="United States"==g?4:6,S=S="United States"==g?w:y;localStorage.setItem("showFluMap","true"),e.$emit("SHOWFLUMAP"),sessionStorage.setItem("objDataSurvey",JSON.stringify(v)),sessionStorage.setItem("centerMap",JSON.stringify(S)),sessionStorage.setItem("zoomMap",_),o(function(){$(".wrapper-databox-image").css({background:""+b.color+" url(images/states/"+b.image+".png) no-repeat center center"}),e.$emit("updateInfoDataBox")},500)})}}}]),app.directive("temperature",function(){return{restrict:"A",link:function(e,t){var o=function(e,t){var o=$(".ui-slider-handle").position().left;t.value,$(".ui-slider-handle").position().left;if($("#thermometer_bg").width(o),t.value>1){var n=(99.7+t.value/10).toFixed(1);n>=101?($("#text-slider").html("greater than"+n+" ºF"),$("#fever_f").val(101),$("#thermometer_bg").addClass("hight")):99.9==n?($("#text-slider").html("less than 99.9 ºF"),$("#fever_f").val(99.9),$("#thermometer_bg").removeClass()):($("#text-slider").html(n+" ºF"),$("#fever_f").val(n),$("#thermometer_bg").removeClass())}else $("#text-slider").html("")};t.slider({range:!1,min:1,max:13,step:1,animate:!1,value:2,slide:o,change:o}),$("#text-slider").html("less than 99.9 ºF")}}}),app.directive("disabledSurvey",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){var t=e.disabledSymptoms;t?$(".disabled").find("input").attr("disabled",!0).attr("checked",!1):$(".disabled").find("input").attr("disabled",!1)})}}}),app.directive("showTraveling",function(){return{restrict:"A",link:function(e,t){t.find("input").on("click",function(){var e=$("#conditional input").is(":checked");e?$(".fieldset-traveling").removeClass("none"):$(".fieldset-traveling").addClass("none")})}}}),app.directive("removeOption",function(){return{restrict:"A",link:function(e,t){setTimeout(function(){t.find("option").eq(0).remove()},1e3)}}}),app.directive("selectLanguage",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){t.toggleClass("opened")}),t.find(".lng").on("click",function(){$(this).attr("data-lng");t.find(".lng").removeClass("ativo"),$(this).addClass("ativo")})}}}),app.directive("loadingButton",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){$(this).button("loading"),setTimeout(function(){$(".btn-login, .btn-loading").button("reset")},2e3)})}}}),app.directive("autoComplete",function(){return{restrict:"A",link:function(e,t){setTimeout(function(){t.chosen({})},1500)}}}),app.directive("openMenuMobile",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){$("#btn-menu-mobile").toggleClass("ativo"),$("#btn-menu-mobile").hasClass("ativo")?$(".nav-mobile").animate({height:"360px"},"slow"):$(".nav-mobile").animate({height:"0"},"slow")})}}}),app.directive("showHideData",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){$(this).toggleClass("ativo"),$(this).hasClass("ativo")?($(this).find("button").text("HIDE DATA"),$("#databox-mobile").animate({height:"385px"},"slow")):($(this).find("button").text("SHOW DATA"),$("#databox-mobile").animate({height:"0"},"slow"))})}}}),app.directive("uiCalender",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){var t=e.week_of;if(e.user.current_survey){if(e.user.first_survey)var o=t;else var o=new Date(t.setDate(t.getDate()+7));var n=new Date,s=new Date}else var o=t,n=e.week_end,s=new Date(o);e.date_default=s;var r=o.getDate(),i=o.getMonth(),a=o.getFullYear(),l=n.getDate(),c=n.getMonth(),u=n.getFullYear();if(r>l&&i==c)var p=c+1;else var p=c;$("#date_input").pickadate({min:new Date(a,i,r),max:new Date(u,p,l)});var d=$("#date_input").pickadate("picker");null!=d&&d.set("select","Mon May 02 2016 00:00:00 GMT-0300 (BRT)")})}}}),app.directive("search",function(){return{restrict:"A",link:function(e,t){t.on("keyup",function(){var e=$(this).val(),t=0;$("#questions ul li").each(function(){$(this).text().search(new RegExp(e,"i"))<0?$(this).fadeOut():($(this).show(),t++)});var o=t;$("#count-results").text(o)})}}}),app.directive("accordion",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){var e=$(this).find("p").height();$(this).toggleClass("open"),$(this).hasClass("open")?($(this).animate({height:e+140},200),$(this).find("span").css("transform","rotate(45deg)")):($(this).animate({height:"80px"},200),$(this).find("span").css("transform","rotate(0deg)"))})}}}),app.directive("symptomsList",["$sce",function(e){return{restrict:"A",link:function(e,t){var o=[];1==e.report.fever&&o.push("fever"),1==e.report.cough&&o.push("cough"),1==e.report.headache&&o.push("headache"),1==e.report.sorethroat&&o.push("sorethroat"),1==e.report.diarrhea&&o.push("diarrhea"),1==e.report.bodyache&&o.push("bodyache"),1==e.report.fatigue&&o.push("fatigue"),1==e.report.chills&&o.push("chills"),1==e.report.nausea&&o.push("nausea"),1==e.report.breath&&o.push("breath"),e.report.symptoms=o}}}]),app.directive("editHousehold",["$rootScope",function(e){return{restrict:"A",link:function(t,o){o.on("click",function(){var t=$(this).attr("data-nick"),o=$(this).attr("data-gender"),n=$(this).attr("data-niver"),s=$(this).attr("data-id"),r=n.indexOf("/"),i=(n.slice(r+1),n.slice(0,r),{id:s,nickname:t,gender:o,niver:n});localStorage.setItem("objHouseholdEdit",JSON.stringify(i)),e.$emit("updateHousehold")})}}}]),app.directive("openHealph",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){$(this).toggleClass("heightAuto"),$(this).hasClass("heightAuto")?$(this).find("span").css("transform","rotate(-45deg)"):$(this).find("span").css("transform","rotate(0deg)")})}}}),app.directive("removeChecked",function(){return{restrict:"A",link:function(e,t){t.on("click",function(){$(this).hasClass("any-symptoms-below")?$(".item-symptoms").attr("checked",!1):setTimeout(function(){$(".item-symptoms").attr("checked",!1)},2500)})}}}),app.service("dataService",["$scope","socket",function(e,t){var t=io.connect(),o={},n=[];return o.getFeeds=function(e){t.on("stream",function(t){n=t,e(t)})},o}]),app.service("cdcstates",["$http",function(e){var t={},o=[];return t.getStates=function(t){e.get("../assets/states.geo.json").success(function(e){o=e,t(e)}).error(function(e){console.log("Error getStates: ",e)})},t.getMarkers=function(t){e.get("https://flunearyou.org/home.json").success(function(e){o=e,t(e)}).error(function(e){console.log("Error getMarkers: ",e)})},t}]),app.service("reportApi",["$http","$urlBase","$rootScope","$window","$timeout","$uibModal",function(e,t,o,n,s,r){var i={},a=JSON.parse(localStorage.getItem("userLogged"));return a=a?JSON.parse(localStorage.getItem("userLogged")).token:"",i.getChecks=function(o){e.get(t+"/checks.json",{headers:{token:a}}).success(function(e){o(e)}).error(function(e){console.log("Error getChecks: ",e)})},i.getReportsThisWeek=function(o){e.get(t+"/reports-this-week.json",{headers:{token:a}}).success(function(e){o(e)}).error(function(e){console.log("Error getReportsThisWeek: ",e)})},i.everyoneHealthy=function(o){e.post(t+"/survey/all",{},{headers:{token:a}}).success(function(e){o(!0)}).error(function(e){console.log("Error getUser: ",e)})},i.sendReport=function(o,n,s,r,i,l){var c=i?t+"/survey/now":t+"/survey/new",u=0==o.symptoms.length?1:0,p={platform:"web",user_id:n,current_member:s,healthy_members:r.join()};1==u&&(p.no_symptoms=u),o.ill_date&&(p.ill_date=new Date(o.ill_date).toISOString().substring(0,10)),o.was_traveling&&(p.traveling="Y",p.travel_where=o.travel_where),angular.forEach(o.medical,function(e,t){p[t]="Y"}),angular.forEach(o.symptoms,function(e,t){p[e]=1}),e.post(c,p,{headers:{token:a}}).success(function(e){l(!0)}).error(function(e){console.log("Error sendReport: ",e)})},i.sendVaccine=function(o,n){o.token=a,e.post(t+"/survey/vaccine",o,{headers:{token:a}}).success(function(e){n(!0)}).error(function(e){console.log("Error sendVaccine: ",e);
-})},i.sendReminder=function(o){e.post(t+"/user/reminder/disable",{},{headers:{token:a}}).success(function(e){o(!0)}).error(function(e){console.log("Error sendReminder: ",e)})},i}]),app.service("$fny",["$http","$urlBase","$rootScope","$window","$timeout",function(e,t,o,n,s){var r={login:function(s){e.post(t+"/user/login",s).success(function(e,t){var s=e.info.basic,r=e.info.basic.token,i={name:s.nickname,email:s.email,token:s.token};localStorage.setItem("userLogged",JSON.stringify(i)),o.$emit("IS_LOGGED"),n.location.href="#/report?token="+r}).error(function(e,t){console.log(t)})},loginByToken:function(s){e.get(t+"/user",{headers:{token:s}}).success(function(e,t){var s=e.info.basic.nickname,r=e.info.basic.token,i=e.info.basic.email,a={name:s,email:i,token:r};localStorage.setItem("userLogged",JSON.stringify(a)),o.$emit("IS_LOGGED"),n.location.href="#/report?token="+r}).error(function(e,t){console.log(t)})},registerNewUser:function(o){var n=localStorage.getItem("campaign");n&&(o.apha_num=n),e.post(t+"/user",o).success(function(e,t){var n={email:o.email,password:o.password};r.login(n)}).error(function(e,t){console.log(e),console.log(t)})}};return r}]),app.service("userApi",["$http","$urlBase","$rootScope","$window","$timeout",function(e,t,o,n,s){var r={},i=JSON.parse(localStorage.getItem("userLogged"));return i=i?JSON.parse(localStorage.getItem("userLogged")).token:"",r.getUser=function(o){JSON.parse(localStorage.getItem("userLogged")).token&&e.get(t+"/user",{headers:{token:JSON.parse(localStorage.getItem("userLogged")).token}}).success(function(e){o(e)}).error(function(e){console.log("Error getUser: ",e)})},r.userEdit=function(o,n){var s={nickname:o.nickname,email:o.email,gender:o.gender,zip:o.zip,birthmonth:o.birthmonth,birthyear:o.birthyear};e.post(t+"/user/update",s,{headers:{token:i}}).success(function(e){n(e)}).error(function(e){console.log("Error userEdit: ",e)})},r.sendPassword=function(o,n){e.post(t+"/user/update/password",o,{headers:{token:i}}).success(function(e){n(e)}).error(function(e){console.log("Error sendPassword: ",e)})},r}]),app.service("householdApi",["$http","$urlBase","$rootScope","$window","$timeout",function(e,t,o,n,s){var r={},i=JSON.parse(localStorage.getItem("userLogged"));return i=i?JSON.parse(localStorage.getItem("userLogged")).token:"",r.getHuseholds=function(o){i&&e.get(t+"/user/household",{headers:{token:i}}).success(function(e){o(e)}).error(function(e){console.log("Error getHuseholds: ",e)})},r.sendActivation=function(o,n){var s="Y"==o.active?"deactivate":"activate";e.post(t+"/user/household/"+s,{user_household_id:o.user_household_id},{headers:{token:i}}).success(function(e){n(e)}).error(function(e){console.log("Error sendActivate: ",e)})},r.sendHouseholdEdit=function(o,n){var s={nickname:o.nickname,gender:o.gender,user_household_id:o.user_household_id,birthyear:o.birthyear,birthmonth:o.birthmonth};e.post(t+"/user/household/update",s,{headers:{token:i}}).success(function(e,t){n(e)}).error(function(e,t){console.log("Error sendHouseholdEdit: ",error)})},r.sendNewHousehold=function(o,n){e.post(t+"/user/household",o,{headers:{token:i}}).success(function(e,t){n(e)}).error(function(e,t){console.log("Error sendNewHousehold: ",error)})},r}]);
+/*
+*	App
+*/
+
+'use strict';
+
+var app = angular.module('flunearyouV2App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'checklist-model', 'pascalprecht.translate', 'angular-growl', 'facebook', 'googleplus', 'ngStorage']);
+//# sourceMappingURL=app.js.map
+
+'use strict';
+
+app.factory('session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window', '$translate', '$localStorage', function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window, $translate, $localStorage) {
+
+    $localStorage.language = 'en';
+
+    var defer = $q.defer();
+    var tokenTracings = function tokenTracings(token) {
+        $http.get($urlBase + '/user', { headers: { 'token': token } }).success(function (data, status) {
+            var nickname = data.info.basic.nickname,
+                userToken = data.info.basic.token,
+                userEmail = data.info.basic.email,
+                userLoggedObj = {
+                'name': nickname,
+                'email': userEmail,
+                'token': userToken
+            };
+
+            localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+            $rootScope.$emit("IS_LOGGED");
+            $window.location.href = '#/report?token=' + userToken;
+        }).error(function (data, status) {
+            console.log(status);
+        });
+        return true;
+    };
+
+    var languageTracings = function languageTracings(language) {
+        $translate.use(language);
+        $localStorage.language = language;
+        return true;
+    };
+
+    var emailTracings = function emailTracings(track_id) {
+        console.log('track_id', track_id);
+        // $http.get($urlBase+'/email/tracking/view?track_id='+track_id, {headers: {'token': token}}).success(function(data, status){
+        //     localStorage.setItem('track_id', track_id);
+        // }).error(function(data, status){ console.log(status) });
+        return true;
+    };
+
+    var campaignTracings = function campaignTracings(campaign) {
+        console.log('campaign', campaign);
+        localStorage.setItem('campaign', campaign);
+        return true;
+    };
+
+    if ($routeParams.token) {
+        tokenTracings($routeParams.token);
+    }
+
+    if ($routeParams.language) {
+        languageTracings($routeParams.language);
+    }
+
+    if ($routeParams.track_id) {
+        emailTracings($routeParams.track_id);
+    }
+
+    if ($routeParams.campaign) {
+        campaignTracings($routeParams.campaign);
+    }
+
+    defer.resolve('done');
+    return defer.promise;
+}]);
+//# sourceMappingURL=beforeExecute.js.map
+
+'use strict';
+
+app.config(['$routeProvider', function ($routeProvider) {
+
+  var teste = {
+    check: function check($window) {
+      if (!localStorage.getItem('userLogged')) {
+        $window.location.href = '#/';
+      }
+    }
+  };
+
+  $routeProvider.when('/', {
+    templateUrl: 'views/main.html',
+    controller: 'homeCtrl'
+  }).when('/home', {
+    templateUrl: 'views/main.html',
+    controller: 'homeCtrl'
+  }).when('/landing', {
+    templateUrl: 'views/landing.html',
+    controller: 'homeCtrl',
+    resolve: teste
+  }).when('/about', {
+    templateUrl: 'views/about.html',
+    controller: 'homeCtrl'
+  }).when('/map', {
+    templateUrl: 'views/map.html',
+    controller: 'mapCtrl'
+  }).when('/flu-news', {
+    templateUrl: 'views/flu-news.html',
+    controller: 'fluNewsCtrl'
+  }).when('/press', {
+    templateUrl: 'views/press.html',
+    controller: 'pressCtrl'
+  }).when('/faq', {
+    templateUrl: 'views/faq.html',
+    controller: 'homeCtrl'
+  }).when('/privacy', {
+    templateUrl: 'views/privacy.html',
+    controller: 'homeCtrl'
+  }).when('/terms', {
+    templateUrl: 'views/terms.html',
+    controller: 'homeCtrl'
+  }).when('/survey', {
+    templateUrl: 'views/survey.html',
+    controller: 'surveyCtrl',
+    resolve: teste
+  }).when('/report', {
+    templateUrl: 'views/report.html',
+    controller: 'reportCtrl',
+    resolve: teste
+  }).when('/reports', {
+    templateUrl: 'views/reports.html',
+    controller: 'healthReportCtrl',
+    resolve: teste
+  }).when('/settings', {
+    templateUrl: 'views/settings.html',
+    controller: 'settingCtrl',
+    resolve: teste
+  }).when('/unsubscribe', {
+    templateUrl: 'views/unsubscribe.html',
+    controller: 'unsubscribeCtrl',
+    resolve: teste
+  });
+}]).animation('.reveal-animation', function () {
+  return {
+    enter: function enter(element, done) {
+      element.css('display', 'none');
+      element.fadeIn(600);
+      return function () {
+        element.stop();
+      };
+    },
+    leave: function leave(element, done) {
+      element.fadeOut(100);
+      return function () {
+        element.stop();
+      };
+    }
+  };
+});
+//# sourceMappingURL=route.js.map
+
+/*
+*	 ngValue
+*/
+
+'use strict';
+
+app.value('$urlBase', 'http://dev.flunearyou.org');
+//# sourceMappingURL=value.js.map
+
+/*
+*	Loading bar
+*/
+
+'use strict';
+
+app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+	cfpLoadingBarProvider.includeSpinner = false;
+	cfpLoadingBarProvider.includeBar = true;
+	cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+	cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Custom Loading Message...</div>';
+}]);
+//# sourceMappingURL=loadingBarConfig.js.map
+
+/*
+*	Angular translate setup
+*/
+'use strict';
+
+app.config(['$translateProvider', function ($translateProvider) {
+	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')) {
+
+		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage('en').useSanitizeValueStrategy(null);
+	} else {
+
+		$.get('http://dev.flunearyou.org/translations').success(function (data, status) {
+			localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
+			localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
+
+			$translateProvider.translations('en', JSON.stringify(data.translations.en)).translations('es', JSON.stringify(data.translations.es)).preferredLanguage('en').useSanitizeValueStrategy(null);
+
+			window.location.reload();
+		}).error(function (data, status) {
+			console.log('Error in angularTranslateConfig.js');
+			console.log(data, status);
+		});
+	}
+}]);
+//# sourceMappingURL=angularTranslateConfig.js.map
+
+/*
+*	Facebook Config
+*/
+
+'use strict';
+
+app.config(['FacebookProvider', function (FacebookProvider) {
+	var url = window.location.href;
+
+	if (url.indexOf('localhost') != -1) {
+		var FBid = '362068090500998';
+	} else {
+		// var FBid = '463215990541721';
+		var FBid = '362068090500998';
+	}
+	FacebookProvider.init(FBid);
+}]);
+//# sourceMappingURL=facebookConfig.js.map
+
+/*
+*	Google Plus Config
+*/
+
+'use strict';
+
+app.config(['GooglePlusProvider', function (GooglePlusProvider) {
+       GooglePlusProvider.init({
+              clientId: '736037612174-lpmdhpfcfane9p9cvqb9d6lkc5fc15mr.apps.googleusercontent.com',
+              apiKey: 'Tpwrqg_jpW-qIZJPBDNeJu14',
+              scopes: "https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"
+       });
+}]);
+//# sourceMappingURL=googlePlusConfig.js.map
+
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name flunearyouV2App.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the flunearyouV2App
+ // */
+
+app.controller('MainCtrl', ['$scope', 'cdcstates', function ($scope, cdcstates) {}]);
+//# sourceMappingURL=mainCtrl.js.map
+
+/*
+*	Controller: homeCtrl
+*/
+
+'use strict';
+
+app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session', function ($scope, $rootScope, $http, $urlBase, session) {
+	/*
+ *	Init
+ */
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+	session.then(function () {
+
+		var MAP = {
+
+			_markers: [],
+
+			LatLng: function LatLng(lat, lng) {
+				return new google.maps.LatLng(lat, lng);
+			},
+
+			initMap: function initMap(lat, lon, zoom, cdc, zip) {
+				var style = [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": -100 }, { "lightness": 45 }] }, { "featureType": "road", "elementType": "labels.text", "stylers": [{ "visibility": "on" }, { "color": "#000000" }] }, { "featureType": "road", "elementType": "labels.icon", "stylers": [{ "weight": "0.01" }, { "visibility": "off" }, { "hue": "#ff8f00" }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }, { "color": "#f2f2f2" }, { "weight": "2.32" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit.station.airport", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }, { "color": "#ffce00" }, { "weight": "0.01" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#d4ebf5" }, { "visibility": "on" }] }];
+				var lat_lng = MAP.LatLng(lat, lon);
+				var styledMap = new google.maps.StyledMapType(style, { name: "Styled Map" });
+				var mapCustom = {
+					center: lat_lng,
+					zoom: zoom,
+					mapTypeControl: false,
+					panControl: false,
+					streetViewControl: false,
+					zoomControl: true,
+					scrollwheel: false,
+					zoomControlOptions: {
+						style: google.maps.ZoomControlStyle.SMALL
+					}
+				};
+
+				// Map
+				var map = new google.maps.Map(document.getElementById('map'), mapCustom);
+				var geocoder = new google.maps.Geocoder();
+				map.mapTypes.set('map_style', styledMap);
+				map.setMapTypeId('map_style');
+
+				if (!cdc) {
+					MAP.getMarkers(map);
+				} else {
+					$http.get('scripts/json/cdc.json').success(function (data, status) {
+
+						var stylers = data;
+						map.data.loadGeoJson('scripts/json/states.geo.json');
+						map.data.setStyle(function (feature) {
+							var name = feature.getProperty('name'),
+							    color;
+
+							if (stylers[name]) color = stylers[name].fill.color;
+
+							return {
+								fillColor: color,
+								fillOpacity: 0.75,
+								strokeWeight: 1
+							};
+						});
+					});
+				};
+
+				if (zip) MAP.mapForZipCpde(map, geocoder);
+
+				return map;
+			},
+
+			mapForZipCpde: function mapForZipCpde(map, geocoder) {
+				var zipCode = sessionStorage.getItem('zip');
+
+				geocoder.geocode({ 'address': zipCode }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						map.setCenter(results[0].geometry.location);
+						map.setZoom(9);
+						var marker = new google.maps.Marker({
+							map: map,
+							position: results[0].geometry.location,
+							icon: 'images/marker.png',
+							zIndex: 9999
+						});
+					} else {
+						alert('Geocode was not successful for the following reason: ' + status);
+					}
+				});
+			},
+
+			getMarkers: function getMarkers(map) {
+				$http.get($urlBase + '/map/markers').success(function (data, status, headers, config) {
+					var markers = data,
+					    arrayMarkers = [];
+
+					for (var i = 0; i < markers.length; i++) {
+
+						var marker = markers[i],
+						    markerIcon = marker.icon,
+						    image = '';
+
+						// Type icon
+						switch (markerIcon) {
+							case '1':
+								image = 'images/icon-azul.png';
+								break;
+
+							case '3':
+								image = 'images/icon-amarelo.png';
+								break;
+
+							case '5':
+								image = 'images/icon-vermelho.png';
+								break;
+						}
+
+						var m = {
+							id: i,
+							image: image,
+							latitude: marker.latitude,
+							longitude: marker.longitude,
+							zIndex: null,
+							msg: '<div class="infowindow"><header><h3>' + marker.city + '</h3></header><div class="infos"><p class="qtdSym">' + marker.flu + '</p><p>FLU<br/> SYMPTOMS</p></div><div class="infos border"><p class="qtdSym">' + marker.symptoms + '</p><p>ANY<br/> SYMPTOMS</p></div><div class="infos"><p class="qtdSym">' + marker.none + '</p><p>NO<br/> SYMPTOMS</p></div></div>'
+						};
+
+						// Set zIndex of the marker
+						if (marker.icon == 5) {
+							m.zIndex = 9998;
+						} else if (marker.icon == 3) {
+							m.zIndex = 700;
+						} else {
+							m.zIndex = 100;
+						}
+
+						arrayMarkers.push(m);
+					};
+					MAP.putMarkersInMap(map, arrayMarkers);
+				});
+			},
+
+			putMarkersInMap: function putMarkersInMap(map, arrayMarkers) {
+				for (var i = 0; i < arrayMarkers.length; i++) {
+					var marker = arrayMarkers[i];
+					var point = new google.maps.LatLng(marker.latitude, marker.longitude);
+					var putMarker = new google.maps.Marker({
+						position: point,
+						map: map,
+						icon: marker.image,
+						zIndex: marker.zIndex
+					});
+
+					MAP._markers.push(putMarker);
+					MAP.openInfoWin(putMarker, marker.msg);
+				}
+			},
+
+			hideMarkers: function hideMarkers() {
+				var arrMarkers = MAP._markers;
+				for (var i = 0; i < arrMarkers.length; ++i) {
+					arrMarkers[i].setVisible(false);
+				};
+
+				if (window.innerHeight > window.innerWidth) {
+					MAP.initMap("40.0902", "-98.7129", 3, true, false);
+				} else {
+					MAP.initMap("40.0902", "-110.7129", 4, true, false);
+				}
+
+				$('.info-cdc').removeClass('none');
+			},
+
+			showMarkers: function showMarkers() {
+				var arrMarkers = MAP._markers;
+				for (var i = 0; i < arrMarkers.length; ++i) {
+					arrMarkers[i].setVisible(true);
+				};
+
+				if (window.innerHeight > window.innerWidth) {
+					MAP.initMap("40.0902", "-98.7129", 3, false);
+				} else {
+					MAP.initMap("40.0902", "-110.7129", 4, false);
+				}
+
+				$('.info-cdc').addClass('none');
+			},
+
+			openInfoWin: function openInfoWin(marker, msg) {
+				google.maps.event.addListener(marker, 'click', function () {
+					var infowindow = new google.maps.InfoWindow({
+						content: msg
+					});
+					infowindow.open(marker.get('map'), marker);
+				});
+			}
+		};
+
+		/*
+  *	If zipCode
+  */
+		var zipCode = sessionStorage.getItem('zip');
+
+		if (zipCode) {
+			var zip = true;
+		} else {
+			var zip = false;
+		}
+
+		// Init Maps
+		if (window.innerHeight > window.innerWidth) {
+			MAP.initMap("40.0902", "-98.7129", 3, false, zip);
+		} else {
+			MAP.initMap("40.0902", "-110.7129", 4, false, zip);
+		}
+
+		/*
+  *	Get states databox
+  */
+		$http.get($urlBase + '/states').success(function (data, status, headers, config) {
+			$scope.stateList = data; // State list
+
+			// Initial position dataBox
+			$scope.infoDataBox = {
+				'surveys': data[0].data.total_surveys,
+				'nosymptoms': data[0].data.no_symptoms,
+				'nosymptomspercent': data[0].data.none_percentage,
+				'symptoms': data[0].data.symptoms,
+				'symptomspercent': data[0].data.symptoms_percentage,
+				'flulike': data[0].data.ili,
+				'flulikepercent': data[0].data.ili_percentage
+			};
+		});
+
+		/*
+  *	Get info's data box
+  */
+		$scope.updateInfoDataBox = function () {
+			var center = JSON.parse(sessionStorage.getItem('centerMap')),
+			    zoom = Number(sessionStorage.getItem('zoomMap')),
+			    lat = center.latitude,
+			    lon = center.longitude;
+
+			$scope.infoDataBox = JSON.parse(sessionStorage.getItem('objDataSurvey'));
+			MAP.initMap(lat, lon, zoom);
+			$scope.$apply(); // Update $scope
+		};
+
+		$rootScope.$on('updateInfoDataBox', $scope.updateInfoDataBox);
+
+		/*
+  *	Hide/Show markers
+  */
+		$scope.hideMarkers = function () {
+			MAP.hideMarkers();
+		};
+		$scope.showMarkers = function () {
+			MAP.showMarkers();
+		};
+
+		/*
+  *	Flu News
+  */
+		$http.get($urlBase + '/flu-news.json?FNY_Site=flunearyou.org').success(function (data, status) {
+			$scope.news = data;
+		});
+
+		$scope.showReadMore = true;
+
+		/*
+  *	Tabs about
+  */
+		$scope.tab1 = true;
+		$scope.tab2 = false;
+		$scope.changeTab = function (tab) {
+			if (tab == 'tab1') {
+				$scope.tab1 = true;
+				$scope.tab2 = false;
+			} else {
+				$scope.tab1 = false;
+				$scope.tab2 = true;
+			};
+		};
+	});
+}]);
+//# sourceMappingURL=mapCtrl.js.map
+
+/*
+*	Controller: homeCtrl
+*/
+
+'use strict';
+
+app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage', function ($scope, $rootScope, $translate, $localStorage) {
+
+	/*
+ *	Init
+ */
+	$scope.isLogged = function () {
+		// Hide Join Us button
+		if (localStorage.getItem('userLogged')) {
+			var userLogged = JSON.parse(localStorage.getItem('userLogged'));
+			$scope.userLogged = true;
+			$scope.userLoggedEmail = userLogged.email;
+		} else {
+			$scope.userLogged = false;
+			$scope.userLoggedEmail = '';
+		};
+	};
+
+	$rootScope.$on("IS_LOGGED", $scope.isLogged);
+
+	$scope.logout = function () {
+		$scope.custom = false;
+		localStorage.removeItem('userLogged');
+		localStorage.removeItem('user_household_id');
+		localStorage.removeItem('objHouseholdEdit');
+		$rootScope.$emit("IS_LOGGED");
+	};
+
+	// Toggle dropdown
+	$scope.custom = false;
+	$scope.toggleCustom = function () {
+		$scope.custom = $scope.custom === false ? true : false;
+	};
+
+	// Change language
+	$scope.changeLanguage = function (lng) {
+		$translate.use(lng);
+	};
+
+	$scope.$watch(function () {
+		return $localStorage.language;
+	}, function () {
+		$scope.lang = $localStorage.language;
+	});
+}]);
+//# sourceMappingURL=navCtrl.js.map
+
+/*
+*	Controller: homeCtrl
+*/
+
+'use strict';
+
+app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'session', function ($scope, $rootScope, $http, $urlBase, $window, session) {
+	session.then(function () {
+		/*
+  *	Init
+  */
+		$scope.isLogged = function () {
+			var userLogged = localStorage.getItem('userLogged');
+			if (userLogged) {
+				$('.btn-cta').addClass('none');
+			} else {
+				$('.btn-cta').removeClass('none');
+			};
+		};
+		$rootScope.$on("IS_LOGGED", $scope.isLogged);
+
+		// ScrollTop all pages
+		$scope.scrolltop = function () {
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+		};
+		$rootScope.$on('SCROLL_TOP', $scope.scrolltop);
+
+		/*
+  *	Calls
+  */
+		$rootScope.$emit("NEWS");
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		/*
+  *	Redirect for the map
+  */
+		$scope.mapZipCode = function (zip) {
+			sessionStorage.setItem('zip', zip);
+			$window.location.href = '#/map';
+		};
+
+		/*
+  *	Get states databox
+  */
+		$http.get($urlBase + '/states').success(function (data, status, headers, config) {
+			$scope.stateList = data; // State list
+
+			// Initial position dataBox
+			$scope.infoDataBox = {
+				'surveys': data[0].data.total_surveys,
+				'nosymptoms': data[0].data.no_symptoms,
+				'nosymptomspercent': data[0].data.none_percentage,
+				'symptoms': data[0].data.symptoms,
+				'symptomspercent': data[0].data.symptoms_percentage,
+				'flulike': data[0].data.ili,
+				'flulikepercent': data[0].data.ili_percentage
+			};
+		});
+
+		/*
+  *	Flu News
+  */
+		$http.get($urlBase + '/flu-news.json?FNY_Site=flunearyou.org').success(function (data, status) {
+			$scope.news = data;
+		});
+
+		$scope.showReadMore = true;
+
+		/*
+  *	Tabs about
+  */
+		$scope.tab1 = true;
+		$scope.tab2 = false;
+		$scope.changeTab = function (tab) {
+			if (tab == 'tab1') {
+				$scope.tab1 = true;
+				$scope.tab2 = false;
+			} else {
+				$scope.tab1 = false;
+				$scope.tab2 = true;
+			};
+		};
+	});
+}]);
+//# sourceMappingURL=homeCtrl.js.map
+
+/*
+*	About Controller
+*/
+
+'use strict';
+
+app.controller('aboutCtrl', ['$scope', 'session', function ($scope, session) {
+	session.then(function () {
+		/*
+  *	Init
+  */
+		$rootScope.$emit("SCROLL_TOP");
+	});
+}]);
+//# sourceMappingURL=aboutCtrl.js.map
+
+/*
+*	About Controller
+*/
+
+'use strict';
+
+app.controller('fluNewsCtrl', ['$scope', '$http', '$urlBase', '$window', '$rootScope', 'session', function ($scope, $http, $urlBase, $window, $rootScope, session) {
+	session.then(function () {
+		/*
+  *	Init
+  */
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		$scope.news = function () {
+			$http.get($urlBase + '/flu-news.json?FNY_Site=flunearyou.org').success(function (data, status) {
+				$scope.news = data;
+			});
+
+			$scope.showReadMore = true;
+			if ($window.location.href.indexOf('flu-news') != -1) {
+				$scope.showReadMore = false;
+			}
+		};
+
+		$rootScope.$on("NEWS", $scope.news);
+		$rootScope.$emit("NEWS");
+	});
+}]);
+//# sourceMappingURL=fluNewsCtrl.js.map
+
+/*
+*	About Controller
+*/
+
+'use strict';
+
+app.controller('pressCtrl', ['$scope', '$http', '$urlBase', 'session', '$rootScope', function ($scope, $http, $urlBase, session, $rootScope) {
+	session.then(function () {
+
+		/*
+  *	Init
+  */
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		$http.get($urlBase + '/press.json').success(function (data, status) {
+			var press2015 = [],
+			    press2014 = [];
+
+			for (var i = 0; i < data.length; i++) {
+				var press = data[i];
+				if (press.publicationDateYear == '2015') {
+					press2015.push(press);
+				} else {
+					press2014.push(press);
+				}
+			}
+
+			$scope.press2015 = press2015;
+			$scope.press2014 = press2014;
+		}).error(function (data, status) {
+			console.log(data);
+		});
+	});
+}]);
+//# sourceMappingURL=pressCtrl.js.map
+
+/*
+*	Modals Controller
+*/
+
+'use strict';
+
+app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', '$fny', 'Facebook', 'GooglePlus', function ($scope, $rootScope, $http, $urlBase, $window, $fny, Facebook, GooglePlus) {
+
+	/*
+ *	Init
+ */
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+	$scope.newUser = {};
+	$scope.resgisterSocial = true;
+	$scope.toggleResgisterSocial = function (redeSocial) {
+		if (redeSocial == 'FB') {
+			Facebook.login(function (response) {
+				if (response.status == 'connected') {
+					$scope.showRegisterForm = true;
+					$scope.registerFacebook();
+				}
+			}, { scope: 'email' });
+		} else {
+			GooglePlus.login().then(function (authResult) {
+				if (authResult.status.google_logged_in == true) {
+					$scope.showRegisterForm = true;
+					$scope.registerGooglePlus(authResult);
+				};
+			});
+		};
+	};
+
+	/*
+ *	Login
+ */
+	$scope.login = function (email, pass, event) {
+		var loginObj = {
+			"email": email,
+			"password": pass
+		};
+
+		$fny.login(loginObj);
+	};
+
+	$scope.checkIfEnterKeyWasPressed = function (email, pass, event) {
+		if (event.keyCode == 13) {
+			$scope.login(email, pass, event);
+		}
+	};
+
+	/*
+ *	Login by Facebook
+ */
+	$scope.loginFacebook = function () {
+		Facebook.login(function (response) {
+			if (response.status == 'connected') {
+				var token = response.authResponse.accessToken;
+				$http.post($urlBase + '/user/login/facebook', { "access_token": token }).success(function (data, status, result) {
+					console.log('loginFacebook');
+					console.log(data);
+					console.log(status);
+					console.log(result);
+
+					if (status == 200) {
+						var nickname = data.info.basic.nickname,
+						    userToken = data.info.basic.token,
+						    userEmail = data.info.basic.email,
+						    userLoggedObj = {
+							'name': nickname,
+							'email': userEmail,
+							'token': userToken
+						};
+
+						localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+						$rootScope.$emit("IS_LOGGED");
+						$('.modal').modal('hide');
+					}
+				}).error(function (data, status, result) {});
+			}
+		}, { scope: 'email' });
+	};
+
+	/*
+ *	Login by Google Plus
+ */
+	$scope.loginGooglePlus = function () {
+
+		GooglePlus.login().then(function (authResult) {
+			if (authResult.status.google_logged_in == true) {
+				var token = authResult.access_token;
+
+				$http.post($urlBase + '/user/login/googleplus', { "access_token": token }).success(function (data, status, result) {
+					if (status == 200) {
+						var tokenUser = data.info.basic.token;
+						$fny.loginByToken(tokenUser);
+					}
+				}).error(function (data, status, result) {});
+			}
+		}, function (err) {
+			console.log(err);
+		});
+	};
+
+	/*
+ *	Register new user	
+ */
+	$scope.sendNewUser = function () {
+		var objNewUser = $scope.newUser;
+
+		if (objNewUser.gender == undefined) {
+			$scope.isGenderValid = false;
+			$scope.errorMsg = 'Gender is empty';
+		} else {
+			$fny.registerNewUser(objNewUser);
+		}
+		return false;
+	};
+
+	/*
+ *	Register by FB
+ */
+	$scope.registerFacebook = function (zip) {
+		var zipCode = zip;
+
+		Facebook.api('/me', function (response) {
+			$scope.newUser.email = response.email;
+			if (response.gender == 'male') {
+				$scope.newUser.gender = 'M';
+			} else {
+				$scope.newUser.gender = 'F';
+			}
+		});
+	};
+
+	/*
+ *	Register by FB
+ */
+	$scope.registerGooglePlus = function (authResult) {
+		var token = authResult.access_token;
+
+		$http.post($urlBase + '/user/login/googleplus', { "access_token": token }).success(function (data, status, result) {
+			if (status == 200) {
+				console.log(data);
+				$scope.newUser.email = data.info.basic.email;
+				$scope.newUser.gender = data.info.basic.gender;
+			}
+		}).error(function (data, status, result) {});
+	};
+
+	/*
+ *
+ *	Validation form
+ *
+ */
+	$scope.isEmailValid = true;
+	$scope.isZipEmpty = true;
+	$scope.isPassEmpty = true;
+	$scope.isYearEmpty = true;
+	$scope.isGenderValid = true;
+
+	$scope.validaEmail = function (email) {
+		var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		$scope.isEmailValid = re.test(email);
+		$scope.errorMsg = 'Email invalid';
+		return $scope.isEmailValid;
+	};
+
+	$scope.passEmpty = function (pass) {
+		if (pass == '' || pass == undefined || pass == null || pass.length < 3 || pass.length > 12) {
+			$scope.isPassEmpty = false;
+			$scope.errorMsg = 'Password must have bettwen 3 and 12 caracters';
+		} else {
+			$scope.isPassEmpty = true;
+		}
+	};
+
+	$scope.zipEmpty = function (val) {
+
+		var zip = String(val);
+
+		if (zip == '' || zip == undefined || zip == null || zip.length < 5 || zip.length > 5) {
+			$scope.errorMsg = 'Zip code must have 5 characters';
+			$scope.isZipEmpty = false;
+		} else {
+			$scope.isZipEmpty = true;
+		}
+	};
+
+	$scope.yearEmpty = function (val) {
+
+		var year = String(val);
+
+		if (year == '' || year == undefined || year == null || year.length < 4 || year.length > 4) {
+			$scope.errorMsg = 'Year must have 4 characters';
+			$scope.isYearEmpty = false;
+		} else {
+			$scope.isYearEmpty = true;
+		}
+	};
+}]);
+//# sourceMappingURL=modalsCtrl.js.map
+
+/*
+*	Report Controller
+*/
+'use strict';
+
+app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$location', '$uibModal', 'reportApi', 'userApi', 'session', '$timeout', function ($scope, $route, $rootScope, $window, $location, $uibModal, reportApi, userApi, session, $timeout) {
+	session.then(function () {
+
+		/*
+  *	Init
+  */
+
+		$('#modal-join-us, #modal-login').modal('hide');
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		$scope.optionsDate = new Date();
+		$scope.options = { format: 'dd/mm/yy', selectYears: true };
+		$scope.no_symptoms = false;
+
+		// Arrays
+		$scope.page_members = false;
+		$scope.page_symptoms = false;
+		$scope.page_vaccionations = false;
+		$scope.page_more_members = false;
+		$scope.vaccinations = [];
+		$scope.members = [];
+		$scope.members_ids = [];
+		$scope.selected_ids = [];
+		$scope.current_id = null;
+		$scope.survey = { symptoms: [] };
+		$scope.travel_where = null;
+		$scope.checks = [];
+		$scope.checks_perm = [];
+
+		// Week of
+		var d = new Date();
+		var day = d.getDay(),
+		    diff = d.getDate() - 7 - day + (day == 0 ? -6 : 1);
+
+		$scope.week_of = new Date(d.setDate(diff));
+		$scope.week_end = new Date(d.setDate(diff + 6));
+		$scope.next_week = new Date(d.setDate(diff + 7));
+
+		var openModalThanks = function openModalThanks() {
+			var modalInstance = $uibModal.open({
+				templateUrl: 'views/partials/modal-thanks.html',
+				controller: 'ModalThanksCtrl',
+				size: 'lg',
+				resolve: {
+					items: function items() {
+						return $scope.items;
+					}
+				}
+			});
+		};
+
+		var openPage = function openPage(page) {
+			$scope.page_members = page == 'page_members' ? true : false;
+			$scope.page_symptoms = page == 'page_symptoms' ? true : false;
+			$scope.page_vaccionations = page == 'page_vaccionations' ? true : false;
+			$scope.page_more_members = page == 'page_more_members' ? true : false;
+		};
+
+		var getUser = function getUser() {
+
+			userApi.getUser(function (result) {
+				console.log(result);
+				if (result.info) {
+					$scope.user = result.info.basic;
+					$scope.user_vaccionations = result.info.vaccinations;
+					$scope.households = result.info.household;
+
+					if ($scope.households.length >= 1) {
+						openPage('page_members');
+					} else {
+						openPage('page_symptoms');
+						$scope.selected_ids = [$scope.user.user_id];
+						$scope.current_id = $scope.user.user_id;
+					}
+
+					console.log('User: ', $scope.user);
+					console.log('RTR: ', $scope.user.current_survey);
+
+					var current_survey = $scope.user.current_survey,
+					    first_survey = $scope.user.first_survey,
+					    has_symptoms = $scope.user.has_symptoms;
+
+					calender(result.info, current_survey, first_survey, has_symptoms);
+
+					$scope.members_ids.push($scope.user.user_id);
+					angular.forEach($scope.households, function (value, key) {
+						$scope.members_ids.push(value.user_household_id);
+					});
+				}
+			});
+		};
+
+		// Show/Hide Calender
+		var calender = function calender(info, current_survey, first_survey, has_symptoms) {
+			$scope.showUiCalender = false;
+
+			var userCurrentSurvey = current_survey,
+			    userFirstSurvey = first_survey,
+			    userHasSurvey = has_symptoms;
+
+			// Condition: If a new user (the first survey)
+			if (userFirstSurvey) {
+				$scope.showUiCalender = true;
+			};
+
+			// Condition: The firt survey of the weekly
+			if (!userCurrentSurvey) {
+				$scope.showUiCalender = true;
+			};
+
+			// Condition: If the user reported 'no symptoms' and then report any symtoms
+			if (!has_symptoms && userCurrentSurvey) {
+				$scope.showUiCalender = true;
+			};
+
+			// Condition: If the second respor in the same weekle
+			if (has_symptoms && userCurrentSurvey) {
+				$scope.showUiCalender = false;
+			};
+		};
+
+		$scope.termometro = true;
+		$scope.teste = function () {
+			$scope.termometro = $scope.termometro === false ? true : false;
+		};
+
+		var getChecks = function getChecks() {
+			reportApi.getChecks(function (result) {
+				console.log(result);
+				if (result) {
+					$scope.checks = result.checks;
+					$scope.members = result.checks;
+					$scope.checks_perm = result.checks_perm;
+				}
+			});
+		};
+
+		var getReportsThisWeek = function getReportsThisWeek() {
+			reportApi.getReportsThisWeek(function (result) {
+				if (result) {
+					$scope.reports_this_week = result;
+				}
+			});
+		};
+
+		var redirectToSuccess = function redirectToSuccess() {
+			openModalThanks();
+			$location.path("/map");
+		};
+
+		var askForMembersOrGoHome = function askForMembersOrGoHome() {
+			if ($scope.households.length == 0 && $scope.user.more_members != 'N') {
+				openPage('page_more_members');
+			} else {
+				redirectToSuccess();
+			}
+		};
+
+		var successReport = function successReport() {
+			if (!$scope.user.current_survey && $scope.user_vaccionations.is_vaccinated != 'Y') {
+				openPage('page_vaccionations');
+			} else {
+				askForMembersOrGoHome();
+			}
+		};
+
+		$scope.goBack = function () {
+			openPage('page_members');
+			getChecks();
+		};
+
+		$scope.everyoneHealthy = function () {
+			reportApi.everyoneHealthy(function (result) {
+				if (result) {
+					successReport();
+				}
+			});
+		};
+
+		$scope.selectMembers = function () {
+			if ($scope.members.length > 0) {
+				$scope.selected_ids = $scope.members.slice();
+				$scope.openSymtoms();
+			} else {
+				$scope.error = 'You must select at least one member';
+			}
+		};
+
+		$scope.openSymtoms = function () {
+			if ($scope.members.length <= 0) {
+				successReport();
+			} else {
+				openPage('page_symptoms');
+				$scope.current_id = $scope.members.shift();
+				angular.forEach($scope.households, function (value, key) {
+					if (value.user_household_id == $scope.current_id) {
+						$scope.user_name = value.nickname;
+					}
+				});
+			}
+		};
+
+		$scope.sendReport = function () {
+
+			if ($scope.survey.symptoms.length == 0 && $scope.no_symptoms == false) {
+				$scope.error_symptom = true;
+				return;
+			}
+			var index = $scope.members_ids.indexOf($scope.current_id);
+			if (index > -1) {
+				$scope.members_ids.splice(index, 1);
+			}
+			reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members_ids, $scope.user.current_survey, function (result) {
+				$scope.openSymtoms();
+			});
+		};
+
+		$scope.sendVaccine = function () {
+			if ($scope.vaccinations.user && $scope.vaccinations.user.hasOwnProperty($scope.user.user_id)) {
+				var data = {
+					flu_vaccine: $scope.vaccinations.user[$scope.user.user_id],
+					user_id: $scope.user.user_id,
+					user_household_id: null
+				};
+				reportApi.sendVaccine(data, function () {});
+			}
+			if ($scope.vaccinations.user && $scope.vaccinations.user.hasOwnProperty($scope.user.user_id)) {
+				for (var id in $scope.vaccinations.household) {
+					if ($scope.vaccinations.household.hasOwnProperty(id)) {
+						data = {
+							flu_vaccine: $scope.vaccinations.household[id],
+							user_id: $scope.user.user_id,
+							user_household_id: id
+						};
+						reportApi.sendVaccine(data, function () {});
+					}
+				}
+			}
+			askForMembersOrGoHome();
+		};
+
+		$scope.sendReminder = function (remind_me) {
+			if (remind_me == 'Y') {
+				$location.path("/settings");
+			} else if (remind_me == 'N') {
+				reportApi.sendReminder(function (result) {
+
+					redirectToSuccess();
+				});
+			} else {
+
+				redirectToSuccess();
+			}
+		};
+
+		getUser();
+		getChecks();
+		getReportsThisWeek();
+	});
+}]);
+//# sourceMappingURL=reportCtrl.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', 'session', '$uibModal', function ($scope, $rootScope, $window, session, $uibModal) {
+	session.then(function () {
+		/*
+  *	Init
+  */
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		$scope.optionsDate = new Date();
+		$scope.options = { format: 'dd/mm/yy', selectYears: true };
+
+		// Toggle disabledSymptoms
+		$scope.disabledSymptoms = false;
+		$scope.toggleDisabledSymptoms = function () {
+			$scope.temperature = false;
+			$scope.disabledSymptoms = $scope.disabledSymptoms === false ? true : false;
+		};
+
+		// Toggle temperature
+		$scope.temperature = false;
+		$scope.toggleTemperature = function () {
+			$scope.temperature = $scope.temperature === false ? true : false;
+		};
+
+		// Toggle Treveling
+		$scope.treveling = false;
+		$scope.toggleTreveling = function () {
+			$scope.treveling = $scope.treveling === false ? true : false;
+		};
+
+		$scope.sendSurvey = function () {
+			$window.location.href = '#/map';
+		};
+	});
+}]);
+//# sourceMappingURL=surveyCtrl.js.map
+
+/*
+*	Setting Controller
+*/
+
+'use strict';
+
+app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$timeout', '$translate', '$rootScope', '$route', 'growl', 'userApi', 'householdApi', 'session', function ($scope, $http, $urlBase, $uibModal, $timeout, $translate, $rootScope, $route, growl, userApi, householdApi, session) {
+	session.then(function () {
+
+		/*
+  *	Init
+  */
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+		$scope.showUserUpdate = false;
+		$scope.households = [];
+
+		/*
+  *	Get user account
+  */
+		if (localStorage.getItem('userLogged')) {
+			var user = JSON.parse(localStorage.getItem('userLogged')),
+			    token = user.token;
+		} else {
+			return false;
+		}
+
+		$scope.openModalConfirm = function (_household) {
+			var modalInstance = $uibModal.open({
+				animation: $scope.animationsEnabled,
+				templateUrl: 'views/partials/modal-confirm-activation.html',
+				controller: 'ModalActivationCtrl',
+				resolve: {
+					household: function household() {
+						return _household;
+					},
+					getHouseholds: function getHouseholds() {
+						return _getHouseholds;
+					}
+				}
+			});
+		};
+
+		$scope.openModalEdit = function (_household2) {
+			var modalInstance = $uibModal.open({
+				animation: $scope.animationsEnabled,
+				templateUrl: 'views/partials/modal-edit-household.html',
+				controller: 'ModalEditHouseholdCtrl',
+				resolve: {
+					household: function household() {
+						return _household2;
+					},
+					getHouseholds: function getHouseholds() {
+						return _getHouseholds;
+					}
+				}
+			});
+		};
+
+		var showMessage = function showMessage(data) {
+			if ($translate.proposedLanguage() == 'es' && data.message_es) {
+				growl.addSuccessMessage(data.message_es);
+			} else {
+				growl.addSuccessMessage(data.message);
+			}
+		};
+
+		var getUser = function getUser() {
+			userApi.getUser(function (data) {
+				$scope.user = data.info.basic;
+				$scope.user.zip = data.info.place.zip;
+
+				// Get month and year birthdate
+				var index = $scope.user.dob.indexOf('/');
+				$scope.user.birthyear = $scope.user.dob.slice(index + 1);
+				$scope.user.birthmonth = $scope.user.dob.slice(0, index);
+			});
+		};
+
+		var _getHouseholds = function _getHouseholds() {
+			householdApi.getHuseholds(function (data) {
+				if (data.household) {
+					$scope.households = data.household;
+				}
+			});
+		};
+
+		$scope.sendNewHousehold = function () {
+			console.log($scope.newHousehold);
+			householdApi.sendNewHousehold($scope.newHousehold, function (data) {
+				if (data) {
+					_getHouseholds();
+					$scope.addMember = false;
+					$rootScope.$emit("SCROLL_TOP");
+					showMessage(data);
+				}
+			});
+		};
+
+		$scope.userEdit = function () {
+			userApi.userEdit($scope.user, function (data) {
+				if (data) {
+					$scope.showUserUpdate = false;
+					$scope.user.dob = $scope.user.birthmonth + '/' + $scope.user.birthyear;
+					showMessage(data);
+				}
+			});
+		};
+
+		$scope.sendPassword = function () {
+			var objPass = {
+				'old_password': $scope.old_password,
+				'password': $scope.password,
+				'confirm_password': $scope.confirm_password
+			};
+			userApi.sendPassword(objPass, function (data) {
+				if (data) {
+					$scope.changePass = false;
+					showMessage(data);
+				}
+			});
+		};
+
+		getUser();
+		_getHouseholds();
+	});
+}]);
+//# sourceMappingURL=settingCtrl.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.controller('unsubscribeCtrl', ['$scope', '$http', '$urlBase', '$window', '$timeout', '$rootScope', 'session', function ($scope, $http, $urlBase, $window, $timeout, $rootScope, session) {
+	session.then(function () {
+
+		/*
+  *	Init
+  */
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		/*
+  *	Get user account
+  */
+		var user = JSON.parse(localStorage.getItem('userLogged')),
+		    token = user.token;
+
+		$scope.sendUnsubscribe = function (reason, reasonTxt) {
+
+			var objUnsubscribe = {
+				'token': token,
+				'pauseoption': reason,
+				'reason': reasonTxt
+			};
+			$http.post($urlBase + '/user/unsubscribe?t=' + token, objUnsubscribe).success(function (data, status) {
+				$scope.unsubscribeSuccess = true;
+				$timeout(function () {
+					$scope.unsubscribeSuccess = false;
+					$window.location.href = '/#';
+					localStorage.removeItem('userLogged');
+					$rootScope.$emit("IS_LOGGED");
+				}, 1000);
+			});
+		};
+	});
+}]);
+//# sourceMappingURL=unsubscribeCtrl.js.map
+
+'use strict';
+
+app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window', function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window) {
+
+	/*
+ *	Init
+ */
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+	if (localStorage.getItem('userLogged')) {
+		var user = JSON.parse(localStorage.getItem('userLogged')),
+		    token = user.token;
+	} else {
+		return false;
+	}
+
+	/*
+ *	Get infos report card
+ */
+	$http.get($urlBase + '/stats.json', { headers: { 'token': token } }).success(function (data) {
+		$scope.reportCard = data;
+	});
+
+	$scope.ok = function () {
+		$uibModalInstance.close($scope.selected.item);
+	};
+
+	$scope.cancel = function () {
+		$uibModalInstance.dismiss('cancel');
+	};
+
+	$scope.winReload = function () {
+		$window.location.reload();
+	};
+}]);
+//# sourceMappingURL=modalThanksCtrl.js.map
+
+'use strict';
+
+app.controller('ModalActivationCtrl', ['$scope', '$uibModalInstance', '$translate', 'growl', 'householdApi', 'household', 'getHouseholds', '$rootScope', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds, $rootScope) {
+	/*
+ *	Init
+ */
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+	$scope.household = household;
+
+	var showMessage = function showMessage(data) {
+		if ($translate.proposedLanguage() == 'es' && data.message_es) {
+			growl.addSuccessMessage(data.message_es);
+		} else {
+			growl.addSuccessMessage(data.message);
+		}
+	};
+
+	$scope.ok = function () {
+		$uibModalInstance.close();
+	};
+
+	$scope.cancel = function () {
+		$uibModalInstance.dismiss('cancel');
+	};
+
+	$scope.sendActivation = function () {
+		householdApi.sendActivation($scope.household, function (result) {
+			if (result) {
+				$scope.ok();
+				getHouseholds();
+				showMessage(result);
+			}
+		});
+	};
+}]);
+//# sourceMappingURL=modalActivationCtrl.js.map
+
+'use strict';
+
+app.controller('ModalEditHouseholdCtrl', ['$scope', '$uibModalInstance', '$translate', 'growl', 'householdApi', 'household', 'getHouseholds', '$rootScope', function ($scope, $uibModalInstance, $translate, growl, householdApi, household, getHouseholds, $rootScope) {
+
+	/*
+ *	Init
+ */
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+	$scope.household = household;
+
+	var index = $scope.household.dob.indexOf('/');
+	$scope.household.birthyear = $scope.household.dob.slice(index + 1);
+	$scope.household.birthmonth = $scope.household.dob.slice(0, index);
+
+	var showMessage = function showMessage(data) {
+		if ($translate.proposedLanguage() == 'es' && data.message_es) {
+			growl.addSuccessMessage(data.message_es);
+		} else {
+			growl.addSuccessMessage(data.message);
+		}
+	};
+
+	$scope.ok = function () {
+		$uibModalInstance.close();
+	};
+
+	$scope.cancel = function () {
+		$uibModalInstance.dismiss('cancel');
+	};
+
+	$scope.sendHouseholdEdit = function () {
+		householdApi.sendHouseholdEdit($scope.household, function (result) {
+			if (result) {
+				$scope.ok();
+				getHouseholds();
+				showMessage(result);
+			}
+		});
+	};
+}]);
+//# sourceMappingURL=modalEditHouseholdCtrl.js.map
+
+/*
+*	Health Report Controller
+*/
+
+'use strict';
+
+app.controller('healthReportCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session', function ($scope, $rootScope, $http, $urlBase, session) {
+	session.then(function () {
+		/*
+  *	Init
+  */
+		if (localStorage.getItem('userLogged')) {
+			var user = JSON.parse(localStorage.getItem('userLogged')),
+			    token = user.token;
+		} else {
+			return false;
+		}
+
+		/*
+  *	Calls
+  */
+		$rootScope.$emit("IS_LOGGED");
+		$rootScope.$emit("SCROLL_TOP");
+
+		/*
+  *	Get infos report card
+  */
+		$http.get($urlBase + '/stats.json', { headers: { 'token': token } }).success(function (data) {
+			$scope.reportCard = data;
+		});
+
+		/*
+  *	Get infos health report
+  */
+		$http.get($urlBase + '/reports.json', { headers: { 'token': token } }).success(function (data) {
+			$scope.healthReports = data;
+			$scope.healthReportsSurveys = data.surveys;
+		});
+	});
+}]);
+//# sourceMappingURL=healthReportCtrl.js.map
+
+/*
+*	Directive: Choose State and then show data
+*/
+
+'use strict';
+
+app.directive('chooseStateDirective', ['$rootScope', '$window', '$timeout', function ($rootScope, $window, $timeout) {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('change', function () {
+				$window.location.href = '#/map';
+
+				var stateSelected = elem.find(':selected'),
+				    surveys = Number(stateSelected.attr('data-surveys')),
+				    nosymptoms = Number(stateSelected.attr('data-nosymptoms')),
+				    nosymptomspercent = Number(stateSelected.attr('data-nosymptomspercent')),
+				    symptoms = Number(stateSelected.attr('data-symptoms')),
+				    symptomspercent = Number(stateSelected.attr('data-symptomspercent')),
+				    flulike = Number(stateSelected.attr('data-flulike')),
+				    flulikepercent = Number(stateSelected.attr('data-flulikepercent')),
+				    latitude = Number(stateSelected.attr('data-lat')),
+				    longitude = Number(stateSelected.attr('data-lon')),
+				    value = stateSelected.attr('value'),
+				    color = stateSelected.attr('data-color'),
+				    image = stateSelected.attr('value').replace(' ', '-');
+
+				var objDataSurvey = {
+					'surveys': surveys,
+					'nosymptoms': nosymptoms,
+					'nosymptomspercent': nosymptomspercent,
+					'symptoms': symptoms,
+					'symptomspercent': symptomspercent,
+					'flulike': flulike,
+					'flulikepercent': flulikepercent
+				};
+
+				var centerState = {
+					'latitude': latitude,
+					'longitude': longitude
+				};
+
+				var centerDefault = {
+					latitude: 40.0902,
+					longitude: -110.7129
+				};
+
+				var colorImage = {
+					color: color,
+					image: image
+				};
+
+				var zoomMap = value == 'United States' ? zoomMap = 4 : zoomMap = 6;
+				var centerMap = value == 'United States' ? centerMap = centerDefault : centerMap = centerState;
+
+				// Open Flu-map
+				localStorage.setItem('showFluMap', 'true');
+				$rootScope.$emit("SHOWFLUMAP");
+
+				// Update dataBox
+				sessionStorage.setItem('objDataSurvey', JSON.stringify(objDataSurvey));
+				sessionStorage.setItem('centerMap', JSON.stringify(centerMap));
+				sessionStorage.setItem('zoomMap', zoomMap);
+				$timeout(function () {
+					$('.wrapper-databox-image').css({
+						'background': '' + colorImage.color + ' url(images/states/' + colorImage.image + '.png) no-repeat center center'
+					});
+					$rootScope.$emit('updateInfoDataBox');
+				}, 500);
+			});
+		}
+	};
+}]);
+//# sourceMappingURL=chooseStateDirective.js.map
+
+/*
+*
+*/
+
+// 'use strict';
+
+// app.directive('inOutChecked', function(){
+// 	return {
+// 		restrict : 'A',
+// 		link: function(scope, elem){
+// 			elem.on('click', function(){
+// 				var parent = $(this).parent().parent();
+// 				parent.find('input[type="radio"]').removeAttr('checked');
+// 				$(this).attr('checked', 'checked');
+// 			});
+// 		}
+// 	}
+// });
+"use strict";
+//# sourceMappingURL=inOutChecked.js.map
+
+/*
+*	Temperature Directive
+*/
+
+'use strict';
+
+app.directive('temperature', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			var slide = function slide(event, ui) {
+
+				var l = $(".ui-slider-handle").position().left,
+				    v = ui.value,
+				    left = $(".ui-slider-handle").position().left;
+				$("#thermometer_bg").width(l);
+
+				if (ui.value > 1) {
+					var n = (99.7 + ui.value / 10).toFixed(1);
+
+					if (n >= 101) {
+						$('#text-slider').html('greater than' + n + ' ºF');
+						$("#fever_f").val(101);
+						$('#thermometer_bg').addClass('hight');
+					} else if (n == 99.9) {
+						$('#text-slider').html('less than ' + 99.9 + ' ºF');
+						$("#fever_f").val(99.9);
+						$('#thermometer_bg').removeClass();
+					} else {
+						$('#text-slider').html(n + ' ºF');
+						$("#fever_f").val(n);
+						$('#thermometer_bg').removeClass();
+					}
+				} else {
+					$('#text-slider').html("");
+				}
+			};
+
+			elem.slider({
+				range: false,
+				min: 1,
+				max: 13,
+				step: 1,
+				animate: false,
+				value: 2,
+				slide: slide,
+				change: slide
+			});
+
+			$('#text-slider').html('less than ' + 99.9 + ' ºF');
+		}
+	};
+});
+//# sourceMappingURL=temperatureDirective.js.map
+
+/*
+*	Disabled Survey Directive
+*/
+
+'use strict';
+
+app.directive('disabledSurvey', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				var disabledSymptoms = scope.disabledSymptoms;
+				if (disabledSymptoms) {
+					$('.disabled').find('input').attr('disabled', true).attr('checked', false);
+				} else {
+					$('.disabled').find('input').attr('disabled', false);
+				};
+			});
+		}
+	};
+});
+//# sourceMappingURL=disabledSurveyDirective.js.map
+
+/*
+*	Show Traveling
+*/
+
+'use strict';
+
+app.directive('showTraveling', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.find('input').on('click', function () {
+				var isChecked = $('#conditional input').is(':checked');
+				if (isChecked) {
+					$('.fieldset-traveling').removeClass('none');
+				} else {
+					$('.fieldset-traveling').addClass('none');
+				}
+			});
+		}
+	};
+});
+//# sourceMappingURL=showTraveling.js.map
+
+/*
+*	Remove option directive 
+*/
+
+'use strict';
+
+app.directive('removeOption', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			setTimeout(function () {
+				elem.find('option').eq(0).remove();
+			}, 1000);
+		}
+	};
+});
+//# sourceMappingURL=removeOption.js.map
+
+/*
+*	Select language directive
+*/
+
+'use strict';
+
+app.directive('selectLanguage', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+
+			elem.on('click', function () {
+				elem.toggleClass('opened');
+			});
+
+			elem.find('.lng').on('click', function () {
+				var lng = $(this).attr('data-lng');
+
+				// Change language
+				elem.find('.lng').removeClass('ativo');
+				$(this).addClass('ativo');
+			});
+		}
+	};
+});
+//# sourceMappingURL=selectLanguage.js.map
+
+/*
+*	Loading Button
+*/
+
+'use strict';
+
+app.directive('loadingButton', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				$(this).button('loading');
+				setTimeout(function () {
+					$('.btn-login, .btn-loading').button('reset');
+				}, 2000);
+			});
+		}
+	};
+});
+//# sourceMappingURL=loadingButtonDirective.js.map
+
+/*
+*	AutoComlete Directive
+*/
+
+'use strict';
+
+app.directive('autoComplete', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			setTimeout(function () {
+				elem.chosen({});
+			}, 1500);
+		}
+	};
+});
+//# sourceMappingURL=autoCompleteDirective.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('openMenuMobile', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				$('#btn-menu-mobile').toggleClass('ativo');
+				if ($('#btn-menu-mobile').hasClass('ativo')) {
+					$('.nav-mobile').animate({
+						'height': '360px'
+					}, 'slow');
+				} else {
+					$('.nav-mobile').animate({
+						'height': '0'
+					}, 'slow');
+				}
+			});
+		}
+	};
+});
+//# sourceMappingURL=openMenuMobile.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('showHideData', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				$(this).toggleClass('ativo');
+				if ($(this).hasClass('ativo')) {
+					$(this).find('button').text('HIDE DATA');
+					$('#databox-mobile').animate({
+						'height': '385px'
+					}, 'slow');
+				} else {
+					$(this).find('button').text('SHOW DATA');
+					$('#databox-mobile').animate({
+						'height': '0'
+					}, 'slow');
+				}
+			});
+		}
+	};
+});
+//# sourceMappingURL=showHideData.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('uiCalender', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				var k = scope.week_of;
+				if (scope.user.current_survey) {
+					if (scope.user.first_survey) {
+						var min = k;
+					} else {
+						var min = new Date(k.setDate(k.getDate() + 7));
+					}
+					var max = new Date();
+					var date_default = new Date();
+				} else {
+					var min = k;
+					var max = scope.week_end;
+					var date_default = new Date(min);
+				}
+				scope.date_default = date_default;
+
+				// Min Date
+				var minDay = min.getDate(),
+				    minMonth = min.getMonth(),
+				    minYear = min.getFullYear();
+
+				// Max Date
+				var maxDay = max.getDate(),
+				    maxMonth = max.getMonth(),
+				    maxYear = max.getFullYear();
+
+				if (minDay > maxDay && minMonth == maxMonth) {
+					var dateMonth = maxMonth + 1;
+				} else {
+					var dateMonth = maxMonth;
+				}
+
+				// console.log(min);
+				// console.log(minYear, minMonth, minDay);
+				// console.log(max);
+				// console.log('maxMonth: ', maxMonth);
+				// console.log(maxYear, dateMonth, maxDay);
+				$('#date_input').pickadate({
+					min: new Date(minYear, minMonth, minDay),
+					max: new Date(maxYear, dateMonth, maxDay)
+				});
+
+				// $('#date_input').pickadate();
+
+				var picker = $('#date_input').pickadate('picker');
+				if (picker != null) {
+					picker.set('select', 'Mon May 02 2016 00:00:00 GMT-0300 (BRT)');
+				};
+			});
+		}
+	};
+});
+//# sourceMappingURL=uiCalender.js.map
+
+/*
+*	Search Directive
+*/
+
+'use strict';
+
+app.directive('search', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('keyup', function () {
+				var search = $(this).val(),
+				    count = 0;
+
+				$('#questions ul li').each(function () {
+					if ($(this).text().search(new RegExp(search, 'i')) < 0) {
+						$(this).fadeOut();
+					} else {
+						$(this).show();
+						count++;
+					}
+				});
+
+				var resultsItem = count;
+				$('#count-results').text(resultsItem);
+			});
+		}
+	};
+});
+//# sourceMappingURL=searchDirective.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('accordion', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				var height = $(this).find('p').height();
+				$(this).toggleClass('open');
+				if ($(this).hasClass('open')) {
+					$(this).animate({
+						'height': height + 140
+					}, 200);
+					$(this).find('span').css('transform', 'rotate(45deg)');
+				} else {
+					$(this).animate({
+						'height': '80px'
+					}, 200);
+					$(this).find('span').css('transform', 'rotate(0deg)');
+				};
+			});
+		}
+	};
+});
+//# sourceMappingURL=accordionDirective.js.map
+
+'use strict';
+
+app.directive('symptomsList', ['$sce', function ($sce) {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			// var symptoms = "";
+
+			// if (scope.report.fever == 1) symptoms += '<span translate="fever"></span>, ';
+			// if (scope.report.cough == 1) symptoms += '<span translate="cough" data-tes="te"></span>, ';
+			// if (scope.report.headache == 1) symptoms += '<span translate="headache"></span>, ';
+			// if (scope.report.sorethroat == 1) symptoms += '<span translate="sore_throat"></span>, ';
+			// if (scope.report.diarrhea == 1) symptoms += '<span translate="diarrhea"></span>, ';
+			// if (scope.report.bodyache == 1) symptoms += '<span translate="bodyache"></span>, ';
+			// if (scope.report.fatigue == 1) symptoms += '<span translate="fatigue"></span>, ';
+			// if (scope.report.chills == 1) symptoms += '<span translate="chills"></span>, ';
+			// if (scope.report.nausea == 1) symptoms += '<span translate="nausea"></span>, ';
+			// if (scope.report.breath == 1) symptoms += '<span translate="breath"></span>, ';
+
+			var symptoms = [];
+
+			if (scope.report.fever == 1) symptoms.push('fever');
+			if (scope.report.cough == 1) symptoms.push('cough');
+			if (scope.report.headache == 1) symptoms.push('headache');
+			if (scope.report.sorethroat == 1) symptoms.push('sorethroat');
+			if (scope.report.diarrhea == 1) symptoms.push('diarrhea');
+			if (scope.report.bodyache == 1) symptoms.push('bodyache');
+			if (scope.report.fatigue == 1) symptoms.push('fatigue');
+			if (scope.report.chills == 1) symptoms.push('chills');
+			if (scope.report.nausea == 1) symptoms.push('nausea');
+			if (scope.report.breath == 1) symptoms.push('breath');
+
+			scope.report.symptoms = symptoms;
+			// elem.text(symptoms).html();
+			// elem.attr('translate', 'fever');
+		}
+	};
+}]);
+//# sourceMappingURL=symptomsList.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('editHousehold', ['$rootScope', function ($rootScope) {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				var nick = $(this).attr('data-nick'),
+				    gender = $(this).attr('data-gender'),
+				    niver = $(this).attr('data-niver'),
+				    id = $(this).attr('data-id');
+
+				// Get month and year birthdate
+				var index = niver.indexOf('/'),
+				    year = niver.slice(index + 1),
+				    month = niver.slice(0, index);
+
+				var objHouseholdEdit = {
+					id: id,
+					nickname: nick,
+					gender: gender,
+					niver: niver
+				};
+
+				localStorage.setItem('objHouseholdEdit', JSON.stringify(objHouseholdEdit));
+				$rootScope.$emit('updateHousehold');
+			});
+		}
+	};
+}]);
+//# sourceMappingURL=editHousehold.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('openHealph', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				$(this).toggleClass('heightAuto');
+				if ($(this).hasClass('heightAuto')) {
+					$(this).find('span').css('transform', 'rotate(-45deg)');
+				} else {
+					$(this).find('span').css('transform', 'rotate(0deg)');
+				};
+			});
+		}
+	};
+});
+//# sourceMappingURL=openHealphReport.js.map
+
+/*
+*	Disabled Survey Directive
+*/
+
+'use strict';
+
+app.directive('removeChecked', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				if ($(this).hasClass('any-symptoms-below')) {
+					$('.item-symptoms').attr('checked', false);
+				} else {
+					setTimeout(function () {
+						$('.item-symptoms').attr('checked', false);
+					}, 2500);
+				}
+			});
+		}
+	};
+});
+//# sourceMappingURL=removeChecked.js.map
+
+'use strict';
+
+/**
+ * @ngdoc service
+ * @name flunearyouV2App.dataService
+ * @description
+ * # dataService
+ * Service in the flunearyouV2App.
+ */
+
+app.service('dataService', ['$scope', 'socket', function ($scope, socket) {
+
+  var socket = io.connect();
+  var obj = {};
+  var feeds = [];
+
+  obj.getFeeds = function (callback) {
+    socket.on('stream', function (tweetJSON) {
+      feeds = tweetJSON;
+      callback(tweetJSON);
+    });
+  };
+
+  return obj;
+}]);
+//# sourceMappingURL=dataservice.js.map
+
+'use strict';
+
+/**
+ * @ngdoc service
+ * @name flunearyouV2App.cdcstates
+ * @description
+ * # cdcstates
+ * Service in the flunearyouV2App.
+ */
+
+app.service('cdcstates', ['$http', function ($http) {
+
+  var obj = {};
+  var states = [];
+
+  obj.getStates = function (callback) {
+    $http.get('../assets/states.geo.json').success(function (data) {
+      states = data;
+      callback(data);
+    }).error(function (error) {
+      console.log('Error getStates: ', error);
+    });
+  };
+
+  obj.getMarkers = function (callback) {
+    $http.get('https://flunearyou.org/home.json').success(function (data) {
+      states = data;
+      callback(data);
+    }).error(function (error) {
+      console.log('Error getMarkers: ', error);
+    });
+  };
+
+  return obj;
+}]);
+//# sourceMappingURL=cdcstates.js.map
+
+'use strict';
+
+app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', '$uibModal', function ($http, $urlBase, $rootScope, $window, $timeout, $uibModal) {
+
+    var obj = {};
+    var token = JSON.parse(localStorage.getItem('userLogged'));
+
+    if (token) {
+        token = JSON.parse(localStorage.getItem('userLogged')).token;
+    } else {
+        token = '';
+    }
+
+    obj.getChecks = function (callback) {
+        $http.get($urlBase + '/checks.json', { headers: { 'token': token } }).success(function (data) {
+            callback(data);
+        }).error(function (error) {
+            console.log('Error getChecks: ', error);
+        });
+    };
+
+    obj.getReportsThisWeek = function (callback) {
+        $http.get($urlBase + '/reports-this-week.json', { headers: { 'token': token } }).success(function (data) {
+            callback(data);
+        }).error(function (error) {
+            console.log('Error getReportsThisWeek: ', error);
+        });
+    };
+
+    obj.everyoneHealthy = function (callback) {
+        $http.post($urlBase + '/survey/all', {}, { headers: { 'token': token } }).success(function (data) {
+            callback(true);
+        }).error(function (error) {
+            console.log('Error getUser: ', error);
+        });
+    };
+
+    obj.sendReport = function (survey, user_id, current_user_id, members, realtime, callback) {
+        var url = realtime ? $urlBase + '/survey/now' : $urlBase + '/survey/new';
+        var no_symptoms = survey.symptoms.length == 0 ? 1 : 0;
+
+        var data = {
+            'platform': 'web',
+            'user_id': user_id,
+            'current_member': current_user_id,
+            'healthy_members': members.join()
+        };
+
+        if (no_symptoms == 1) {
+            data.no_symptoms = no_symptoms;
+        }
+
+        if (survey.ill_date) {
+            data.ill_date = new Date(survey.ill_date).toISOString().substring(0, 10);
+        }
+
+        if (survey.was_traveling) {
+            data.traveling = 'Y';
+            data.travel_where = survey.travel_where;
+        }
+
+        angular.forEach(survey.medical, function (value, key) {
+            data[key] = 'Y';
+        });
+
+        angular.forEach(survey.symptoms, function (value, key) {
+            data[value] = 1;
+        });
+
+        $http.post(url, data, { headers: { 'token': token } }).success(function (data) {
+            callback(true);
+        }).error(function (error) {
+            console.log('Error sendReport: ', error);
+        });
+    };
+
+    obj.sendVaccine = function (data, callback) {
+        data.token = token;
+
+        $http.post($urlBase + '/survey/vaccine', data, { headers: { 'token': token } }).success(function (data) {
+            callback(true);
+        }).error(function (error) {
+            console.log('Error sendVaccine: ', error);
+        });
+    };
+
+    obj.sendReminder = function (callback) {
+        $http.post($urlBase + '/user/reminder/disable', {}, { headers: { 'token': token } }).success(function (data) {
+            callback(true);
+        }).error(function (error) {
+            console.log('Error sendReminder: ', error);
+        });
+    };
+
+    return obj;
+}]);
+//# sourceMappingURL=reportApi.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', function ($http, $urlBase, $rootScope, $window, $timeout) {
+
+	var request = {
+		login: function login(loginObj) {
+			$http.post($urlBase + '/user/login', loginObj).success(function (data, status) {
+
+				var user = data.info.basic,
+				    userToken = data.info.basic.token,
+				    userLoggedObj = {
+					'name': user.nickname,
+					'email': user.email,
+					'token': user.token
+				};
+
+				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+				$rootScope.$emit("IS_LOGGED");
+				$window.location.href = '#/report?token=' + userToken;
+			}).error(function (data, status) {
+				console.log(status);
+			});
+		},
+
+		loginByToken: function loginByToken(token) {
+			$http.get($urlBase + '/user', { headers: { 'token': token } }).success(function (data, status) {
+				var nickname = data.info.basic.nickname,
+				    userToken = data.info.basic.token,
+				    userEmail = data.info.basic.email,
+				    userLoggedObj = {
+					'name': nickname,
+					'email': userEmail,
+					'token': userToken
+				};
+
+				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+				$rootScope.$emit("IS_LOGGED");
+				$window.location.href = '#/report?token=' + userToken;
+			}).error(function (data, status) {
+				console.log(status);
+			});
+		},
+
+		registerNewUser: function registerNewUser(objNewUser) {
+			var campaign = localStorage.getItem('campaign');
+			if (campaign) {
+				objNewUser.apha_num = campaign;
+			}
+			$http.post($urlBase + '/user', objNewUser).success(function (data, status) {
+				var loginObj = {
+					"email": objNewUser.email,
+					"password": objNewUser.password
+				};
+
+				request.login(loginObj);
+			}).error(function (data, status) {
+				console.log(data);console.log(status);
+			});
+		}
+	};
+
+	return request;
+}]);
+//# sourceMappingURL=fny-requests.js.map
+
+'use strict';
+
+app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', function ($http, $urlBase, $rootScope, $window, $timeout) {
+
+    var obj = {};
+    var token = JSON.parse(localStorage.getItem('userLogged'));
+
+    if (token) {
+        token = JSON.parse(localStorage.getItem('userLogged')).token;
+    } else {
+        token = '';
+    }
+
+    obj.getUser = function (callback) {
+        if (JSON.parse(localStorage.getItem('userLogged')).token) {
+            $http.get($urlBase + '/user', { headers: { 'token': JSON.parse(localStorage.getItem('userLogged')).token } }).success(function (data) {
+                callback(data);
+            }).error(function (error) {
+                console.log('Error getUser: ', error);
+            });
+        }
+    };
+
+    obj.userEdit = function (user, callback) {
+        var data = { nickname: user.nickname, email: user.email, gender: user.gender, zip: user.zip, birthmonth: user.birthmonth, birthyear: user.birthyear };
+        $http.post($urlBase + '/user/update', data, { headers: { 'token': token } }).success(function (data) {
+            callback(data);
+        }).error(function (error) {
+            console.log('Error userEdit: ', error);
+        });
+    };
+
+    obj.sendPassword = function (data, callback) {
+        $http.post($urlBase + '/user/update/password', data, { headers: { 'token': token } }).success(function (data) {
+            callback(data);
+        }).error(function (error) {
+            console.log('Error sendPassword: ', error);
+        });
+    };
+
+    return obj;
+}]);
+//# sourceMappingURL=userApi.js.map
+
+'use strict';
+
+app.service('householdApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', function ($http, $urlBase, $rootScope, $window, $timeout) {
+
+    var obj = {};
+    var token = JSON.parse(localStorage.getItem('userLogged'));
+
+    if (token) {
+        token = JSON.parse(localStorage.getItem('userLogged')).token;
+    } else {
+        token = '';
+    }
+
+    obj.getHuseholds = function (callback) {
+        if (token) {
+            $http.get($urlBase + '/user/household', { headers: { 'token': token } }).success(function (data) {
+                callback(data);
+            }).error(function (error) {
+                console.log('Error getHuseholds: ', error);
+            });
+        }
+    };
+
+    obj.sendActivation = function (household, callback) {
+        var action = household.active == 'Y' ? 'deactivate' : 'activate';
+
+        $http.post($urlBase + '/user/household/' + action, { user_household_id: household.user_household_id }, { headers: { 'token': token } }).success(function (data) {
+            callback(data);
+        }).error(function (error) {
+            console.log('Error sendActivate: ', error);
+        });
+    };
+
+    obj.sendHouseholdEdit = function (household, callback) {
+        var data = { nickname: household.nickname, gender: household.gender, user_household_id: household.user_household_id, birthyear: household.birthyear, birthmonth: household.birthmonth };
+        $http.post($urlBase + '/user/household/update', data, { headers: { 'token': token } }).success(function (data, status) {
+            callback(data);
+        }).error(function (data, status) {
+            console.log('Error sendHouseholdEdit: ', error);
+        });
+    };
+
+    obj.sendNewHousehold = function (household, callback) {
+        $http.post($urlBase + '/user/household', household, { headers: { 'token': token } }).success(function (data, status) {
+            callback(data);
+        }).error(function (data, status) {
+            console.log('Error sendNewHousehold: ', error);
+        });
+    };
+
+    return obj;
+}]);
+//# sourceMappingURL=householdApi.js.map

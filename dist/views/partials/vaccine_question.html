@@ -1,1 +1,64 @@
-<div ng-if="k.was_vaccinated == ''" class="complementary vaccine-{{ vaccine_user_id }}"><h3 translate="survey_vaccine1"></h3><!-- vaccine_question|replace({"%you%":member.nickname|default(site.content.you|capitalize)}) --><fieldset class="small full"><input class="checkbox-primary" value="Y" ng-model="vaccinations" id="option_{{ vaccine_user_id }}_yes-flu-vaccine-lastyr" type="radio"><label for="option_{{ vaccine_user_id }}_yes-flu-vaccine-lastyr" class="full" translate="yes"></label><span class="check round"><span class="inside"></span></span></fieldset><fieldset class="small full"><input class="checkbox-primary" value="N" ng-model="vaccinations" id="option_{{ vaccine_user_id }}_no-flu-vaccine-lastyr" type="radio"><label for="option_{{ vaccine_user_id }}_no-flu-vaccine-lastyr" class="full" translate="no"></label><span class="check round"><span class="inside"></span></span></fieldset><fieldset class="small full"><input class="checkbox-primary" value="U" ng-model="vaccinations" id="option_{{ vaccine_user_id }}_dont-know-flu-vaccine-lastyr" type="radio"><label for="option_{{ vaccine_user_id }}_dont-know-flu-vaccine-lastyr" class="full" translate="dont_know"></label><span class="check round"><span class="inside"></span></span></fieldset></div><div ng-if="k.is_vaccinated != 'Y'" class="complementary vaccine-{{ vaccine_user_id }}"><h3 ng-if="k.is_vaccinated == ''" translate="survey_vaccine2"></h3><!-- vaccine_question|replace({"%you%":member.nickname|default(site.content.you)|capitalize}) --><h3 ng-if="k.is_vaccinated != ''" translate="survey_vaccine_last_time"></h3><!-- vaccine_question|replace({"%you%":member.nickname|default(site.content.you)|capitalize}) --><fieldset class="small full"><input class="checkbox-primary" value="Y" id="option_{{ vaccine_user_id }}_yes-flu-vaccine" ng-model="$parent.$parent.$parent.vaccinations[y][vaccine_user_id]" type="radio"><label for="option_{{ vaccine_user_id }}_yes-flu-vaccine" class="full" translate="yes"></label><span class="check round"><span class="inside"></span></span></fieldset><fieldset class="small full"><input class="checkbox-primary" value="N" id="option_{{ vaccine_user_id }}_no-flu-vaccine" ng-model="$parent.$parent.$parent.vaccinations[y][vaccine_user_id]" type="radio"><label for="option_{{ vaccine_user_id }}_no-flu-vaccine" class="full" translate="no"></label><span class="check round"><span class="inside"></span></span></fieldset><fieldset class="small full"><input class="checkbox-primary" value="U" id="option_{{ vaccine_user_id }}_dont-know-flu-vaccine" ng-model="$parent.$parent.$parent.vaccinations[y][vaccine_user_id]" type="radio"><label for="option_{{ vaccine_user_id }}_dont-know-flu-vaccine" class="full" translate="dont_know"></label><span class="check round"><span class="inside"></span></span></fieldset></div>
+  <div ng-if="k.was_vaccinated == ''" class="complementary vaccine-{{ vaccine_user_id }}">
+      <h3 translate="survey_vaccine1"></h3> <!-- vaccine_question|replace({"%you%":member.nickname|default(site.content.you|capitalize)}) -->
+      <fieldset class="small full">
+          <input class="checkbox-primary"
+                 value="Y"
+                 ng-model="vaccinations"
+                 id="option_{{ vaccine_user_id }}_yes-flu-vaccine-lastyr"
+                 type="radio">
+          <label for="option_{{ vaccine_user_id }}_yes-flu-vaccine-lastyr" class="full" translate="yes"></label>
+          <span class="check round"><span class="inside"></span></span>
+      </fieldset>
+      <fieldset class="small full">
+          <input class="checkbox-primary"
+                 value="N"
+                 ng-model="vaccinations"
+                 id="option_{{ vaccine_user_id }}_no-flu-vaccine-lastyr"
+                 type="radio">
+          <label for="option_{{ vaccine_user_id }}_no-flu-vaccine-lastyr" class="full" translate="no"></label>
+          <span class="check round"><span class="inside"></span></span>
+      </fieldset>
+      <fieldset class="small full">
+          <input class="checkbox-primary"
+                 value="U"
+                 ng-model="vaccinations"
+                 id="option_{{ vaccine_user_id }}_dont-know-flu-vaccine-lastyr"
+                 type="radio">
+          <label for="option_{{ vaccine_user_id }}_dont-know-flu-vaccine-lastyr"
+                 class="full" translate="dont_know"></label>
+          <span class="check round"><span class="inside"></span></span>
+      </fieldset>
+  </div>
+
+  <div ng-if="k.is_vaccinated != 'Y'" class="complementary vaccine-{{ vaccine_user_id }}">
+      <h3 ng-if="k.is_vaccinated == ''" translate="survey_vaccine2"></h3> <!-- vaccine_question|replace({"%you%":member.nickname|default(site.content.you)|capitalize}) -->
+      <h3 ng-if="k.is_vaccinated != ''" translate="survey_vaccine_last_time"></h3> <!-- vaccine_question|replace({"%you%":member.nickname|default(site.content.you)|capitalize}) -->
+      <fieldset class="small full">
+          <input class="checkbox-primary"
+                 value="Y"
+                 id="option_{{ vaccine_user_id }}_yes-flu-vaccine"
+                 ng-model="$parent.$parent.$parent.vaccinations[y][vaccine_user_id]"
+                 type="radio">
+          <label for="option_{{ vaccine_user_id }}_yes-flu-vaccine" class="full" translate="yes"></label>
+          <span class="check round"><span class="inside"></span></span>
+      </fieldset>
+      <fieldset class="small full">
+          <input class="checkbox-primary"
+                 value="N"
+                 id="option_{{ vaccine_user_id }}_no-flu-vaccine"
+                 ng-model="$parent.$parent.$parent.vaccinations[y][vaccine_user_id]"
+                 type="radio">
+          <label for="option_{{ vaccine_user_id }}_no-flu-vaccine" class="full" translate="no"></label>
+          <span class="check round"><span class="inside"></span></span>
+      </fieldset>
+      <fieldset class="small full">
+          <input class="checkbox-primary"
+                 value="U"
+                 id="option_{{ vaccine_user_id }}_dont-know-flu-vaccine"
+                 ng-model="$parent.$parent.$parent.vaccinations[y][vaccine_user_id]"
+                 type="radio">
+          <label for="option_{{ vaccine_user_id }}_dont-know-flu-vaccine"
+                 class="full" translate="dont_know"></label>
+          <span class="check round"><span class="inside"></span></span>
+      </fieldset>
+  </div>
