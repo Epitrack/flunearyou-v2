@@ -152,6 +152,7 @@
             <section class="col-xs-12 col-sm-6 col-sm-offset-1 relative">
                 <h3 class="title-primary" translate="member"></h3>
                 <button ng-click="addMember=true" class="button btn-primary new-member"><span translate="new_member"></span></button>
+                <div ng-show="addMember" ng-include="'views/partials/add-household.html'"></div>
                 <table class="settings-table">
                     <thead>
                         <tr>
@@ -178,9 +179,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <div ng-show="addMember" ng-include="'views/partials/add-household.html'"></div>
-                
             </section>
         </div>
     </div>

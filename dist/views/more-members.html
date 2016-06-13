@@ -1,54 +1,4 @@
-<div class="survey-2-step js-survey-3-step" style="margin-top: 120px!important;">
-    <div class="container">
-        <form class="survey-form nopadding">
-            <div class="survey-group col-md-6 col-md-offset-3">
-                <h3 class="muchas-gracias" translate="submit_thanks"></h3>
-                    <p translate="survey_add_family"></p>
-
-                    <form id="form-reminder">
-                        <div class="col-md-9 col-md-offset-1">
-                            <fieldset class="wrapper-radio large full">
-                                    <input id="radio1" type="radio" value="Y" ng-model="remind_me" class="sintoma symptom checkbox-primary">
-                                    <label for="radio1" class="full" translate="yes"></label>
-                                    <span class="check round">
-                                        <span class="inside"></span>
-                                    </span>
-                            </fieldset>
-                        </div>
-
-                        <div class="col-md-9 col-md-offset-1">
-                            <fieldset class="wrapper-radio large full">
-                                <input id="radio2" type="radio" value="L" ng-model="remind_me" class="sintoma symptom checkbox-primary"/>
-                                <label for="radio2" class="full" translate="report_more_later"></label>
-                                <span class="check round">
-                                    <span class="inside"></span>
-                                </span>
-                            </fieldset>
-                        </div>
-
-                        <div class="col-md-9 col-md-offset-1">
-                            <fieldset class="wrapper-radio large full">
-                                <input id="radio3" type="radio" value="N" ng-model="remind_me" class="sintoma symptom checkbox-primary" />
-                                <label for="radio3" class="full" translate="report_more_no"></label>
-                                <span class="check round">
-                                    <span class="inside"></span>
-                                </span>
-                            </fieldset>
-                        </div>
-
-                        <div class="col-md-12 nopadding">
-                            <div class="wrapper-button-survey">
-                                <input class="button-survey-next-question" ng-click="sendReminder(remind_me)" type="submit" id="bt-process-reminder" translate="survey_next">
-                            </div>
-                        </div>
-                    </form>
-            </div>
-        </form>
-    </div>
-</div>
-
-<style type="text/css">
-    .muchas-gracias {
+<div class="survey-2-step js-survey-3-step" style="margin-top: 120px!important"><div class="container"><form class="survey-form nopadding"><div class="survey-group col-md-6 col-md-offset-3"><h3 class="muchas-gracias" translate="submit_thanks"></h3><p translate="survey_add_family"></p><form id="form-reminder"><div class="col-md-9 col-md-offset-1"><fieldset class="wrapper-radio large full"><input id="radio1" type="radio" value="Y" ng-model="remind_me" class="sintoma symptom checkbox-primary"><label for="radio1" class="full" translate="yes"></label><span class="check round"><span class="inside"></span></span></fieldset></div><div class="col-md-9 col-md-offset-1"><fieldset class="wrapper-radio large full"><input id="radio2" type="radio" value="L" ng-model="remind_me" class="sintoma symptom checkbox-primary"><label for="radio2" class="full" translate="report_more_later"></label><span class="check round"><span class="inside"></span></span></fieldset></div><div class="col-md-9 col-md-offset-1"><fieldset class="wrapper-radio large full"><input id="radio3" type="radio" value="N" ng-model="remind_me" class="sintoma symptom checkbox-primary"><label for="radio3" class="full" translate="report_more_no"></label><span class="check round"><span class="inside"></span></span></fieldset></div><div class="col-md-12 nopadding"><div class="wrapper-button-survey"><input class="button-survey-next-question" ng-click="sendReminder(remind_me)" type="submit" id="bt-process-reminder" translate="survey_next"></div></div></form></div></form></div></div><style type="text/css">.muchas-gracias {
         background-image: url("../images/icon-thanks.png");
         background-position: center 0;
         background-repeat: no-repeat;
@@ -84,5 +34,4 @@
     }
     .wrapper-button-survey {
         text-align: center;
-    }
-</style>
+    }</style>
