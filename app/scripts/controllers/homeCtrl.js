@@ -9,7 +9,9 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	/*
 	*	Init
 	*/ 
-	$("#modal-join-us").modal()
+	if (!localStorage.getItem('userLogged')) {
+		$("#modal-join-us").modal()
+	}
 	localStorage.removeItem('landing')
 	$scope.isLogged = function(){
 		var userLogged = localStorage.getItem('userLogged');
