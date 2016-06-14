@@ -2277,6 +2277,12 @@ app.directive('symptomsList', ['$sce', function ($sce) {
 			if (scope.report.chills == 1) symptoms.push('chills');
 			if (scope.report.nausea == 1) symptoms.push('nausea');
 			if (scope.report.breath == 1) symptoms.push('breath');
+			if (scope.report.rash == 1) symptoms.push('rash');
+			if (scope.report.eye_pain == 1) symptoms.push('eye_pain');
+			if (scope.report.yellow_eyes == 1) symptoms.push('yellow_eyes');
+			if (scope.report.joint_pain == 1) symptoms.push('joint_pain');
+			if (scope.report.red_eyes == 1) symptoms.push('red_eyes');
+			if (scope.report.dark_urine == 1) symptoms.push('dark_urine');
 
 			scope.report.symptoms = symptoms;
 			// elem.text(symptoms).html();
