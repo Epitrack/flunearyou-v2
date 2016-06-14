@@ -9,6 +9,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	/*
 	*	Init
 	*/ 
+	localStorage.removeItem('landing')
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 	session.then( function() {

@@ -263,6 +263,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 	/*
  *	Init
  */
+	localStorage.removeItem('landing');
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 	session.then(function () {
@@ -610,6 +611,8 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 		/*
   *	Init
   */
+		$("#modal-join-us").modal();
+		localStorage.removeItem('landing');
 		$scope.isLogged = function () {
 			var userLogged = localStorage.getItem('userLogged');
 			if (userLogged) {
@@ -705,8 +708,11 @@ app.controller('landingCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$wi
 		/*
   *	Init
   */
-		if (localStorage.getItem('userLogged')) {
+		if (localStorage.getItem('userLogged') && !localStorage.getItem('landing')) {
 			$window.location.href = '#/map';
+			localStorage.setItem('landing', true);
+		} else {
+			$window.location.href = '#/landing';
 		}
 
 		$scope.isLogged = function () {

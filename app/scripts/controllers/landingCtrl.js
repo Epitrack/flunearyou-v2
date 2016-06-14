@@ -10,8 +10,11 @@ app.controller('landingCtrl', ['$scope', '$rootScope','$http', '$urlBase','$wind
 	/*
 	*	Init
 	*/ 
-	if (localStorage.getItem('userLogged')){
-		$window.location.href = '#/map'
+	if (localStorage.getItem('userLogged') && !localStorage.getItem('landing')){
+		$window.location.href = '#/map';
+		localStorage.setItem('landing', true)
+	}else{
+		$window.location.href = '#/landing';
 	}
 
 	$scope.isLogged = function(){
