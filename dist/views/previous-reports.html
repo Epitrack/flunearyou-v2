@@ -3,9 +3,9 @@
 
     <ul class="" ng-repeat="report in reports">
         <li ng-if="report.no_symptoms != 1">
-            <span class="report-item col-xs-12"><label
+            <span class="report-item col-xs-12 col-md-3"><label
             class="report-item-label report-item-date">{{ report.ill_date|date:'MM/dd/yyyy' }}</label></span>
-            <span class="report-item col-xs-12">
+            <span class="report-item col-xs-12 col-md-8">
                 <label class="report-item-label" symptoms-list>
                     <span ng-repeat="s in report.symptoms">
                         <span translate="{{ s }}"></span>{{$last ? '' : ', '}}
