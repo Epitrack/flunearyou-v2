@@ -11,28 +11,23 @@
             
             <!-- Section 1 - Home -->
             <aside id="call-info" class="call-info col-xs-12 col-sm-5 col-sm-offset-2 col-md-7 col-md-offset-1 col-lg-6">
-                <h2>Spread the word. <span>Not the flu.</span></h2>
+                <h2 translate="main_header2"><span translate="raw"></span></h2>
 
-                <form action="#" id="form-call-info" class="form-call-info" name="form-call-info">
-                    <input type="tel" class="input-secondary large" placeholder="Enter your City or Zipcode">
-                    <input type="submit" class="btn-primary" value="Check for flu">
-                </form>
+                 <form id="form-call-info" class="form-call-info col-xs-12" name="form-call-info">
+                        <input type="tel" class="input-secondary large" placeholder="Enter your City or Zipcode" ng-model="zip">
+                        <button type="submit" class="button btn-danger" translate="view_btn2" ng-click="mapZipCode(zip)"></button>
+                    </form>
 
                 <ul>
-                    <li>Join thousands who are helping report flu.</li>
-                    <li>Protect yourself, your family & your community.</li>
-                    <li>Ready to report? Let's hear from you.</li>
+                    <li translate="subheader2_1"></li>
+                    <li translate="subheader2_2"></li>
+                    <li translate="subheader2_3"></li>
                 </ul>
 
                 <div class="sigin-home">
                     <div id="sign-in-buttons" class="sign-in-buttons-home">
-                        <a id="facebook-register" class="button-facebook tracking" title="Sign-in with Facebook" data-category="Modal" data-action="Sign in" data-label="Sign in with Facebook" sign-up-facebook>
-                            Sign-in with Facebook
-                        </a>
-
-                        <a id="google-plus-register" class="button-googleplus tracking" title="Sign-in with Google+" data-category="Modal" data-action="Sign in" data-label="Sign in with Google Plus" sing-up-google-plus>
-                            Sign-in with Google+
-                        </a>
+                        <a id="facebook-register" class="button-facebook tracking" ng-click="toggleResgisterSocial('FB')">Sign-in with Facebook</a>
+                        <a id="google-plus-register" class="button-googleplus tracking" ng-click="toggleResgisterSocial('GP')">Sign-in with Google+</a>
 
                         <div class="lock ">
                             <img style="margin-top: -5px" src="images/locker.png" width="16" height="16">

@@ -67,7 +67,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		var getUser = function(){
 			
 			userApi.getUser(function(result){
-				console.log(result);
+				// console.log(result);
 				if (result.info){
 					$scope.user = result.info.basic;
 					$scope.user_vaccionations = result.info.vaccinations;
@@ -81,8 +81,8 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 						$scope.current_id = $scope.user.user_id;
 					}
 
-					console.log('User: ', $scope.user);
-					console.log('RTR: ', $scope.user.current_survey);
+					// console.log('User: ', $scope.user);
+					// console.log('RTR: ', $scope.user.current_survey);
 
 					var current_survey = $scope.user.current_survey,
 						first_survey   = $scope.user.first_survey,
@@ -137,7 +137,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 
 		var getChecks = function(){
 			reportApi.getChecks(function(result){
-				console.log(result);
+				// console.log(result);
 				if (result){
 					$scope.checks = result.checks;
 					$scope.members = result.checks;

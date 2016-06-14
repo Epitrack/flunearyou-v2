@@ -4,11 +4,16 @@
 
 'use strict';
 
-app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', 'session', function($scope, $rootScope, $http, $urlBase, $window, session){
+app.controller('landingCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', 'session', 'Facebook', 'GooglePlus',
+	function($scope, $rootScope, $http, $urlBase, $window, session, Facebook, GooglePlus){
 	session.then( function() {
 	/*
 	*	Init
 	*/ 
+	if (localStorage.getItem('userLogged')){
+		$window.location.href = '#/map'
+	}
+
 	$scope.isLogged = function(){
 		var userLogged = localStorage.getItem('userLogged');
 		if(userLogged){
@@ -24,14 +29,6 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
 	};
 	$rootScope.$on('SCROLL_TOP', $scope.scrolltop);
-
-	// Url
-	var url = window.location.href;
-	if (url.indexOf('landing') != -1) {
-		$scope.urlLogo = '#/';
-	}else{
-		$scope.urlLogo = '#/landing';
-	}
 
 	/*
 	*	Calls
@@ -91,4 +88,65 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	};
 	
 	});
+
+	/*
+	*	Login Social
+	*/ 
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+	$scope.newUser = {};
+	$scope.resgisterSocial = true;
+	$scope.toggleResgisterSocial = function(redeSocial){
+		if (redeSocial == 'FB') {
+			Facebook.login(function(response) {
+				if (response.status == 'connected') {
+					$scope.showRegisterForm = true;
+					$scope.registerFacebook();
+				}
+			}, {scope: 'email'});
+		}else{
+			GooglePlus.login().then(function (authResult) {
+				if (authResult.status.google_logged_in == true) {
+						$scope.showRegisterForm = true;
+						$scope.registerGooglePlus(authResult);
+				};
+			});
+		};
+	};
+
+	/*
+	*	Register by FB
+	*/ 
+	$scope.registerFacebook = function(zip){
+		var zipCode = zip;
+
+		Facebook.api('/me', function(response) {
+			$scope.newUser.email = response.email;
+			if (response.gender == 'male') {
+				$scope.newUser.gender = 'M'
+			}else{
+				$scope.newUser.gender = 'F'
+			}
+		});
+	}
+
+
+
+	/*
+	*	Register by FB
+	*/ 
+	$scope.registerGooglePlus = function(authResult){
+    	var token = authResult.access_token;
+
+    	$http.post($urlBase+'/user/login/googleplus', {"access_token": token}).success(function(data, status, result){
+        	if (status == 200){
+        		console.log(data);
+        		$scope.newUser.email  = data.info.basic.email;
+        		$scope.newUser.gender = data.info.basic.gender
+        	}
+        }).error(function(data, status, result){
+        	
+        });
+	}  
 }]);

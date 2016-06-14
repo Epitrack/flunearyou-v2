@@ -24,6 +24,14 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 
 	$rootScope.$on("IS_LOGGED", $scope.isLogged);
 
+	// Url
+	var url = window.location.href;
+	if (url.indexOf('landing') != -1) {
+		$scope.urlLogo = '#/landing';
+	}else{
+		$scope.urlLogo = '#/';
+	}
+
 	$scope.logout = function(){
 		$scope.custom = false
 		localStorage.removeItem('userLogged');

@@ -19,8 +19,7 @@ app.config(['$routeProvider', function ($routeProvider) {
       }).
       when('/landing', {
         templateUrl: 'views/landing.html',
-        controller: 'homeCtrl',
-        resolve : teste
+        controller: 'landingCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
