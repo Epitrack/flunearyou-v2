@@ -17,7 +17,12 @@ app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope'
                 
                 localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
                 $rootScope.$emit("IS_LOGGED");
-                $window.location.href = '#/report?token='+userToken;
+                var url = window.location.href;
+                if (url.indexOf('map') != -1) {
+                    $window.location.href = '#/map';
+                }else{
+                    $window.location.href = '#/report?token='+userToken;
+                }
         }).error(function(data, status){ console.log(status) });
         return true;
     }
