@@ -32,6 +32,6 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 		};
 
 		$scope.winReload = function () {
-			$window.location.reload();
+			// $window.location.reload();
 		};
 }]);

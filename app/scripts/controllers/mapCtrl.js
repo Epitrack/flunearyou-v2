@@ -44,6 +44,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	        var geocoder = new google.maps.Geocoder();
 	        map.mapTypes.set('map_style', styledMap);
 	        map.setMapTypeId('map_style');
+	        map.set('draggable', true);
 	       	
 	        if (!cdc) {
 	        	MAP.getMarkers(map);
