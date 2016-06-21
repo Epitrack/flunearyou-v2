@@ -40,6 +40,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	        };
 
 	        // Map
+	        console.log('map ok');
 	        var map = new google.maps.Map(document.getElementById('map'), mapCustom);
 	        var geocoder = new google.maps.Geocoder();
 	        map.mapTypes.set('map_style', styledMap);

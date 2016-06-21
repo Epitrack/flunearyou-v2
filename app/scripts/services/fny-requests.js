@@ -22,7 +22,7 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 		            localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 		            $rootScope.$emit("IS_LOGGED");
 		            $window.location.href = '#/map?token='+userToken;
-
+		            $('.modal').modal('hide');
 	        }).error(function(data, status){ console.log(status) });
 	    },
 

@@ -299,6 +299,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 				};
 
 				// Map
+				console.log('map ok');
 				var map = new google.maps.Map(document.getElementById('map'), mapCustom);
 				var geocoder = new google.maps.Geocoder();
 				map.mapTypes.set('map_style', styledMap);
@@ -989,6 +990,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	$scope.checkIfEnterKeyWasPressed = function (email, pass, event) {
 		if (event.keyCode == 13) {
 			$scope.login(email, pass, event);
+			$('.modal').modal('hide');
 		}
 	};
 
@@ -2381,28 +2383,34 @@ app.directive('removeChecked', function () {
 });
 //# sourceMappingURL=removeChecked.js.map
 
-/*
-*	Close modal directive
-*/
+// /*
+// *	Close modal directive
+// */
 
-'use strict';
+// 'use strict';
 
-app.directive('closeModal', function () {
-	return {
-		restrict: 'A',
-		link: function link(scope, elem) {
-			elem.on('click', function () {
-				setTimeout(function () {
-					if (localStorage.getItem('userLogged')) {
-						$('.modal').modal('hide');
-					} else {
-						console.log('Nops');
-					}
-				}, 2000);
-			});
-		}
-	};
-});
+// app.directive('closeModal', function(){
+// 	return {
+// 		restrict : 'A',
+// 		link: function(scope, elem){
+// 			elem.on('click', function(){
+// 				setTimeout(function(){
+// 					if (localStorage.getItem('userLogged')) {
+// 						$('.modal').modal('hide');
+// 					}else{
+// 						console.log('Nops');
+// 					}
+// 				}, 2000)
+// 			});
+
+// 			// if (event.keyCode == 13) {
+// 			// 	$scope.login(email, pass, event);
+// 			// }
+// 			console.log('ok');
+// 		}
+// 	}
+// });
+"use strict";
 //# sourceMappingURL=closeModalDirective.js.map
 
 'use strict';
@@ -2590,6 +2598,7 @@ app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', f
 				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 				$rootScope.$emit("IS_LOGGED");
 				$window.location.href = '#/map?token=' + userToken;
+				$('.modal').modal('hide');
 			}).error(function (data, status) {
 				console.log(status);
 			});

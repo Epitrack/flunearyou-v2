@@ -48,6 +48,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	$scope.checkIfEnterKeyWasPressed = function(email, pass, event){
 		if (event.keyCode == 13) {
 			$scope.login(email, pass, event);
+			$('.modal').modal('hide');
 		}
 	}
 

@@ -28,19 +28,19 @@
                     <form class="row login-form register-form" name="loginForm">
                         <fieldset class="form-group">
                             <label for="login-email" translate="email"></label>
-                            <input id="login-email" type="email" name="email" class="input-primary" ng-model="email" ng-blur="validaEmail(email)" ng-keypress="checkIfEnterKeyWasPressed(email, pass, $event)" ng-required="true">
+                            <input id="login-email" type="email" name="email" class="input-primary" ng-model="email" ng-blur="validaEmail(email)" ng-keypress="checkIfEnterKeyWasPressed(email, pass, $event)" ng-required="true" close-modal>
                         </fieldset>
 
                         <fieldset class="form-group">
                             <label for="login-password" translate="password"></label>
-                            <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass" ng-blur="passEmpty(pass)" ng-keypress="checkIfEnterKeyWasPressed(email, pass, $event)" ng-required="true">
+                            <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass" ng-blur="passEmpty(pass)" ng-keypress="checkIfEnterKeyWasPressed(email, pass, $event)" ng-required="true" close-modal>
                         </fieldset>
 
                         <a href="#/" class="login-forgot-pass" translate="reg_forgot_pw"></a>
                         <div id="error-login" class="relative">
                             <div class="alert alert-danger msg-error" ng-show="!isEmailValid || !isPassEmpty">{{errorMsg}}</div>
                         </div>
-                        <button type="button" class="btn-login button btn-danger" ng-click="login(email, pass, $event)" ng-disabled="!loginForm.$valid" data-loading-text="Loading..." loading-button close-modal translate="login_now" ></button>
+                        <button type="button" class="btn-login button btn-danger" ng-click="login(email, pass, $event)" ng-disabled="!loginForm.$valid" data-loading-text="Loading..." loading-button translate="login_now" ></button>
                     </form>
 
                 </div>
