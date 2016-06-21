@@ -2381,6 +2381,30 @@ app.directive('removeChecked', function () {
 });
 //# sourceMappingURL=removeChecked.js.map
 
+/*
+*	Close modal directive
+*/
+
+'use strict';
+
+app.directive('closeModal', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+				setTimeout(function () {
+					if (localStorage.getItem('userLogged')) {
+						$('.modal').modal('hide');
+					} else {
+						console.log('Nops');
+					}
+				}, 2000);
+			});
+		}
+	};
+});
+//# sourceMappingURL=closeModalDirective.js.map
+
 'use strict';
 
 /**
@@ -2565,7 +2589,7 @@ app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', f
 
 				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 				$rootScope.$emit("IS_LOGGED");
-				$window.location.href = '#/report?token=' + userToken;
+				$window.location.href = '#/map?token=' + userToken;
 			}).error(function (data, status) {
 				console.log(status);
 			});
