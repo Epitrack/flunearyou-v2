@@ -15,7 +15,6 @@ app.directive('selectLanguage', function(){
 
 			elem.find('.lng').on('click', function(){
 				var lng = $(this).attr('data-lng');
-				console.log(lng);
 
 				if (lng == 'es') {
 					$('.fewer_greater_show').addClass('none');

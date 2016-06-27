@@ -2047,7 +2047,6 @@ app.directive('selectLanguage', function () {
 
 			elem.find('.lng').on('click', function () {
 				var lng = $(this).attr('data-lng');
-				console.log(lng);
 
 				if (lng == 'es') {
 					$('.fewer_greater_show').addClass('none');
@@ -2443,6 +2442,31 @@ app.directive('removeChecked', function () {
 // });
 "use strict";
 //# sourceMappingURL=closeModalDirective.js.map
+
+'use strict';
+
+/*
+*
+*/
+
+// 'use strict';
+
+app.directive('scrollTo', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+			elem.on('click', function () {
+
+				$('html, body').animate({
+					'scrollTop': 1378
+				}, 'slow');
+
+				return false;
+			});
+		}
+	};
+});
+//# sourceMappingURL=scrollTopDirective.js.map
 
 'use strict';
 
