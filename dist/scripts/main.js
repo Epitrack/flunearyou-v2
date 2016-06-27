@@ -1816,7 +1816,7 @@ app.directive('chooseStateDirective', ['$rootScope', '$window', '$timeout', func
 				    longitude = Number(stateSelected.attr('data-lon')),
 				    value = stateSelected.attr('value'),
 				    color = stateSelected.attr('data-color'),
-				    image = stateSelected.attr('value').replace(' ', '-');
+				    image = stateSelected.attr('value').replace(' ', '-').replace(',', '');
 
 				var objDataSurvey = {
 					'surveys': surveys,
