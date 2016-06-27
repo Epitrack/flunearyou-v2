@@ -2458,7 +2458,7 @@ app.directive('scrollTo', function () {
 			elem.on('click', function () {
 
 				$('html, body').animate({
-					'scrollTop': 1378
+					'scrollTop': 1340
 				}, 'slow');
 
 				return false;
