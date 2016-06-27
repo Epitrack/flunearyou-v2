@@ -28,12 +28,16 @@
   </div>
 
   <ul id="legend-list" class="legend-list">
-    <li class="legend-item open-more-info col-xs-12 relative" id="open-more-info">
+    <li class="legend-item open-more-info col-xs-12 relative" id="open-more-info" ng-click="showFewerGreater = !showFewerGreater">
       <span class="legend-value col-xs-3 col-sm-4 js-red">{{infoDataBox.flulike}}</span>
-      <span class="legend-description col-xs-9 col-sm-8 arrow js-up legend_flu_like_symptoms" translate="legend_flu_like_symptoms"></span>
+      <span class="legend-description col-xs-9 col-sm-8 arrow legend_flu_like_symptoms" ng-class="{'js-up' : arrowUp, 'js-down' : arrowDown}" translate="legend_flu_like_symptoms"></span>
       <span class="absolute fw100 flu-like-percent">{{infoDataBox.flulikepercent}}%</span>
+      
+      <div class="fewer_greater" ng-class="{'showFewerGreater' : showFewerGreater}">
+        <p><span class="fewer_greater_show">{{fewer_greater}}</span> <span translate="fewer_greater"></span></p>
+      </div>
     </li>
-
+    
     <li class="legend-item col-xs-12 more-info" id="more-info">
       <p>Fewer participants are reporting flu-like symptoms this week than last</p>
     </li>

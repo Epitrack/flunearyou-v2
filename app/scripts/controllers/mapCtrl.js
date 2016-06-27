@@ -230,6 +230,18 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	$http.get($urlBase+'/states').success(function(data, status, headers, config){
 		$scope.stateList = data; // State list
 
+		var illness_count    = data[0].data.ili,
+			illness_count_lw = data[0].last_week_data.ili;
+
+		// Change arrow in "Flu-Like Symptoms"  
+	    if (illness_count > illness_count_lw) {
+	        $scope.arrowUp = true;
+	        $scope.fewer_greater = 'Greater';
+	    } else {
+	        $scope.arrowDown = true;
+	        $scope.fewer_greater = 'Fewer';
+	    };
+		
 		// Initial position dataBox
 		$scope.infoDataBox = {
 			'surveys':           data[0].data.total_surveys,
