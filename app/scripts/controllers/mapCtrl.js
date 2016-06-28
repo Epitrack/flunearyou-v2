@@ -13,6 +13,15 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	$rootScope.$emit("IS_LOGGED");
 	$rootScope.$emit("SCROLL_TOP");
 	session.then( function() {
+
+	// Second accsses map
+    if (sessionStorage.getItem('secondAccsessMap')) {
+    	sessionStorage.removeItem('secondAccsessMap')
+    	window.location.reload();
+    } else{
+    	sessionStorage.setItem('secondAccsessMap', true);
+    	console.log('nops');
+    }
 	
 	var MAP = {
 		
@@ -23,6 +32,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 		},
 
 		initMap : function(lat, lon, zoom, cdc, zip){
+			console.log(lat, lon, zoom, cdc, zip);
 			var style     = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road","elementType":"labels.text","stylers":[{"visibility":"on"},{"color":"#000000"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"weight":"0.01"},{"visibility":"off"},{"hue":"#ff8f00"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#f2f2f2"},{"weight":"2.32"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffce00"},{"weight":"0.01"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d4ebf5"},{"visibility":"on"}]}]
 	        var lat_lng   = MAP.LatLng(lat, lon);
 	        var styledMap = new google.maps.StyledMapType(style, {name: "Styled Map"});
@@ -40,12 +50,12 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	        };
 
 	        // Map
-	        console.log('map ok');
 	        var map = new google.maps.Map(document.getElementById('map'), mapCustom);
+
 	        var geocoder = new google.maps.Geocoder();
 	        map.mapTypes.set('map_style', styledMap);
 	        map.setMapTypeId('map_style');
-	        map.set('draggable', true);
+	        
 	       	
 	        if (!cdc) {
 	        	MAP.getMarkers(map);
