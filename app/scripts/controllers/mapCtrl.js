@@ -14,7 +14,10 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 	$rootScope.$emit("SCROLL_TOP");
 	session.then( function() {
 
-	// Second accsses map
+	/*
+	*	Second accsses map
+	*/ 
+	console.log('secondAccsessMap');
     if (sessionStorage.getItem('secondAccsessMap')) {
     	sessionStorage.removeItem('secondAccsessMap')
     	window.location.reload();
