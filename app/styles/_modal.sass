@@ -1,6 +1,8 @@
 // —————————————————————————
 //     Modal's
 // —————————————————————————
+.w768
+  width: 768px!important
 .modal-content
   background-color: $white-light
   box-shadow: 0px 0px 0px rgba(255, 255, 255, 0.5)
@@ -9,41 +11,36 @@
   h5
     color: $link-menu
     font-size: $fs-normal + 0.2
-    margin-top: 20px
+    margin: -5px 0 25px 0
     text-align: center
     font-weight: bold
 
 .btn-wrapper
   text-align: center
+  margin-bottom: 30px!important
   button
     +apr(none)
     +bdr(5px)
     text-decoration: none
-    width: 80%
+    width: 174px
     font-size: $fs-normal
     font-weight: bold
     padding: 15px 40px
     background-position: 0 0
-    background-size: 40%
     margin-bottom: 10px
     border: none
     outline: none
     background-repeat: no-repeat
     text-align: center
-    text-indent: 30px
     +transition(background, 0.2s, linear, 0s)
-    &:hover
-      background-size: 33%
     &.full
       text-align: right
     &.btn-facebook
-      background-color: $bg-button
-      color: #FFFFFF
-      background-image: url("../images/icon-facebook-button.svg")
+      float: right
+      background: transparent url("../images/btn-facebook.png") no-repeat
     &.btn-google-plus
-      background-color: #FFFFFF
-      color: $btn-primary
-      background-image: url("../images/icon-google-plus.svg")
+      float: left
+      background: transparent url("../images/btn-google.png") no-repeat
     &.btn-twitter
       background-color: $bg-twitter
       color: #FFFFFF
@@ -53,10 +50,10 @@
   display: inline-block
   width: 100%
   text-align: center
-  font-size: $fs-normal
+  font-size: 12px
   position: relative
   color: $link-menu
-  margin: 10px 0
+  margin: 20px 0
   &::before
     content: ''
     width: 16px
@@ -71,6 +68,7 @@
 
 .or
   @extend .never-post
+  font-style: italic
   margin: 0
   &::before
     width: 30%
@@ -102,6 +100,8 @@
   font-size: $fs-normal
   width: 100%
   margin: 10px 0
+  cursor: pointer
+  text-decoration: underline
 
 .modal-footer
   text-align: center
@@ -162,14 +162,16 @@
     background-repeat: no-repeat
     background-size: auto
     background-position: center center
-    background-image: url("../images/bg-title-modal.svg")
+    // background-image: url("../images/bg-title-modal.svg")
 
 .modal-title
-  color: #FFFFFF
+  color: #4c4c4c
   font-size: $fs-normal + 0.4
   text-align: center
   padding-top: 10px
+  font-size: 40px!important
   span
+    color: #3f6f92
     font-family: $ff-bold
     display: block
   &:first-letter
@@ -266,6 +268,20 @@
   color: $link-menu
   text-align: center
   line-height: $fs-normal + 0.4
+  p
+    display: inline-block
+    color: #000
+    font-size: 18px
+  a
+    font-size: 18px
+    margin-left: 5px
+
+.wrapper-terms-privacy
+  p,a
+    font-size: 14px
+  p
+    display: block
+
 
 
 
@@ -304,14 +320,8 @@
   .btn-wrapper
     margin-bottom: 20px
     button
-      padding: 15px 0
-      width: 60%
+      padding: 20px 0
       margin-bottom: 0
-      &.btn-facebook
-        margin-left: 110px
-      &.btn-google-plus
-        text-indent: 50px
-        margin-left: -110px
       &.full
         text-align: center
         width: 100% !important
@@ -368,6 +378,7 @@
         display: inline-block
     .modal-list
       margin-top: 0
+      padding-left: 60px
     .modal-item
       margin-left: 70px
       font-size: $fs-medium -1
@@ -443,7 +454,8 @@
 .modal-join-us
   .modal-header
     &.bg
-      height: 65px
+      height: auto
+      padding-top: 10px
   .modal-item
     background-color: transparent
     padding: 0

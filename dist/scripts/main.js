@@ -276,13 +276,11 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 		/*
   *	Second accsses map
   */
-		console.log('secondAccsessMap');
 		if (sessionStorage.getItem('secondAccsessMap')) {
 			sessionStorage.removeItem('secondAccsessMap');
 			window.location.reload();
 		} else {
 			sessionStorage.setItem('secondAccsessMap', true);
-			console.log('nops');
 		}
 
 		var MAP = {
