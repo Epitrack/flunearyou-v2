@@ -8,7 +8,7 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
     function ($http, $urlBase, $rootScope, $window, $timeout){
 	
 	var request = {
-		login : function(loginObj){
+		login : function(loginObj, callback){
 	        $http.post($urlBase+'/user/login', loginObj).success(function(data, status){
 
 	            var user          = data.info.basic,
@@ -23,7 +23,9 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 		            $rootScope.$emit("IS_LOGGED");
 		            $window.location.href = '#/map?token='+userToken;
 		            $('.modal').modal('hide');
-	        }).error(function(data, status){ console.log(status) });
+	        }).error(function(data, status){ 
+	        	callback(status);
+	        });
 	    },
 
 	    loginByToken : function(token){

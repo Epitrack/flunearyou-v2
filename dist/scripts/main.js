@@ -276,12 +276,12 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 		/*
   *	Second accsses map
   */
-		if (sessionStorage.getItem('secondAccsessMap')) {
-			sessionStorage.removeItem('secondAccsessMap');
-			window.location.reload();
-		} else {
-			sessionStorage.setItem('secondAccsessMap', true);
-		}
+		// if (sessionStorage.getItem('secondAccsessMap')) {
+		// 	sessionStorage.removeItem('secondAccsessMap')
+		// 	window.location.reload();
+		// } else{
+		// 	sessionStorage.setItem('secondAccsessMap', true);
+		// }
 
 		var MAP = {
 
@@ -1018,7 +1018,15 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			"password": pass
 		};
 
-		$fny.login(loginObj);
+		$fny.login(loginObj, function (callback) {
+			console.log(callback);
+			if (callback == 409) {
+				console.log('ok');
+				$scope.isEmailValid = false;
+			} else {
+				console.log('nops');
+			}
+		});
 	};
 
 	$scope.checkIfEnterKeyWasPressed = function (email, pass, event) {
@@ -2649,7 +2657,7 @@ app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeou
 app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', function ($http, $urlBase, $rootScope, $window, $timeout) {
 
 	var request = {
-		login: function login(loginObj) {
+		login: function login(loginObj, callback) {
 			$http.post($urlBase + '/user/login', loginObj).success(function (data, status) {
 
 				var user = data.info.basic,
@@ -2665,7 +2673,7 @@ app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', f
 				$window.location.href = '#/map?token=' + userToken;
 				$('.modal').modal('hide');
 			}).error(function (data, status) {
-				console.log(status);
+				callback(status);
 			});
 		},
 

@@ -13,11 +13,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 btn-wrapper">
-                            <button class="btn-facebook" ng-click="loginFacebook()">Facebook</button>
+                            <button class="btn-facebook" ng-click="loginFacebook()"></button>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 btn-wrapper">
-                            <button class="btn-google-plus" ng-click="loginGooglePlus()">Google Plus</button>
+                            <button class="btn-google-plus" ng-click="loginGooglePlus()"></button>
                         </div>
                     </div>
 
@@ -35,10 +35,10 @@
                             <label for="login-password" translate="password"></label>
                             <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass" ng-blur="passEmpty(pass)" ng-keypress="checkIfEnterKeyWasPressed(email, pass, $event)" ng-required="true" close-modal>
                         </fieldset>
-
                         <a href="#/" class="login-forgot-pass" translate="reg_forgot_pw"></a>
-                        <div id="error-login" class="relative">
-                            <div class="alert alert-danger msg-error" ng-show="!isEmailValid || !isPassEmpty">{{errorMsg}}</div>
+
+                        <div id="error-login" class="relative" ng-if="!isEmailValid || !isPassEmpty">
+                            <div class="alert alert-danger msg-error">{{errorMsg}}</div>
                         </div>
                         <button type="button" class="btn-login button btn-danger" ng-click="login(email, pass, $event)" ng-disabled="!loginForm.$valid" data-loading-text="Loading..." loading-button translate="login_now" ></button>
                     </form>

@@ -42,7 +42,16 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			"password"  : pass
 		}
 		
-		$fny.login(loginObj);
+		$fny.login(loginObj, function(callback){
+			console.log(callback);
+			if (callback == 409) {
+				console.log('ok');
+				$scope.isEmailValid = false;	
+			}else{
+				console.log('nops');
+			}
+		});
+		
 	};
 
 	$scope.checkIfEnterKeyWasPressed = function(email, pass, event){

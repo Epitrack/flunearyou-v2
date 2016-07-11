@@ -1,41 +1,41 @@
 <section class="modal fade modal-join-us" id="modal-join-us" tabindex="-1" role="dialog" ng-controller="modalsCtrl">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog w768" role="document">
         <div class="modal-content">
             <header class="modal-header bg">
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
 
-                <h4 class="modal-title">Spread the word. <span>Not the flu.</span></h4>
+                <h4 class="modal-title" translate="main_header2"></h4>
             </header>
 
             <ul class="modal-list">
-                <li class="modal-item">Join thousands who are helping report flu.</li>
-                <li class="modal-item">Protect yourself, your family & your community.</li>
+                <li class="modal-item" translate="subheader2_1"></li>
+                <li class="modal-item" translate="subheader2_2"></li>
             </ul>
             
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="register-social" ng-show="resgisterSocial">
                         <div class="row">
-                            <h5>Ready to report? Let's hear from you.</h5>
+                            <h5 translate="subheader2_3"></h5>
                         </div>
 
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 btn-wrapper">
-                                <button class="btn-facebook" ng-click="toggleResgisterSocial('FB')">Facebook</button>
+                                <button class="btn-facebook" ng-click="toggleResgisterSocial('FB')"></button>
                             </div>
 
                             <div class="col-xs-12 col-sm-6 btn-wrapper">
-                                <button class="btn-google-plus" ng-click="toggleResgisterSocial('GP')">Google Plus</button>
+                                <button class="btn-google-plus" ng-click="toggleResgisterSocial('GP')"></button>
                             </div>
                         </div>
 
                         <div class="row">
-                            <small class="never-post">We will never post on your wall</small>
-                            <span class="or">or you can</span>
+                            <small class="never-post" translate="modal_registration_never_post"></small>
+                            <span class="or" translate="reg_or"></span>
 
-                            <a ng-click="showRegisterForm=true" class="register-form">Register with email address</a>
+                            <a ng-click="showRegisterForm=true" class="register-form"><span translate="reg_email_bt"></span></a>
                         </div>
 
                         <form ng-show="showRegisterForm" name="registerForm" id="register-form" class="row register-form">
@@ -124,9 +124,8 @@
             </div>
 
             <footer class="modal-footer">
-                <p>Already registered with Flu Near You?
-                    <a ng-href="#" title="Sign in" data-toggle="modal" data-dismiss="modal" data-target="#modal-login">Sign in here</a>
-                </p>
+                <p translate="reg_already_member"></p>
+                <a ng-href="#" title="Sign in" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" translate="reg_login_here"></a>
             </footer>
         </div>
     </div>
