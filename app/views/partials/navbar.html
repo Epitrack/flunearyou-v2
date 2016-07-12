@@ -46,8 +46,6 @@
 
         </li>
     </ul>
-
-
 </div>
 
 <!-- desktop -->
@@ -61,8 +59,8 @@
 
             <ul class="nav navbar-nav nopadding" ng-class="{ 'col-sm-5' :  userLogged, 'col-sm-6' : !userLogged}">
                 <li> <a class="nav-link" title="Flu Map" ng-href="#/map" ng-click="changeShowFluMap()">Flu Map</a> </li>
-                <li> <a class="nav-link" title="About" ng-href="#/about" translate="about2"></a> </li>
-                <li> <a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a> </li>
+                <li scroll-to-nav data-menu="about"> <a class="nav-link" title="About" ng-href="#/about" translate="about2"></a> </li>
+                <li scroll-to-nav data-menu="news"> <a class="nav-link" title="News" ng-href="#/flu-news" translate="news2"></a> </li>
                 <li> <a class="nav-link" title="Press" ng-href="#/press" translate="press2"></a> </li>
                 <li> <a class="nav-link" title="FAQ" ng-href="#/faq" translate="faq2"></a> </li>
                 <li> <a class="nav-link" title="Login" data-toggle="modal" data-dismiss="modal" data-target="#modal-login" ng-hide="userLogged" translate="nav_login"></a> </li>
