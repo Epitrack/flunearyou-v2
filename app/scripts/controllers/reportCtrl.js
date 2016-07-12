@@ -56,6 +56,8 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		    });
 		};
 
+		openModalThanks();
+
 		var openPage = function(page){
 			$scope.page_members       = page == 'page_members' ? true : false;
 			$scope.page_symptoms      = page == 'page_symptoms' ? true : false;
