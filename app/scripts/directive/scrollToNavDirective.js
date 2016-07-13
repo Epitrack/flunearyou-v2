@@ -17,17 +17,15 @@ app.directive('scrollToNav', function(){
 
 					if (menu == 'news') {
 						$('html, body').animate({
-					        scrollTop: $(".wrapper-flu-news").offset().top - 110
+					        scrollTop: $("#news").offset().top - 110
 					    }, 2000);
 					}else{
 						$('html, body').animate({
-					        scrollTop: $(".about-tabs").offset().top - 150
+					        scrollTop: $("#about-tabs").offset().top - 150
 					    }, 2000);
 					}
 					
 					return false;
-				}else{
-					return true;
 				}
 			});
 		}

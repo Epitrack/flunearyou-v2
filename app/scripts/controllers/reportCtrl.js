@@ -43,21 +43,6 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		$scope.week_end  = new Date(d.setDate(diff + 6));
 		$scope.next_week = new Date(d.setDate(diff + 7));
 
-		var openModalThanks = function(){
-			var modalInstance = $uibModal.open({
-		      templateUrl: 'views/partials/modal-thanks.html',
-		      controller: 'ModalThanksCtrl',
-		      size: 'lg',
-		      resolve: {
-		        items: function () {
-		        	return $scope.items;
-		        }
-		      }
-		    });
-		};
-
-		openModalThanks();
-
 		var openPage = function(page){
 			$scope.page_members       = page == 'page_members' ? true : false;
 			$scope.page_symptoms      = page == 'page_symptoms' ? true : false;
@@ -157,7 +142,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		};
 
 		var redirectToSuccess = function(){
-			openModalThanks();
+			localStorage.setItem('redirectMap', true);			
 			$location.path( "/map" );
 		};
 

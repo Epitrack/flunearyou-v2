@@ -264,7 +264,7 @@ app.controller('MainCtrl', ['$scope', 'cdcstates', function ($scope, cdcstates) 
 
 'use strict';
 
-app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session', function ($scope, $rootScope, $http, $urlBase, session) {
+app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session', '$uibModal', function ($scope, $rootScope, $http, $urlBase, session, $uibModal) {
 	/*
  *	Init
  */
@@ -276,12 +276,12 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 		/*
   *	Second accsses map
   */
-		// if (sessionStorage.getItem('secondAccsessMap')) {
-		// 	sessionStorage.removeItem('secondAccsessMap')
-		// 	window.location.reload();
-		// } else{
-		// 	sessionStorage.setItem('secondAccsessMap', true);
-		// }
+		if (sessionStorage.getItem('secondAccsessMap')) {
+			sessionStorage.removeItem('secondAccsessMap');
+			window.location.reload();
+		} else {
+			sessionStorage.setItem('secondAccsessMap', true);
+		}
 
 		var MAP = {
 
@@ -565,6 +565,23 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 				$scope.tab2 = true;
 			};
 		};
+
+		var openModalThanks = function openModalThanks() {
+			var modalInstance = $uibModal.open({
+				templateUrl: 'views/partials/modal-thanks.html',
+				controller: 'ModalThanksCtrl',
+				size: 'lg',
+				resolve: {
+					items: function items() {
+						return $scope.items;
+					}
+				}
+			});
+		};
+
+		if (localStorage.getItem('redirectMap')) {
+			openModalThanks();
+		}
 	});
 }]);
 //# sourceMappingURL=mapCtrl.js.map
@@ -1232,21 +1249,6 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		$scope.week_end = new Date(d.setDate(diff + 6));
 		$scope.next_week = new Date(d.setDate(diff + 7));
 
-		var openModalThanks = function openModalThanks() {
-			var modalInstance = $uibModal.open({
-				templateUrl: 'views/partials/modal-thanks.html',
-				controller: 'ModalThanksCtrl',
-				size: 'lg',
-				resolve: {
-					items: function items() {
-						return $scope.items;
-					}
-				}
-			});
-		};
-
-		openModalThanks();
-
 		var openPage = function openPage(page) {
 			$scope.page_members = page == 'page_members' ? true : false;
 			$scope.page_symptoms = page == 'page_symptoms' ? true : false;
@@ -1342,7 +1344,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		};
 
 		var redirectToSuccess = function redirectToSuccess() {
-			openModalThanks();
+			localStorage.setItem('redirectMap', true);
 			$location.path("/map");
 		};
 
@@ -1697,15 +1699,13 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 	});
 
 	$scope.ok = function () {
+		localStorage.removeItem('redirectMap');
 		$uibModalInstance.close($scope.selected.item);
 	};
 
 	$scope.cancel = function () {
+		localStorage.removeItem('redirectMap');
 		$uibModalInstance.dismiss('cancel');
-	};
-
-	$scope.winReload = function () {
-		// $window.location.reload();
 	};
 }]);
 //# sourceMappingURL=modalThanksCtrl.js.map
@@ -2507,17 +2507,15 @@ app.directive('scrollToNav', function () {
 
 					if (menu == 'news') {
 						$('html, body').animate({
-							scrollTop: $(".wrapper-flu-news").offset().top - 110
+							scrollTop: $("#news").offset().top - 110
 						}, 2000);
 					} else {
 						$('html, body').animate({
-							scrollTop: $(".about-tabs").offset().top - 150
+							scrollTop: $("#about-tabs").offset().top - 150
 						}, 2000);
 					}
 
 					return false;
-				} else {
-					return true;
 				}
 			});
 		}

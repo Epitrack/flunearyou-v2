@@ -24,14 +24,12 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 		}); 
 
 		$scope.ok = function () {
+			localStorage.removeItem('redirectMap');
 			$uibModalInstance.close($scope.selected.item);
 		};
 
 		$scope.cancel = function () {
+			localStorage.removeItem('redirectMap');
 			$uibModalInstance.dismiss('cancel');
-		};
-
-		$scope.winReload = function () {
-			// $window.location.reload();
 		};
 }]);
