@@ -17,11 +17,11 @@ app.directive('scrollToNav', function(){
 
 					if (menu == 'news') {
 						$('html, body').animate({
-					        scrollTop: $("#news").offset().top - 110
+					        scrollTop: 530
 					    }, 2000);
 					}else{
 						$('html, body').animate({
-					        scrollTop: $("#about-tabs").offset().top - 150
+					        scrollTop: 1347
 					    }, 2000);
 					}
 					
