@@ -579,9 +579,11 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 			});
 		};
 
-		if (localStorage.getItem('redirectMap')) {
-			openModalThanks();
-		}
+		openModalThanks();
+
+		// if (localStorage.getItem('redirectMap')){
+		// 	openModalThanks();	
+		// }
 	});
 }]);
 //# sourceMappingURL=mapCtrl.js.map
