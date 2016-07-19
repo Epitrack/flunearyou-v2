@@ -87779,7 +87779,7 @@ provides: [facebook]
         /**
          * SDK version
          */
-        settings.version = 'v2.0';
+        settings.version = 'v2.1';
 
         this.setSdkVersion = function(version) {
           settings.version = version;
