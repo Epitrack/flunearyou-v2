@@ -48,13 +48,14 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 
 	// Change language 
 	$scope.changeLanguage = function(lng){
+		localStorage.setItem('lng', lng);
 		$translate.use(lng);
 	} 
 	
 	$scope.$watch(function(){
-		return $localStorage.language
+		return localStorage.getItem('lng');
 	}, function(){
-		$scope.lang = $localStorage.language;
+		$scope.lang = localStorage.getItem('lng');
 	});
 
 }]);

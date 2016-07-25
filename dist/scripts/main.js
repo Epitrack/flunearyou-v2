@@ -191,16 +191,23 @@ app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
 'use strict';
 
 app.config(['$translateProvider', function ($translateProvider) {
+
+	if (!localStorage.getItem('lng')) {
+		localStorage.setItem('lng', 'en');
+	}
+
+	var language = localStorage.getItem('lng');
+
 	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')) {
 
-		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage('en').useSanitizeValueStrategy(null);
+		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage(language).useSanitizeValueStrategy(null);
 	} else {
 
 		$.get('http://dev.flunearyou.org/translations').success(function (data, status) {
 			localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
 			localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
 
-			$translateProvider.translations('en', JSON.stringify(data.translations.en)).translations('es', JSON.stringify(data.translations.es)).preferredLanguage('en').useSanitizeValueStrategy(null);
+			$translateProvider.translations('en', JSON.stringify(data.translations.en)).translations('es', JSON.stringify(data.translations.es)).preferredLanguage(language).useSanitizeValueStrategy(null);
 
 			window.location.reload();
 		}).error(function (data, status) {
@@ -635,13 +642,14 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 
 	// Change language
 	$scope.changeLanguage = function (lng) {
+		localStorage.setItem('lng', lng);
 		$translate.use(lng);
 	};
 
 	$scope.$watch(function () {
-		return $localStorage.language;
+		return localStorage.getItem('lng');
 	}, function () {
-		$scope.lang = $localStorage.language;
+		$scope.lang = localStorage.getItem('lng');
 	});
 }]);
 //# sourceMappingURL=navCtrl.js.map

@@ -4,12 +4,19 @@
 'use strict';
 
 app.config(['$translateProvider', function($translateProvider) {
+
+	if (!localStorage.getItem('lng')) {
+		localStorage.setItem('lng', 'en');
+	}
+
+	var language = localStorage.getItem('lng');
+
 	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')){
 		
 		$translateProvider
 			.translations('en', JSON.parse(localStorage.getItem('translations_en')))
 			.translations('es', JSON.parse(localStorage.getItem('translations_es')))
-			.preferredLanguage('en')
+			.preferredLanguage(language)
 			.useSanitizeValueStrategy(null);
 
 	}else{
@@ -21,7 +28,7 @@ app.config(['$translateProvider', function($translateProvider) {
 			$translateProvider
 				.translations('en', JSON.stringify(data.translations.en))
 				.translations('es', JSON.stringify(data.translations.es))
-				.preferredLanguage('en')
+				.preferredLanguage(language)
 				.useSanitizeValueStrategy(null);
 			
 			window.location.reload();
