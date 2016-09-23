@@ -15,5 +15,6 @@ var app = angular.module('flunearyouV2App', [
 	'angular-growl', 
 	'facebook', 
 	'googleplus', 
-	'ngStorage'
+	'ngStorage',
+	'ngMask'
 ]);

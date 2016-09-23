@@ -69,13 +69,13 @@
                                     <option value="13">December</option>
                                 </select>
 
-                                <input id="register-year" type="number" class="col-sm-3 input-primary register-year" name="year" placeholder="YYYY" ng-model="newUser.birthyear" ng-blur="yearEmpty(newUser.birthyear)">
+                                <input id="register-year" type="text" class="col-sm-3 input-primary register-year" ng-class="{'error' : !isYearEmpty}" name="year" placeholder="YYYY" ng-model="newUser.birthyear" ng-blur="yearEmpty(newUser.birthyear)" mask="9999" ng-required="true">
                             </fieldset>
 
                             <fieldset class="form-group col-sm-6">
                                 <label for="register-zip-code">Zip code</label>
                                 <small>You must be a resident of the U.S. or Canada</small>
-                                <input id="register-zip-code" type="number" class="input-primary" name="zip" ng-model="newUser.zip" ng-required="true"  ng-blur="zipEmpty(newUser.zip)" ng-class="{'error' : !isZipEmpty}">
+                                <input id="register-zip-code" type="text" class="input-primary" name="zip" ng-model="newUser.zip" ng-required="true"  ng-blur="zipEmpty(newUser.zip)" ng-class="{'error' : !isZipEmpty}" mask="99999">
                             </fieldset>
 
                             <fieldset class="form-group col-sm-12">

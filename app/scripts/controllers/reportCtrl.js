@@ -54,7 +54,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		var getUser = function(){
 			
 			userApi.getUser(function(result){
-				// console.log(result);
+				console.log(result);
 				if (result.info){
 					$scope.user = result.info.basic;
 					$scope.user_vaccionations = result.info.vaccinations;
@@ -81,8 +81,6 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 					angular.forEach($scope.households, function(value, key){
 						$scope.members_ids.push(value.user_household_id);
 					});
-
-
 				}
 			});
 		};

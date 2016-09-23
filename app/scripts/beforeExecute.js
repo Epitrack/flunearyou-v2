@@ -1,6 +1,6 @@
 app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope', '$window', '$translate', '$localStorage',
     function GetSession($http, $urlBase, $routeParams, $q, $rootScope, $window, $translate, $localStorage){
-    
+
     $localStorage.language = 'en';
     
     var defer = $q.defer();
@@ -34,7 +34,6 @@ app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope'
     }
 
     var emailTracings = function(track_id){
-        console.log('track_id', track_id);
         // $http.get($urlBase+'/email/tracking/view?track_id='+track_id, {headers: {'token': token}}).success(function(data, status){
         //     localStorage.setItem('track_id', track_id);
         // }).error(function(data, status){ console.log(status) });
@@ -46,7 +45,6 @@ app.factory( 'session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope'
         localStorage.setItem('campaign', campaign);
         return true;
     }
-
 
     if ($routeParams.token){
         tokenTracings($routeParams.token)

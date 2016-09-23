@@ -199,10 +199,10 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
     $scope.zipEmpty = function(val){
     	
-    	var zip = String(val);
-
-    	if(zip == '' || zip == undefined || zip == null || zip.length < 5 || zip.length > 5){
-    		$scope.errorMsg = 'Zip code must have 5 characters' 
+    	var zip = val;
+    	
+    	if(zip == '' || zip == undefined || zip == null || zip.length < 5){
+    		$scope.errorMsg = 'Zip code wrong' 
     		$scope.isZipEmpty	= false;
     	}else{
     		$scope.isZipEmpty	= true;
@@ -211,10 +211,10 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
     $scope.yearEmpty = function(val){
     	
-    	var year = String(val);
-
-    	if(year == '' || year == undefined || year == null || year.length < 4 || year.length > 4){
-    		$scope.errorMsg = 'Year must have 4 characters'
+    	var year = val,
+    		date = new Date;
+    	if(year == '' || year == undefined || year == null || year.length < 4 || year.length > 4 || Number(year) > date.getFullYear()){
+    		$scope.errorMsg = 'Incorrect field'
     		$scope.isYearEmpty	= false; 
     	}else{
     		$scope.isYearEmpty	= true;
