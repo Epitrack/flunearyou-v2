@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('flunearyouV2App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'checklist-model', 'pascalprecht.translate', 'angular-growl', 'facebook', 'googleplus', 'ngStorage']);
+var app = angular.module('flunearyouV2App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'checklist-model', 'pascalprecht.translate', 'angular-growl', 'facebook', 'googleplus', 'ngStorage', 'ngMask']);
 //# sourceMappingURL=app.js.map
 
 'use strict';
@@ -46,7 +46,6 @@ app.factory('session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope',
     };
 
     var emailTracings = function emailTracings(track_id) {
-        console.log('track_id', track_id);
         // $http.get($urlBase+'/email/tracking/view?track_id='+track_id, {headers: {'token': token}}).success(function(data, status){
         //     localStorage.setItem('track_id', track_id);
         // }).error(function(data, status){ console.log(status) });
@@ -80,15 +79,33 @@ app.factory('session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope',
 }]);
 //# sourceMappingURL=beforeExecute.js.map
 
-'use strict';
+"use strict";
 
 app.config(['$routeProvider', function ($routeProvider) {
 
   var teste = {
     check: function check($window) {
-      if (!localStorage.getItem('userLogged')) {
-        $window.location.href = '#/';
-      }
+
+      var getParameterByName = function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      };
+
+      if (window.location.href.indexOf('report?t=') != -1) {
+        var token = getParameterByName('t');
+        console.log(token);
+        localStorage.setItem('userToken', token);
+      } else {
+        console.log('home');
+        if (!localStorage.getItem('userLogged')) {
+          $window.location.href = '#/';
+        };
+      };
     }
   };
 
@@ -228,10 +245,17 @@ app.config(['FacebookProvider', function (FacebookProvider) {
 	var url = window.location.href;
 
 	if (url.indexOf('localhost') != -1) {
-		var FBid = '362068090500998';
+		// var FBid = '362068090500998';
+		var FBid = '199700630106025';
 	} else {
+		// DEV
 		// var FBid = '463215990541721';
-		var FBid = '362068090500998';
+
+		// PROD
+		var FBid = '199700630106025';
+
+		// Localhost
+		// var FBid = '362068090500998';
 	}
 	FacebookProvider.init(FBid);
 }]);
@@ -1189,10 +1213,10 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
 	$scope.zipEmpty = function (val) {
 
-		var zip = String(val);
+		var zip = val;
 
-		if (zip == '' || zip == undefined || zip == null || zip.length < 5 || zip.length > 5) {
-			$scope.errorMsg = 'Zip code must have 5 characters';
+		if (zip == '' || zip == undefined || zip == null || zip.length < 5) {
+			$scope.errorMsg = 'Zip code wrong';
 			$scope.isZipEmpty = false;
 		} else {
 			$scope.isZipEmpty = true;
@@ -1201,10 +1225,10 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
 	$scope.yearEmpty = function (val) {
 
-		var year = String(val);
-
-		if (year == '' || year == undefined || year == null || year.length < 4 || year.length > 4) {
-			$scope.errorMsg = 'Year must have 4 characters';
+		var year = val,
+		    date = new Date();
+		if (year == '' || year == undefined || year == null || year.length < 4 || year.length > 4 || Number(year) > date.getFullYear()) {
+			$scope.errorMsg = 'Incorrect field';
 			$scope.isYearEmpty = false;
 		} else {
 			$scope.isYearEmpty = true;
@@ -1267,7 +1291,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 		var getUser = function getUser() {
 
 			userApi.getUser(function (result) {
-				// console.log(result);
+				console.log(result);
 				if (result.info) {
 					$scope.user = result.info.basic;
 					$scope.user_vaccionations = result.info.vaccinations;
@@ -2777,13 +2801,40 @@ app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout'
     }
 
     obj.getUser = function (callback) {
-        if (JSON.parse(localStorage.getItem('userLogged')).token) {
+        console.log('ok');
+        console.log(localStorage.getItem('userToken'));
+        if (localStorage.getItem('userLogged')) {
+            console.log('1');
             $http.get($urlBase + '/user', { headers: { 'token': JSON.parse(localStorage.getItem('userLogged')).token } }).success(function (data) {
                 callback(data);
             }).error(function (error) {
                 console.log('Error getUser: ', error);
             });
-        }
+        } else if (localStorage.getItem('userToken')) {
+            console.log('2');
+
+            $http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data, status) {
+                var nickname = data.info.basic.nickname,
+                    userToken = data.info.basic.token,
+                    userEmail = data.info.basic.email,
+                    userLoggedObj = {
+                    'name': nickname,
+                    'email': userEmail,
+                    'token': userToken
+                };
+
+                localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                $rootScope.$emit("IS_LOGGED");
+
+                $http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data) {
+                    callback(data);
+                }).error(function (error) {
+                    console.log('Error getUser: ', error);
+                });
+            }).error(function (data, status) {
+                console.log(status);
+            });
+        };
     };
 
     obj.userEdit = function (user, callback) {
