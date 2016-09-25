@@ -72,6 +72,30 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'));
 });
 
+gulp.task('img', () => {
+  return gulp.src('app/img/**/*')
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true,
+      // don't remove IDs from SVGs, they are often used
+      // as hooks for embedding and styling
+      svgoPlugins: [{cleanupIDs: false}]
+    })))
+    .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('email', () => {
+  return gulp.src('app/email/**/*')
+    .pipe($.cache($.imagemin({
+      progressive: true,
+      interlaced: true,
+      // don't remove IDs from SVGs, they are often used
+      // as hooks for embedding and styling
+      svgoPlugins: [{cleanupIDs: false}]
+    })))
+    .pipe(gulp.dest('dist/email'));
+});
+
 gulp.task('view', () => {
   return gulp.src('app/views/**/*')
     // .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
@@ -170,7 +194,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras', 'view', 'json'], () => {
+gulp.task('build', ['html', 'images', 'img', 'email', 'fonts', 'extras', 'view', 'json'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
