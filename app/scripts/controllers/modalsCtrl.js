@@ -191,7 +191,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
     $scope.passEmpty = function(pass){
     	if(pass == '' || pass == undefined || pass == null || pass.length < 3 || pass.length > 12 ){
     		$scope.isPassEmpty	= false;
-    		$scope.errorMsg = 'Password must have bettwen 3 and 12 caracters' 
+    		$scope.errorMsg = 'Password must have between 3 and 12 characters' 
     	}else{
     		$scope.isPassEmpty	= true;
     	}

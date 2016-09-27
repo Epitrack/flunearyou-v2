@@ -13,7 +13,7 @@ app.directive('showHideData', function(){
 				if($(this).hasClass('ativo')){
 					$(this).find('button').text('HIDE DATA');
 					$('#databox-mobile').animate({
-						'height' : '385px'
+						'height' : '410px'
 					},'slow')
 				}else{
 					$(this).find('button').text('SHOW DATA');
