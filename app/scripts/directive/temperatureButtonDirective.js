@@ -10,7 +10,9 @@ app.directive('temperatureButton', function(){
 		link: function(scope, elem){
 			
 
-		    var decimalAdjust = function(type, value, exp) {
+		    $('#text-slider').html('less than ' + 99.9 + ' ºF');
+
+		    function decimalAdjust(type, value, exp) {
 				// If the exp is undefined or zero...
 				if (typeof exp === 'undefined' || +exp === 0) {
 					return Math[type](value);
@@ -29,40 +31,38 @@ app.directive('temperatureButton', function(){
 				return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
 			}
 
-			var fever = decimalAdjust('round', 99.9, -1);
-			$('#text-slider').html('less than ' + 99.9 + ' ºF');
+		    var getValeu;
+			elem.on('click', function(){
+				if ($(this).hasClass('plus')) {
+					getValeu = Number($('#text-slider').attr('data-value'))
+					if (getValeu < 101) {
+						var n = getValeu + 0.1;
+					    $('#text-slider').attr('data-value', decimalAdjust('round', n, -1));
+					    
+					    if (n == 101) {
+			                $('#text-slider').html('greater than' + decimalAdjust('round', n, -1) + ' ºF');
+			                $("#fever_f").val(101);
+			            }else {
+			                $('#text-slider').html(decimalAdjust('round', n, -1) + ' ºF');
+			                $("#fever_f").val(decimalAdjust('round', n, -1));
+			            }	
+					}
+				}else{
+					getValeu = Number($('#text-slider').attr('data-value'));
+					if (getValeu > 99.9) {
+						var n = getValeu - 0.1;
+					    $('#text-slider').attr('data-value', decimalAdjust('round', n, -1));
 
-		    elem.on('click', function(){
-		    	
-
-		    	console.log(fever);
-
-		    	// if ($(this).hasClass('minus')) {
-		    	// 	if (fever >= 100) {
-		    	// 		fever = fever - 0.1
-		    	// 		if (fever == 99.9) {
-			    //             $('#text-slider').html('less than ' + 99.9 + ' ºF');
-			    //             $("#fever_f").val(99.9);
-			    //         } else {
-			    //             $('#text-slider').html(fever + ' ºF');
-			    //             $("#fever_f").val(fever);
-			    //         }
-		    	// 	}
-		    	// }
-
-		    	// if ($(this).hasClass('plus')) {
-		    	// 	if (fever < 101) {
-		    	// 		fever = fever + 0.1
-		    	// 		if (fever == 101) {
-			    //             $('#text-slider').html('greater than' + 101 + ' ºF');
-			    //             $("#fever_f").val(101);
-			    //         } else {
-			    //             $('#text-slider').html(fever + ' ºF');
-			    //             $("#fever_f").val(fever);
-			    //         }
-		    	// 	}
-		    	// }	
-		    });
+					    if (n == 99.9) {
+			                $('#text-slider').html('less than ' + 99.9 + ' ºF');
+			                $("#fever_f").val(99.9);
+			            }else {
+			                $('#text-slider').html(decimalAdjust('round', n, -1) + ' ºF');
+			                $("#fever_f").val(decimalAdjust('round', n, -1));
+			            }
+					}
+				}
+			});
 		}
 	}
 }); 

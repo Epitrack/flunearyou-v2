@@ -48,29 +48,6 @@ app.directive('temperature', function(){
 		    });
 
 		    $('#text-slider').html('less than ' + 99.9 + ' ºF');
-
-		    elem.on('click', function(){
-
-		    	if (ui.value > 1) {
-		            var n = (99.7 + ui.value / 10).toFixed(1);
-		            console.log(n);
-		            // if (n >= 101) {
-		            //     $('#text-slider').html('greater than' + n + ' ºF');
-		            //     $("#fever_f").val(101);
-		            //     $('#thermometer_bg').addClass('hight');
-		            // } else if (n == 99.9) {
-		            //     $('#text-slider').html('less than ' + 99.9 + ' ºF');
-		            //     $("#fever_f").val(99.9);
-		            //     $('#thermometer_bg').removeClass();
-		            // } else {
-		            //     $('#text-slider').html(n + ' ºF');
-		            //     $("#fever_f").val(n);
-		            //     $('#thermometer_bg').removeClass();
-		            // }
-		        } else {
-		            $('#text-slider').html("");
-		        }
-		    });
 		}
 	}
 }); 
