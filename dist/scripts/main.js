@@ -101,7 +101,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         console.log(token);
         localStorage.setItem('userToken', token);
       } else {
-        console.log('home');
         if (!localStorage.getItem('userLogged')) {
           $window.location.href = '#/';
         };
@@ -185,7 +184,12 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 'use strict';
 
-app.value('$urlBase', 'http://dev.flunearyou.org');
+// DEV
+// app.value('$urlBase', 'http://dev.flunearyou.org');
+
+// PROD
+
+app.value('$urlBase', 'https://api.v2.flunearyou.org');
 //# sourceMappingURL=value.js.map
 
 /*

@@ -23,6 +23,11 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 			$scope.reportCard = data;
 		}); 
 
+		$http.get($urlBase+'/user/thanks', {headers: {'token': token}}).success(function(data){
+			console.log(data);
+			$scope.msgThanks = data;
+		}); 
+
 		$scope.ok = function () {
 			localStorage.removeItem('redirectMap');
 			$uibModalInstance.close($scope.selected.item);
