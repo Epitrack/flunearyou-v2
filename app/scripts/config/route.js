@@ -13,12 +13,10 @@ app.config(['$routeProvider', function ($routeProvider) {
           return decodeURIComponent(results[2].replace(/\+/g, " "));
         };
         
-        if (window.location.href.indexOf('report?t=') != -1) {
+        if (window.location.href.indexOf('report?t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
           var token = getParameterByName('t');
-          console.log(token);
           localStorage.setItem('userToken', token);
         }else{
-          console.log('home');
           if (!localStorage.getItem('userLogged')){
             $window.location.href = '#/'
           };
@@ -29,11 +27,13 @@ app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'homeCtrl'
+        controller: 'homeCtrl',
+        resolve : teste
       }).
       when('/home', {
         templateUrl: 'views/main.html',
-        controller: 'homeCtrl'
+        controller: 'homeCtrl',
+        resolve : teste
       }).
       when('/landing', {
         templateUrl: 'views/landing.html',

@@ -12,7 +12,9 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	if (!localStorage.getItem('userLogged')) {
 		$("#modal-join-us").modal()
 	}
-	localStorage.removeItem('landing')
+	localStorage.removeItem('landing');
+
+
 	$scope.isLogged = function(){
 		var userLogged = localStorage.getItem('userLogged');
 		if(userLogged){
@@ -22,6 +24,34 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 		};
 	};
 	$rootScope.$on("IS_LOGGED", $scope.isLogged);
+
+	// Check urlToken
+	if(localStorage.getItem('userToken')){
+        $http.get($urlBase+'/user', {headers: {'token': localStorage.getItem('userToken')}}).success(function(data, status){
+            var nickname  = data.info.basic.nickname,
+                userToken = data.info.basic.token,
+                userEmail = data.info.basic.email,
+                userLoggedObj = {
+                    'name'  : nickname,
+                    'email' : userEmail,
+                    'token' : userToken
+                };
+                
+                localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                $rootScope.$emit("IS_LOGGED");
+                
+                $http.get($urlBase+'/user', {headers: {'token': localStorage.getItem('userToken')}}).success(function(data) {
+                    $('#modal-join-us').modal('hide');
+                    
+                    // Redirect to settings
+                    if (window.location.href.indexOf('pwreset') != -1) {
+                    	$window.location.href = '#/settings'
+                    }
+                }).error(function(error) {
+                    console.log('Error getUser: ', error);
+                });
+        }).error(function(data, status){ console.log(status) });
+    };
 
 	// ScrollTop all pages
 	$scope.scrolltop = function(){

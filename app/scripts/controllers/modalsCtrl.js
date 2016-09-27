@@ -180,12 +180,32 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	$scope.isPassEmpty	 = true; 
 	$scope.isYearEmpty	 = true;
 	$scope.isGenderValid = true;
+	$scope.sendEmail = false
 
 	$scope.validaEmail = function(email) {
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         $scope.isEmailValid = re.test(email);
         $scope.errorMsg = 'Email invalid'
         return $scope.isEmailValid
+    }
+
+    $scope.forgotEmail = function(email){
+    	var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        $scope.isEmailValid = re.test(email);
+        $scope.errorMsg = 'Please enter a valid email address'
+        
+        if ($scope.isEmailValid) {
+        	$http.post($urlBase+'/user/reset_password', {'email': email}).success(function(data, status, result){
+	        	$scope.sendEmail = true
+	        	setTimeout(function(){
+	        		$scope.sendEmail = false
+	        	}, 1000)
+	        }).error(function(data, status, result){
+	        	
+	        });
+        }else{
+        	return $scope.isEmailValid
+        }
     }
 
     $scope.passEmpty = function(pass){

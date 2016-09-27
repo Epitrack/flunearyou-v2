@@ -17,7 +17,7 @@
 
                     <fieldset>
                         <label for="nickname" translate="nickname"></label>
-                        <div class="col-xs-12 col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control"type="text" name="" ng-model="user.nickname"/></div>
+                        <div class="col-xs-12 col-xs-12 col-md-8 no-padding f-right"><input class="col-xs-12 col-md-12 form-control" type="text" name="" ng-model="user.nickname"/></div>
                     </fieldset>
 
                      <fieldset>
@@ -103,17 +103,17 @@
                 </div>
 
                 <!-- Change password -->
-                <button class="button btn-danger btn-change-pass" ng-click="changePass=true"><span translate="change"></span> <span translate="password"></span></button>
+                <button class="button btn-danger btn-change-pass" ng-click="changePass=false"><span translate="change"></span> <span translate="password"></span></button>
 
-                <div class="col-xs-12 nopadding" ng-show="changePass">
+                <div class="col-xs-12 nopadding" ng-show="!changePass">
                     <div class="info-box">
                         <form name="form-change-pass" class="register-form form-change-pass" id="form-change-pass">
                             <h4 translate="settings_change_password"></h4>
 
-                            <fieldset class="form-group">
+                           <!--  <fieldset class="form-group">
                                 <label for="current-pass" translate="settings_current_password"></label>
                                 <input id="current-pass" type="password" class="input-primary" ng-model="old_password" required>
-                            </fieldset>
+                            </fieldset> -->
 
                             <fieldset class="form-group">
                                 <label for="new-pass"><span translate="new"></span> <span translate="password"></span></label>
