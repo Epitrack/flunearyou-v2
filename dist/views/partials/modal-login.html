@@ -35,7 +35,11 @@
                             <label for="login-password" translate="password"></label>
                             <input id="login-password" type="password" name="pass" class="input-primary" ng-model="pass" ng-blur="passEmpty(pass)" ng-keypress="checkIfEnterKeyWasPressed(email, pass, $event)" ng-required="true" close-modal>
                         </fieldset>
-                        <a href="#/" class="login-forgot-pass" translate="reg_forgot_pw"></a>
+                        <a href="#/" class="login-forgot-pass" ng-click="forgotEmail(email)" translate="reg_forgot_pw"></a>
+
+                        <div id="error-login" class="relative" ng-if="sendEmail">
+                            <div class="alert alert-info msg-error">An email has been sent with a link to reset your password.</div>
+                        </div>
 
                         <div id="error-login" class="relative" ng-if="!isEmailValid || !isPassEmpty">
                             <div class="alert alert-danger msg-error">{{errorMsg}}</div>

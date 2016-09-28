@@ -96,9 +96,8 @@ app.config(['$routeProvider', function ($routeProvider) {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
       };
 
-      if (window.location.href.indexOf('report?t=') != -1) {
+      if (window.location.href.indexOf('report?t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
         var token = getParameterByName('t');
-        console.log(token);
         localStorage.setItem('userToken', token);
       } else {
         if (!localStorage.getItem('userLogged')) {
@@ -110,10 +109,12 @@ app.config(['$routeProvider', function ($routeProvider) {
 
   $routeProvider.when('/', {
     templateUrl: 'views/main.html',
-    controller: 'homeCtrl'
+    controller: 'homeCtrl',
+    resolve: teste
   }).when('/home', {
     templateUrl: 'views/main.html',
-    controller: 'homeCtrl'
+    controller: 'homeCtrl',
+    resolve: teste
   }).when('/landing', {
     templateUrl: 'views/landing.html',
     controller: 'landingCtrl'
@@ -657,6 +658,7 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 	$scope.logout = function () {
 		$scope.custom = false;
 		localStorage.removeItem('userLogged');
+		localStorage.removeItem('userToken');
 		localStorage.removeItem('user_household_id');
 		localStorage.removeItem('objHouseholdEdit');
 		$rootScope.$emit("IS_LOGGED");
@@ -697,6 +699,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 			$("#modal-join-us").modal();
 		}
 		localStorage.removeItem('landing');
+
 		$scope.isLogged = function () {
 			var userLogged = localStorage.getItem('userLogged');
 			if (userLogged) {
@@ -706,6 +709,36 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 			};
 		};
 		$rootScope.$on("IS_LOGGED", $scope.isLogged);
+
+		// Check urlToken
+		if (localStorage.getItem('userToken')) {
+			$http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data, status) {
+				var nickname = data.info.basic.nickname,
+				    userToken = data.info.basic.token,
+				    userEmail = data.info.basic.email,
+				    userLoggedObj = {
+					'name': nickname,
+					'email': userEmail,
+					'token': userToken
+				};
+
+				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+				$rootScope.$emit("IS_LOGGED");
+
+				$http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data) {
+					$('#modal-join-us').modal('hide');
+
+					// Redirect to settings
+					if (window.location.href.indexOf('pwreset') != -1) {
+						$window.location.href = '#/settings';
+					}
+				}).error(function (error) {
+					console.log('Error getUser: ', error);
+				});
+			}).error(function (data, status) {
+				console.log(status);
+			});
+		};
 
 		// ScrollTop all pages
 		$scope.scrolltop = function () {
@@ -1198,6 +1231,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	$scope.isPassEmpty = true;
 	$scope.isYearEmpty = true;
 	$scope.isGenderValid = true;
+	$scope.sendEmail = false;
 
 	$scope.validaEmail = function (email) {
 		var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -1206,10 +1240,27 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		return $scope.isEmailValid;
 	};
 
+	$scope.forgotEmail = function (email) {
+		var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		$scope.isEmailValid = re.test(email);
+		$scope.errorMsg = 'Please enter a valid email address';
+
+		if ($scope.isEmailValid) {
+			$http.post($urlBase + '/user/reset_password', { 'email': email }).success(function (data, status, result) {
+				$scope.sendEmail = true;
+				setTimeout(function () {
+					$scope.sendEmail = false;
+				}, 1000);
+			}).error(function (data, status, result) {});
+		} else {
+			return $scope.isEmailValid;
+		}
+	};
+
 	$scope.passEmpty = function (pass) {
 		if (pass == '' || pass == undefined || pass == null || pass.length < 3 || pass.length > 12) {
 			$scope.isPassEmpty = false;
-			$scope.errorMsg = 'Password must have bettwen 3 and 12 caracters';
+			$scope.errorMsg = 'Password must have between 3 and 12 characters';
 		} else {
 			$scope.isPassEmpty = true;
 		}
@@ -1734,6 +1785,11 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 		$scope.reportCard = data;
 	});
 
+	$http.get($urlBase + '/user/thanks', { headers: { 'token': token } }).success(function (data) {
+		console.log(data);
+		$scope.msgThanks = data;
+	});
+
 	$scope.ok = function () {
 		localStorage.removeItem('redirectMap');
 		$uibModalInstance.close($scope.selected.item);
@@ -2023,6 +2079,75 @@ app.directive('temperature', function () {
 //# sourceMappingURL=temperatureDirective.js.map
 
 /*
+*	Temperature Directive
+*/
+
+'use strict';
+
+app.directive('temperatureButton', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+
+			$('#text-slider').html('less than ' + 99.9 + ' ºF');
+
+			function decimalAdjust(type, value, exp) {
+				// If the exp is undefined or zero...
+				if (typeof exp === 'undefined' || +exp === 0) {
+					return Math[type](value);
+				}
+				value = +value;
+				exp = +exp;
+				// If the value is not a number or the exp is not an integer...
+				if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+					return NaN;
+				}
+				// Shift
+				value = value.toString().split('e');
+				value = Math[type](+(value[0] + 'e' + (value[1] ? +value[1] - exp : -exp)));
+				// Shift back
+				value = value.toString().split('e');
+				return +(value[0] + 'e' + (value[1] ? +value[1] + exp : exp));
+			}
+
+			var getValeu;
+			elem.on('click', function () {
+				if ($(this).hasClass('plus')) {
+					getValeu = Number($('#text-slider').attr('data-value'));
+					if (getValeu < 101) {
+						var n = getValeu + 0.1;
+						$('#text-slider').attr('data-value', decimalAdjust('round', n, -1));
+
+						if (n == 101) {
+							$('#text-slider').html('greater than' + decimalAdjust('round', n, -1) + ' ºF');
+							$("#fever_f").val(101);
+						} else {
+							$('#text-slider').html(decimalAdjust('round', n, -1) + ' ºF');
+							$("#fever_f").val(decimalAdjust('round', n, -1));
+						}
+					}
+				} else {
+					getValeu = Number($('#text-slider').attr('data-value'));
+					if (getValeu > 99.9) {
+						var n = getValeu - 0.1;
+						$('#text-slider').attr('data-value', decimalAdjust('round', n, -1));
+
+						if (n == 99.9) {
+							$('#text-slider').html('less than ' + 99.9 + ' ºF');
+							$("#fever_f").val(99.9);
+						} else {
+							$('#text-slider').html(decimalAdjust('round', n, -1) + ' ºF');
+							$("#fever_f").val(decimalAdjust('round', n, -1));
+						}
+					}
+				}
+			});
+		}
+	};
+});
+//# sourceMappingURL=temperatureButtonDirective.js.map
+
+/*
 *	Disabled Survey Directive
 */
 
@@ -2200,7 +2325,7 @@ app.directive('showHideData', function () {
 				if ($(this).hasClass('ativo')) {
 					$(this).find('button').text('HIDE DATA');
 					$('#databox-mobile').animate({
-						'height': '385px'
+						'height': '410px'
 					}, 'slow');
 				} else {
 					$(this).find('button').text('SHOW DATA');
