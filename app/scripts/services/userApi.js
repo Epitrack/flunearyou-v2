@@ -13,37 +13,39 @@ app.service('userApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout
     }
 
     obj.getUser = function(callback) {
-        console.log('ok');
-        console.log(localStorage.getItem('userToken'));
         if(localStorage.getItem('userLogged')){
-            console.log('1');
            $http.get($urlBase+'/user', {headers: {'token': JSON.parse(localStorage.getItem('userLogged')).token}}).success(function(data) {
                 callback(data);
             }).error(function(error) {
                 console.log('Error getUser: ', error);
             }); 
-        }else if(localStorage.getItem('userToken')){
-            console.log('2');
+        }else{
+            fnyDB.get('userToken').then(function(data){
+                var tkn = data.tkn;
+                $http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data, status){
+                    var nickname  = data.info.basic.nickname,
+                        userToken = data.info.basic.token,
+                        userEmail = data.info.basic.email,
+                        userLoggedObj = {
+                            'name'  : nickname,
+                            'email' : userEmail,
+                            'token' : userToken
+                        };
+                        
+                        localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                        $rootScope.$emit("IS_LOGGED");
+                        
+                        $http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data) {
+                            callback(data);
+                        }).error(function(error) {
+                            console.log('Error getUser: ', error);
+                        });
+                }).error(function(data, status){ console.log(status) });
+            }).catch(function (err) {
+                console.log(err);
+            });
 
-            $http.get($urlBase+'/user', {headers: {'token': localStorage.getItem('userToken')}}).success(function(data, status){
-                var nickname  = data.info.basic.nickname,
-                    userToken = data.info.basic.token,
-                    userEmail = data.info.basic.email,
-                    userLoggedObj = {
-                        'name'  : nickname,
-                        'email' : userEmail,
-                        'token' : userToken
-                    };
-                    
-                    localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-                    $rootScope.$emit("IS_LOGGED");
-                    
-                    $http.get($urlBase+'/user', {headers: {'token': localStorage.getItem('userToken')}}).success(function(data) {
-                        callback(data);
-                    }).error(function(error) {
-                        console.log('Error getUser: ', error);
-                    });
-            }).error(function(data, status){ console.log(status) });
+            
         };
     };
 

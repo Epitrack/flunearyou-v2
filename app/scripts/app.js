@@ -16,5 +16,6 @@ var app = angular.module('flunearyouV2App', [
 	'facebook', 
 	'googleplus', 
 	'ngStorage',
-	'ngMask'
+	'ngMask',
+	'pouchdb'
 ]);

@@ -9,3 +9,5 @@
 
 // PROD
 app.value('$urlBase', 'https://api.v2.flunearyou.org');
+
+window.fnyDB = new PouchDB('fnyDB');

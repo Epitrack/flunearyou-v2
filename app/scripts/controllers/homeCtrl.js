@@ -6,28 +6,20 @@
 
 app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', 'session', function($scope, $rootScope, $http, $urlBase, $window, session){
 	session.then( function() {
+
 	/*
 	*	Init
-	*/ 
+	*/
 	if (!localStorage.getItem('userLogged')) {
 		$("#modal-join-us").modal()
 	}
 	localStorage.removeItem('landing');
 
-
-	$scope.isLogged = function(){
-		var userLogged = localStorage.getItem('userLogged');
-		if(userLogged){
-			$('.btn-cta').addClass('none');
-		}else{
-			$('.btn-cta').removeClass('none');
-		};
-	};
-	$rootScope.$on("IS_LOGGED", $scope.isLogged);
-
 	// Check urlToken
-	if(localStorage.getItem('userToken')){
-        $http.get($urlBase+'/user', {headers: {'token': localStorage.getItem('userToken')}}).success(function(data, status){
+	fnyDB.get('userToken').then(function(data){
+		var tkn = data.tkn;
+		console.log(tkn);
+		$http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data, status){
             var nickname  = data.info.basic.nickname,
                 userToken = data.info.basic.token,
                 userEmail = data.info.basic.email,
@@ -40,7 +32,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
                 localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
                 $rootScope.$emit("IS_LOGGED");
                 
-                $http.get($urlBase+'/user', {headers: {'token': localStorage.getItem('userToken')}}).success(function(data) {
+                $http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data) {
                     $('#modal-join-us').modal('hide');
                     
                     // Redirect to settings
@@ -51,7 +43,19 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
                     console.log('Error getUser: ', error);
                 });
         }).error(function(data, status){ console.log(status) });
-    };
+	}).catch(function (err) {
+        console.log(err);
+    });
+
+    $scope.isLogged = function(){
+		var userLogged = localStorage.getItem('userLogged');
+		if(userLogged){
+			$('.btn-cta').addClass('none');
+		}else{
+			$('.btn-cta').removeClass('none');
+		};
+	};
+	$rootScope.$on("IS_LOGGED", $scope.isLogged);
 
 	// ScrollTop all pages
 	$scope.scrolltop = function(){
