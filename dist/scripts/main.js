@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('flunearyouV2App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'checklist-model', 'pascalprecht.translate', 'angular-growl', 'facebook', 'googleplus', 'ngStorage', 'ngMask']);
+var app = angular.module('flunearyouV2App', ['ngRoute', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'checklist-model', 'pascalprecht.translate', 'angular-growl', 'facebook', 'googleplus', 'ngStorage', 'ngMask', 'pouchdb']);
 //# sourceMappingURL=app.js.map
 
 'use strict';
@@ -84,7 +84,7 @@ app.factory('session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope',
 app.config(['$routeProvider', function ($routeProvider) {
 
   var teste = {
-    check: function check($window) {
+    check: function check($window, pouchDB) {
 
       var getParameterByName = function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -96,9 +96,12 @@ app.config(['$routeProvider', function ($routeProvider) {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
       };
 
-      if (window.location.href.indexOf('report?t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
+      if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
         var token = getParameterByName('t');
-        localStorage.setItem('userToken', token);
+        fnyDB.put({
+          _id: 'userToken',
+          tkn: token
+        });
       } else {
         if (!localStorage.getItem('userLogged')) {
           $window.location.href = '#/';
@@ -191,6 +194,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 // PROD
 
 app.value('$urlBase', 'https://api.v2.flunearyou.org');
+
+window.fnyDB = new PouchDB('fnyDB');
 //# sourceMappingURL=value.js.map
 
 /*
@@ -656,9 +661,11 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 	}
 
 	$scope.logout = function () {
+		fnyDB.get('userToken').then(function (data) {
+			fnyDB.remove(data);
+		});
 		$scope.custom = false;
 		localStorage.removeItem('userLogged');
-		localStorage.removeItem('userToken');
 		localStorage.removeItem('user_household_id');
 		localStorage.removeItem('objHouseholdEdit');
 		$rootScope.$emit("IS_LOGGED");
@@ -692,6 +699,7 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 
 app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'session', function ($scope, $rootScope, $http, $urlBase, $window, session) {
 	session.then(function () {
+
 		/*
   *	Init
   */
@@ -700,19 +708,11 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 		}
 		localStorage.removeItem('landing');
 
-		$scope.isLogged = function () {
-			var userLogged = localStorage.getItem('userLogged');
-			if (userLogged) {
-				$('.btn-cta').addClass('none');
-			} else {
-				$('.btn-cta').removeClass('none');
-			};
-		};
-		$rootScope.$on("IS_LOGGED", $scope.isLogged);
-
 		// Check urlToken
-		if (localStorage.getItem('userToken')) {
-			$http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data, status) {
+		fnyDB.get('userToken').then(function (data) {
+			var tkn = data.tkn;
+			console.log(tkn);
+			$http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data, status) {
 				var nickname = data.info.basic.nickname,
 				    userToken = data.info.basic.token,
 				    userEmail = data.info.basic.email,
@@ -725,7 +725,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 				$rootScope.$emit("IS_LOGGED");
 
-				$http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data) {
+				$http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data) {
 					$('#modal-join-us').modal('hide');
 
 					// Redirect to settings
@@ -738,7 +738,19 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 			}).error(function (data, status) {
 				console.log(status);
 			});
+		}).catch(function (err) {
+			console.log(err);
+		});
+
+		$scope.isLogged = function () {
+			var userLogged = localStorage.getItem('userLogged');
+			if (userLogged) {
+				$('.btn-cta').addClass('none');
+			} else {
+				$('.btn-cta').removeClass('none');
+			};
 		};
+		$rootScope.$on("IS_LOGGED", $scope.isLogged);
 
 		// ScrollTop all pages
 		$scope.scrolltop = function () {
@@ -2930,38 +2942,38 @@ app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout'
     }
 
     obj.getUser = function (callback) {
-        console.log('ok');
-        console.log(localStorage.getItem('userToken'));
         if (localStorage.getItem('userLogged')) {
-            console.log('1');
             $http.get($urlBase + '/user', { headers: { 'token': JSON.parse(localStorage.getItem('userLogged')).token } }).success(function (data) {
                 callback(data);
             }).error(function (error) {
                 console.log('Error getUser: ', error);
             });
-        } else if (localStorage.getItem('userToken')) {
-            console.log('2');
+        } else {
+            fnyDB.get('userToken').then(function (data) {
+                var tkn = data.tkn;
+                $http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data, status) {
+                    var nickname = data.info.basic.nickname,
+                        userToken = data.info.basic.token,
+                        userEmail = data.info.basic.email,
+                        userLoggedObj = {
+                        'name': nickname,
+                        'email': userEmail,
+                        'token': userToken
+                    };
 
-            $http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data, status) {
-                var nickname = data.info.basic.nickname,
-                    userToken = data.info.basic.token,
-                    userEmail = data.info.basic.email,
-                    userLoggedObj = {
-                    'name': nickname,
-                    'email': userEmail,
-                    'token': userToken
-                };
+                    localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+                    $rootScope.$emit("IS_LOGGED");
 
-                localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-                $rootScope.$emit("IS_LOGGED");
-
-                $http.get($urlBase + '/user', { headers: { 'token': localStorage.getItem('userToken') } }).success(function (data) {
-                    callback(data);
-                }).error(function (error) {
-                    console.log('Error getUser: ', error);
+                    $http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data) {
+                        callback(data);
+                    }).error(function (error) {
+                        console.log('Error getUser: ', error);
+                    });
+                }).error(function (data, status) {
+                    console.log(status);
                 });
-            }).error(function (data, status) {
-                console.log(status);
+            }).catch(function (err) {
+                console.log(err);
             });
         };
     };
