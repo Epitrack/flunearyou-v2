@@ -225,23 +225,56 @@ app.config(['$translateProvider', function ($translateProvider) {
 
 	var language = localStorage.getItem('lng');
 
-	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')) {
+	// Remove DB
+	// fnyDB.get('translations').then(function(data) {
+	// 	fnyDB.remove(data);
+	// });
 
-		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage(language).useSanitizeValueStrategy(null);
-	} else {
-
+	console.log('fnyDB.get(translate)');
+	fnyDB.get('translate').then(function (data) {
+		$translateProvider.translations('en', data.en).translations('es', data.es).preferredLanguage(language).useSanitizeValueStrategy(null);
+	}).catch(function (err) {
 		$.get('http://dev.flunearyou.org/translations').success(function (data, status) {
-			localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
-			localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
+			var lngEN = JSON.stringify(data.translations.en),
+			    lngES = JSON.stringify(data.translations.es);
 
-			$translateProvider.translations('en', JSON.stringify(data.translations.en)).translations('es', JSON.stringify(data.translations.es)).preferredLanguage(language).useSanitizeValueStrategy(null);
+			fnyDB.put({
+				_id: 'translate',
+				en: lngEN,
+				es: lngES
+			});
 
 			window.location.reload();
 		}).error(function (data, status) {
 			console.log('Error in angularTranslateConfig.js');
-			console.log(data, status);
+			console.log(data);
+			console.log(status);
 		});
-	}
+	});
+
+	// if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')){
+
+	$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage(language).useSanitizeValueStrategy(null);
+
+	// }else{
+
+	// 	$.get('http://dev.flunearyou.org/translations').success(function(data, status){
+	// 		localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
+	// 		localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
+
+	// 		$translateProvider
+	// 			.translations('en', JSON.stringify(data.translations.en))
+	// 			.translations('es', JSON.stringify(data.translations.es))
+	// 			.preferredLanguage(language)
+	// 			.useSanitizeValueStrategy(null);
+
+	// 		window.location.reload();
+
+	// 	}).error(function(data, status){
+	// 		console.log('Error in angularTranslateConfig.js');
+	// 		console.log(data, status);
+	// 	});
+	// }
 }]);
 //# sourceMappingURL=angularTranslateConfig.js.map
 
@@ -644,9 +677,11 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 			var userLogged = JSON.parse(localStorage.getItem('userLogged'));
 			$scope.userLogged = true;
 			$scope.userLoggedEmail = userLogged.email;
+			$('.btn-cta').addClass('none');
 		} else {
 			$scope.userLogged = false;
 			$scope.userLoggedEmail = '';
+			$('.btn-cta').addClass('none');
 		};
 	};
 
@@ -739,7 +774,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 				console.log(status);
 			});
 		}).catch(function (err) {
-			console.log(err);
+			// console.log(err);
 		});
 
 		$scope.isLogged = function () {
@@ -1117,9 +1152,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		};
 
 		$fny.login(loginObj, function (callback) {
-			console.log(callback);
 			if (callback == 409) {
-				console.log('ok');
 				$scope.isEmailValid = false;
 			} else {
 				console.log('nops');
@@ -1158,6 +1191,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 						};
 
 						localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+
 						$rootScope.$emit("IS_LOGGED");
 						$('.modal').modal('hide');
 					}

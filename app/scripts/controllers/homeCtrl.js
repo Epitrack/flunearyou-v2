@@ -44,7 +44,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
                 });
         }).error(function(data, status){ console.log(status) });
 	}).catch(function (err) {
-        console.log(err);
+        // console.log(err);
     });
 
     $scope.isLogged = function(){

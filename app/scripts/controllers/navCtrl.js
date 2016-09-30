@@ -16,9 +16,11 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 			var userLogged = JSON.parse(localStorage.getItem('userLogged'));
 			$scope.userLogged = true;
 			$scope.userLoggedEmail = userLogged.email;
+			$('.btn-cta').addClass('none');
 		}else{
 			$scope.userLogged = false;
 			$scope.userLoggedEmail = '';
+			$('.btn-cta').addClass('none');
 		};
 	};
 

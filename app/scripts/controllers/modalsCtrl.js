@@ -43,9 +43,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 		}
 		
 		$fny.login(loginObj, function(callback){
-			console.log(callback);
 			if (callback == 409) {
-				console.log('ok');
 				$scope.isEmailValid = false;	
 			}else{
 				console.log('nops');
@@ -85,6 +83,7 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 			                };
 
                 		localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
+
                 		$rootScope.$emit("IS_LOGGED");
                 		$('.modal').modal('hide');
                 	}
