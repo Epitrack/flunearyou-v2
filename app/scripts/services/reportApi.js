@@ -9,7 +9,11 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token        
     }else{
-        token = '';
+        fnyDB.get('userToken').then(function(data){
+            token = data.tkn        
+        }).catch(function(err){
+            console.log(err);
+        });
     }
 
     obj.getChecks = function(callback){
@@ -29,6 +33,7 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
     }
 
     obj.everyoneHealthy = function(callback){
+        console.log(token);
         $http.post($urlBase+'/survey/all', {}, {headers: {'token': token}}).success(function(data) {
             callback(true);
         }).error(function(error) {

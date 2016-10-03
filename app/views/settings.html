@@ -65,7 +65,7 @@
 
                     <fieldset>
                         <div class="col-xs-12 col-md-8 no-padding f-right">
-                            <button class="button btn-success f-right m-left" data-loading-text="Sending..." loading-button ng-click="userEdit()"><span translate="save"></span></button>
+                            <button class="button btn-success f-right m-left" data-loading-text="Updating..." loading-button ng-click="userEdit()"><span translate="save"></span></button>
                             <button class="button btn-danger f-right" ng-click="showUserUpdate=false"><span translate="cancel"></span></button>
                         </div>  
                     </fieldset>
@@ -109,6 +109,11 @@
                     <div class="info-box">
                         <form name="form-change-pass" class="register-form form-change-pass" id="form-change-pass">
                             <h4 translate="settings_change_password"></h4>
+
+                            <fieldset class="form-group">
+                                <label for="new-pass"><span translate="old"></span> <span translate="password"></span></label>
+                                <input id="old-pass" type="password" class="input-primary" ng-model="old_password" required>
+                            </fieldset>
 
                             <fieldset class="form-group">
                                 <label for="new-pass"><span translate="new"></span> <span translate="password"></span></label>

@@ -1,32 +1,35 @@
 app.config(['$routeProvider', function ($routeProvider) {
     
     var teste = {
-      check : function($window, pouchDB){
+        check : function($window, pouchDB, $http){
         
-        var getParameterByName = function (name, url) {
-          if (!url) url = window.location.href;
-          name = name.replace(/[\[\]]/g, "\\$&");
-          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-              results = regex.exec(url);
-          if (!results) return null;
-          if (!results[2]) return '';
-          return decodeURIComponent(results[2].replace(/\+/g, " "));
-        };
-        
-        if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
-            var token = getParameterByName('t');
-            fnyDB.put({
-                _id : 'userToken',
-                tkn : token
-            });
-        }else{
-          if (!localStorage.getItem('userLogged')){
-            $window.location.href = '#/'
-          };
-        };
-      }
+            // Get Path url
+            var getParameterByName = function (name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            };
+            
+            // Set token into PuchDB
+            if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
+                var token = getParameterByName('t');
+                fnyDB.put({
+                    _id : 'userToken',
+                    tkn : token
+                });
+            }else{
+              if (!localStorage.getItem('userLogged')){
+                $window.location.href = '#/'
+              };
+            };
+        }
     };
 
+    // Routes 
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

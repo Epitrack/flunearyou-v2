@@ -84,8 +84,9 @@ app.factory('session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope',
 app.config(['$routeProvider', function ($routeProvider) {
 
   var teste = {
-    check: function check($window, pouchDB) {
+    check: function check($window, pouchDB, $http) {
 
+      // Get Path url
       var getParameterByName = function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -96,6 +97,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
       };
 
+      // Set token into PuchDB
       if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
         var token = getParameterByName('t');
         fnyDB.put({
@@ -110,6 +112,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     }
   };
 
+  // Routes
   $routeProvider.when('/', {
     templateUrl: 'views/main.html',
     controller: 'homeCtrl',
@@ -1718,6 +1721,9 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 				'password': $scope.password,
 				'confirm_password': $scope.confirm_password
 			};
+
+			console.log(objPass);
+
 			userApi.sendPassword(objPass, function (data) {
 				if (data) {
 					$scope.changePass = false;
@@ -2771,7 +2777,11 @@ app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeou
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;
     } else {
-        token = '';
+        fnyDB.get('userToken').then(function (data) {
+            token = data.tkn;
+        }).catch(function (err) {
+            console.log(err);
+        });
     }
 
     obj.getChecks = function (callback) {
@@ -2791,6 +2801,7 @@ app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeou
     };
 
     obj.everyoneHealthy = function (callback) {
+        console.log(token);
         $http.post($urlBase + '/survey/all', {}, { headers: { 'token': token } }).success(function (data) {
             callback(true);
         }).error(function (error) {
@@ -2939,7 +2950,11 @@ app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout'
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;
     } else {
-        token = '';
+        fnyDB.get('userToken').then(function (data) {
+            token = data.tkn;
+        }).catch(function (err) {
+            console.log(err);
+        });
     }
 
     obj.getUser = function (callback) {
