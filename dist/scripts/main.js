@@ -225,32 +225,23 @@ app.config(['$translateProvider', function ($translateProvider) {
 
 	var language = localStorage.getItem('lng');
 
-	// Remove DB
-	// fnyDB.get('translations').then(function(data) {
-	// 	fnyDB.remove(data);
-	// });
+	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')) {
 
-	console.log('fnyDB.get(translate)');
-	fnyDB.get('translate').then(function (data) {
-		$translateProvider.translations('en', data.en).translations('es', data.es).preferredLanguage(language).useSanitizeValueStrategy(null);
-	}).catch(function (err) {
+		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage(language).useSanitizeValueStrategy(null);
+	} else {
+
 		$.get('http://dev.flunearyou.org/translations').success(function (data, status) {
-			var lngEN = JSON.stringify(data.translations.en),
-			    lngES = JSON.stringify(data.translations.es);
+			localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
+			localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
 
-			fnyDB.put({
-				_id: 'translate',
-				en: lngEN,
-				es: lngES
-			});
+			$translateProvider.translations('en', JSON.stringify(data.translations.en)).translations('es', JSON.stringify(data.translations.es)).preferredLanguage(language).useSanitizeValueStrategy(null);
 
 			window.location.reload();
 		}).error(function (data, status) {
 			console.log('Error in angularTranslateConfig.js');
-			console.log(data);
-			console.log(status);
+			console.log(data, status);
 		});
-	});
+	}
 }]);
 //# sourceMappingURL=angularTranslateConfig.js.map
 
