@@ -224,13 +224,13 @@ app.config(['$translateProvider', function ($translateProvider) {
 	}
 
 	var language = localStorage.getItem('lng');
-
+	console.log('Update Code');
 	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')) {
 
 		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage(language).useSanitizeValueStrategy(null);
 	} else {
 
-		$.get('http://dev.flunearyou.org/translations').success(function (data, status) {
+		$.get('https://api.v2.flunearyou.org/translations').success(function (data, status) {
 			localStorage.setItem('translations_en', JSON.stringify(data.translations.en));
 			localStorage.setItem('translations_es', JSON.stringify(data.translations.es));
 
