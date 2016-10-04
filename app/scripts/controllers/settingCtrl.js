@@ -120,6 +120,9 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 			if (data){
 				$scope.changePass = false;
 				showMessage(data);
+				setTimeout(function(){
+					window.location.href = '/#/map';
+				});
 			}
 		});
 	};
