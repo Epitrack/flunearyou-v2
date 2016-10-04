@@ -195,10 +195,13 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
         
         if ($scope.isEmailValid) {
         	$http.post($urlBase+'/user/reset_password', {'email': email}).success(function(data, status, result){
-	        	$scope.sendEmail = true
-	        	setTimeout(function(){
-	        		$scope.sendEmail = false
-	        	}, 1000)
+        		console.log(data);
+        		console.log(status);
+        		console.log(result);
+	        	// $scope.sendEmail = true
+	        	// setTimeout(function(){
+	        	// 	$scope.sendEmail = false
+	        	// }, 1000)
 	        }).error(function(data, status, result){
 	        	
 	        });

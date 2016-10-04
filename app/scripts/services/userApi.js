@@ -64,6 +64,7 @@ app.service('userApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout
 
     obj.sendPassword = function(data, callback){
         $http.post($urlBase+'/user/update/password', data, {headers: {'token': token}}).success(function(data){
+            console.log(data);
             callback(data);
         }).error(function(error) {
             console.log('Error sendPassword: ', error);

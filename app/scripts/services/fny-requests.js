@@ -30,6 +30,7 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 
 	    loginByToken : function(token){
 	    	$http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data, status){
+	    		console.log(data);
 	            var nickname  = data.info.basic.nickname,
 	                userToken = data.info.basic.token,
 	                userEmail = data.info.basic.email,

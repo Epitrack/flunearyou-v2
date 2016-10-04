@@ -18,8 +18,9 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	// Check urlToken
 	fnyDB.get('userToken').then(function(data){
 		var tkn = data.tkn;
-		console.log(tkn);
+		
 		$http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data, status){
+			console.log(data);
             var nickname  = data.info.basic.nickname,
                 userToken = data.info.basic.token,
                 userEmail = data.info.basic.email,

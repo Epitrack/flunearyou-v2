@@ -116,8 +116,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 			'confirm_password' : $scope.confirm_password
 		};
 
-		console.log(objPass);
-
 		userApi.sendPassword(objPass, function(data){
 			if (data){
 				$scope.changePass = false;
