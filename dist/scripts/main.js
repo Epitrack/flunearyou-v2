@@ -84,7 +84,7 @@ app.factory('session', ['$http', '$urlBase', '$routeParams', '$q', '$rootScope',
 app.config(['$routeProvider', function ($routeProvider) {
 
   var teste = {
-    check: function check($window, pouchDB, $http) {
+    check: function check($window, pouchDB) {
 
       // Get Path url
       var getParameterByName = function getParameterByName(name, url) {
@@ -227,7 +227,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 	}
 
 	var language = localStorage.getItem('lng');
-	console.log('Update Code');
+
 	if (localStorage.getItem('translations_en') && localStorage.getItem('translations_es')) {
 
 		$translateProvider.translations('en', JSON.parse(localStorage.getItem('translations_en'))).translations('es', JSON.parse(localStorage.getItem('translations_es'))).preferredLanguage(language).useSanitizeValueStrategy(null);
@@ -716,8 +716,9 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 		// Check urlToken
 		fnyDB.get('userToken').then(function (data) {
 			var tkn = data.tkn;
-			console.log(tkn);
+
 			$http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data, status) {
+				console.log(data);
 				var nickname = data.info.basic.nickname,
 				    userToken = data.info.basic.token,
 				    userEmail = data.info.basic.email,
@@ -1263,10 +1264,13 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 
 		if ($scope.isEmailValid) {
 			$http.post($urlBase + '/user/reset_password', { 'email': email }).success(function (data, status, result) {
-				$scope.sendEmail = true;
-				setTimeout(function () {
-					$scope.sendEmail = false;
-				}, 1000);
+				console.log(data);
+				console.log(status);
+				console.log(result);
+				// $scope.sendEmail = true
+				// setTimeout(function(){
+				// 	$scope.sendEmail = false
+				// }, 1000)
 			}).error(function (data, status, result) {});
 		} else {
 			return $scope.isEmailValid;
@@ -1721,8 +1725,6 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 				'password': $scope.password,
 				'confirm_password': $scope.confirm_password
 			};
-
-			console.log(objPass);
 
 			userApi.sendPassword(objPass, function (data) {
 				if (data) {
@@ -2801,7 +2803,6 @@ app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeou
     };
 
     obj.everyoneHealthy = function (callback) {
-        console.log(token);
         $http.post($urlBase + '/survey/all', {}, { headers: { 'token': token } }).success(function (data) {
             callback(true);
         }).error(function (error) {
@@ -2901,6 +2902,7 @@ app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', f
 
 		loginByToken: function loginByToken(token) {
 			$http.get($urlBase + '/user', { headers: { 'token': token } }).success(function (data, status) {
+				console.log(data);
 				var nickname = data.info.basic.nickname,
 				    userToken = data.info.basic.token,
 				    userEmail = data.info.basic.email,
@@ -3005,6 +3007,7 @@ app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout'
 
     obj.sendPassword = function (data, callback) {
         $http.post($urlBase + '/user/update/password', data, { headers: { 'token': token } }).success(function (data) {
+            console.log(data);
             callback(data);
         }).error(function (error) {
             console.log('Error sendPassword: ', error);

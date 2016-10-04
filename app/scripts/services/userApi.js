@@ -7,10 +7,10 @@ app.service('userApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout
     var token = JSON.parse(localStorage.getItem('userLogged'));
 
     if (token) {
-        token = JSON.parse(localStorage.getItem('userLogged')).token     
+        token = JSON.parse(localStorage.getItem('userLogged')).token;     
     }else{
          fnyDB.get('userToken').then(function(data){
-            token = data.tkn        
+            token = data.tkn;        
         }).catch(function(err){
             console.log(err);
         });

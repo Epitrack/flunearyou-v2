@@ -124,8 +124,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		});
 	};
 
-	getUser();
-	getHouseholds();
-
+		getUser();
+		getHouseholds();
 	});
 }]);

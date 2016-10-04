@@ -1,7 +1,7 @@
 app.config(['$routeProvider', function ($routeProvider) {
     
     var teste = {
-        check : function($window, pouchDB, $http){
+        check : function($window, pouchDB){
         
             // Get Path url
             var getParameterByName = function (name, url) {
@@ -23,7 +23,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                 });
             }else{
               if (!localStorage.getItem('userLogged')){
-                $window.location.href = '#/'
+                $window.location.href = '#/';
               };
             };
         }
