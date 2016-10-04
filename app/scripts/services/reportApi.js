@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout', '$uibModal',
     function ($http, $urlBase, $rootScope, $window, $timeout, $uibModal) {
