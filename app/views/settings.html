@@ -128,7 +128,14 @@
                             
                             <div class="col-xs-12 wrapper-buttons">
                                 <button class="button btn-danger" ng-click="changePass=false"><span translate="cancel"></span></button>
-                                <button class="button btn-success"><span translate="save" data-loading-text="Updating..." loading-button ng-click="sendPassword()"></span></button>
+                                <button class="button btn-success"><span translate="save" ng-click="sendPassword()"></span></button>
+                            </div>
+
+
+                            <div class="col-xs-12 feedbackChangePass" ng-show="feedbackChangePass">
+                                <div class="alert danger" ng-class="{'alert-danger' : errChangePass, 'alert-success' : !errChangePass}">
+                                    <p>{{msgErrChangePass}}</p>
+                                </div>
                             </div>
                         </form>
                     </div>

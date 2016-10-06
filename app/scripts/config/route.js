@@ -17,10 +17,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             // Set token into PuchDB
             if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
                 var token = getParameterByName('t');
-                fnyDB.put({
-                    _id : 'userToken',
-                    tkn : token
-                });
+                localStorage.setItem('userToken', token);
             }else{
               if (!localStorage.getItem('userLogged')){
                 $window.location.href = '#/';

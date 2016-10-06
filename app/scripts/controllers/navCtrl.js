@@ -35,15 +35,12 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 	}
 
 	$scope.logout = function(){
-		fnyDB.get('userToken').then(function(data) {
-			fnyDB.remove(data);
-		});
-		$scope.custom = false
+		$scope.custom = false;
 		localStorage.removeItem('userLogged');
+		localStorage.removeItem('userToken');
 		localStorage.removeItem('user_household_id');
 		localStorage.removeItem('objHouseholdEdit');
 		$rootScope.$emit("IS_LOGGED");
-		
 	}
 
 	// Toggle dropdown

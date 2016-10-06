@@ -110,21 +110,34 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 	}
 
 	$scope.sendPassword = function(){
-		var objPass = {
-			'old_password'     : $scope.old_password,
-			'password'         : $scope.password,
-			'confirm_password' : $scope.confirm_password
-		};
+		$scope.feedbackChangePass = false
 
-		userApi.sendPassword(objPass, function(data){
-			if (data){
-				$scope.changePass = false;
-				showMessage(data);
-				setTimeout(function(){
-					window.location.href = '/#/map';
-				});
-			}
-		});
+		if ($scope.password == $scope.confirm_password) {
+			$scope.errChangePass = false;
+
+			var objPass = {
+				'password'         : $scope.password,
+				'confirm_password' : $scope.confirm_password
+			};
+
+			userApi.sendPassword(objPass, function(data){
+				if (data) {
+					$scope.msgErrChangePass = data.message;
+					$scope.feedbackChangePass = true;
+				}
+			});
+
+			setTimeout(function(){
+				window.location.href = '/#/report';
+			},2000)
+
+		}else{
+			$scope.errChangePass = true;
+			$scope.msgErrChangePass = 'Error: Different password';
+			$scope.feedbackChangePass = true;
+		}
+
+		$scope.feedbackChangePass = true;
 	};
 
 		getUser();

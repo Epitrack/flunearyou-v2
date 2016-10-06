@@ -42,7 +42,6 @@ app.service('$fny', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout',
 	                
 	                localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 	                $rootScope.$emit("IS_LOGGED");
-	                $window.location.href = '#/report?token='+userToken;
 	        }).error(function(data, status){ console.log(status) });
 	    },
 

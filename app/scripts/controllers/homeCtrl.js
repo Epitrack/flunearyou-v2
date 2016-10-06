@@ -4,7 +4,8 @@
 
 'use strict';
 
-app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', 'session', function($scope, $rootScope, $http, $urlBase, $window, session){
+app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window', 'session', '$fny',
+	function($scope, $rootScope, $http, $urlBase, $window, session, $fny){
 	session.then( function() {
 
 	/*
@@ -15,54 +16,35 @@ app.controller('homeCtrl', ['$scope', '$rootScope','$http', '$urlBase','$window'
 	}
 	localStorage.removeItem('landing');
 
-	// Check urlToken
-	fnyDB.get('userToken').then(function(data){
-		var tkn = data.tkn;
-		
-		$http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data, status){
-			console.log(data);
-            var nickname  = data.info.basic.nickname,
-                userToken = data.info.basic.token,
-                userEmail = data.info.basic.email,
-                userLoggedObj = {
-                    'name'  : nickname,
-                    'email' : userEmail,
-                    'token' : userToken
-                };
-                
-                localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-                $rootScope.$emit("IS_LOGGED");
-                
-                $http.get($urlBase+'/user', {headers: {'token': tkn}}).success(function(data) {
-                    $('#modal-join-us').modal('hide');
-                    
-                    // Redirect to settings
-                    if (window.location.href.indexOf('pwreset') != -1) {
-                    	$window.location.href = '#/settings'
-                    }
-                }).error(function(error) {
-                    console.log('Error getUser: ', error);
-                });
-        }).error(function(data, status){ console.log(status) });
-	}).catch(function (err) {
-        // console.log(err);
-    });
+	
 
     $scope.isLogged = function(){
 		var userLogged = localStorage.getItem('userLogged');
+		var userToken  = localStorage.getItem('userToken');
+
 		if(userLogged){
 			$('.btn-cta').addClass('none');
+		}else if(userToken){
+			var token = userToken;
+			$fny.loginByToken(userToken, function(callback){
+				$("#modal-join-us").modal('hide')
+			});
 		}else{
 			$('.btn-cta').removeClass('none');
+			$("#modal-join-us").modal('hide')
 		};
 	};
 	$rootScope.$on("IS_LOGGED", $scope.isLogged);
+
+
 
 	// ScrollTop all pages
 	$scope.scrolltop = function(){
 		document.body.scrollTop = document.documentElement.scrollTop = 0;
 	};
 	$rootScope.$on('SCROLL_TOP', $scope.scrolltop);
+
+
 
 	// Url
 	var url = window.location.href;

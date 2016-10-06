@@ -100,10 +100,7 @@ app.config(['$routeProvider', function ($routeProvider) {
       // Set token into PuchDB
       if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
         var token = getParameterByName('t');
-        fnyDB.put({
-          _id: 'userToken',
-          tkn: token
-        });
+        localStorage.setItem('userToken', token);
       } else {
         if (!localStorage.getItem('userLogged')) {
           $window.location.href = '#/';
@@ -197,8 +194,6 @@ app.config(['$routeProvider', function ($routeProvider) {
 // PROD
 
 app.value('$urlBase', 'https://api.v2.flunearyou.org');
-
-window.fnyDB = new PouchDB('fnyDB');
 //# sourceMappingURL=value.js.map
 
 /*
@@ -666,11 +661,9 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 	}
 
 	$scope.logout = function () {
-		fnyDB.get('userToken').then(function (data) {
-			fnyDB.remove(data);
-		});
 		$scope.custom = false;
 		localStorage.removeItem('userLogged');
+		localStorage.removeItem('userToken');
 		localStorage.removeItem('user_household_id');
 		localStorage.removeItem('objHouseholdEdit');
 		$rootScope.$emit("IS_LOGGED");
@@ -702,7 +695,7 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 
 'use strict';
 
-app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'session', function ($scope, $rootScope, $http, $urlBase, $window, session) {
+app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$window', 'session', '$fny', function ($scope, $rootScope, $http, $urlBase, $window, session, $fny) {
 	session.then(function () {
 
 		/*
@@ -713,47 +706,20 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$windo
 		}
 		localStorage.removeItem('landing');
 
-		// Check urlToken
-		fnyDB.get('userToken').then(function (data) {
-			var tkn = data.tkn;
-
-			$http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data, status) {
-				console.log(data);
-				var nickname = data.info.basic.nickname,
-				    userToken = data.info.basic.token,
-				    userEmail = data.info.basic.email,
-				    userLoggedObj = {
-					'name': nickname,
-					'email': userEmail,
-					'token': userToken
-				};
-
-				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-				$rootScope.$emit("IS_LOGGED");
-
-				$http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data) {
-					$('#modal-join-us').modal('hide');
-
-					// Redirect to settings
-					if (window.location.href.indexOf('pwreset') != -1) {
-						$window.location.href = '#/settings';
-					}
-				}).error(function (error) {
-					console.log('Error getUser: ', error);
-				});
-			}).error(function (data, status) {
-				console.log(status);
-			});
-		}).catch(function (err) {
-			// console.log(err);
-		});
-
 		$scope.isLogged = function () {
 			var userLogged = localStorage.getItem('userLogged');
+			var userToken = localStorage.getItem('userToken');
+
 			if (userLogged) {
 				$('.btn-cta').addClass('none');
+			} else if (userToken) {
+				var token = userToken;
+				$fny.loginByToken(userToken, function (callback) {
+					$("#modal-join-us").modal('hide');
+				});
 			} else {
 				$('.btn-cta').removeClass('none');
+				$("#modal-join-us").modal('hide');
 			};
 		};
 		$rootScope.$on("IS_LOGGED", $scope.isLogged);
@@ -1720,18 +1686,33 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		};
 
 		$scope.sendPassword = function () {
-			var objPass = {
-				'old_password': $scope.old_password,
-				'password': $scope.password,
-				'confirm_password': $scope.confirm_password
-			};
+			$scope.feedbackChangePass = false;
 
-			userApi.sendPassword(objPass, function (data) {
-				if (data) {
-					$scope.changePass = false;
-					showMessage(data);
-				}
-			});
+			if ($scope.password == $scope.confirm_password) {
+				$scope.errChangePass = false;
+
+				var objPass = {
+					'password': $scope.password,
+					'confirm_password': $scope.confirm_password
+				};
+
+				userApi.sendPassword(objPass, function (data) {
+					if (data) {
+						$scope.msgErrChangePass = data.message;
+						$scope.feedbackChangePass = true;
+					}
+				});
+
+				setTimeout(function () {
+					window.location.href = '/#/report';
+				}, 2000);
+			} else {
+				$scope.errChangePass = true;
+				$scope.msgErrChangePass = 'Error: Different password';
+				$scope.feedbackChangePass = true;
+			}
+
+			$scope.feedbackChangePass = true;
 		};
 
 		getUser();
@@ -1769,13 +1750,15 @@ app.controller('unsubscribeCtrl', ['$scope', '$http', '$urlBase', '$window', '$t
 				'reason': reasonTxt
 			};
 			$http.post($urlBase + '/user/unsubscribe?t=' + token, objUnsubscribe).success(function (data, status) {
+				console.log(data);
 				$scope.unsubscribeSuccess = true;
 				$timeout(function () {
 					$scope.unsubscribeSuccess = false;
 					$window.location.href = '/#';
 					localStorage.removeItem('userLogged');
+					localStorage.removeItem('userToken');
 					$rootScope.$emit("IS_LOGGED");
-				}, 1000);
+				}, 2000);
 			});
 		};
 	});
@@ -2914,7 +2897,6 @@ app.service('$fny', ['$http', '$urlBase', '$rootScope', '$window', '$timeout', f
 
 				localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
 				$rootScope.$emit("IS_LOGGED");
-				$window.location.href = '#/report?token=' + userToken;
 			}).error(function (data, status) {
 				console.log(status);
 			});
