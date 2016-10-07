@@ -9,11 +9,7 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;        
     }else{
-        fnyDB.get('userToken').then(function(data){
-            token = data.tkn        
-        }).catch(function(err){
-            console.log(err);
-        });
+        token = localStorage.getItem('userToken');
     }
 
     obj.getChecks = function(callback){

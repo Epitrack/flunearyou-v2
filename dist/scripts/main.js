@@ -1749,8 +1749,8 @@ app.controller('unsubscribeCtrl', ['$scope', '$http', '$urlBase', '$window', '$t
 				'pauseoption': reason,
 				'reason': reasonTxt
 			};
+
 			$http.post($urlBase + '/user/unsubscribe?t=' + token, objUnsubscribe).success(function (data, status) {
-				console.log(data);
 				$scope.unsubscribeSuccess = true;
 				$timeout(function () {
 					$scope.unsubscribeSuccess = false;
@@ -2762,11 +2762,7 @@ app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeou
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;
     } else {
-        fnyDB.get('userToken').then(function (data) {
-            token = data.tkn;
-        }).catch(function (err) {
-            console.log(err);
-        });
+        token = localStorage.getItem('userToken');
     }
 
     obj.getChecks = function (callback) {
@@ -2934,48 +2930,15 @@ app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout'
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;
     } else {
-        fnyDB.get('userToken').then(function (data) {
-            token = data.tkn;
-        }).catch(function (err) {
-            console.log(err);
-        });
+        token = localStorage.getItem('userLogged');
     }
 
     obj.getUser = function (callback) {
-        if (localStorage.getItem('userLogged')) {
-            $http.get($urlBase + '/user', { headers: { 'token': JSON.parse(localStorage.getItem('userLogged')).token } }).success(function (data) {
-                callback(data);
-            }).error(function (error) {
-                console.log('Error getUser: ', error);
-            });
-        } else {
-            fnyDB.get('userToken').then(function (data) {
-                var tkn = data.tkn;
-                $http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data, status) {
-                    var nickname = data.info.basic.nickname,
-                        userToken = data.info.basic.token,
-                        userEmail = data.info.basic.email,
-                        userLoggedObj = {
-                        'name': nickname,
-                        'email': userEmail,
-                        'token': userToken
-                    };
-
-                    localStorage.setItem('userLogged', JSON.stringify(userLoggedObj));
-                    $rootScope.$emit("IS_LOGGED");
-
-                    $http.get($urlBase + '/user', { headers: { 'token': tkn } }).success(function (data) {
-                        callback(data);
-                    }).error(function (error) {
-                        console.log('Error getUser: ', error);
-                    });
-                }).error(function (data, status) {
-                    console.log(status);
-                });
-            }).catch(function (err) {
-                console.log(err);
-            });
-        };
+        $http.get($urlBase + '/user', { headers: { 'token': token } }).success(function (data) {
+            callback(data);
+        }).error(function (error) {
+            console.log('Error getUser: ', error);
+        });
     };
 
     obj.userEdit = function (user, callback) {

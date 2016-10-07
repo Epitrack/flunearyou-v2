@@ -2,14 +2,14 @@
   <article class="news-item">
     
       <figure class="news-image">
-        <img ng-src="{{notice.imageUrl}}" alt="">
+        <a href="{{notice.url}}" title="" target="_blank"><img ng-src="{{notice.imageUrl}}" alt=""></a>
       </figure>
 
     <time class="news-date">{{notice.publicationDateDay}} <span>{{notice.publicationDateMonth}}</span></time>
 
     <div class="news-text">
       <h3 class="news-title">
-        <a href="#" title="Title Here">{{notice.title}}</a>
+        <a href="{{notice.url}}" title="" target="_blank">{{notice.title}}</a>
       </h3>
 
       <p class="news-description">{{notice.content}}</p>

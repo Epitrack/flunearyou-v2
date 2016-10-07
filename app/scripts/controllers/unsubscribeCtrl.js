@@ -20,14 +20,14 @@ app.controller('unsubscribeCtrl', ['$scope','$http','$urlBase', '$window','$time
 			token = user.token;
 
 		$scope.sendUnsubscribe = function(reason, reasonTxt){
-			
+
 			var objUnsubscribe = {
 				'token' : token,
 				'pauseoption' : reason,
 				'reason' : reasonTxt
 			}
+
 			$http.post($urlBase+'/user/unsubscribe?t='+token, objUnsubscribe).success(function(data, status){
-				console.log(data);
 				$scope.unsubscribeSuccess = true;
 				$timeout(function(){
 					$scope.unsubscribeSuccess = false;
