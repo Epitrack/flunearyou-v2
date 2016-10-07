@@ -13,7 +13,7 @@ app.controller('healthReportCtrl', ['$scope', '$rootScope','$http', '$urlBase', 
 		var user  = JSON.parse(localStorage.getItem('userLogged')),
 			token = user.token;
 	}else{
-		return false;
+		token = localStorage.getItem('userToken');
 	}
 
 

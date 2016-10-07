@@ -1600,7 +1600,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 			var user = JSON.parse(localStorage.getItem('userLogged')),
 			    token = user.token;
 		} else {
-			return false;
+			token = localStorage.getItem('userToken');
 		}
 
 		$scope.openModalConfirm = function (_household) {
@@ -1686,6 +1686,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		};
 
 		$scope.sendPassword = function () {
+
 			$scope.feedbackChangePass = false;
 
 			if ($scope.password == $scope.confirm_password) {
@@ -1779,7 +1780,7 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 		var user = JSON.parse(localStorage.getItem('userLogged')),
 		    token = user.token;
 	} else {
-		return false;
+		token = localStorage.getItem('userToken');
 	}
 
 	/*
@@ -1904,7 +1905,7 @@ app.controller('healthReportCtrl', ['$scope', '$rootScope', '$http', '$urlBase',
 			var user = JSON.parse(localStorage.getItem('userLogged')),
 			    token = user.token;
 		} else {
-			return false;
+			token = localStorage.getItem('userToken');
 		}
 
 		/*

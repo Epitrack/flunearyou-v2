@@ -13,7 +13,7 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 			var user  = JSON.parse(localStorage.getItem('userLogged')),
 				token = user.token;
 		}else{
-			return false;
+			token = localStorage.getItem('userToken');
 		}
 
 		/*

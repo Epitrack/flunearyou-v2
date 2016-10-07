@@ -23,7 +23,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		var user  = JSON.parse(localStorage.getItem('userLogged')),
 			token = user.token;
 	}else{
-		return false;
+		token = localStorage.getItem('userToken');
 	}
 
 	$scope.openModalConfirm = function(household){
@@ -109,7 +109,9 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		});
 	}
 
+
 	$scope.sendPassword = function(){
+	
 		$scope.feedbackChangePass = false
 
 		if ($scope.password == $scope.confirm_password) {
