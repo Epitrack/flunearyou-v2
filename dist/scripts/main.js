@@ -2974,7 +2974,7 @@ app.service('householdApi', ['$http', '$urlBase', '$rootScope', '$window', '$tim
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;
     } else {
-        token = '';
+        token = localStorage.getItem('userToken');
     }
 
     obj.getHuseholds = function (callback) {
