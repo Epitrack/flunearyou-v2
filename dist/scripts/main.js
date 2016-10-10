@@ -632,7 +632,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope', '$http', '$urlBase', 'session
 
 'use strict';
 
-app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage', function ($scope, $rootScope, $translate, $localStorage) {
+app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage', '$fny', function ($scope, $rootScope, $translate, $localStorage, $fny) {
 
 	/*
  *	Init
@@ -644,6 +644,8 @@ app.controller('navCtrl', ['$scope', '$rootScope', '$translate', '$localStorage'
 			$scope.userLogged = true;
 			$scope.userLoggedEmail = userLogged.email;
 			$('.btn-cta').addClass('none');
+		} else if (localStorage.getItem('userToken')) {
+			$fny.loginByToken(localStorage.getItem('userToken'));
 		} else {
 			$scope.userLogged = false;
 			$scope.userLoggedEmail = '';
