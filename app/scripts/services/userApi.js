@@ -9,10 +9,11 @@ app.service('userApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeout
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;     
     }else{
-        token = localStorage.getItem('userLogged');
-    }
+        token = localStorage.getItem('userToken');
+    };
 
     obj.getUser = function(callback) {
+        console.log(token);
         $http.get($urlBase+'/user', {headers: {'token': token}}).success(function(data) {
             callback(data);
         }).error(function(error) {

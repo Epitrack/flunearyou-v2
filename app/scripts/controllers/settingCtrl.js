@@ -87,7 +87,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 	}
 
 	$scope.sendNewHousehold = function(){
-		console.log($scope.newHousehold);
+		
 		householdApi.sendNewHousehold($scope.newHousehold, function(data){
 			if (data){
 				getHouseholds();
