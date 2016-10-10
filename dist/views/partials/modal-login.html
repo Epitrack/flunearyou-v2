@@ -37,7 +37,7 @@
                         </fieldset>
                         <a href="#/" class="login-forgot-pass" ng-click="forgotEmail(email)" translate="reg_forgot_pw"></a>
 
-                        <div id="error-login" class="relative" ng-if="sendEmail">
+                        <div id="error-login" class="relative" ng-show="sendEmail">
                             <div class="alert alert-info msg-error">An email has been sent with a link to reset your password.</div>
                         </div>
 

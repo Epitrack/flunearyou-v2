@@ -100,6 +100,7 @@ app.config(['$routeProvider', function ($routeProvider) {
       // Set token into PuchDB
       if (window.location.href.indexOf('t=') != -1 || window.location.href.indexOf('pwreset') != -1) {
         var token = getParameterByName('t');
+        console.log(token);
         localStorage.setItem('userToken', token);
       } else {
         if (!localStorage.getItem('userLogged')) {
@@ -1226,18 +1227,19 @@ app.controller('modalsCtrl', ['$scope', '$rootScope', '$http', '$urlBase', '$win
 	$scope.forgotEmail = function (email) {
 		var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		$scope.isEmailValid = re.test(email);
-		$scope.errorMsg = 'Please enter a valid email address';
 
 		if ($scope.isEmailValid) {
 			$http.post($urlBase + '/user/reset_password', { 'email': email }).success(function (data, status, result) {
 				console.log(data);
 				console.log(status);
 				console.log(result);
-				// $scope.sendEmail = true
-				// setTimeout(function(){
-				// 	$scope.sendEmail = false
-				// }, 1000)
-			}).error(function (data, status, result) {});
+				$scope.sendEmail = true;
+				setTimeout(function () {
+					$scope.sendEmail = false;
+				}, 1000);
+			}).error(function (data, status, result) {
+				$scope.errorMsg = 'Please enter a valid email address';
+			});
 		} else {
 			return $scope.isEmailValid;
 		}
@@ -1664,7 +1666,7 @@ app.controller('settingCtrl', ['$scope', '$http', '$urlBase', '$uibModal', '$tim
 		};
 
 		$scope.sendNewHousehold = function () {
-			console.log($scope.newHousehold);
+
 			householdApi.sendNewHousehold($scope.newHousehold, function (data) {
 				if (data) {
 					_getHouseholds();
@@ -2931,10 +2933,11 @@ app.service('userApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeout'
     if (token) {
         token = JSON.parse(localStorage.getItem('userLogged')).token;
     } else {
-        token = localStorage.getItem('userLogged');
-    }
+        token = localStorage.getItem('userToken');
+    };
 
     obj.getUser = function (callback) {
+        console.log(token);
         $http.get($urlBase + '/user', { headers: { 'token': token } }).success(function (data) {
             callback(data);
         }).error(function (error) {
