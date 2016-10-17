@@ -34,7 +34,6 @@ app.controller('modalInviteFriends', [ '$scope', '$uibModalInstance', 'items', '
 				};
 
 			$http.post($urlBase+'/user/raf', formData, {headers: {'token': token}}).success(function(data, status){
-
 				if (status == 200) {
 					$scope.showMsgError = true;
 					setTimeout(function(){
