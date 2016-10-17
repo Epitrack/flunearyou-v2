@@ -1,0 +1,69 @@
+<section class="modal fade modal-raf" id="modal-raf" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <header class="modal-header bg">
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h4 class="modal-title">{{ site.content.raf_title }}</h4>
+            </header>
+
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="javascript:;" name="raf-form" id="raf-form" class="row raf-form register-form">
+                        <fieldset class="form-group">
+                            <label for="raf-email">{{ site.content.raf_email_label }}</label>
+                            <input id="raf-email" type="text" class="input-primary" name="emails">
+                            <legend class="legend">{{ site.content.thanks_raf_input_hint_2 }}</legend>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="raf-name">{{ site.content.raf_yourname_label }}</label>
+                            <input id="raf-name" type="text" class="input-primary" name="name"
+                                   value="{{ user.info.basic.email }}">
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="raf-subject">{{ site.content.raf_subject_label }}</label>
+                            <input id="raf-subject" type="text" class="input-primary" name="subject"
+                                   value="{{ site.content.raf_email_subject }}" disabled>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <label for="rfa-message">{{ site.content.raf_message_label }}</label>
+              <textarea
+                      disabled
+                      name="message"
+                      id="rfa-message"
+                      class="input-primary rfa-message"
+                      rows="10">{{ site.content.raf_greeting|replace({"%name%":user.info.basic.email}) }}
+
+                  {{ site.content.raf_email_message|replace({"%name%":user.info.basic.email}) }}</textarea>
+                        </fieldset>
+
+                        <button class="btn-secondary" data-dismiss="modal"
+                                aria-label="{{ site.content.go_back }}">{{ site.content.go_back }}</button>
+                        <button type="submit" class="btn-submit"
+                                id="raf-submit">{{ site.content.raf_send_label }}</button>
+
+                        <div id="raf-error"
+                             class="alert alert-danger"
+                             style="display: none;margin-top: 20px;margin-bottom: 20px">
+                            <span id="raf-error-message"></span>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <footer class="modal-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <p>{{ site.content.raf_disclaimer }}</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</section>

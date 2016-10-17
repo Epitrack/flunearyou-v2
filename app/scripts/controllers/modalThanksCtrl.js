@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window',
-	function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window) {
-
+app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window', '$uibModal',
+	function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window, $uibModal) {
+		
 		/*
 		*	Init
 		*/ 
@@ -11,10 +11,25 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 	 
 		if (localStorage.getItem('userLogged')){
 			var user  = JSON.parse(localStorage.getItem('userLogged')),
-				token = user.token;
+				token = user.token,
+				email = user.email;
 		}else{
 			token = localStorage.getItem('userToken');
 		}
+
+		var openModalInviteFriends = function(emails){
+			var modalInstance = $uibModal.open({
+			    templateUrl: 'views/partials/modal-refer-a-friend.html',
+			    controller: 'modalInviteFriends',
+			    size: 'lg',
+			    resolve: {
+			      items: function () {
+			      	return $scope.items;
+			      	return false;
+			      }
+			    }
+		    });
+		};
 
 		/*
 		*	Get infos report card
@@ -36,5 +51,12 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 		$scope.cancel = function () {
 			localStorage.removeItem('redirectMap');
 			$uibModalInstance.dismiss('cancel');
+			angular.element('.modal-backdrop').remove();
+		};
+
+		$scope.callInvite = function(emails){
+			openModalInviteFriends();
+			$rootScope.emails = emails;
+			return false;
 		};
 }]);

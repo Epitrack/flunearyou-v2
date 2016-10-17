@@ -1772,7 +1772,7 @@ app.controller('unsubscribeCtrl', ['$scope', '$http', '$urlBase', '$window', '$t
 
 'use strict';
 
-app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window', function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window) {
+app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window', '$uibModal', function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window, $uibModal) {
 
 	/*
  *	Init
@@ -1782,10 +1782,25 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 
 	if (localStorage.getItem('userLogged')) {
 		var user = JSON.parse(localStorage.getItem('userLogged')),
-		    token = user.token;
+		    token = user.token,
+		    email = user.email;
 	} else {
 		token = localStorage.getItem('userToken');
 	}
+
+	var openModalInviteFriends = function openModalInviteFriends(emails) {
+		var modalInstance = $uibModal.open({
+			templateUrl: 'views/partials/modal-refer-a-friend.html',
+			controller: 'modalInviteFriends',
+			size: 'lg',
+			resolve: {
+				items: function items() {
+					return $scope.items;
+					return false;
+				}
+			}
+		});
+	};
 
 	/*
  *	Get infos report card
@@ -1807,6 +1822,13 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 	$scope.cancel = function () {
 		localStorage.removeItem('redirectMap');
 		$uibModalInstance.dismiss('cancel');
+		angular.element('.modal-backdrop').remove();
+	};
+
+	$scope.callInvite = function (emails) {
+		openModalInviteFriends();
+		$rootScope.emails = emails;
+		return false;
 	};
 }]);
 //# sourceMappingURL=modalThanksCtrl.js.map
@@ -1935,6 +1957,54 @@ app.controller('healthReportCtrl', ['$scope', '$rootScope', '$http', '$urlBase',
 	});
 }]);
 //# sourceMappingURL=healthReportCtrl.js.map
+
+'use strict';
+
+app.controller('modalInviteFriends', ['$scope', '$uibModalInstance', 'items', '$http', '$urlBase', '$rootScope', '$window', '$uibModal', function ($scope, $uibModalInstance, items, $http, $urlBase, $rootScope, $window, $uibModal) {
+
+	/*
+ *	Init
+ */
+	$rootScope.$emit("IS_LOGGED");
+	$rootScope.$emit("SCROLL_TOP");
+
+	//
+	$scope.showMsgError = false;
+
+	if (localStorage.getItem('userLogged')) {
+		var user = JSON.parse(localStorage.getItem('userLogged')),
+		    token = user.token,
+		    email = user.email;
+	} else {
+		token = localStorage.getItem('userToken');
+	};
+
+	$scope.token = token;
+	$scope.email = email;
+	$scope.msg = 'A current Flu Near You user, {{email}}, has invited you to join the cause! I’m helping to track and fight the flu this season - you should too! Check it out: <a href="https://flunearyou.org?campaign=%token%" target="_blank">https://flunearyou.org?campaign=%token%</a> Flu Near You is a community of 60,000 parents, teachers, health officials, and concerned citizens who have come together to help fight the spread of influenza.<br /> Every Monday, a 10-15 second survey is sent out to participants asking them how they felt the week prior and if they had any flu-like symptoms.<br /> Then, in real-time, the anonymous data is plotted on a map for the general public and health officials to better predict--and respond to--outbreaks in our community.<br /> Can you join the cause with me?  It only takes a few seconds to sign up, and your participation could save lives: <a href="https://flunearyou.org?campaign=%token%" target="_blank">https://flunearyou.org?campaign=%token%</a> Thanks in advance. <br />Your Friend';
+
+	$scope.sendInvite = function () {
+		var formData = {
+			emails: $scope.emails,
+			name: $scope.email,
+			subject: 'Help track the flu. Save lives.',
+			message: $scope.msg
+		};
+
+		$http.post($urlBase + '/user/raf', formData, { headers: { 'token': token } }).success(function (data, status) {
+
+			if (status == 200) {
+				$scope.showMsgError = true;
+				setTimeout(function () {
+					$scope.showMsgError = false;
+					$uibModalInstance.dismiss('cancel');
+				}, 1000);
+			}
+			return false;
+		});
+	};
+}]);
+//# sourceMappingURL=modalInviteFriendsCtrl.js.map
 
 /*
 *	Directive: Choose State and then show data
@@ -2692,6 +2762,59 @@ app.directive('scrollToNav', function () {
 	};
 });
 //# sourceMappingURL=scrollToNavDirective.js.map
+
+/*
+*
+*/
+
+'use strict';
+
+app.directive('sendInvite', function () {
+	return {
+		restrict: 'A',
+		link: function link(scope, elem) {
+
+			var serializeObj = function serializeObj(obj) {
+				var result = [];
+
+				for (var property in obj) {
+					result.push(encodeURIComponent(property) + "=" + encodeURIComponent(obj[property]));
+				}return result.join("&");
+			};
+
+			elem.on('submit', function () {
+				var formData = {
+					emails: scope.emails,
+					name: scope.email,
+					subject: 'Help track the flu. Save lives.',
+					message: scope.msg
+				};
+
+				// var serialized = serializeObj(formData);
+				console.log(formData);
+
+				return false;
+				// var formSerialise = $(this).serializeObject();
+				// console.log(formSerialise);
+				// e.preeventDefault();
+				// var formData = $('#raf-form').serializeObject()
+				// console.log('Enviado!');
+			});
+		}
+	};
+});
+
+// $scope.sendInvite = function(){
+// 	$http.post($urlBase+'/user/raf', {headers: {'token': token}}).success(function(data){
+// 		console.log(data);
+// 	});
+// }
+
+// emails:sfilhu@gmail.com
+// name:sergio@sergio.com
+// subject:Help track the flu. Save lives.
+// message:
+//# sourceMappingURL=sendInviteDirective.js.map
 
 'use strict';
 

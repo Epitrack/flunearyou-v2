@@ -28,14 +28,14 @@
                         <!-- <button class="btn-modal twitter" ng-hide="showform">Twitter</button> -->
 
                         <!-- invite a friend -->
-                        <form action="#" class="refer-a-friend-form" name="refer-a-friend-form" id="refer-a-friend-form">
+                        <form class="refer-a-friend-form" name="refer-a-friend-form" id="refer-a-friend-form">
                             <fieldset>
                                 <legend style="top:-20px">Invite a friend in your area</legend>
-                                <input type="email" class="input-primary" placeholder="Add an email">
+                                <input type="text" class="input-primary" placeholder="Add an email" ng-model="emails">
                                 <legend>Separate multiple emails with commas.</legend>
                             </fieldset>
 
-                            <input type="submit" class="btn-submit" value="">
+                            <input class="btn-submit" value="" data-toggle="modal" data-dismiss="modal" data-target="#modal-raf" ng-click="callInvite(emails)">
                         </form>
 
                        

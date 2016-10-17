@@ -324,6 +324,7 @@ app.controller('mapCtrl', ['$scope', '$rootScope','$http', '$urlBase', 'session'
 		      }
 		    });
 		};
+		
 
 		if (localStorage.getItem('redirectMap')){
 			openModalThanks();	

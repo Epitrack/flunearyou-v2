@@ -1,35 +1,57 @@
-<section class="modal fade modal-raf" id="modal-raf" tabindex="-1" role="dialog">
+<section class="modal fade modal-raf" id="modal-raf" tabindex="-1" role="dialog" style="height: 700px">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <header class="modal-header bg">
+      <header class="modal-header bg relative">
         <button class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
 
-        <h4 class="modal-title">Refer a Friend</h4>
+        <h4 class="modal-title">
+          <span>Refer a Friend</span>
+        </h4>
+        <span class="alert alert-info absolute msg" ng-show="showMsgError">Invitation sent!</span>
       </header>
 
       <div class="modal-body">
         <div class="container-fluid">
-          <form action="#" name="raf-form" id="raf-form" class="row raf-form register-form">
+          <form name="raf-form" id="raf-form" class="row raf-form register-form">
             <fieldset class="form-group">
               <label for="raf-email">Email</label>
-              <input id="raf-email" type="email" class="input-primary">
+              <input id="raf-email" type="email" class="input-primary" ng-model="emails">
+              <legend class="legend">Separate multiple emails with commas.</legend>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label for="raf-email">Your Email</label>
+              <input id="raf-email" type="email" class="input-primary" ng-model="email">
               <legend class="legend">Separate multiple emails with commas.</legend>
             </fieldset>
 
             <fieldset class="form-group">
               <label for="raf-subject">Subject</label>
-              <input id="raf-subject" type="text" class="input-primary">
+              <input id="raf-subject" type="text" class="input-primary" value="Help track the flu. Save lives.">
             </fieldset>
 
             <fieldset class="form-group">
-              <label for="rfa-message">Message</label>
-              <textarea name="rfa-message" id="rfa-message" class="input-primary rfa-message"></textarea>
+                <label for="rfa-message">Message</label>
+                <textarea name="rfa-message" id="rfa-message" class="input-primary rfa-message">A current Flu Near You user, {{email}}, has invited you to join the cause!
+                
+                I’m helping to track and fight the flu this season - you should too! Check it out: <a href="https://flunearyou.org?campaign={{token}}" target="_blank">https://flunearyou.org?campaign={{token}}</a>
+                
+                Flu Near You is a community of 60,000 parents, teachers, health officials, and concerned citizens who have come together to help fight the spread of influenza. 
+                
+                Every Monday, a 10-15 second survey is sent out to participants asking them how they felt the week prior and if they had any flu-like symptoms. Then, in real-time, the anonymous data is plotted on a map for the general public and health officials to better predict--and respond to--outbreaks in our community. 
+                
+                Can you join the cause with me?  It only takes a few seconds to sign up, and your participation could save lives: <a href="https://flunearyou.org?campaign={{token}}" target="_blank">https://flunearyou.org?campaign={{token}}</a>
+                
+                Thanks in advance.
+                
+                Your Friend
+                </textarea>
             </fieldset>
 
             <button class="btn-secondary" data-dismiss="modal" aria-label="Close">Go Back</button>
-            <button type="submit" class="btn-primary">Send</button>
+            <button class="btn-primary button" ng-click="sendInvite()">Send</button>
           </form>
         </div>
       </div>
