@@ -1812,6 +1812,16 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 	$http.get($urlBase + '/user/thanks', { headers: { 'token': token } }).success(function (data) {
 		console.log(data);
 		$scope.msgThanks = data;
+
+		var lng = localStorage.getItem('lng');
+
+		if (lng == 'en') {
+			$scope.msgThanksHeader = '' + data.thanks.badge + 'th Survey!';
+			$scope.msgThanksTxt = 'Congratulations, you sent your ' + data.thanks.badge + 'th survey!';
+		} else {
+			$scope.msgThanksHeader = '' + data.thanks.badge + 'º encuesta!';
+			$scope.msgThanksTxt = '¡Felicidades, envió su ' + data.thanks.badge + 'º informe!';
+		}
 	});
 
 	$scope.ok = function () {

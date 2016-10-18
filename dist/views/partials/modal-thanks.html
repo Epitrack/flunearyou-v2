@@ -3,7 +3,7 @@
         <button class="close" data-dismiss="modal" ng-click="cancel();winReload()" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title"><span>Thank you for reporting.</span></h4>
+        <h4 class="modal-title" translate="submit_thanks"></h4>
     </header>
 
     <div class="modal-body">
@@ -17,8 +17,8 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-5 borderRight">
-                    <h3 class="modal-subtitle">{{msgThanks.thanks.header}}</h3>
-                    <p class="modal-description">{{msgThanks.thanks.text}}</p>
+                    <h3 class="modal-subtitle">{{msgThanksHeader}}</h3>
+                    <p class="modal-description">{{msgThanksTxt}}</p>
 
                     <div class="refer-a-friend">
                         <!-- <h5>Refer a friend in your area:</h5> -->
@@ -30,9 +30,9 @@
                         <!-- invite a friend -->
                         <form class="refer-a-friend-form" name="refer-a-friend-form" id="refer-a-friend-form">
                             <fieldset>
-                                <legend style="top:-20px">Invite a friend in your area</legend>
-                                <input type="text" class="input-primary" placeholder="Add an email" ng-model="emails">
-                                <legend>Separate multiple emails with commas.</legend>
+                                <legend style="top:-20px" translate="thanks_raf_input_hint"></legend>
+                                <input type="text" class="input-primary" ng-model="emails">
+                                <!-- <legend>Separate multiple emails with commas.</legend> -->
                             </fieldset>
 
                             <input class="btn-submit" value="" data-toggle="modal" data-dismiss="modal" data-target="#modal-raf" ng-click="callInvite(emails)">
@@ -44,10 +44,26 @@
 
                 <div class="col-xs-12 col-sm-4">
                     <ul class="modal-list">
-                        <li class="modal-item featured">Participation Rate: <span>{{reportCard.participation_rate}}%</span></li>
-                        <li class="modal-item">Weeks eligible to report <span>{{reportCard.weeks_eligible}}</span></li>
-                        <li class="modal-item">Weeks reported <span>{{reportCard.weeks_reported}}</span></li>
-                        <li class="modal-item">Weeks since last report <span>{{reportCard.weeks_since_last_report}}</span></li>
+                        
+                        <li class="modal-item featured">
+                            <p translate="participation_rate"></p> 
+                            <span>{{reportCard.participation_rate}}%</span>
+                        </li>
+                        
+                        <li class="modal-item">
+                            <p translate="weeks_eligible"></p> 
+                            <span>{{reportCard.weeks_eligible}}</span>
+                        </li>
+
+                        <li class="modal-item">
+                            <p translate="weeks_reported"></p> 
+                            <span>{{reportCard.weeks_reported}}</span>
+                        </li>
+
+                        <li class="modal-item">
+                            <p translate="weeks_last_report"></p> 
+                            <span>{{reportCard.weeks_since_last_report}}</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -58,7 +74,7 @@
         <div class="container-fluid">
             <div class="row">
                 <p translate="thanks_disclaimer"></p>
-                <a href="#" ng-click="cancel();winReload()">No thanks</a>
+                <!-- <a href="#" ng-click="cancel();winReload()">No thanks</a> -->
             </div>
         </div>
     </footer>
