@@ -20,6 +20,8 @@ Go to project folder
 $ cd flunearyou-v2
 ```
 
+Go to the branch
+
 ```sh
 $ git checkout production
 ```
