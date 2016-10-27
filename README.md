@@ -17,27 +17,23 @@ $ git clone https://github.com/healthmap/flunearyou-v2.git
 Go to project folder
 
 ```sh
-$ cd fny-dashboard
+$ cd flunearyou-v2
 ```
 
-Run npm to to install Grunt and all dependencies
+##Install all modules and dependencies
 
 ```sh
-npm install
+$ npm install
 ```
-
-Install packages with bower
-
-```shf
-bower install
-
-Note: select Angular 1.3.13 and jquery 2.1.3 for fny_dashboard at prompt).  May need to hit CTRL C if it hangs after last choice.
-```
-Run grunt to start dev server
+And then
 
 ```sh
-grunt dev
-```
+$ bower install --save
+
+##Run the FNY-V2 in your machine
+
+```sh
+$ gulp serve
 
 
 From web browser connect to local server at [http://127.0.0.1:1337](http://127.0.0.1:1337)
