@@ -71,11 +71,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'views/terms.html',
         controller: 'homeCtrl'
       })
-      .when('/survey', {
-        templateUrl: 'views/survey.html',
-        controller: 'surveyCtrl',
-        resolve : teste
-      })
       .when('/report', {
         templateUrl: 'views/report.html',
         controller: 'reportCtrl',

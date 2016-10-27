@@ -7,6 +7,7 @@
 app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', 'session', '$uibModal', 
 	function($scope, $rootScope, $window, session, $uibModal){
 	session.then( function() {
+		console.log('survey');
 		/*
 		*	Init
 		*/ 

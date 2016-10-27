@@ -143,10 +143,6 @@ app.config(['$routeProvider', function ($routeProvider) {
   }).when('/terms', {
     templateUrl: 'views/terms.html',
     controller: 'homeCtrl'
-  }).when('/survey', {
-    templateUrl: 'views/survey.html',
-    controller: 'surveyCtrl',
-    resolve: teste
   }).when('/report', {
     templateUrl: 'views/report.html',
     controller: 'reportCtrl',
@@ -1483,10 +1479,12 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 				$scope.error_symptom = true;
 				return;
 			}
+
 			var index = $scope.members_ids.indexOf($scope.current_id);
 			if (index > -1) {
 				$scope.members_ids.splice(index, 1);
 			}
+
 			reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members_ids, $scope.user.current_survey, function (result) {
 				$scope.openSymtoms();
 			});
@@ -1545,6 +1543,7 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 
 app.controller('surveyCtrl', ['$scope', '$rootScope', '$window', 'session', '$uibModal', function ($scope, $rootScope, $window, session, $uibModal) {
 	session.then(function () {
+		console.log('survey');
 		/*
   *	Init
   */
@@ -1816,11 +1815,11 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 		var lng = localStorage.getItem('lng');
 
 		if (lng == 'en') {
-			$scope.msgThanksHeader = '' + data.thanks.badge + 'th Survey!';
-			$scope.msgThanksTxt = 'Congratulations, you sent your ' + data.thanks.badge + 'th survey!';
+			$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'th Survey!';
+			$scope.msgThanksTxt = 'Congratulations, you sent your ' + data.stats.weeks_reported + 'th survey!';
 		} else {
-			$scope.msgThanksHeader = '' + data.thanks.badge + 'º encuesta!';
-			$scope.msgThanksTxt = '¡Felicidades, envió su ' + data.thanks.badge + 'º informe!';
+			$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'º encuesta!';
+			$scope.msgThanksTxt = '¡Felicidades, envió su ' + data.stats.weeks_reported + 'º informe!';
 		}
 	});
 
@@ -2957,7 +2956,7 @@ app.service('reportApi', ['$http', '$urlBase', '$rootScope', '$window', '$timeou
         angular.forEach(survey.symptoms, function (value, key) {
             data[value] = 1;
         });
-
+        console.log(data);
         $http.post(url, data, { headers: { 'token': token } }).success(function (data) {
             callback(true);
         }).error(function (error) {

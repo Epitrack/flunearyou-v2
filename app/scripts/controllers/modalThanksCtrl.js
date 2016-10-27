@@ -45,11 +45,11 @@ app.controller('ModalThanksCtrl', [ '$scope', '$uibModalInstance', 'items', '$ht
 			var lng = localStorage.getItem('lng');
 
 			if (lng == 'en') {
-				$scope.msgThanksHeader = ''+data.thanks.badge+'th Survey!'
-				$scope.msgThanksTxt    = 'Congratulations, you sent your '+data.thanks.badge+'th survey!'
+				$scope.msgThanksHeader = ''+data.stats.weeks_reported+'th Survey!'
+				$scope.msgThanksTxt    = 'Congratulations, you sent your '+data.stats.weeks_reported+'th survey!'
 			}else{
-				$scope.msgThanksHeader = ''+data.thanks.badge+'º encuesta!'
-				$scope.msgThanksTxt    = '¡Felicidades, envió su '+data.thanks.badge+'º informe!'
+				$scope.msgThanksHeader = ''+data.stats.weeks_reported+'º encuesta!'
+				$scope.msgThanksTxt    = '¡Felicidades, envió su '+data.stats.weeks_reported+'º informe!'
 			}
 			
 		}); 

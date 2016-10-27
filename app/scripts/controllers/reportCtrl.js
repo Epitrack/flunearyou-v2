@@ -203,10 +203,12 @@ app.controller('reportCtrl', ['$scope', '$route', '$rootScope', '$window', '$loc
 				$scope.error_symptom = true;
 				return;
 			}
+
 			var index = $scope.members_ids.indexOf($scope.current_id);
 	        if (index > -1) {
 	            $scope.members_ids.splice(index, 1);
 	        }
+	        
 			reportApi.sendReport($scope.survey, $scope.user.user_id, $scope.current_id, $scope.members_ids, $scope.user.current_survey, function(result){
 				$scope.openSymtoms();
 			});

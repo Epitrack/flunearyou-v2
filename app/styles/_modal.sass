@@ -359,7 +359,7 @@
       height: 85px
       background-position: center -5px
   .modal-title
-    font-size: $fs-medium + 0.5
+    font-size: 2.5rem!important
     padding-top: 0
     &.login-title
       color: #3f6f92
@@ -369,7 +369,12 @@
       font-size: $fs-normal + 1.2
   .modal-body
     .modal-list
-      margin-top: 45px
+      .modal-item
+        float: left
+        p
+          width: 120px
+          float: left
+
     h5
       font-size: $fs-normal * 2
     .modal-icon

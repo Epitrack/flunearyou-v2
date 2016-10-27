@@ -65,7 +65,7 @@ app.service('reportApi', [ '$http', '$urlBase', '$rootScope', '$window', '$timeo
         angular.forEach(survey.symptoms, function(value, key){
             data[value] = 1;
         });
-
+        console.log(data);
         $http.post(url, data, {headers: {'token': token}}).success(function(data) {
             callback(true);
         }).error(function(error) {
