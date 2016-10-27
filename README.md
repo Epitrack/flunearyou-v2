@@ -20,6 +20,10 @@ Go to project folder
 $ cd flunearyou-v2
 ```
 
+```sh
+$ git checkout production
+```
+
 ## Install all modules and dependencies
 
 ```sh
