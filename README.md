@@ -6,7 +6,7 @@ node.js (https://nodejs.org) and bower (https://bower.io).
 
 ## Getting the FNY-V2 in your machine
 
-#####Opne your terminal and:
+#####Open your terminal and:
 
 Clone repository
 
@@ -39,11 +39,6 @@ $ gulp serve
 
 #Sending for Production
 ##### After your adjustment, you need to do:
-
-```sh
-$ gulp build
-```
-And then
 
 ```sh
 $ npm install && bower install && gulp build && s3cmd --access_key=AKIAIRGBQWR365HFNREA --secret_key=DLkej0KS8WNP5zON3iDEfa+1ltVM8kErUGv/kHEn --no-mime-magic --guess-mime-type --acl-public -v sync ./dist/ s3://flunearyou.org/
