@@ -49,7 +49,7 @@ And then
 $ npm install && bower install && gulp build && s3cmd --access_key=AKIAIRGBQWR365HFNREA --secret_key=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 --no-mime-magic --guess-mime-type --acl-public -v sync ./dist/ s3://flunearyou.org/
 ```
 
-## Updateing barnch
+## Updating branch
 
 ```sh
 $ git add --all
