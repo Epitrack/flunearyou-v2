@@ -20,7 +20,7 @@ Go to project folder
 $ cd flunearyou-v2
 ```
 
-##Install all modules and dependencies
+## Install all modules and dependencies
 
 ```sh
 $ npm install
@@ -29,48 +29,39 @@ And then
 
 ```sh
 $ bower install --save
+```
 
 ##Run the FNY-V2 in your machine
 
 ```sh
 $ gulp serve
-
-
-From web browser connect to local server at [http://127.0.0.1:1337](http://127.0.0.1:1337)
-
-
-## Production
-
-Before compiling assets for production, run all tests
-
-```sh
-grunt test
 ```
 
-
-Minified source code to create production assets
-
-```sh
-grunt minified
-```
-
-
-Copy icons
+#Sending for Production
+##### After your adjustment, you need to do:
 
 ```sh
-grunt copy-icons
+$ gulp build
+```
+And then
+
+```sh
+$ npm install && bower install && gulp build && s3cmd --access_key=AKIAIRGBQWR365HFNREA --secret_key=DLkej0KS8WNP5zON3iDEfa+1ltVM8kErUGv/kHEn --no-mime-magic --guess-mime-type --acl-public -v sync ./dist/ s3://flunearyou.org/
 ```
 
-Code is ready to be deployed on production server
+## Updateing barnch
 
+```sh
+$ git add --all
+```
 
-## More information
+```sh
+$ git commit -m "YOUR MESSAGE"
+```
+```sh
+$ git pull healthmap production
+```
 
-Go to [wiki](https://github.com/healthmap/fny-dashboard/wiki) for more information
-
-
-## Deployment
-
-Only authorized users can deploy to the FNY dashboard ( http://dashboard.flunearyou.org ) using Deploybot (https://deploybot.com/ ).
-
-FNY dashboard deployment status: [![Deployment status from DeployBot](https://boston-childrens-hosptial.deploybot.com/badge/34534836067950/87987.svg)](http://deploybot.com)
+```sh
+$ git push healthmap production
+```
