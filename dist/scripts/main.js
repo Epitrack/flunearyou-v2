@@ -1815,7 +1815,17 @@ app.controller('ModalThanksCtrl', ['$scope', '$uibModalInstance', 'items', '$htt
 		var lng = localStorage.getItem('lng');
 
 		if (lng == 'en') {
-			$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'th Survey!';
+			var reportTimes = data.stats.weeks_reported;
+			if (reportTimes == 1) {
+				$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'st Survey!';
+			} else if (reportTimes == 2) {
+				$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'nd Survey!';
+			} else if (reportTimes == 3) {
+				$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'rd Survey!';
+			} else {
+				$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'th Survey!';
+			}
+
 			$scope.msgThanksTxt = 'Congratulations, you sent your ' + data.stats.weeks_reported + 'th survey!';
 		} else {
 			$scope.msgThanksHeader = '' + data.stats.weeks_reported + 'º encuesta!';
